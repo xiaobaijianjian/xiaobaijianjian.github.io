@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>photo | 史杨健的博客</title>
+  <title>BFC的理解 | 史杨健的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="1.BFC是什么？BFC(Block Formatting Context)块级格式化上下文，它会创建一个特殊的区域，在这个区域里，内部元素布局不会影响到外部元素，同样，外部元素布局不会影响到BFC内部元素布局。一个 BFC 就像是一个隔离区域， 和其他区域互不影响。 2.什么样的元素会形成BFC？MDN总结如下：  根元素或其他包含根元素的元素 浮动元素（元素的float不为none） 绝对定位">
 <meta property="og:type" content="article">
-<meta property="og:title" content="photo">
+<meta property="og:title" content="BFC的理解">
 <meta property="og:url" content="http://example.com/2021/02/16/photo/index.html">
 <meta property="og:site_name" content="史杨健的博客">
 <meta property="og:description" content="1.BFC是什么？BFC(Block Formatting Context)块级格式化上下文，它会创建一个特殊的区域，在这个区域里，内部元素布局不会影响到外部元素，同样，外部元素布局不会影响到BFC内部元素布局。一个 BFC 就像是一个隔离区域， 和其他区域互不影响。 2.什么样的元素会形成BFC？MDN总结如下：  根元素或其他包含根元素的元素 浮动元素（元素的float不为none） 绝对定位">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/photo/pic1.png">
-<meta property="og:image" content="http://example.com/photo/pic2.png">
-<meta property="og:image" content="http://example.com/photo/pic3.png">
-<meta property="og:image" content="http://example.com/photo/pic4.png">
+<meta property="og:image" content="http://example.com/2021/02/16/photo/pic1.png">
+<meta property="og:image" content="http://example.com/2021/02/16/photo/pic2.png">
+<meta property="og:image" content="http://example.com/2021/02/16/photo/pic3.png">
+<meta property="og:image" content="http://example.com/2021/02/16/photo/pic4.png">
 <meta property="article:published_time" content="2021-02-16T02:12:54.000Z">
-<meta property="article:modified_time" content="2021-02-16T02:15:56.604Z">
+<meta property="article:modified_time" content="2021-02-16T02:44:17.584Z">
 <meta property="article:author" content="jianjian">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/photo/pic1.png">
+<meta name="twitter:image" content="http://example.com/2021/02/16/photo/pic1.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -91,7 +91,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      photo
+      BFC的理解
     </h1>
   
 
@@ -128,20 +128,21 @@
 <p>例1：高度塌陷</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;head&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s s1&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s s2&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    </span><br><span class="line">    .head&#123;</span><br><span class="line">       </span><br><span class="line">        width: 300px;</span><br><span class="line">        padding-top: 20px;</span><br><span class="line">        border: 5px solid violet;</span><br><span class="line">        &#x2F;* overflow: hidden; *&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line">    .s&#123;</span><br><span class="line">        height: 150px;</span><br><span class="line">        width: 100px;</span><br><span class="line">        float: left;</span><br><span class="line">        border: 5px solid yellow;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
 <p>由于浮动元素会造成”高度塌陷”,会导致如下图所示.</p>
-<p><img src="/./photo/pic1.png"><br>解决方案:BFC规则,浮动元素的高度也会参与BFC的高度计算.<br>所以在添加</p>
+<p><img src="/2021/02/16/photo/pic1.png"><br>解决方案:BFC规则,浮动元素的高度也会参与BFC的高度计算.<br>所以在添加</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.head&#123;</span><br><span class="line">    overflow:hidden</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/./photo/pic2.png"></p>
+<p><img src="/2021/02/16/photo/pic2.png"></p>
 <p>例2：多栏布局</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;head&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s s1&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s s2&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    </span><br><span class="line">    .head&#123;</span><br><span class="line">       </span><br><span class="line">        width: 600px;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    .s1&#123;</span><br><span class="line">        height: 150px;</span><br><span class="line">        width: 100px;</span><br><span class="line">        background-color: yellow;</span><br><span class="line">        float: left;</span><br><span class="line">    &#125;</span><br><span class="line">    .s2&#123;</span><br><span class="line">        height: 200px;</span><br><span class="line">        background-color: violet;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
-<p>结果如下图:<br><img src="/./photo/pic3.png"><br>原因是”每个Box在水平方向上的左边缘会与BFC的左边缘对齐，即使存在浮动也是如此”</p>
+<p>结果如下图:<br><img src="/2021/02/16/photo/pic3.png"><br>原因是”每个Box在水平方向上的左边缘会与BFC的左边缘对齐，即使存在浮动也是如此”</p>
 <p>修改如下:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.s2&#123;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>效果如下:<br><img src="/./photo/pic4.png"><br>原因:BFC区域不会与浮动元素重叠，而是会依次排列</p>
+<p>效果如下:</p>
+<p><img src="/2021/02/16/photo/pic4.png"><br>原因:BFC区域不会与浮动元素重叠，而是会依次排列</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/16/photo/" data-id="ckl7dm0zg0001ustjb03caemv" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/16/photo/" data-id="ckl7elrw40001rotj4k3xclsi" class="article-share-link">分享</a>
       
       
       
