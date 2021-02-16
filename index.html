@@ -66,6 +66,86 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-photo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/16/photo/" class="article-date">
+  <time datetime="2021-02-16T02:12:54.000Z" itemprop="datePublished">2021-02-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/16/photo/">photo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h3 id="1-BFC是什么？"><a href="#1-BFC是什么？" class="headerlink" title="1.BFC是什么？"></a>1.BFC是什么？</h3><p>BFC(Block Formatting Context)块级格式化上下文，它会创建一个特殊的区域，在这个区域里，内部元素布局不会影响到外部元素，同样，外部元素布局不会影响到BFC内部元素布局。一个 BFC 就像是一个隔离区域， 和其他区域互不影响。</p>
+<h3 id="2-什么样的元素会形成BFC？"><a href="#2-什么样的元素会形成BFC？" class="headerlink" title="2.什么样的元素会形成BFC？"></a>2.什么样的元素会形成BFC？</h3><p>MDN总结如下：</p>
+<ol>
+<li>根元素或其他包含根元素的元素</li>
+<li>浮动元素（元素的float不为none）</li>
+<li>绝对定位元素（元素的position为absolute或fixed）</li>
+<li>display＝inline-block|flex|inline-flex|table-cell 或 table-caption</li>
+<li>overflow＝hidden|auto 或 scroll(≠visible)</li>
+<li>含有样式属性column-span:all的元素</li>
+</ol>
+<h3 id="3-BFC会影响什么？"><a href="#3-BFC会影响什么？" class="headerlink" title="3.BFC会影响什么？"></a>3.BFC会影响什么？</h3><p>具体描述如下：</p>
+<ol>
+<li>内部的box将会独占宽度，且在垂直方向上一个接一个排列</li>
+<li>同一个BFC的两个相邻box的margin会出现边距折叠现象</li>
+<li>每个Box在水平方向上的左边缘会与BFC的左边缘对齐，即使存在浮动也是如此</li>
+<li>BFC区域不会与浮动元素重叠，而是会依次排列</li>
+<li>浮动元素的高度也会参与BFC的高度计算</li>
+</ol>
+<p>要点：</p>
+<ol>
+<li>边距折叠</li>
+<li>清除浮动</li>
+<li>自适应多栏布局</li>
+</ol>
+<p>例1：高度塌陷</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;head&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s s1&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s s2&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    </span><br><span class="line">    .head&#123;</span><br><span class="line">       </span><br><span class="line">        width: 300px;</span><br><span class="line">        padding-top: 20px;</span><br><span class="line">        border: 5px solid violet;</span><br><span class="line">        &#x2F;* overflow: hidden; *&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line">    .s&#123;</span><br><span class="line">        height: 150px;</span><br><span class="line">        width: 100px;</span><br><span class="line">        float: left;</span><br><span class="line">        border: 5px solid yellow;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+<p>由于浮动元素会造成”高度塌陷”,会导致如下图所示.</p>
+<p><img src="/./photo/pic1.png"><br>解决方案:BFC规则,浮动元素的高度也会参与BFC的高度计算.<br>所以在添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.head&#123;</span><br><span class="line">    overflow:hidden</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/./photo/pic2.png"></p>
+<p>例2：多栏布局</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;head&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s s1&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s s2&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    </span><br><span class="line">    .head&#123;</span><br><span class="line">       </span><br><span class="line">        width: 600px;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    .s1&#123;</span><br><span class="line">        height: 150px;</span><br><span class="line">        width: 100px;</span><br><span class="line">        background-color: yellow;</span><br><span class="line">        float: left;</span><br><span class="line">    &#125;</span><br><span class="line">    .s2&#123;</span><br><span class="line">        height: 200px;</span><br><span class="line">        background-color: violet;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+<p>结果如下图:<br><img src="/./photo/pic3.png"><br>原因是”每个Box在水平方向上的左边缘会与BFC的左边缘对齐，即使存在浮动也是如此”</p>
+<p>修改如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.s2&#123;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>效果如下:<br><img src="/./photo/pic4.png"><br>原因:BFC区域不会与浮动元素重叠，而是会依次排列</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/16/photo/" data-id="ckl7dm0zg0001ustjb03caemv" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣55-跳跃游戏" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" class="article-date">
@@ -103,7 +183,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" data-id="ckl6dzmfc0002tstjdxfn9t4c" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" data-id="ckl7dm0zm0005ustj01q1967s" class="article-share-link">分享</a>
       
       
       
@@ -152,7 +232,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A3567-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="ckl6dzmff0004tstjcwur3mjk" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A3567-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="ckl7dm0zl0004ustjchhq8r65" class="article-share-link">分享</a>
       
       
       
@@ -206,7 +286,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/14/%E5%8A%9B%E6%89%A3240/" data-id="ckl6dzmfa0001tstjcoy035hd" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/14/%E5%8A%9B%E6%89%A3240/" data-id="ckl7dm0zi0002ustj4mkt3ezg" class="article-share-link">分享</a>
       
       
       
@@ -260,7 +340,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="ckl6dzmfg0005tstj7jjehmb7" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="ckl7dm0zn0006ustjac8ue980" class="article-share-link">分享</a>
       
       
       
@@ -283,7 +363,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title categories">分类</h3>
     <div class="widget" id="categories">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%AF%B9%E8%B1%A1/">对象</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a><span class="category-list-count">1</span></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%AF%B9%E8%B1%A1/">对象</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a><span class="category-list-count">1</span></li></ul></li></ul>
     </div>
   </div>
 
@@ -295,6 +375,10 @@
     <h3 class="widget-title recent-posts">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/02/16/photo/">photo</a>
+          </li>
         
           <li>
             <a href="/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/">力扣55-跳跃游戏</a>
@@ -321,7 +405,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title archive">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
