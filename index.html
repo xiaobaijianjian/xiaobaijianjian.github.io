@@ -66,6 +66,205 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣39-组合总和" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" class="article-date">
+  <time datetime="2021-02-19T13:38:39.000Z" itemprop="datePublished">2021-02-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/">力扣39-组合总和</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。</p>
+<p>candidates 中的数字可以无限制重复被选取。</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：candidates &#x3D; [2,3,6,7], target &#x3D; 7,</span><br><span class="line">所求解集为：</span><br><span class="line">[</span><br><span class="line">  [7],</span><br><span class="line">  [2,2,3]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>代码及注释如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; candidates</span><br><span class="line"> * @param &#123;number&#125; target</span><br><span class="line"> * @return &#123;number[][]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var combinationSum &#x3D; function(candidates, target) &#123;</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    let len &#x3D; candidates.length;</span><br><span class="line">    let back &#x3D; function(path,condition,sum)&#123;</span><br><span class="line">        &#x2F;&#x2F;限制条件 sum &gt;&#x3D; target退出</span><br><span class="line">        if(sum &gt;&#x3D; target)&#123;</span><br><span class="line">            if(sum &#x3D;&#x3D; target)&#123;</span><br><span class="line">            res.push(path.slice())</span><br><span class="line">            &#125;;</span><br><span class="line">            return </span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;限制产生重复组合，基于上一次的选择</span><br><span class="line">        for(let i &#x3D; condition;i &lt; len;i++)&#123;</span><br><span class="line">            path.push(candidates[i]);</span><br><span class="line">            &#x2F;&#x2F;组合中允许有重复性元素</span><br><span class="line">            back(path,i,sum + candidates[i]);</span><br><span class="line">            path.pop()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    back([],0,0);</span><br><span class="line">    return res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" data-id="cklccdanh0008tktj1kha2p4n" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-力扣77-组合" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/" class="article-date">
+  <time datetime="2021-02-19T09:25:47.000Z" itemprop="datePublished">2021-02-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/">力扣77-组合</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>给定两个整数 n 和 k，返回 1 … n 中所有可能的 k 个数的组合。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number&#125; n</span><br><span class="line"> * @param &#123;number&#125; k</span><br><span class="line"> * @return &#123;number[][]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var combine &#x3D; function(n, k) &#123;</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    let back &#x3D; function(path,condition)&#123;</span><br><span class="line">        if(path.length &#x3D;&#x3D; k)&#123;</span><br><span class="line">            res.push(path.slice())</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;为了不产生重复组合，基于上一次的数进行选择</span><br><span class="line">        for(let i &#x3D; condition;i &lt;&#x3D; n;i++)&#123;</span><br><span class="line">            path.push(i);</span><br><span class="line">            &#x2F;&#x2F;&#x2F;&#x2F;最后元素不可以重复选入集合所以要传入i+1</span><br><span class="line">            back(path,i+1)</span><br><span class="line">            path.pop()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    back([],1)</span><br><span class="line">    return res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/" data-id="cklccdanm000gtktj06pfdz0k" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-力扣46-全排列" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/19/%E5%8A%9B%E6%89%A346-%E5%85%A8%E6%8E%92%E5%88%97/" class="article-date">
+  <time datetime="2021-02-19T09:11:28.000Z" itemprop="datePublished">2021-02-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/19/%E5%8A%9B%E6%89%A346-%E5%85%A8%E6%8E%92%E5%88%97/">力扣46-全排列</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>回溯法的本质是深度优先搜索，解题包括四方面：</p>
+<ol>
+<li>设置全局变量res，保存结果</li>
+<li>设置递归函数的参数</li>
+<li>判断完成条件。搜索过程包括两方面，搜索成功返回结果和搜索失败返回上一步</li>
+<li>递归过程</li>
+</ol>
+<p>回溯法模板：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">let res &#x3D; [];   &#x2F;&#x2F;存储结果</span><br><span class="line"></span><br><span class="line">function backtrack(path,condition,...)&#123;</span><br><span class="line">    if(judge(condition))&#123;  &#x2F;&#x2F;满足条件</span><br><span class="line">        res.push(path);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    for(let select of selectList)&#123;</span><br><span class="line">        if(剪枝条件) break;</span><br><span class="line">        path.push(select);  &#x2F;&#x2F; 走某条路</span><br><span class="line">        backtrack(path,newSelectList);</span><br><span class="line">        path.pop(); &#x2F;&#x2F;返回上一个十字路口</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>本题代码及注释：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @return &#123;number[][]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var permute &#x3D; function(nums) &#123;</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    let len &#x3D; nums.length;</span><br><span class="line">    let back &#x3D; function(path)&#123;</span><br><span class="line">        if(path.length &#x3D;&#x3D; len)&#123;</span><br><span class="line">            res.push(path.slice())</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;不需要限制下一次选择的起点，这样下一次就可以选到本次选择同层左边的数</span><br><span class="line">        &#x2F;&#x2F;即i&#x3D;0,注意不同题的区别</span><br><span class="line">        for(let i &#x3D; 0;i &lt; len;i++)&#123;</span><br><span class="line">            &#x2F;&#x2F;每次重新进入时，要判断里面没有，这句话是精髓</span><br><span class="line">            if(path.indexOf(nums[i]) &#x3D;&#x3D; -1)&#123;</span><br><span class="line">                &#x2F;&#x2F;最后元素可以重复选入集合，如果传 i+1 就不重复了</span><br><span class="line">                path.push(nums[i]);</span><br><span class="line">                back(path);</span><br><span class="line">                path.pop()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    back([]);</span><br><span class="line">    return res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A346-%E5%85%A8%E6%8E%92%E5%88%97/" data-id="cklccdanf0006tktjacak8fku" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-力扣-1004-最大连续1的个数3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/" class="article-date">
+  <time datetime="2021-02-19T08:26:17.000Z" itemprop="datePublished">2021-02-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/">力扣-1004 最大连续1的个数3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>给定一个由若干 0 和 1 组成的数组 A，我们最多可以将 K 个值从 0 变成 1 。返回仅包含 1 的最长（连续）子数组的长度</p>
+<p>示例1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">输入：A &#x3D; [1,1,1,0,0,0,1,1,1,1,0], K &#x3D; 2</span><br><span class="line">输出：6</span><br><span class="line">解释： </span><br><span class="line">[1,1,1,0,0,1,1,1,1,1,1]</span><br><span class="line">粗体数字从 0 翻转到 1，最长的子数组长度为 6。</span><br><span class="line"></span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;max-consecutive-ones-iii</span><br><span class="line">著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; A</span><br><span class="line"> * @param &#123;number&#125; K</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var longestOnes &#x3D; function(A, K) &#123;</span><br><span class="line">    &#x2F;&#x2F;滑动窗口记录0的个数，</span><br><span class="line">    &#x2F;&#x2F;分情况讨论：一旦0的个数大于K</span><br><span class="line">    &#x2F;&#x2F;要是A【left】 &#x3D; 0,则left、right往右走，zero个数减一</span><br><span class="line">    &#x2F;&#x2F;要是A【left】 &#x3D; 1;则left、right往右走</span><br><span class="line">    </span><br><span class="line">    let len &#x3D; A.length;</span><br><span class="line">    let left &#x3D; 0;</span><br><span class="line">    let right &#x3D; 0;</span><br><span class="line">    let zero &#x3D; 0;</span><br><span class="line">    while(right &lt; len)&#123;</span><br><span class="line">        if(A[right] &#x3D;&#x3D; 0)&#123;</span><br><span class="line">            zero ++;</span><br><span class="line">        &#125;</span><br><span class="line">        if(zero &gt; K)&#123;</span><br><span class="line">            if(A[left] &#x3D;&#x3D; 0)&#123;</span><br><span class="line">                zero--;</span><br><span class="line">            &#125;</span><br><span class="line">            left++;</span><br><span class="line">        &#125;</span><br><span class="line">        right++;</span><br><span class="line">    &#125;</span><br><span class="line">    return right - left</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/" data-id="cklccdane0005tktj7kv9c5xu" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣566-重塑矩阵" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" class="article-date">
@@ -104,7 +303,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" data-id="ckl8ukpeh00067ktjg25vbcqh" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" data-id="cklccdank000ctktj5qagaovk" class="article-share-link">分享</a>
       
       
       
@@ -153,7 +352,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/" data-id="ckl8ukpei00087ktj724qf4fv" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/" data-id="cklccdann000htktj8cdwh4ml" class="article-share-link">分享</a>
       
       
       
@@ -223,7 +422,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/" data-id="ckl8ukpea00017ktjds8j14er" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/" data-id="cklccdan80001tktj5luk7bcp" class="article-share-link">分享</a>
       
       
       
@@ -304,7 +503,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/16/photo/" data-id="ckl8ukpef00047ktj083h16ak" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/16/photo/" data-id="cklccdanb0002tktjhy8ia6r2" class="article-share-link">分享</a>
       
       
       
@@ -353,7 +552,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" data-id="ckl8ukpeg00057ktj6fsl2jr3" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" data-id="cklccdani0009tktj45zh83ni" class="article-share-link">分享</a>
       
       
       
@@ -402,115 +601,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A3567-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="ckl8ukpej00097ktjg9b0dyc6" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣240" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/14/%E5%8A%9B%E6%89%A3240/" class="article-date">
-  <time datetime="2021-02-14T12:13:21.000Z" itemprop="datePublished">2021-02-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/14/%E5%8A%9B%E6%89%A3240/">力扣240-搜索二维矩阵</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h3 id="240-搜索二维矩阵"><a href="#240-搜索二维矩阵" class="headerlink" title="240 搜索二维矩阵"></a>240 搜索二维矩阵</h3><p>编写一个高效的算法来搜索 m x n 矩阵 matrix 中的一个目标值 target 。该矩阵具有以下特性：</p>
-<ol>
-<li>每行的元素从左到右升序排列。</li>
-<li>每列的元素从上到下升序排列。</li>
-</ol>
-<p>思路：二分法求解</p>
-<ol>
-<li>选取左下角的值作为初始值</li>
-<li>将值和目标值对比，如果目标值大就col++,目标值小就row–;<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[][]&#125; matrix</span><br><span class="line"> * @param &#123;number&#125; target</span><br><span class="line"> * @return &#123;boolean&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var searchMatrix &#x3D; function(matrix, target) &#123;</span><br><span class="line">    let row &#x3D; matrix.length;</span><br><span class="line">    let col &#x3D; matrix[0].length;</span><br><span class="line">    if(row &lt;&#x3D; 0 || col &lt;&#x3D; 0 )&#123;</span><br><span class="line">        return false</span><br><span class="line">    &#125;;</span><br><span class="line">    let singleRow &#x3D; row-1;</span><br><span class="line">    let singleCol &#x3D; 0;</span><br><span class="line">    while(singleRow &gt;&#x3D; 0 &amp;&amp; singleCol &lt; col)&#123;</span><br><span class="line">        if(matrix[singleRow][singleCol] &gt; target)&#123;</span><br><span class="line">            singleRow--;</span><br><span class="line">        &#125;else if(matrix[singleRow][singleCol] &lt; target)&#123;</span><br><span class="line">            singleCol++;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return false;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/14/%E5%8A%9B%E6%89%A3240/" data-id="ckl8ukped00027ktj37fk3vwb" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-第一篇博客" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="article-date">
-  <time datetime="2021-02-13T03:45:55.000Z" itemprop="datePublished">2021-02-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>►<a class="article-category-link" href="/categories/JavaScript/%E5%AF%B9%E8%B1%A1/">对象</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">JS中new到底做了什么</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>new操作符调用构造函数时具体做了什么呢？</p>
-<ol>
-<li>创建一个空对象；</li>
-<li>空对象的原型指向构造函数的prototype属性；</li>
-<li>把上面创建的空对象赋值给构造函数内部的this,用构造函数的内部方法修改this空对象；</li>
-<li>根据构造函数执行逻辑，若返回的是值类型，返回obj，如果是引用类型，就返回这个引用类型的对象；</li>
-</ol>
-<ul>
-<li>简单代码如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function newFunc(func,...args)&#123;</span><br><span class="line">        let obj &#x3D; &#123;&#125;;</span><br><span class="line">        obj.__proto__ &#x3D; func.prototype;</span><br><span class="line">        const res &#x3D; func.apply(obj,args);</span><br><span class="line">        return (typeof res &#x3D;&#x3D;&#x3D; &#39;object&#39; &amp;&amp; res !&#x3D; null) ? res : obj</span><br><span class="line">    &#125;</span><br><span class="line">    function person(name)&#123;</span><br><span class="line">        this.name &#x3D; name</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(newFunc(person,&#39;xiaohong&#39;))</span><br><span class="line">    &#x2F;&#x2F;&#123;name:&#39;xiaohong&#39;&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="ckl8ukpel000c7ktjc0as14s4" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A3567-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="cklccdanl000dtktj0dwzbtvo" class="article-share-link">分享</a>
       
       
       
@@ -523,6 +614,10 @@
 
   
 
+
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页&amp;raquo;</a>
+  </nav>
 </section>
            
     <aside id="sidebar">
@@ -533,7 +628,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title categories">分类</h3>
     <div class="widget" id="categories">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%AF%B9%E8%B1%A1/">对象</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/">其他</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a><span class="category-list-count">1</span></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%AF%B9%E8%B1%A1/">对象</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/">其他</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a><span class="category-list-count">1</span></li></ul></li></ul>
     </div>
   </div>
 
@@ -547,23 +642,23 @@
       <ul>
         
           <li>
+            <a href="/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/">力扣39-组合总和</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/">力扣77-组合</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/19/%E5%8A%9B%E6%89%A346-%E5%85%A8%E6%8E%92%E5%88%97/">力扣46-全排列</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/">力扣-1004 最大连续1的个数3</a>
+          </li>
+        
+          <li>
             <a href="/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/">力扣566-重塑矩阵</a>
-          </li>
-        
-          <li>
-            <a href="/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/">力扣78-子集</a>
-          </li>
-        
-          <li>
-            <a href="/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/">maigin重叠问题</a>
-          </li>
-        
-          <li>
-            <a href="/2021/02/16/photo/">BFC的理解</a>
-          </li>
-        
-          <li>
-            <a href="/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/">力扣55-跳跃游戏</a>
           </li>
         
       </ul>
@@ -575,7 +670,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title archive">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">12</span></li></ul>
     </div>
   </div>
 
