@@ -66,6 +66,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣55-跳跃游戏" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" class="article-date">
+  <time datetime="2021-02-15T09:26:24.000Z" itemprop="datePublished">2021-02-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/">力扣55-跳跃游戏</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>给定一个非负整数数组 nums ，最初位于数组的第一个下标 。数组中的每个元素代表你在该位置可以跳跃的最大长度。<br>判断你是否能够到达最后一个下标。</p>
+<p>例如:<br>输入：nums = [2,3,1,1,4]<br>输出：true<br>解释：可以先跳 1 步，从下标 0 到达下标 1, 然后再从下标 1 跳 3 步到达最后一个下标     </p>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @return &#123;boolean&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var canJump &#x3D; function(nums) &#123;</span><br><span class="line">    &#x2F;&#x2F;使用贪心算法</span><br><span class="line">    &#x2F;&#x2F;对于任意一个位置y，只要存在一个位置x,使得nums[x]+x&gt;&#x3D;y即可满足</span><br><span class="line">    let len &#x3D; nums.length;</span><br><span class="line">    &#x2F;&#x2F;维护一个最远到达的距离</span><br><span class="line">    let k &#x3D; 0;</span><br><span class="line">    for(let i &#x3D; 0;i&lt;len;i++)&#123;</span><br><span class="line">        if(i &gt; k)&#123;</span><br><span class="line">            return false</span><br><span class="line">        &#125;</span><br><span class="line">        k &#x3D; Math.max(k,i+nums[i])</span><br><span class="line">    &#125;</span><br><span class="line">    return true</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" data-id="cklek4u8r000cwotjg1pl5wkg" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣567-字符串的排列" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/02/15/%E5%8A%9B%E6%89%A3567-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" class="article-date">
@@ -103,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A3567-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="ckld55f2f000gy8tje4rb2egb" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A3567-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="cklek4u8u000gwotj9n5s9wra" class="article-share-link">分享</a>
       
       
       
@@ -157,7 +206,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/14/%E5%8A%9B%E6%89%A3240/" data-id="ckld55f280006y8tj73dt1ge2" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/14/%E5%8A%9B%E6%89%A3240/" data-id="cklek4u8n0005wotj1fb1e16i" class="article-share-link">分享</a>
       
       
       
@@ -211,7 +260,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="ckld55f2h000jy8tj4arh3tt2" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="cklek4u8z000mwotjdu09hh8e" class="article-share-link">分享</a>
       
       
       
@@ -245,6 +294,10 @@
       <ul>
         
           <li>
+            <a href="/2021/02/21/%E5%8A%9B%E6%89%A31438-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/">力扣1438-绝对差不超过限制的最长连续子数组</a>
+          </li>
+        
+          <li>
             <a href="/2021/02/20/%E5%8A%9B%E6%89%A3697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/">力扣697-数组的度</a>
           </li>
         
@@ -258,10 +311,6 @@
         
           <li>
             <a href="/2021/02/19/%E5%8A%9B%E6%89%A346-%E5%85%A8%E6%8E%92%E5%88%97/">力扣46-全排列</a>
-          </li>
-        
-          <li>
-            <a href="/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/">力扣-1004 最大连续1的个数3</a>
           </li>
         
       </ul>
