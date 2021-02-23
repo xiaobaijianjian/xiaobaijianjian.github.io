@@ -66,6 +66,95 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JS异步问题学习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/23/JS%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98%E5%AD%A6%E4%B9%A0/" class="article-date">
+  <time datetime="2021-02-23T09:20:52.000Z" itemprop="datePublished">2021-02-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>►<a class="article-category-link" href="/categories/JavaScript/%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98/">异步问题</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/23/JS%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98%E5%AD%A6%E4%B9%A0/">JS异步问题学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>异步问题是前端开发中的难点之一，我们知道JS是单线程的，那又是怎样实现异步的，浏览器JavaScript执行机制是什么样的，另一方面，实现异步操作从callback到Promise,到async/await，是怎么弄的。最近将前段时间的关于异步的学习进行整理，后面有的话进行补充。包括两个内容：一、红绿灯任务控制问题；二；浏览器事件循环机制（EventLoop）</p>
+<h3 id="红绿灯任务控制问题"><a href="#红绿灯任务控制问题" class="headerlink" title="红绿灯任务控制问题"></a>红绿灯任务控制问题</h3><p>实现红灯3s亮一次，绿灯1s亮一次，黄灯2s亮一次，如何让三个灯重复亮?</p>
+<p>先试用最熟悉的callback实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">function red() &#123;</span><br><span class="line">        console.log(&#39;red&#39;)</span><br><span class="line">    &#125;</span><br><span class="line">    function green() &#123;</span><br><span class="line">        console.log(&#39;green&#39;)</span><br><span class="line">    &#125;</span><br><span class="line">    function yellow() &#123;</span><br><span class="line">        console.log(&#39;yellow&#39;)</span><br><span class="line">    &#125;</span><br><span class="line">    const back &#x3D; (timer, light, callback) &#x3D;&gt; &#123;</span><br><span class="line">        setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">            if (light &#x3D;&#x3D;&#x3D; &#39;red&#39;) &#123;</span><br><span class="line">                red()</span><br><span class="line">            &#125; else if (light &#x3D;&#x3D;&#x3D; &#39;green&#39;) &#123;</span><br><span class="line">                green()</span><br><span class="line">            &#125; else if (light &#x3D;&#x3D;&#x3D; &#39;yellow&#39;) &#123;</span><br><span class="line">                yellow()</span><br><span class="line">            &#125;</span><br><span class="line">            callback()</span><br><span class="line">        &#125;, timer)</span><br><span class="line">    &#125;;</span><br><span class="line">    const step &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">        back(3000, &#39;red&#39;, () &#x3D;&gt; &#123;</span><br><span class="line">            back(1000, &#39;green&#39;, () &#x3D;&gt; &#123;</span><br><span class="line">                back(2000, &#39;yellow&#39;, step)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;;</span><br><span class="line">    step()</span><br></pre></td></tr></table></figure>
+<p>上述第25行代码back(2000, ‘yellow’, step)中用到了递归，这样会一直循环重复下去</p>
+<p>用Promise方案实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">function red() &#123;</span><br><span class="line">        console.log(&#39;red&#39;)</span><br><span class="line">    &#125;</span><br><span class="line">    function green() &#123;</span><br><span class="line">        console.log(&#39;green&#39;)</span><br><span class="line">    &#125;</span><br><span class="line">    function yellow() &#123;</span><br><span class="line">        console.log(&#39;yellow&#39;)</span><br><span class="line">    &#125;</span><br><span class="line">    const back &#x3D; (timer, lighter) &#x3D;&gt; &#123;</span><br><span class="line">        return new Promise((resolve, reject) &#x3D;&gt; &#123;</span><br><span class="line">            setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">                if (lighter &#x3D;&#x3D; &#39;red&#39;) &#123;</span><br><span class="line">                    red()</span><br><span class="line">                &#125; else if (lighter &#x3D;&#x3D; &#39;green&#39;) &#123;</span><br><span class="line">                    green()</span><br><span class="line">                &#125; else if (lighter &#x3D;&#x3D; &#39;yellow&#39;) &#123;</span><br><span class="line">                    yellow()</span><br><span class="line">                &#125;</span><br><span class="line">                resolve()</span><br><span class="line">            &#125;, timer)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;;</span><br><span class="line">    const step &#x3D; ()&#x3D;&gt;&#123;</span><br><span class="line">        back(3000,&#39;red&#39;)</span><br><span class="line">            .then(()&#x3D;&gt;&#123;return back(1000,&#39;green&#39;)&#125;)</span><br><span class="line">            .then(()&#x3D;&gt;&#123;return back(2000,&#39;yellow&#39;)&#125;)</span><br><span class="line">            .then(step)</span><br><span class="line">    &#125;;</span><br><span class="line">    step()</span><br></pre></td></tr></table></figure>
+<p>关于promise的用法之后会详细整理。</p>
+<p>最后用优雅的async/await实现,爽歪歪</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">function red() &#123;</span><br><span class="line">        console.log(&#39;red&#39;)</span><br><span class="line">    &#125;</span><br><span class="line">    function green() &#123;</span><br><span class="line">        console.log(&#39;green&#39;)</span><br><span class="line">    &#125;</span><br><span class="line">    function yellow() &#123;</span><br><span class="line">        console.log(&#39;yellow&#39;)</span><br><span class="line">    &#125;</span><br><span class="line">    const back &#x3D; (timer, lighter) &#x3D;&gt; &#123;</span><br><span class="line">        return new Promise((resolve, reject) &#x3D;&gt; &#123;</span><br><span class="line">            setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">                if (lighter &#x3D;&#x3D; &#39;red&#39;) &#123;</span><br><span class="line">                    red()</span><br><span class="line">                &#125; else if (lighter &#x3D;&#x3D; &#39;green&#39;) &#123;</span><br><span class="line">                    green()</span><br><span class="line">                &#125; else if (lighter &#x3D;&#x3D; &#39;yellow&#39;) &#123;</span><br><span class="line">                    yellow()</span><br><span class="line">                &#125;</span><br><span class="line">                resolve()</span><br><span class="line">            &#125;, timer)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;;</span><br><span class="line">    const step &#x3D; async ()&#x3D;&gt;&#123;</span><br><span class="line">        await back(3000,&#39;red&#39;)</span><br><span class="line">        await back(1000,&#39;green&#39;)</span><br><span class="line">        await back(2000,&#39;yellow&#39;)</span><br><span class="line">        step()</span><br><span class="line">    &#125;;</span><br><span class="line">    step()</span><br></pre></td></tr></table></figure>
+<h3 id="eventLoop机制"><a href="#eventLoop机制" class="headerlink" title="eventLoop机制"></a>eventLoop机制</h3><h4 id="js的事件循环是什么？"><a href="#js的事件循环是什么？" class="headerlink" title="js的事件循环是什么？"></a>js的事件循环是什么？</h4><p>因为 js 是单线程运行的， 在代码执行的时候， 通过将不同函数的执行上下文压入执行栈中来保证代码的有序执行。 </p>
+<p>在执行同步代码的时候， 如果遇到了异步事件， js 引擎并不会一直等待其返回结果， 而是会将这个事件挂起， 继续执行执行栈中的其他任务。 </p>
+<p>当异步事件执行完毕后，再将异步事件对应的回调加入到与当前执行栈中不同的另一个任务队列中等待执行。 任务队列可以分为宏任务对列和微任务对列， 当当前执行栈中的事件执行完毕后， js 引擎首先会判断微任<br>务对列中是否有任务可以执行， 如果有就将微任务队首的事件压入栈中执行。 当微任务对列中的任务都执行完成后再去判断宏任务对列中的任务。</p>
+<p>ps:执行上下文和执行栈的解释：</p>
+<p>调用一个方法的时候，js会生成一个与这个方法对应的执行环境（context），也叫执行上下文。这个执行环境中存在着这个方法的私有作用域，上层作用域的指向，方法的参数，这个作用域中定义的变量以及这个作用域的this对象。 而当一系列方法被依次调用的时候，因为js是单线程的，同一时间只能执行一个方法，于是这些方法被排队在一个单独的地方。这个地方被称为执行栈。</p>
+<p>任务队列中的异步任务分为宏任务和微任务，虽然都是异步任务，都在任务队列中，但是在两个不同的队列中。一般先执行微任务，再执行宏任务</p>
+<p>一般情况下：宏任务包括：</p>
+<ol>
+<li>setTimeout</li>
+<li>setInterval</li>
+<li>I/O</li>
+<li>事件</li>
+<li>postMessage</li>
+<li>setImmediate(Node.js中的特性，浏览器中已经废除该API)</li>
+<li>UI渲染等</li>
+</ol>
+<p>微任务包括：</p>
+<ol>
+<li>Promise.then</li>
+<li>MutationObserver</li>
+<li>process.nextTick(Node.js)</li>
+</ol>
+<p>例1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">console.log(&#39;1&#39;)</span><br><span class="line">new Promise((resolve, reject) &#x3D;&gt; &#123;</span><br><span class="line">    console.log(&#39;2&#39;);</span><br><span class="line">    resolve()</span><br><span class="line">&#125;)</span><br><span class="line">    .then(() &#x3D;&gt; &#123;</span><br><span class="line">        console.log(3);</span><br><span class="line">        return new Promise((resolve, reject) &#x3D;&gt; &#123;</span><br><span class="line">            console.log(4);</span><br><span class="line">            resolve();</span><br><span class="line">        &#125;)</span><br><span class="line">            .then(() &#x3D;&gt; &#123;</span><br><span class="line">                console.log(5)</span><br><span class="line">            &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(() &#x3D;&gt; &#123;</span><br><span class="line">        console.log(6)</span><br><span class="line">    &#125;)</span><br><span class="line">console.log(7)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>上述代码中，首先输出1，没问题</li>
+<li>接着是一个promise构造函数，执行同步代码，输出2，同时将第一处的then方法完成处理逻辑放入任务队列中</li>
+<li>继续执行同步代码，输出7</li>
+<li>同步代码执行结束，然后执行任务队列中的逻辑，输出3和4</li>
+<li>当在then方法中返回一个Promise时，第一个Promise的第二个then方法对应的处理函数会在返回的新Promise的then方法之后，所以此时会将新Promise的then方法放到任务队列当中，所以输出5，最后6</li>
+</ol>
+<p>例2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">console.log(&#39;1&#39;);</span><br><span class="line"></span><br><span class="line">setTimeout(function () &#123;</span><br><span class="line">    console.log(&#39;2&#39;);</span><br><span class="line">    new Promise(function (resolve) &#123;</span><br><span class="line">        console.log(&#39;4&#39;);</span><br><span class="line">        resolve();</span><br><span class="line">    &#125;).then(function () &#123;</span><br><span class="line">        console.log(&#39;5&#39;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">new Promise(function (resolve) &#123;</span><br><span class="line">    console.log(&#39;7&#39;);</span><br><span class="line">    resolve();</span><br><span class="line">&#125;).then(function () &#123;</span><br><span class="line">    console.log(&#39;8&#39;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">setTimeout(function () &#123;</span><br><span class="line">    console.log(&#39;9&#39;);</span><br><span class="line"></span><br><span class="line">    new Promise(function (resolve) &#123;</span><br><span class="line">        console.log(&#39;11&#39;);</span><br><span class="line">        resolve();</span><br><span class="line">    &#125;).then(function () &#123;</span><br><span class="line">        console.log(&#39;12&#39;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>最后输出是1、7、8、2、4、5、9、11、12</p>
+<p>分析方法同上，同步任务–微任务–宏任务</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/23/JS%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98%E5%AD%A6%E4%B9%A0/" data-id="ckli5dzy90001ustjb9e64tzm" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣1052-爱生气的书店老板" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/02/23/%E5%8A%9B%E6%89%A31052-%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/" class="article-date">
@@ -108,7 +197,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/23/%E5%8A%9B%E6%89%A31052-%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/" data-id="cklhgout80005estj3sp5e59n" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/23/%E5%8A%9B%E6%89%A31052-%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/" data-id="ckli5dzyh0008ustjg3aq7bte" class="article-share-link">分享</a>
       
       
       
@@ -158,7 +247,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/21/%E5%8A%9B%E6%89%A31438-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" data-id="cklhgout80006estjhs5b8z2b" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/21/%E5%8A%9B%E6%89%A31438-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" data-id="ckli5dzyg0006ustj5lf7gb55" class="article-share-link">分享</a>
       
       
       
@@ -210,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/20/%E5%8A%9B%E6%89%A3697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/" data-id="cklhgouth000jestj5g8t71hr" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/20/%E5%8A%9B%E6%89%A3697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/" data-id="ckli5dzyo000justjftwy6sh0" class="article-share-link">分享</a>
       
       
       
@@ -259,7 +348,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" data-id="cklhgouta0008estj4mk8bj8g" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" data-id="ckli5dzyj000bustjcffy9ddf" class="article-share-link">分享</a>
       
       
       
@@ -304,7 +393,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/" data-id="cklhgouti000kestj11x0c80g" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/" data-id="ckli5dzyr000nustj6fgs6vru" class="article-share-link">分享</a>
       
       
       
@@ -361,7 +450,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A346-%E5%85%A8%E6%8E%92%E5%88%97/" data-id="cklhgoutc000cestja5ib7j6w" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A346-%E5%85%A8%E6%8E%92%E5%88%97/" data-id="ckli5dzyk000custj408i73sr" class="article-share-link">分享</a>
       
       
       
@@ -409,7 +498,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/" data-id="cklhgout70004estj2nmsagiq" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/" data-id="ckli5dzyf0005ustj9qr394md" class="article-share-link">分享</a>
       
       
       
@@ -459,7 +548,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" data-id="cklhgoute000gestje65wdkrg" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" data-id="ckli5dzym000gustjf0o4gsv2" class="article-share-link">分享</a>
       
       
       
@@ -508,77 +597,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/" data-id="cklhgoutk000mestj2nnifc7n" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-maigin重叠问题" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/" class="article-date">
-  <time datetime="2021-02-16T03:04:23.000Z" itemprop="datePublished">2021-02-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/CSS/">CSS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/">maigin重叠问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p> margin 重叠指的是在垂直方向上， 两个相邻元素的 margin 发生重叠的情况。<br>一般来说可以分为四种情形：</p>
-<ol>
-<li>第一种是相邻兄弟元素的 marin-bottom 和 margin-top 的值发生重叠。 这种情况下我们可以通过设置其中一个元素为 BFC来解决。<br>下图所示：</li>
-</ol>
-<p><img src="/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/pic1.png"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;head&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s1&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s2&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    </span><br><span class="line">    .s1&#123;</span><br><span class="line">        height: 150px;</span><br><span class="line">        width: 150px;</span><br><span class="line">        background-color: yellow;</span><br><span class="line">        margin-bottom: 150px;</span><br><span class="line">        &#x2F;* display: inline-block; *&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line">    .s2&#123;</span><br><span class="line">        height: 150px;</span><br><span class="line">        width: 150px;</span><br><span class="line">        background-color: violet;</span><br><span class="line">        margin-top: 150px;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
-<p>之间的间距应该为300px,因为重叠了修改为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s1&#123;</span><br><span class="line">    display:inline-block</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li><p>第二种是父元素的 margin-top 和子元素的 margin-top 发生重叠。它们发生重叠是因为它们是相邻的， 所以我们可以通过这一点来解决这个问题。 我们可以为父元素设置 border-top、 padding-top 值来分隔它们， 当然我们也可以将父元素设置为 BFC来解决。<br>例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;head&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s1&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s2&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    .s1&#123;</span><br><span class="line">        height: 100px;</span><br><span class="line">        width: 100px;</span><br><span class="line">        background-color: yellow;</span><br><span class="line">        margin-top: 50px;</span><br><span class="line">    &#125;</span><br><span class="line">    .head&#123;</span><br><span class="line">        height: 300px;</span><br><span class="line">        width: 200px;</span><br><span class="line">        background-color: rgb(77, 188, 216);</span><br><span class="line">        &#x2F;* overflow: hidden; *&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/pic2.png"><br>修改如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.head&#123;</span><br><span class="line">    overflow:hidden</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/pic3.png"></p>
-</li>
-<li><p>第三种是高度为 auto 的父元素的 margin-bottom 和子元素的 margin-bottom 发生重叠。 它们发生重叠一个是因为它们相邻， 一个是因为父元素的高度不固定。 因此我们可以为父元素设置border-bottom、<br>padding-bottom 来分隔它们， 也可以为父元素设置一个高度， max-height 和 min-height 也能解决这个问题。 当然将父元素设置为<br>BFC 是最简单的方法。</p>
-</li>
-</ol>
-<p>下例中父元素高度不固定，子元素margin-bottom没有显示出来，如图：<br><img src="/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/pic4.png"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;head&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s1&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s2&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    .s1&#123;</span><br><span class="line">        height: 100px;</span><br><span class="line">        width: 100px;</span><br><span class="line">        background-color: yellow;</span><br><span class="line">        margin-bottom: 120px;</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line">    .head&#123;</span><br><span class="line">        height: auto;</span><br><span class="line">        width: 300px;</span><br><span class="line">        background-color: rgb(77, 188, 216);</span><br><span class="line">        &#x2F;* position: absolute; *&#x2F;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
-<p>修改：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.head&#123;</span><br><span class="line">    position:absolute</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>设置其为BFC即可<br><img src="/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/pic5.png"></p>
-<ol start="4">
-<li>第四种情况， 是没有内容的元素， 自身的 margin-top 和 margin-bottom 发生的重叠。 我们可以通过为其设置 border、 pa<br>dding 或者高度来解决这个问题。</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/" data-id="cklhgout20001estjbgxs9yuh" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/" data-id="ckli5dzyq000mustj5paf5p1b" class="article-share-link">分享</a>
       
       
       
@@ -605,7 +624,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title categories">分类</h3>
     <div class="widget" id="categories">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%AF%B9%E8%B1%A1/">对象</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/">其他</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a><span class="category-list-count">1</span></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%AF%B9%E8%B1%A1/">对象</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98/">异步问题</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/">其他</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a><span class="category-list-count">1</span></li></ul></li></ul>
     </div>
   </div>
 
@@ -617,6 +636,10 @@
     <h3 class="widget-title recent-posts">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/02/23/JS%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98%E5%AD%A6%E4%B9%A0/">JS异步问题学习</a>
+          </li>
         
           <li>
             <a href="/2021/02/23/%E5%8A%9B%E6%89%A31052-%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/">力扣1052-爱生气的书店老板</a>
@@ -634,10 +657,6 @@
             <a href="/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/">力扣39-组合总和</a>
           </li>
         
-          <li>
-            <a href="/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/">力扣77-组合</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -647,7 +666,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title archive">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">15</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">16</span></li></ul>
     </div>
   </div>
 
