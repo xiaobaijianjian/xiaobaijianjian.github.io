@@ -66,6 +66,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣78-子集" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/" class="article-date">
+  <time datetime="2021-02-16T16:12:09.000Z" itemprop="datePublished">2021-02-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/">力扣78-子集</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>给你一个整数数组 nums ，数组中的元素 互不相同 。返回该数组所有可能的子集（幂集）。解集 不能 包含重复的子集。你可以按 任意顺序 返回解集。</p>
+<p>例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [1,2,3]</span><br><span class="line">输出：[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]</span><br></pre></td></tr></table></figure>
+<p>回溯法相关资料</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_48726650/article/details/107082257">前端算法渣的救赎之路</a>、<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/subsets/solution/shou-hua-tu-jie-zi-ji-hui-su-fa-xiang-jie-wei-yun-/">手画图解</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @return &#123;number[][]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var subsets &#x3D; function(nums) &#123;</span><br><span class="line">    &#x2F;&#x2F;定义变量保存结果</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    &#x2F;&#x2F;递归函数的参数选择一般里面两个变量</span><br><span class="line">    &#x2F;&#x2F;包括状态变量和条件变量</span><br><span class="line">    &#x2F;&#x2F;状态变量是res结果最后放的值</span><br><span class="line">    &#x2F;&#x2F;条件是判断搜索是否完毕及其是否合法</span><br><span class="line">    const back &#x3D; (path,condition)&#x3D;&gt;&#123;</span><br><span class="line">        if(condition &lt;&#x3D; nums.length)&#123;</span><br><span class="line">            &#x2F;&#x2F; 调用子递归前，加入解集</span><br><span class="line">            res.push(path.slice())</span><br><span class="line">        &#125;;</span><br><span class="line">        for(let i &#x3D; condition;i &lt; nums.length;i++)&#123;</span><br><span class="line">            path.push(nums[i])&#x2F;&#x2F; 枚举出所有可选的数</span><br><span class="line">            &#x2F;&#x2F;选这个数</span><br><span class="line">            back(path,i+1);</span><br><span class="line">            &#x2F;&#x2F;退回上一步</span><br><span class="line">            path.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    back([],0);</span><br><span class="line">    return res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/" data-id="ckljkzzfs000qh8tj9wsscfig" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-maigin重叠问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/" class="article-date">
@@ -124,7 +173,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/" data-id="ckli5iab30002sgtj955x51zk" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/" data-id="ckljkzzf60001h8tjbh3k52iu" class="article-share-link">分享</a>
       
       
       
@@ -205,7 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/16/photo/" data-id="ckli5iab60004sgtj0asb9rts" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/16/photo/" data-id="ckljkzzfb0004h8tj34917tyz" class="article-share-link">分享</a>
       
       
       
@@ -254,7 +303,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" data-id="ckli5iabe000fsgtj2sj11ypa" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" data-id="ckljkzzfk000gh8tj9z0c7wh8" class="article-share-link">分享</a>
       
       
       
@@ -303,7 +352,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A3567-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="ckli5iabg000jsgtjbcew7z1g" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A3567-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="ckljkzzfn000kh8tj0mf8aenr" class="article-share-link">分享</a>
       
       
       
@@ -357,7 +406,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/14/%E5%8A%9B%E6%89%A3240/" data-id="ckli5iaba0009sgtj1gfr7phe" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/14/%E5%8A%9B%E6%89%A3240/" data-id="ckljkzzfh000ch8tjb5et0r7y" class="article-share-link">分享</a>
       
       
       
@@ -411,7 +460,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="ckli5iabj000nsgtjgr1scouf" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="ckljkzzfr000ph8tj8ikx7luc" class="article-share-link">分享</a>
       
       
       
@@ -445,6 +494,10 @@
       <ul>
         
           <li>
+            <a href="/2021/02/24/%E5%8A%9B%E6%89%A3-%E5%89%8D%E3%80%81%E4%B8%AD%E3%80%81%E5%90%8E%E3%80%81%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/">力扣-二叉树的前、中、后、层次遍历</a>
+          </li>
+        
+          <li>
             <a href="/2021/02/23/JS%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98%E5%AD%A6%E4%B9%A0/">JS异步问题学习</a>
           </li>
         
@@ -458,10 +511,6 @@
         
           <li>
             <a href="/2021/02/20/%E5%8A%9B%E6%89%A3697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/">力扣697-数组的度</a>
-          </li>
-        
-          <li>
-            <a href="/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/">力扣39-组合总和</a>
           </li>
         
       </ul>
