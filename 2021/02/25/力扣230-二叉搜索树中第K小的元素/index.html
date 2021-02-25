@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>力扣104-二叉树的最大深度 | Welcome to my learning blog</title>
+  <title>力扣230-二叉搜索树中第K小的元素 | Welcome to my learning blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="二叉树的最大深度 给定一个二叉树，找出其最大深度。二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。 例：给定二叉树 [3,9,20,null,null,15,7] 12345 3 &#x2F; \9  20  &#x2F;  \ 15   7 代码及注释如下： 1234567891011121314151617181920&#x2F;** * Definition for a binary">
+  <meta name="description" content="力扣230-二叉搜索树中第K小的元素 给定一个二叉搜索树的根节点 root ，和一个整数 k ，请你设计一个算法查找其中第 k 个最小元素（从 1 开始计数） 代码及注释如下： 12345678910111213141516171819202122232425262728293031323334353637&#x2F;** * Definition for a binary tree node.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="力扣104-二叉树的最大深度">
-<meta property="og:url" content="http://example.com/2021/02/25/%E5%8A%9B%E6%89%A3104-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/index.html">
+<meta property="og:title" content="力扣230-二叉搜索树中第K小的元素">
+<meta property="og:url" content="http://example.com/2021/02/25/%E5%8A%9B%E6%89%A3230-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/index.html">
 <meta property="og:site_name" content="Welcome to my learning blog">
-<meta property="og:description" content="二叉树的最大深度 给定一个二叉树，找出其最大深度。二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。 例：给定二叉树 [3,9,20,null,null,15,7] 12345 3 &#x2F; \9  20  &#x2F;  \ 15   7 代码及注释如下： 1234567891011121314151617181920&#x2F;** * Definition for a binary">
+<meta property="og:description" content="力扣230-二叉搜索树中第K小的元素 给定一个二叉搜索树的根节点 root ，和一个整数 k ，请你设计一个算法查找其中第 k 个最小元素（从 1 开始计数） 代码及注释如下： 12345678910111213141516171819202122232425262728293031323334353637&#x2F;** * Definition for a binary tree node.">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-02-25T02:40:15.000Z">
-<meta property="article:modified_time" content="2021-02-25T02:43:27.147Z">
+<meta property="article:published_time" content="2021-02-25T13:36:01.000Z">
+<meta property="article:modified_time" content="2021-02-25T13:37:53.337Z">
 <meta property="article:author" content="jianjian">
 <meta name="twitter:card" content="summary">
   
@@ -68,10 +68,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-力扣104-二叉树的最大深度" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-力扣230-二叉搜索树中第K小的元素" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/02/25/%E5%8A%9B%E6%89%A3104-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" class="article-date">
-  <time datetime="2021-02-25T02:40:15.000Z" itemprop="datePublished">2021-02-25</time>
+    <a href="/2021/02/25/%E5%8A%9B%E6%89%A3230-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/" class="article-date">
+  <time datetime="2021-02-25T13:36:01.000Z" itemprop="datePublished">2021-02-25</time>
 </a>
     
   <div class="article-category">
@@ -86,7 +86,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      力扣104-二叉树的最大深度
+      力扣230-二叉搜索树中第K小的元素
     </h1>
   
 
@@ -96,16 +96,14 @@
       
         <!-- Table of Contents -->
         
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/">二叉树的最大深度</a></p>
-<p>给定一个二叉树，找出其最大深度。<br>二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。</p>
-<p>例：给定二叉树 [3,9,20,null,null,15,7]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> 3</span><br><span class="line"> &#x2F; \</span><br><span class="line">9  20</span><br><span class="line">  &#x2F;  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure>
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/kth-smallest-element-in-a-bst/">力扣230-二叉搜索树中第K小的元素</a></p>
+<p>给定一个二叉搜索树的根节点 root ，和一个整数 k ，请你设计一个算法查找其中第 k 个最小元素（从 1 开始计数）</p>
 <p>代码及注释如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val, left, right) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.left &#x3D; (left&#x3D;&#x3D;&#x3D;undefined ? null : left)</span><br><span class="line"> *     this.right &#x3D; (right&#x3D;&#x3D;&#x3D;undefined ? null : right)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var maxDepth &#x3D; function(root) &#123;</span><br><span class="line">    if(!root)&#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;;</span><br><span class="line">    let left &#x3D; maxDepth(root.left);</span><br><span class="line">    let right &#x3D; maxDepth(root.right);</span><br><span class="line">    return Math.max(left,right)+1</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val, left, right) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.left &#x3D; (left&#x3D;&#x3D;&#x3D;undefined ? null : left)</span><br><span class="line"> *     this.right &#x3D; (right&#x3D;&#x3D;&#x3D;undefined ? null : right)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @param &#123;number&#125; k</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var kthSmallest &#x3D; function(root, k) &#123;</span><br><span class="line">    &#x2F;&#x2F;二叉搜索树（BST）的特性中序遍历（左-根-右）即为升序排列</span><br><span class="line">    &#x2F;&#x2F;迭代法</span><br><span class="line"></span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    let stack &#x3D; [];</span><br><span class="line">    while(root || stack.length)&#123;</span><br><span class="line">        &#x2F;&#x2F;直到左叶子节点没有左节点</span><br><span class="line">        while(root)&#123;</span><br><span class="line">            &#x2F;&#x2F;左节点依次入栈</span><br><span class="line">            stack.push(root);</span><br><span class="line">            &#x2F;&#x2F;一直到最后</span><br><span class="line">            root &#x3D; root.left;</span><br><span class="line">        &#125;;</span><br><span class="line">        root &#x3D; stack.pop();</span><br><span class="line">        res.push(root.val);</span><br><span class="line">        &#x2F;&#x2F;因为出栈的过程是升序的 故第k次出栈即为BST中第k个最小的元素</span><br><span class="line">        k--;</span><br><span class="line">        if(k &#x3D;&#x3D; 0)&#123;</span><br><span class="line">            return root.val;</span><br><span class="line">        &#125;;</span><br><span class="line">        root &#x3D; root.right</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/25/%E5%8A%9B%E6%89%A3104-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" data-id="cklkww91i0008sstj109f21df" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/25/%E5%8A%9B%E6%89%A3230-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/" data-id="cklkww91o000fsstj8porgfis" class="article-share-link">分享</a>
       
       
       
@@ -159,19 +157,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2021/02/25/%E5%8A%9B%E6%89%A3230-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          力扣230-二叉搜索树中第K小的元素
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/02/24/%E5%8A%9B%E6%89%A3-%E5%89%8D%E3%80%81%E4%B8%AD%E3%80%81%E5%90%8E%E3%80%81%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/02/25/%E5%8A%9B%E6%89%A3104-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">力扣-二叉树的前、中、后、层次遍历</div>
+      <div class="article-nav-title">力扣104-二叉树的最大深度</div>
     </a>
   
 </nav>
