@@ -66,6 +66,75 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣-前、中、后、层次遍历" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/24/%E5%8A%9B%E6%89%A3-%E5%89%8D%E3%80%81%E4%B8%AD%E3%80%81%E5%90%8E%E3%80%81%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/" class="article-date">
+  <time datetime="2021-02-24T08:04:45.000Z" itemprop="datePublished">2021-02-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/24/%E5%8A%9B%E6%89%A3-%E5%89%8D%E3%80%81%E4%B8%AD%E3%80%81%E5%90%8E%E3%80%81%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/">力扣-二叉树的前、中、后、层次遍历</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h3 id="二叉树的后序遍历"><a href="#二叉树的后序遍历" class="headerlink" title="二叉树的后序遍历"></a>二叉树的后序遍历</h3><p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-tree-postorder-traversal/">二叉树的后序遍历</a></p>
+<p>二叉树的后序遍历：按照访问左子树——右子树——根节点的方式遍历这棵树。分别用递归和非递归两种方式实现。</p>
+<p>ps:强烈推荐b站视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av63453261">二叉树的后序遍历</a></p>
+<p>递归方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val, left, right) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.left &#x3D; (left&#x3D;&#x3D;&#x3D;undefined ? null : left)</span><br><span class="line"> *     this.right &#x3D; (right&#x3D;&#x3D;&#x3D;undefined ? null : right)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @return &#123;number[]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var postorderTraversal &#x3D; function(root) &#123;</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    let back &#x3D; (node)&#x3D;&gt;&#123;</span><br><span class="line">        if(node !&#x3D; null)&#123;</span><br><span class="line">            back(node.left);</span><br><span class="line">            back(node.right);</span><br><span class="line">            res.push(node.val)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    back(root);</span><br><span class="line">    return res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>非递归方式代码及详细注释如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val, left, right) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.left &#x3D; (left&#x3D;&#x3D;&#x3D;undefined ? null : left)</span><br><span class="line"> *     this.right &#x3D; (right&#x3D;&#x3D;&#x3D;undefined ? null : right)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @return &#123;number[]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var postorderTraversal &#x3D; function(root) &#123;</span><br><span class="line">    &#x2F;&#x2F;思路：如果left存在则遍历，直到末尾节点才记录，然后返回上一层节点</span><br><span class="line">    &#x2F;&#x2F;当子节点遍历完毕时才记录当前节点</span><br><span class="line">    &#x2F;&#x2F;记录遍历的值</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    &#x2F;&#x2F;记录每一个节点</span><br><span class="line">    let stack &#x3D; [];</span><br><span class="line">    &#x2F;&#x2F;当root存在时才循环</span><br><span class="line">    while(root)&#123;</span><br><span class="line">        &#x2F;&#x2F;左节点存在时</span><br><span class="line">        if(root.left)&#123;</span><br><span class="line">            &#x2F;&#x2F;当前节点入栈</span><br><span class="line">            stack.push(root);</span><br><span class="line">            &#x2F;&#x2F;跳到左节点</span><br><span class="line">            root &#x3D; root.left;</span><br><span class="line">        &#125;else if(root.right)&#123; &#x2F;&#x2F;右节点存在</span><br><span class="line">            &#x2F;&#x2F;当前节点入栈</span><br><span class="line">            stack.push(root);</span><br><span class="line">            &#x2F;&#x2F;跳到右节点</span><br><span class="line">            root &#x3D; root.right;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            &#x2F;&#x2F;成了叶子节点了，记录结果值</span><br><span class="line">            res.push(root.val);</span><br><span class="line">            &#x2F;&#x2F;返回上一层</span><br><span class="line">            root &#x3D; stack.pop();</span><br><span class="line">            &#x2F;&#x2F;人为创造末尾节点</span><br><span class="line">            if(root &amp;&amp; root.left)&#123;</span><br><span class="line">                root.left &#x3D; null</span><br><span class="line">            &#125;else if(root &amp;&amp; root.right)&#123;</span><br><span class="line">                root.right &#x3D; null</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="二叉树的前序遍历"><a href="#二叉树的前序遍历" class="headerlink" title="二叉树的前序遍历"></a>二叉树的前序遍历</h3><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-tree-preorder-traversal/">力扣-前序遍历链接</a></p>
+<p>递归实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val, left, right) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.left &#x3D; (left&#x3D;&#x3D;&#x3D;undefined ? null : left)</span><br><span class="line"> *     this.right &#x3D; (right&#x3D;&#x3D;&#x3D;undefined ? null : right)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @return &#123;number[]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var preorderTraversal &#x3D; function(root) &#123;</span><br><span class="line">    &#x2F;&#x2F;递归</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    let back &#x3D; (node)&#x3D;&gt;&#123;</span><br><span class="line">        if(node !&#x3D; null)&#123;</span><br><span class="line">            res.push(node.val);</span><br><span class="line">            back(node.left);</span><br><span class="line">            back(node.right)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    back(root)</span><br><span class="line">    return res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>非递归实现</p>
+<p>大神视频：<a target="_blank" rel="noopener" href="https://space.bilibili.com/338313633/video">二叉树的前序遍历</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val, left, right) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.left &#x3D; (left&#x3D;&#x3D;&#x3D;undefined ? null : left)</span><br><span class="line"> *     this.right &#x3D; (right&#x3D;&#x3D;&#x3D;undefined ? null : right)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @return &#123;number[]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var preorderTraversal &#x3D; function(root) &#123;</span><br><span class="line">    &#x2F;&#x2F;非递归</span><br><span class="line">    &#x2F;&#x2F;保存遍历结果</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    &#x2F;&#x2F;保存当前节点</span><br><span class="line">    let stack &#x3D; [];</span><br><span class="line">    if(!root)&#123;</span><br><span class="line">        return []</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;root存在</span><br><span class="line">    while(root)&#123;</span><br><span class="line">        &#x2F;&#x2F;存入当前值</span><br><span class="line">        res.push(root.val);</span><br><span class="line">        &#x2F;&#x2F;利用栈的先进后出特点，右边先进，pop的时候左节点先出来</span><br><span class="line">        if(root.right)&#123;</span><br><span class="line">            stack.push(root.right)  </span><br><span class="line">        &#125;</span><br><span class="line">        if(root.left)&#123;</span><br><span class="line">            stack.push(root.left)</span><br><span class="line">        &#125;</span><br><span class="line">        root &#x3D; stack.pop()</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="二叉树的中序遍历"><a href="#二叉树的中序遍历" class="headerlink" title="二叉树的中序遍历"></a>二叉树的中序遍历</h3><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/">力扣-中序遍历</a></p>
+<p>递归方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val, left, right) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.left &#x3D; (left&#x3D;&#x3D;&#x3D;undefined ? null : left)</span><br><span class="line"> *     this.right &#x3D; (right&#x3D;&#x3D;&#x3D;undefined ? null : right)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @return &#123;number[]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var inorderTraversal &#x3D; function(root) &#123;</span><br><span class="line">   let res &#x3D; [];</span><br><span class="line">   let back &#x3D; (node)&#x3D;&gt;&#123;</span><br><span class="line">       if(node !&#x3D; null)&#123;</span><br><span class="line">           back(node.left);</span><br><span class="line">           res.push(node.val);</span><br><span class="line">           back(node.right)</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   back(root);</span><br><span class="line">   return res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>非递归方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val, left, right) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.left &#x3D; (left&#x3D;&#x3D;&#x3D;undefined ? null : left)</span><br><span class="line"> *     this.right &#x3D; (right&#x3D;&#x3D;&#x3D;undefined ? null : right)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @return &#123;number[]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var inorderTraversal &#x3D; function(root) &#123;</span><br><span class="line">   &#x2F;&#x2F;非递归</span><br><span class="line">   &#x2F;&#x2F;1.判断left是否存在，如果存在进入left节点</span><br><span class="line">   &#x2F;&#x2F;2.当left和right都为null时，则记录当前节点</span><br><span class="line">   &#x2F;&#x2F;3.当left为null且right存在时，记录当前节点，然后跳到右节点</span><br><span class="line">   let res &#x3D; [];</span><br><span class="line">   let stack &#x3D; [];</span><br><span class="line">   while(root)&#123;</span><br><span class="line">       if(root.left)&#123;</span><br><span class="line">           stack.push(root);</span><br><span class="line">           root &#x3D; root.left</span><br><span class="line">       &#125;else if(root.right)&#123;</span><br><span class="line">           res.push(root.val);</span><br><span class="line">           root &#x3D; root.right</span><br><span class="line">       &#125;else if(!root.left &amp;&amp; !root.right)&#123;</span><br><span class="line">           res.push(root.val);</span><br><span class="line">           root &#x3D; stack.pop();</span><br><span class="line">           if(root &amp;&amp; root.left)&#123;</span><br><span class="line">               root.left &#x3D; null;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;;</span><br><span class="line">   return res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="二叉树的层序遍历"><a href="#二叉树的层序遍历" class="headerlink" title="二叉树的层序遍历"></a>二叉树的层序遍历</h3><p>层序遍历就是字面意思，一层一层遍历</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-tree-level-order-traversal/">力扣-层序遍历</a></p>
+<p>例：二叉树：[3,9,20,null,null,15,7]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  3</span><br><span class="line"> &#x2F; \</span><br><span class="line">9  20</span><br><span class="line">  &#x2F;  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure>
+<p>返回其层序遍历结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  [3],</span><br><span class="line">  [9,20],</span><br><span class="line">  [15,7]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>代码及注释如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val) &#123;</span><br><span class="line"> *     this.val &#x3D; val;</span><br><span class="line"> *     this.left &#x3D; this.right &#x3D; null;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @return &#123;number[][]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var levelOrder &#x3D; function(root) &#123;</span><br><span class="line">    if(!root)&#123;</span><br><span class="line">        return [];</span><br><span class="line">    &#125;;</span><br><span class="line">    &#x2F;&#x2F;记录结果</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    &#x2F;&#x2F;记录层次</span><br><span class="line">    let level &#x3D; 0;</span><br><span class="line">    &#x2F;&#x2F;保存当前队列</span><br><span class="line">    let queue &#x3D; [root];</span><br><span class="line">    while(queue.length)&#123;</span><br><span class="line">        &#x2F;&#x2F;保存第level层的结果</span><br><span class="line">        res[level] &#x3D; [];</span><br><span class="line">        &#x2F;&#x2F;第level层的长度</span><br><span class="line">        let queueLen &#x3D; queue.length;</span><br><span class="line">        while(queueLen)&#123;</span><br><span class="line">            let first &#x3D; queue.shift();</span><br><span class="line">            res[level].push(first.val);</span><br><span class="line">            &#x2F;&#x2F;如果左右节点存在，进入队列，即为下一层节点</span><br><span class="line">            if(first.left)&#123;</span><br><span class="line">                queue.push(first.left)</span><br><span class="line">            &#125;;</span><br><span class="line">            if(first.right)&#123;</span><br><span class="line">                queue.push(first.right)</span><br><span class="line">            &#125;</span><br><span class="line">            queueLen--;</span><br><span class="line">        &#125;</span><br><span class="line">        level++;</span><br><span class="line">    &#125;;</span><br><span class="line">    return res;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/24/%E5%8A%9B%E6%89%A3-%E5%89%8D%E3%80%81%E4%B8%AD%E3%80%81%E5%90%8E%E3%80%81%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/" data-id="cklp3ioog0009wotj6ghja718" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-JS异步问题学习" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/02/23/JS%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98%E5%AD%A6%E4%B9%A0/" class="article-date">
@@ -144,7 +213,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/23/JS%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98%E5%AD%A6%E4%B9%A0/" data-id="cklowween0002qktj2fg74tas" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/23/JS%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98%E5%AD%A6%E4%B9%A0/" data-id="cklp3ioo90002wotj9q5jddj0" class="article-share-link">分享</a>
       
       
       
@@ -198,7 +267,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/23/%E5%8A%9B%E6%89%A31052-%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/" data-id="cklowweey000fqktj5e996h4j" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/23/%E5%8A%9B%E6%89%A31052-%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/" data-id="cklp3iool000fwotj92n7c20j" class="article-share-link">分享</a>
       
       
       
@@ -248,7 +317,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/21/%E5%8A%9B%E6%89%A31438-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" data-id="cklowwef0000iqktjgevs2n46" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/21/%E5%8A%9B%E6%89%A31438-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" data-id="cklp3ioon000jwotj4uxidwae" class="article-share-link">分享</a>
       
       
       
@@ -300,7 +369,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/20/%E5%8A%9B%E6%89%A3697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/" data-id="cklowwef80014qktj0ka9e74h" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/20/%E5%8A%9B%E6%89%A3697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/" data-id="cklp3ioow0017wotj7qmp7fsi" class="article-share-link">分享</a>
       
       
       
@@ -349,7 +418,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" data-id="cklowwef5000vqktj82nudapt" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" data-id="cklp3iooo000nwotj8glx7qic" class="article-share-link">分享</a>
       
       
       
@@ -394,7 +463,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/" data-id="cklowwef90017qktj1pl832yu" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/" data-id="cklp3ioox0019wotj3mvh808q" class="article-share-link">分享</a>
       
       
       
@@ -451,7 +520,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A346-%E5%85%A8%E6%8E%92%E5%88%97/" data-id="cklowwef3000qqktje66v5tez" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A346-%E5%85%A8%E6%8E%92%E5%88%97/" data-id="cklp3iooq000swotj04pp7gf8" class="article-share-link">分享</a>
       
       
       
@@ -499,7 +568,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/" data-id="cklowweeu0009qktj6hx95a4r" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/" data-id="cklp3ioof0008wotjcj5m4xxb" class="article-share-link">分享</a>
       
       
       
@@ -549,56 +618,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" data-id="cklowwef4000sqktj2b8tgf8l" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣78-子集" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/" class="article-date">
-  <time datetime="2021-02-16T16:12:09.000Z" itemprop="datePublished">2021-02-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/">力扣78-子集</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>给你一个整数数组 nums ，数组中的元素 互不相同 。返回该数组所有可能的子集（幂集）。解集 不能 包含重复的子集。你可以按 任意顺序 返回解集。</p>
-<p>例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [1,2,3]</span><br><span class="line">输出：[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]</span><br></pre></td></tr></table></figure>
-<p>回溯法相关资料</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_48726650/article/details/107082257">前端算法渣的救赎之路</a>、<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/subsets/solution/shou-hua-tu-jie-zi-ji-hui-su-fa-xiang-jie-wei-yun-/">手画图解</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @return &#123;number[][]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var subsets &#x3D; function(nums) &#123;</span><br><span class="line">    &#x2F;&#x2F;定义变量保存结果</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    &#x2F;&#x2F;递归函数的参数选择一般里面两个变量</span><br><span class="line">    &#x2F;&#x2F;包括状态变量和条件变量</span><br><span class="line">    &#x2F;&#x2F;状态变量是res结果最后放的值</span><br><span class="line">    &#x2F;&#x2F;条件是判断搜索是否完毕及其是否合法</span><br><span class="line">    const back &#x3D; (path,condition)&#x3D;&gt;&#123;</span><br><span class="line">        if(condition &lt;&#x3D; nums.length)&#123;</span><br><span class="line">            &#x2F;&#x2F; 调用子递归前，加入解集</span><br><span class="line">            res.push(path.slice())</span><br><span class="line">        &#125;;</span><br><span class="line">        for(let i &#x3D; condition;i &lt; nums.length;i++)&#123;</span><br><span class="line">            path.push(nums[i])&#x2F;&#x2F; 枚举出所有可选的数</span><br><span class="line">            &#x2F;&#x2F;选这个数</span><br><span class="line">            back(path,i+1);</span><br><span class="line">            &#x2F;&#x2F;退回上一步</span><br><span class="line">            path.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    back([],0);</span><br><span class="line">    return res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/" data-id="cklowwefb001cqktj7dace0fy" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" data-id="cklp3ioot0012wotj34yedwja" class="article-share-link">分享</a>
       
       
       
@@ -632,6 +652,10 @@
       <ul>
         
           <li>
+            <a href="/2021/02/28/%E5%8A%9B%E6%89%A3105-%E4%BB%8E%E5%89%8D%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91/">力扣105-从前序与中序遍历序列构造二叉树</a>
+          </li>
+        
+          <li>
             <a href="/2021/02/28/%E5%8A%9B%E6%89%A3110-%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/">力扣110-平衡二叉树</a>
           </li>
         
@@ -645,10 +669,6 @@
         
           <li>
             <a href="/2021/02/27/%E5%8A%9B%E6%89%A3101-%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/">力扣101-对称二叉树</a>
-          </li>
-        
-          <li>
-            <a href="/2021/02/27/%E5%8A%9B%E6%89%A3395-%E8%87%B3%E5%B0%91%E6%9C%89K%E4%B8%AA%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/">力扣395-至少有K个重复字符的最长子串</a>
           </li>
         
       </ul>
