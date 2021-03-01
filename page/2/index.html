@@ -66,6 +66,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣104-二叉树的最大深度" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/25/%E5%8A%9B%E6%89%A3104-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" class="article-date">
+  <time datetime="2021-02-25T02:40:15.000Z" itemprop="datePublished">2021-02-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/25/%E5%8A%9B%E6%89%A3104-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/">力扣104-二叉树的最大深度</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/">二叉树的最大深度</a></p>
+<p>给定一个二叉树，找出其最大深度。<br>二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。</p>
+<p>例：给定二叉树 [3,9,20,null,null,15,7]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> 3</span><br><span class="line"> &#x2F; \</span><br><span class="line">9  20</span><br><span class="line">  &#x2F;  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure>
+<p>代码及注释如下：</p>
+<p>递归解法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val, left, right) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.left &#x3D; (left&#x3D;&#x3D;&#x3D;undefined ? null : left)</span><br><span class="line"> *     this.right &#x3D; (right&#x3D;&#x3D;&#x3D;undefined ? null : right)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var maxDepth &#x3D; function(root) &#123;</span><br><span class="line">    if(!root)&#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;;</span><br><span class="line">    let left &#x3D; maxDepth(root.left);</span><br><span class="line">    let right &#x3D; maxDepth(root.right);</span><br><span class="line">    return Math.max(left,right)+1</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>非递归解法：(思路同层序遍历)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val) &#123;</span><br><span class="line"> *     this.val &#x3D; val;</span><br><span class="line"> *     this.left &#x3D; this.right &#x3D; null;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var maxDepth &#x3D; function(root) &#123;</span><br><span class="line">    &#x2F;&#x2F;非递归</span><br><span class="line">    if(!root)&#123;</span><br><span class="line">        return 0</span><br><span class="line">    &#125;;</span><br><span class="line">    let res &#x3D; 0;</span><br><span class="line">    let queue &#x3D; [root];</span><br><span class="line">    while(queue.length)&#123;</span><br><span class="line">        let len &#x3D; queue.length;</span><br><span class="line">        res++;</span><br><span class="line">        while(len)&#123;</span><br><span class="line">            let node &#x3D; queue.shift();</span><br><span class="line">            if(node.left)&#123;</span><br><span class="line">                queue.push(node.left)</span><br><span class="line">            &#125;;</span><br><span class="line">            if(node.right)&#123;</span><br><span class="line">                queue.push(node.right)</span><br><span class="line">            &#125;;</span><br><span class="line">            len--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/25/%E5%8A%9B%E6%89%A3104-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" data-id="cklq1dml2000ergtjc2i8fgbc" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣-前、中、后、层次遍历" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/02/24/%E5%8A%9B%E6%89%A3-%E5%89%8D%E3%80%81%E4%B8%AD%E3%80%81%E5%90%8E%E3%80%81%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/" class="article-date">
@@ -123,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/24/%E5%8A%9B%E6%89%A3-%E5%89%8D%E3%80%81%E4%B8%AD%E3%80%81%E5%90%8E%E3%80%81%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/" data-id="cklp3ioog0009wotj6ghja718" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/24/%E5%8A%9B%E6%89%A3-%E5%89%8D%E3%80%81%E4%B8%AD%E3%80%81%E5%90%8E%E3%80%81%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/" data-id="cklq1dmkz000brgtjeh4qb6yz" class="article-share-link">分享</a>
       
       
       
@@ -213,7 +265,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/23/JS%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98%E5%AD%A6%E4%B9%A0/" data-id="cklp3ioo90002wotj9q5jddj0" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/23/JS%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98%E5%AD%A6%E4%B9%A0/" data-id="cklq1dmks0002rgtjbxbc0uw7" class="article-share-link">分享</a>
       
       
       
@@ -267,7 +319,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/23/%E5%8A%9B%E6%89%A31052-%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/" data-id="cklp3iool000fwotj92n7c20j" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/23/%E5%8A%9B%E6%89%A31052-%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/" data-id="cklq1dml5000jrgtjhs051yev" class="article-share-link">分享</a>
       
       
       
@@ -317,7 +369,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/21/%E5%8A%9B%E6%89%A31438-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" data-id="cklp3ioon000jwotj4uxidwae" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/21/%E5%8A%9B%E6%89%A31438-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" data-id="cklq1dml6000mrgtj6w33d7kt" class="article-share-link">分享</a>
       
       
       
@@ -369,7 +421,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/20/%E5%8A%9B%E6%89%A3697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/" data-id="cklp3ioow0017wotj7qmp7fsi" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/20/%E5%8A%9B%E6%89%A3697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/" data-id="cklq1dmlf0019rgtjhzgu8ekx" class="article-share-link">分享</a>
       
       
       
@@ -418,7 +470,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" data-id="cklp3iooo000nwotj8glx7qic" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" data-id="cklq1dml8000srgtje6354rlu" class="article-share-link">分享</a>
       
       
       
@@ -463,7 +515,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/" data-id="cklp3ioox0019wotj3mvh808q" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/" data-id="cklq1dmlh001crgtjc7xud3mb" class="article-share-link">分享</a>
       
       
       
@@ -520,7 +572,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A346-%E5%85%A8%E6%8E%92%E5%88%97/" data-id="cklp3iooq000swotj04pp7gf8" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A346-%E5%85%A8%E6%8E%92%E5%88%97/" data-id="cklq1dmla000xrgtjh4p1g9ic" class="article-share-link">分享</a>
       
       
       
@@ -568,57 +620,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/" data-id="cklp3ioof0008wotjcj5m4xxb" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣566-重塑矩阵" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" class="article-date">
-  <time datetime="2021-02-17T02:31:21.000Z" itemprop="datePublished">2021-02-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/">其他</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/">力扣566-重塑矩阵</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>在MATLAB中，有一个非常有用的函数 reshape，它可以将一个矩阵重塑为另一个大小不同的新矩阵，但保留其原始数据。</p>
-<p>给出一个由二维数组表示的矩阵，以及两个正整数r和c，分别表示想要的重构的矩阵的行数和列数。重构后的矩阵需要将原始矩阵的所有元素以相同的行遍历顺序填充。</p>
-<p>如果具有给定参数的reshape操作是可行且合理的，则输出新的重塑矩阵；否则，输出原始矩阵。</p>
-<p>（来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reshape-the-matrix">https://leetcode-cn.com/problems/reshape-the-matrix</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。）<br>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">输入: </span><br><span class="line">nums &#x3D; </span><br><span class="line">[[1,2],</span><br><span class="line"> [3,4]]</span><br><span class="line">r &#x3D; 1, c &#x3D; 4</span><br><span class="line">输出: </span><br><span class="line">[[1,2,3,4]]</span><br><span class="line">解释:</span><br><span class="line">行遍历nums的结果是 [1,2,3,4]。新的矩阵是 1 * 4 矩阵, 用之前的元素值一行一行填充新矩阵。</span><br><span class="line"></span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;reshape-the-matrix</span><br><span class="line">著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
-<p>代码及注释如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[][]&#125; nums</span><br><span class="line"> * @param &#123;number&#125; r</span><br><span class="line"> * @param &#123;number&#125; c</span><br><span class="line"> * @return &#123;number[][]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var matrixReshape &#x3D; function(nums, r, c) &#123;</span><br><span class="line">    &#x2F;&#x2F;二维数组的转化（扁平化处理）</span><br><span class="line">    const m &#x3D; nums.length;</span><br><span class="line">    const n &#x3D; nums[0].length;</span><br><span class="line">    if(m*n !&#x3D; r*c)&#123;</span><br><span class="line">        return nums</span><br><span class="line">    &#125;;</span><br><span class="line">    let array &#x3D; new Array(r).fill(0).map(()&#x3D;&gt;new Array(c).fill(0));</span><br><span class="line">    &#x2F;&#x2F;总共有m*n个数，对于每一个数x在新的数组里的坐标为（x&#x2F;c,x%c）,其在原数组里的数对应着为（x&#x2F;n,x%n）</span><br><span class="line">    for(let i &#x3D; 0;i &lt; m*n;i++)&#123;</span><br><span class="line">        array[Math.floor(i&#x2F;c)][i%c] &#x3D; nums[Math.floor(i&#x2F;n)][i%n]</span><br><span class="line">    &#125;</span><br><span class="line">    return array</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" data-id="cklp3ioot0012wotj34yedwja" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/" data-id="cklq1dmkx0008rgtjfmq4c8yn" class="article-share-link">分享</a>
       
       
       
@@ -652,6 +654,10 @@
       <ul>
         
           <li>
+            <a href="/2021/03/01/%E5%89%91%E6%8C%87Offer33-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97/">剑指Offer33-二叉搜索树的后序遍历序列</a>
+          </li>
+        
+          <li>
             <a href="/2021/02/28/%E5%8A%9B%E6%89%A3105-%E4%BB%8E%E5%89%8D%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91/">力扣105-从前序与中序遍历序列构造二叉树</a>
           </li>
         
@@ -665,10 +671,6 @@
         
           <li>
             <a href="/2021/02/27/226-%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/">226-翻转二叉树</a>
-          </li>
-        
-          <li>
-            <a href="/2021/02/27/%E5%8A%9B%E6%89%A3101-%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/">力扣101-对称二叉树</a>
           </li>
         
       </ul>
