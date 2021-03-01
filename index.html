@@ -72,6 +72,10 @@
   <time datetime="2021-03-01T08:41:11.000Z" itemprop="datePublished">2021-03-01</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -90,11 +94,18 @@
       
         <!-- Table of Contents -->
         
-        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof/">剑指Offer32-从上到下打印二叉树（3）</a></p>
+<p>请实现一个函数按照之字形顺序打印二叉树，即第一行按照从左到右的顺序打印，第二层按照从右到左的顺序打印，第三行再按照从左到右的顺序打印，其他行以此类推。</p>
+<p>例如:<br>给定二叉树: [3,9,20,null,null,15,7]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  3</span><br><span class="line"> &#x2F; \</span><br><span class="line">9  20</span><br><span class="line">  &#x2F;  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure>
+<p>返回结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  [3],</span><br><span class="line">  [20,9],</span><br><span class="line">  [15,7]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val) &#123;</span><br><span class="line"> *     this.val &#x3D; val;</span><br><span class="line"> *     this.left &#x3D; this.right &#x3D; null;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @return &#123;number[][]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var levelOrder &#x3D; function(root) &#123;</span><br><span class="line">    if(!root)&#123;</span><br><span class="line">        return [];</span><br><span class="line">    &#125;;</span><br><span class="line">    &#x2F;&#x2F;层序遍历</span><br><span class="line">    let queue &#x3D; [root];</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    let level &#x3D; 0;</span><br><span class="line">    while(queue.length)&#123;</span><br><span class="line">        let len &#x3D; queue.length;</span><br><span class="line">        res[level] &#x3D; [];</span><br><span class="line">        while(len)&#123;</span><br><span class="line">            let node &#x3D; queue.shift();</span><br><span class="line">            res[level].push(node.val);</span><br><span class="line">            if(node.left)&#123;</span><br><span class="line">                queue.push(node.left)</span><br><span class="line">            &#125;;</span><br><span class="line">            if(node.right)&#123;</span><br><span class="line">                queue.push(node.right)</span><br><span class="line">            &#125;;</span><br><span class="line">            len--</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;多加了一个判断条件，将数组进行翻转</span><br><span class="line">        if(level % 2)&#123;</span><br><span class="line">            res[level].reverse()</span><br><span class="line">        &#125;;</span><br><span class="line">        level++;</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line">    return res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/01/%E5%89%91%E6%8C%87Offer32-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%883%EF%BC%89/" data-id="cklqc7k8900063wtj9y0a9uuo" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/01/%E5%89%91%E6%8C%87Offer32-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%883%EF%BC%89/" data-id="cklqcd9dr0005a8tjayma29ui" class="article-share-link">分享</a>
       
       
       
@@ -145,7 +156,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/01/%E5%89%91%E6%8C%87Offer33-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97/" data-id="cklqc7k8b00083wtj27u01k1w" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/01/%E5%89%91%E6%8C%87Offer33-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97/" data-id="cklqcd9dt0008a8tj7mk93lek" class="article-share-link">分享</a>
       
       
       
@@ -197,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/28/%E5%8A%9B%E6%89%A3105-%E4%BB%8E%E5%89%8D%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="cklqc7k8i000i3wtjgoum815o" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/28/%E5%8A%9B%E6%89%A3105-%E4%BB%8E%E5%89%8D%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="cklqcd9e1000ma8tj6oqi2fim" class="article-share-link">分享</a>
       
       
       
@@ -248,7 +259,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/28/%E5%8A%9B%E6%89%A3110-%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="cklqc7k8j000m3wtjb6aqhyik" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/28/%E5%8A%9B%E6%89%A3110-%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="cklqcd9e0000ja8tjdqn89s4b" class="article-share-link">分享</a>
       
       
       
@@ -297,7 +308,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/28/%E5%8A%9B%E6%89%A3896-%E5%8D%95%E8%B0%83%E6%95%B0%E5%88%97/" data-id="cklqc7k91001m3wtjf0hkbdnf" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/28/%E5%8A%9B%E6%89%A3896-%E5%8D%95%E8%B0%83%E6%95%B0%E5%88%97/" data-id="cklqcd9ed001ka8tj5cbxc584" class="article-share-link">分享</a>
       
       
       
@@ -348,7 +359,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/27/226-%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="cklqc7k8400013wtj8lcmdz2o" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/27/226-%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="cklqcd9dm0001a8tjcx8t3696" class="article-share-link">分享</a>
       
       
       
@@ -397,7 +408,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/27/%E5%8A%9B%E6%89%A3101-%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="cklqc7k8e000c3wtj1m9vfizf" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/27/%E5%8A%9B%E6%89%A3101-%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="cklqcd9dx000fa8tjdvlf7bu5" class="article-share-link">分享</a>
       
       
       
@@ -447,7 +458,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/27/%E5%8A%9B%E6%89%A3395-%E8%87%B3%E5%B0%91%E6%9C%89K%E4%B8%AA%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/" data-id="cklqc7k8p00123wtj0ipjd2y1" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/27/%E5%8A%9B%E6%89%A3395-%E8%87%B3%E5%B0%91%E6%9C%89K%E4%B8%AA%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/" data-id="cklqcd9e5000wa8tjcb880kkx" class="article-share-link">分享</a>
       
       
       
@@ -497,7 +508,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/26/%E5%8A%9B%E6%89%A3543-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" data-id="cklqc7k8o000x3wtjewxm83h0" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/26/%E5%8A%9B%E6%89%A3543-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" data-id="cklqcd9e70013a8tj2vuj13do" class="article-share-link">分享</a>
       
       
       
@@ -546,7 +557,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/26/%E5%8A%9B%E6%89%A3-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" data-id="cklqc7k8c000b3wtj5p0p878y" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/26/%E5%8A%9B%E6%89%A3-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" data-id="cklqcd9dv000ba8tj5shr32w1" class="article-share-link">分享</a>
       
       
       
@@ -573,7 +584,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title categories">分类</h3>
     <div class="widget" id="categories">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%AF%B9%E8%B1%A1/">对象</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98/">异步问题</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a><span class="category-list-count">23</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/">其他</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%88%86%E5%86%B6%E9%80%92%E5%BD%92/">分冶递归</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a><span class="category-list-count">1</span></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%AF%B9%E8%B1%A1/">对象</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98/">异步问题</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a><span class="category-list-count">24</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/">其他</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%88%86%E5%86%B6%E9%80%92%E5%BD%92/">分冶递归</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a><span class="category-list-count">1</span></li></ul></li></ul>
     </div>
   </div>
 
