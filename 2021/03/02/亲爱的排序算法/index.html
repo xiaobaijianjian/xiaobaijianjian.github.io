@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>亲爱的排序算法 | Welcome To My Learning Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="冒泡排序 如果遇到相等的值不进行交换，那这种排序方式是稳定的排序方式 比较相邻的两个元素，如果前一个比后一个大，则交换位置。 比较完第一轮的时候，最后一个元素是最大的元素。 这时候最后一个元素是最大的，所以最后一个元素就不需要参与比较大小。123456789101112131415&#x2F;&#x2F;冒泡排序function maoPao(arr)&amp;#123;    let len &amp;#x3D">
+<meta property="og:type" content="article">
+<meta property="og:title" content="亲爱的排序算法">
+<meta property="og:url" content="http://example.com/2021/03/02/%E4%BA%B2%E7%88%B1%E7%9A%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Welcome To My Learning Blog">
+<meta property="og:description" content="冒泡排序 如果遇到相等的值不进行交换，那这种排序方式是稳定的排序方式 比较相邻的两个元素，如果前一个比后一个大，则交换位置。 比较完第一轮的时候，最后一个元素是最大的元素。 这时候最后一个元素是最大的，所以最后一个元素就不需要参与比较大小。123456789101112131415&#x2F;&#x2F;冒泡排序function maoPao(arr)&amp;#123;    let len &amp;#x3D">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-02T02:24:25.000Z">
+<meta property="article:modified_time" content="2021-03-02T03:29:30.707Z">
+<meta property="article:author" content="jianjian">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/categories">分类</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Welcome To My Learning Blog</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-亲爱的排序算法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/02/%E4%BA%B2%E7%88%B1%E7%9A%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="article-date">
+  <time datetime="2021-03-02T02:24:25.000Z" itemprop="datePublished">2021-03-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>►<a class="article-category-link" href="/categories/JavaScript/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">排序算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      亲爱的排序算法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><ol>
+<li>如果遇到相等的值不进行交换，那这种排序方式是稳定的排序方式</li>
+<li>比较相邻的两个元素，如果前一个比后一个大，则交换位置。</li>
+<li>比较完第一轮的时候，最后一个元素是最大的元素。</li>
+<li>这时候最后一个元素是最大的，所以最后一个元素就不需要参与比较大小。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;冒泡排序</span><br><span class="line">function maoPao(arr)&#123;</span><br><span class="line">    let len &#x3D; arr.length;</span><br><span class="line">    &#x2F;&#x2F;比较相邻的元素，第一轮比到最后的时候，最后一个自然是最大&#x2F;最小，就不用参与比较</span><br><span class="line">    for(let i &#x3D; 0;i &lt; len-1;i++)&#123;</span><br><span class="line">        for(let j &#x3D; 0;j &lt; len-1-i;j++)&#123;</span><br><span class="line">            if(arr[j] &gt; arr[j+1])&#123;</span><br><span class="line">                [arr[j],arr[j+1]] &#x3D; [arr[j+1],arr[j]]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return arr</span><br><span class="line">&#125;;</span><br><span class="line">let arr1 &#x3D; [2,5,1,7,8,6];</span><br><span class="line">console.log(maoPao(arr1))</span><br></pre></td></tr></table></figure>
+冒泡排序时间复杂度，最好是O(n)，最差是O(n^2),稳定性较好</li>
+</ol>
+<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><p>快速排序由于排序效率在同为O(N*logN)的几种排序方法中效率较高，因此经常被采用，其思想是分治。快速排序是一种既不浪费空间又可以快一点的排序算法。</p>
+<p>步骤：</p>
+<ol>
+<li>先从数列中取出一个数作为“基准”。</li>
+<li>分区过程：将比这个“基准”大的数全放到“基准”的右边，小于或等于“基准”的数全放到“基准”的左边。</li>
+<li>再对左右区间重复第二步，直到各区间只有一个数</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;快速排序</span><br><span class="line">&#x2F;&#x2F;借助分冶思想，以一个数位基准，大于这个数的放一边，小于这个数的放一边，直到区间值为1为止</span><br><span class="line">function quickSort(arr)&#123;</span><br><span class="line">    &#x2F;&#x2F;递归条件</span><br><span class="line">    if(arr.length &lt;&#x3D; 1)&#123;</span><br><span class="line">        return arr;</span><br><span class="line">    &#125;;</span><br><span class="line">    let left &#x3D; [];</span><br><span class="line">    let right &#x3D; [];</span><br><span class="line">    &#x2F;&#x2F;基准值</span><br><span class="line">    let start &#x3D; arr.shift();</span><br><span class="line">    for(let value of arr)&#123;</span><br><span class="line">        if(value &gt; start)&#123;</span><br><span class="line">            right.push(value)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            left.push(value)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    &#x2F;&#x2F;基准左边的值</span><br><span class="line">    let l &#x3D; quickSort(left);</span><br><span class="line">    &#x2F;&#x2F;基准右边的值</span><br><span class="line">    let r &#x3D; quickSort(right);</span><br><span class="line">    &#x2F;&#x2F;不要忘了基准自己</span><br><span class="line">    return l.concat(start,r)</span><br><span class="line">&#125;</span><br><span class="line">let arr1 &#x3D; [2,5,1,7,8,6];</span><br><span class="line">console.log(quickSort(arr1))</span><br></pre></td></tr></table></figure>
+<p>快速排序时间复杂度最差是O(n^2),最好是O(nlogn)</p>
+<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。将第一个元素当成有序序列。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;插入排序</span><br><span class="line">function insertSort(arr) &#123;</span><br><span class="line">    let len &#x3D; arr.length;</span><br><span class="line">    &#x2F;&#x2F;以第一个为有序，从i&#x3D;1开始</span><br><span class="line">    for (let i &#x3D; 1; i &lt; len; i++) &#123;</span><br><span class="line">        let j &#x3D; i - 1;</span><br><span class="line">        if (arr[i] &lt; arr[j]) &#123;</span><br><span class="line">            let temp &#x3D; arr[i];</span><br><span class="line">            while (j &gt;&#x3D; 0 &amp;&amp; temp &lt; arr[j]) &#123;</span><br><span class="line">                arr[j + 1] &#x3D; arr[j];</span><br><span class="line">                j--;</span><br><span class="line">            &#125;;</span><br><span class="line">            arr[j + 1] &#x3D; temp</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return arr</span><br><span class="line">&#125;</span><br><span class="line">let arr1 &#x3D; [2, 5, 1, 7, 8, 6];</span><br><span class="line">console.log(insertSort(arr1))</span><br></pre></td></tr></table></figure>
+<p>插入排序时间复杂度最差是O(n^2),最好是O(n)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/02/%E4%BA%B2%E7%88%B1%E7%9A%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" data-id="cklryfv9i0006u8tjh5wlbax4" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ 
+<script src="/jquery/jquery.min.js"></script>
+
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/03/01/%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%BB%A7%E6%89%BF/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">原型对象和继承</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-number">1.</span> <span class="toc-text">冒泡排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-number">2.</span> <span class="toc-text">快速排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-number">3.</span> <span class="toc-text">插入排序</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2021 jianjian&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;2040787513@qq.com
+    </div>
+  </div>
+</footer>
+ 
+<script src="/jquery/jquery.min.js"></script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+    <a href="/categories" class="mobile-nav-link">分类</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ 
+<script src="/js/is.js"></script>
+
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/elevator.js"></script>
+
+  </div>
+</body>
+</html>

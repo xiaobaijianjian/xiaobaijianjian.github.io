@@ -66,6 +66,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣543-二叉树的直径" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/26/%E5%8A%9B%E6%89%A3543-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" class="article-date">
+  <time datetime="2021-02-26T09:02:29.000Z" itemprop="datePublished">2021-02-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/26/%E5%8A%9B%E6%89%A3543-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/">力扣543-二叉树的直径</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/diameter-of-binary-tree/">力扣543-二叉树的直径</a></p>
+<p>给定一棵二叉树，你需要计算它的直径长度。一棵二叉树的直径长度是任意两个结点路径长度中的最大值。这条路径可能穿过也可能不穿过根结点。</p>
+<p>例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    1</span><br><span class="line">   &#x2F; \</span><br><span class="line">  2   3</span><br><span class="line"> &#x2F; \     </span><br><span class="line">4   5      </span><br></pre></td></tr></table></figure>
+<p>返回3, 它的长度是路径 [4,2,1,3] 或者 [5,2,1,3]</p>
+<p>代码及详细注释如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val) &#123;</span><br><span class="line"> *     this.val &#x3D; val;</span><br><span class="line"> *     this.left &#x3D; this.right &#x3D; null;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var diameterOfBinaryTree &#x3D; function(root) &#123;</span><br><span class="line">    &#x2F;&#x2F;求直径（即求路径长度的最大值）等效于求路径经过节点数的最大值减一。</span><br><span class="line">    &#x2F;&#x2F;而任意一条路径均可以被看作由某个节点为起点，从其左儿子和右儿子向下遍历的路径拼接得到(左儿子和右儿子的深度之和)。</span><br><span class="line">    &#x2F;&#x2F;因为可以不经过根节点，用max保存最大值</span><br><span class="line">    let max &#x3D; 0;</span><br><span class="line">    let dfs &#x3D; function(node)&#123;</span><br><span class="line">        if(!node)&#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;获得左子树的深度</span><br><span class="line">        let left &#x3D; dfs(node.left);</span><br><span class="line">        &#x2F;&#x2F;获得右子树的深度</span><br><span class="line">        let right &#x3D; dfs(node.right);</span><br><span class="line">        &#x2F;&#x2F;左子树深度 + 右子树深度便是这株二叉树从最左侧叶子节点到最右侧叶子节点的最长路径</span><br><span class="line">        max &#x3D; Math.max(max,left + right)</span><br><span class="line">        &#x2F;&#x2F;已知根节点的左右子树的深度，则，左右子树深度的最大值 + 1，便是以根节点为数的最大深度</span><br><span class="line">        return Math.max(left,right) + 1;</span><br><span class="line">    &#125;;</span><br><span class="line">    dfs(root);</span><br><span class="line">    return max</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/26/%E5%8A%9B%E6%89%A3543-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" data-id="cklryfva40014u8tjgt6q2b1o" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣-二叉树的最近公共祖先" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/02/26/%E5%8A%9B%E6%89%A3-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" class="article-date">
@@ -103,7 +153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/26/%E5%8A%9B%E6%89%A3-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" data-id="cklqruht4000b0gtj0tu21btv" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/26/%E5%8A%9B%E6%89%A3-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" data-id="cklryfv9q000cu8tja9462uyh" class="article-share-link">分享</a>
       
       
       
@@ -150,7 +200,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/25/%E5%8A%9B%E6%89%A3230-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/" data-id="cklqruhtl000u0gtja26q208b" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/25/%E5%8A%9B%E6%89%A3230-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/" data-id="cklryfva0000su8tj84gsfbht" class="article-share-link">分享</a>
       
       
       
@@ -202,7 +252,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/25/%E5%8A%9B%E6%89%A3104-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" data-id="cklqruhtb000f0gtj6qjtgl47" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/25/%E5%8A%9B%E6%89%A3104-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" data-id="cklryfv9w000ju8tj2qqd8y6x" class="article-share-link">分享</a>
       
       
       
@@ -271,7 +321,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/24/%E5%8A%9B%E6%89%A3-%E5%89%8D%E3%80%81%E4%B8%AD%E3%80%81%E5%90%8E%E3%80%81%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/" data-id="cklqruht6000c0gtj87or15su" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/24/%E5%8A%9B%E6%89%A3-%E5%89%8D%E3%80%81%E4%B8%AD%E3%80%81%E5%90%8E%E3%80%81%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/" data-id="cklryfv9u000eu8tjcorla0wa" class="article-share-link">分享</a>
       
       
       
@@ -361,7 +411,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/23/JS%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98%E5%AD%A6%E4%B9%A0/" data-id="cklqruhsq00020gtjfs771ogl" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/23/JS%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98%E5%AD%A6%E4%B9%A0/" data-id="cklryfv9a0002u8tjflhi44y6" class="article-share-link">分享</a>
       
       
       
@@ -415,7 +465,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/23/%E5%8A%9B%E6%89%A31052-%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/" data-id="cklqruhtf000j0gtjan92g6dy" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/23/%E5%8A%9B%E6%89%A31052-%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/" data-id="cklryfv9x000mu8tjdfq41ube" class="article-share-link">分享</a>
       
       
       
@@ -465,7 +515,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/21/%E5%8A%9B%E6%89%A31438-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" data-id="cklqruhth000n0gtjahqwbj2b" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/21/%E5%8A%9B%E6%89%A31438-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" data-id="cklryfv9z000qu8tjb3mv66pu" class="article-share-link">分享</a>
       
       
       
@@ -517,7 +567,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/20/%E5%8A%9B%E6%89%A3697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/" data-id="cklqruhtx00190gtjgkb3eymd" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/20/%E5%8A%9B%E6%89%A3697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/" data-id="cklryfvac001eu8tjes96c0yz" class="article-share-link">分享</a>
       
       
       
@@ -566,52 +616,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" data-id="cklqruhtk000s0gtj7kysfmdt" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣77-组合" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/" class="article-date">
-  <time datetime="2021-02-19T09:25:47.000Z" itemprop="datePublished">2021-02-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/">力扣77-组合</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>给定两个整数 n 和 k，返回 1 … n 中所有可能的 k 个数的组合。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number&#125; n</span><br><span class="line"> * @param &#123;number&#125; k</span><br><span class="line"> * @return &#123;number[][]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var combine &#x3D; function(n, k) &#123;</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    let back &#x3D; function(path,condition)&#123;</span><br><span class="line">        if(path.length &#x3D;&#x3D; k)&#123;</span><br><span class="line">            res.push(path.slice())</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;为了不产生重复组合，基于上一次的数进行选择</span><br><span class="line">        for(let i &#x3D; condition;i &lt;&#x3D; n;i++)&#123;</span><br><span class="line">            path.push(i);</span><br><span class="line">            &#x2F;&#x2F;&#x2F;&#x2F;最后元素不可以重复选入集合所以要传入i+1</span><br><span class="line">            back(path,i+1)</span><br><span class="line">            path.pop()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    back([],1)</span><br><span class="line">    return res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/" data-id="cklqruhty001c0gtja60e0q28" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" data-id="cklryfva1000xu8tj889qbfld" class="article-share-link">分享</a>
       
       
       
@@ -626,7 +631,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页&amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">下一页&amp;raquo;</a>
   </nav>
 </section>
            
@@ -645,6 +650,10 @@
       <ul>
         
           <li>
+            <a href="/2021/03/02/%E4%BA%B2%E7%88%B1%E7%9A%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">亲爱的排序算法</a>
+          </li>
+        
+          <li>
             <a href="/2021/03/01/%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%BB%A7%E6%89%BF/">原型对象和继承</a>
           </li>
         
@@ -658,10 +667,6 @@
         
           <li>
             <a href="/2021/02/28/%E5%8A%9B%E6%89%A3105-%E4%BB%8E%E5%89%8D%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91/">力扣105-从前序与中序遍历序列构造二叉树</a>
-          </li>
-        
-          <li>
-            <a href="/2021/02/28/%E5%8A%9B%E6%89%A3110-%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/">力扣110-平衡二叉树</a>
           </li>
         
       </ul>
