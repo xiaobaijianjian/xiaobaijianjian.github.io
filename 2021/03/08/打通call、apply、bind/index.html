@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>call、apply、bind的区别与实现 | Welcome To My Learning Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;emsp;&amp;emsp;简单概括apply、bind、call的区别：他们都是用来改变相关函数this指向的，但是apply、call是直接进行相关函数调用的，bind不会执行相关函数，而是返回一个新的函数，这个新的函数已经自动绑定了新的this指向。call与apply之间的区别主要是在参数设定上。&amp;emsp;&amp;emsp;call()与bind()接受的参数相同，第一个参数表示要改变的函数执行主">
+<meta property="og:type" content="article">
+<meta property="og:title" content="call、apply、bind的区别与实现">
+<meta property="og:url" content="http://example.com/2021/03/08/%E6%89%93%E9%80%9Acall%E3%80%81apply%E3%80%81bind/index.html">
+<meta property="og:site_name" content="Welcome To My Learning Blog">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;简单概括apply、bind、call的区别：他们都是用来改变相关函数this指向的，但是apply、call是直接进行相关函数调用的，bind不会执行相关函数，而是返回一个新的函数，这个新的函数已经自动绑定了新的this指向。call与apply之间的区别主要是在参数设定上。&amp;emsp;&amp;emsp;call()与bind()接受的参数相同，第一个参数表示要改变的函数执行主">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-08T06:24:31.000Z">
+<meta property="article:modified_time" content="2021-03-08T07:23:54.417Z">
+<meta property="article:author" content="jianjian">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/categories">分类</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Welcome To My Learning Blog</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-打通call、apply、bind" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/08/%E6%89%93%E9%80%9Acall%E3%80%81apply%E3%80%81bind/" class="article-date">
+  <time datetime="2021-03-08T06:24:31.000Z" itemprop="datePublished">2021-03-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>►<a class="article-category-link" href="/categories/JavaScript/%E5%87%BD%E6%95%B0/">函数</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      call、apply、bind的区别与实现
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>&emsp;&emsp;简单概括apply、bind、call的区别：他们都是用来改变相关函数this指向的，但是apply、call是直接进行相关函数调用的，bind不会执行相关函数，而是返回一个新的函数，这个新的函数已经自动绑定了新的this指向。call与apply之间的区别主要是在参数设定上。<br>&emsp;&emsp;call()与bind()接受的参数相同，第一个参数表示要改变的函数执行主体，即this的指向，从第二个参数到最后一个参数表示的是函数接受的参数，对于apply()函数来讲，第一个参数相同，第二个参数是一个数组，表示的是接受的所有参数。    </p>
+<h3 id="call-方法的实现"><a href="#call-方法的实现" class="headerlink" title="call()方法的实现"></a>call()方法的实现</h3><p>原理：1）将函数设为对象的属性<br>&emsp;&emsp;2)执行和删除这个函数<br>&emsp;&emsp;3)指定 this 到函数并传入给定参数执行函数.如果不传参数，默认指向 window。  </p>
+<p>call()实现代码及注释如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var name &#x3D; &#39;maomao&#39;;</span><br><span class="line">var obj &#x3D; &#123;</span><br><span class="line">    name:&#39;gougou&#39;</span><br><span class="line">&#125;;</span><br><span class="line">function fn(a,b,c)&#123;</span><br><span class="line">    console.log(a+b+c+this.name)</span><br><span class="line">&#125;</span><br><span class="line">Function.prototype.call1 &#x3D; function(obj)&#123;</span><br><span class="line">    &#x2F;&#x2F;判断是否为null或者undefined,同时考虑传递参数不是对象情况</span><br><span class="line">    obj &#x3D; obj ? Object(obj):window;</span><br><span class="line">    obj.fn &#x3D; this;</span><br><span class="line">    &#x2F;&#x2F; 利用拓展运算符直接将arguments转为数组</span><br><span class="line">    let args &#x3D; [...arguments].slice(1);</span><br><span class="line">    let result &#x3D; obj.fn(...args);</span><br><span class="line">    delete obj.fn;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn.call1(obj,&#39;我的&#39;,&#39;宠物&#39;,&#39;是&#39;)</span><br></pre></td></tr></table></figure>
+<p>apply实现及代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> Function.prototype.apply_ &#x3D; function(obj,arr)&#123;</span><br><span class="line">    obj &#x3D;&#x3D; obj? Object(obj) : window;</span><br><span class="line">    obj.fn &#x3D; this;</span><br><span class="line">    let result;</span><br><span class="line">    if(!arr)&#123;</span><br><span class="line">        result &#x3D; obj.fn()</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        result &#x3D; obj.fn(...arr)</span><br><span class="line">    &#125;</span><br><span class="line">    delete obj.fn;</span><br><span class="line">    return result</span><br><span class="line">&#125;</span><br><span class="line">fn.apply_(obj,[&#39;我的&#39;,&#39;宠物&#39;,&#39;是&#39;])</span><br></pre></td></tr></table></figure>
+<p>bind实现及代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.bind1 &#x3D; function()&#123;</span><br><span class="line">    &#x2F;&#x2F; 保存原函数</span><br><span class="line">    var self &#x3D; this;</span><br><span class="line">    &#x2F;&#x2F; 保存需要绑定的this上下文</span><br><span class="line">    context &#x3D; [].shift.call(arguments);</span><br><span class="line">    &#x2F;&#x2F; 剩余的参数转为数组</span><br><span class="line">    args &#x3D; [].slice.call(arguments);</span><br><span class="line">    &#x2F;&#x2F;返回一个函数</span><br><span class="line">    return  function()&#123;</span><br><span class="line">        self.apply(context,[].concat.call(args,[].slice.call(arguments)))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lovefengruoqing/article/details/80186401">js中自己实现bind函数的方式</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/08/%E6%89%93%E9%80%9Acall%E3%80%81apply%E3%80%81bind/" data-id="ckm09do1000234stj5l3aaxhm" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ 
+<script src="/jquery/jquery.min.js"></script>
+
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/03/08/%E5%89%91%E6%8C%87offer34-%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">剑指offer34--二叉树中和为某一值的路径</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#call-%E6%96%B9%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.</span> <span class="toc-text">call()方法的实现</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2021 jianjian&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;2040787513@qq.com
+    </div>
+  </div>
+</footer>
+ 
+<script src="/jquery/jquery.min.js"></script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+    <a href="/categories" class="mobile-nav-link">分类</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ 
+<script src="/js/is.js"></script>
+
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/elevator.js"></script>
+
+  </div>
+</body>
+</html>
