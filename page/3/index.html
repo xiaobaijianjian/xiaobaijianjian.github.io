@@ -66,6 +66,102 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣-二叉树的最近公共祖先" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/26/%E5%8A%9B%E6%89%A3-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" class="article-date">
+  <time datetime="2021-02-26T03:50:02.000Z" itemprop="datePublished">2021-02-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/26/%E5%8A%9B%E6%89%A3-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/">力扣-二叉树的最近公共祖先</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-shu-de-zui-jin-gong-gong-zu-xian-lcof/">力扣-二叉树的最近公共祖先</a></p>
+<p>给定一个二叉树, 找到该树中两个指定节点的最近公共祖先</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：root &#x3D; [3,5,1,6,2,0,8,null,null,7,4], p &#x3D; 5, q &#x3D; 1</span><br><span class="line">输出：3</span><br><span class="line">解释：节点 5 和节点 1 的最近公共祖先是节点 3 。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>代码及详细注释如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val) &#123;</span><br><span class="line"> *     this.val &#x3D; val;</span><br><span class="line"> *     this.left &#x3D; this.right &#x3D; null;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @param &#123;TreeNode&#125; p</span><br><span class="line"> * @param &#123;TreeNode&#125; q</span><br><span class="line"> * @return &#123;TreeNode&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var lowestCommonAncestor &#x3D; function(root, p, q) &#123;</span><br><span class="line">    &#x2F;&#x2F;递归</span><br><span class="line">    &#x2F;&#x2F;lowestCommonAncestor的功能是找出以root为根节点的两个节点p和q的最近公共祖先</span><br><span class="line">    &#x2F;&#x2F;三种情况</span><br><span class="line">    &#x2F;&#x2F;1.如果p和q分别是root的左右节点，那么root就是我们要找的最近公共祖先</span><br><span class="line">    &#x2F;&#x2F;如果root是None，说明我们在这条寻址线路没有找到，我们返回None表示没找到</span><br><span class="line">    &#x2F;&#x2F;2 如果左子树没找到，说明在右子树，我们返回lowestCommonAncestor(root.right, p , q)</span><br><span class="line">    &#x2F;&#x2F;  同样，如果右子树没找到，说明在左子树，我们返回lowestCommonAncestor(root.left, p , q)</span><br><span class="line">    &#x2F;&#x2F;3. 如果左子树和右子树分别找到一个，我们返回root</span><br><span class="line">    if(!root)&#123;</span><br><span class="line">        return false</span><br><span class="line">    &#125;</span><br><span class="line">    if(root &#x3D;&#x3D;&#x3D; p || root &#x3D;&#x3D;&#x3D; q)&#123;</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">    let left &#x3D; lowestCommonAncestor(root.left,p,q);</span><br><span class="line">    let right &#x3D; lowestCommonAncestor(root.right,p,q);</span><br><span class="line">    if(left &amp;&amp; right)&#123;</span><br><span class="line">        return root;</span><br><span class="line">    &#125;;</span><br><span class="line">    if(!left)&#123;</span><br><span class="line">        return right</span><br><span class="line">    &#125;;</span><br><span class="line">    if(!right)&#123;</span><br><span class="line">        return left</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/26/%E5%8A%9B%E6%89%A3-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" data-id="ckm2sy0g7000i7ctjhvy1bcty" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-力扣230-二叉搜索树中第K小的元素" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/25/%E5%8A%9B%E6%89%A3230-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/" class="article-date">
+  <time datetime="2021-02-25T13:36:01.000Z" itemprop="datePublished">2021-02-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/25/%E5%8A%9B%E6%89%A3230-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/">力扣230-二叉搜索树中第K小的元素</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/kth-smallest-element-in-a-bst/">力扣230-二叉搜索树中第K小的元素</a></p>
+<p>给定一个二叉搜索树的根节点 root ，和一个整数 k ，请你设计一个算法查找其中第 k 个最小元素（从 1 开始计数）</p>
+<p>代码及注释如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val, left, right) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.left &#x3D; (left&#x3D;&#x3D;&#x3D;undefined ? null : left)</span><br><span class="line"> *     this.right &#x3D; (right&#x3D;&#x3D;&#x3D;undefined ? null : right)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @param &#123;number&#125; k</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var kthSmallest &#x3D; function(root, k) &#123;</span><br><span class="line">    &#x2F;&#x2F;二叉搜索树（BST）的特性中序遍历（左-根-右）即为升序排列</span><br><span class="line">    &#x2F;&#x2F;迭代法</span><br><span class="line"></span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    let stack &#x3D; [];</span><br><span class="line">    while(root || stack.length)&#123;</span><br><span class="line">        &#x2F;&#x2F;直到左叶子节点没有左节点</span><br><span class="line">        while(root)&#123;</span><br><span class="line">            &#x2F;&#x2F;左节点依次入栈</span><br><span class="line">            stack.push(root);</span><br><span class="line">            &#x2F;&#x2F;一直到最后</span><br><span class="line">            root &#x3D; root.left;</span><br><span class="line">        &#125;;</span><br><span class="line">        root &#x3D; stack.pop();</span><br><span class="line">        res.push(root.val);</span><br><span class="line">        &#x2F;&#x2F;因为出栈的过程是升序的 故第k次出栈即为BST中第k个最小的元素</span><br><span class="line">        k--;</span><br><span class="line">        if(k &#x3D;&#x3D; 0)&#123;</span><br><span class="line">            return root.val;</span><br><span class="line">        &#125;;</span><br><span class="line">        root &#x3D; root.right</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/25/%E5%8A%9B%E6%89%A3230-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/" data-id="ckm2sy0gn001c7ctj56eb4io5" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣104-二叉树的最大深度" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/02/25/%E5%8A%9B%E6%89%A3104-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" class="article-date">
@@ -106,7 +202,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/25/%E5%8A%9B%E6%89%A3104-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" data-id="ckm1bo8q0000scktjdapnesg1" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/25/%E5%8A%9B%E6%89%A3104-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" data-id="ckm2sy0gg000v7ctj8hg4e56g" class="article-share-link">分享</a>
       
       
       
@@ -175,7 +271,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/24/%E5%8A%9B%E6%89%A3-%E5%89%8D%E3%80%81%E4%B8%AD%E3%80%81%E5%90%8E%E3%80%81%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/" data-id="ckm1bo8pw000jcktj2xvl726r" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/24/%E5%8A%9B%E6%89%A3-%E5%89%8D%E3%80%81%E4%B8%AD%E3%80%81%E5%90%8E%E3%80%81%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/" data-id="ckm2sy0g8000m7ctjdhzj7w1b" class="article-share-link">分享</a>
       
       
       
@@ -265,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/23/JS%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98%E5%AD%A6%E4%B9%A0/" data-id="ckm1bo8pi0002cktjf6hqexe9" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/23/JS%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98%E5%AD%A6%E4%B9%A0/" data-id="ckm2sy0fw00047ctj01ty0p5n" class="article-share-link">分享</a>
       
       
       
@@ -319,7 +415,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/23/%E5%8A%9B%E6%89%A31052-%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/" data-id="ckm1bo8q2000xcktj348u0ewe" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/23/%E5%8A%9B%E6%89%A31052-%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/" data-id="ckm2sy0gh000x7ctj37q1duxf" class="article-share-link">分享</a>
       
       
       
@@ -369,7 +465,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/21/%E5%8A%9B%E6%89%A31438-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" data-id="ckm1bo8qc0017cktj5hb4ej44" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/21/%E5%8A%9B%E6%89%A31438-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" data-id="ckm2sy0gm00197ctj52n304y0" class="article-share-link">分享</a>
       
       
       
@@ -421,7 +517,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/20/%E5%8A%9B%E6%89%A3697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/" data-id="ckm1bo8qp001ycktjauyf804f" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/20/%E5%8A%9B%E6%89%A3697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/" data-id="ckm2sy0gv001w7ctj9tjv7tey" class="article-share-link">分享</a>
       
       
       
@@ -470,7 +566,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" data-id="ckm1bo8qc0019cktj9c4j4s0a" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" data-id="ckm2sy0gp001h7ctj0yd4a0ef" class="article-share-link">分享</a>
       
       
       
@@ -515,112 +611,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/" data-id="ckm1bo8qm001tcktj5nr3edzm" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣46-全排列" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/19/%E5%8A%9B%E6%89%A346-%E5%85%A8%E6%8E%92%E5%88%97/" class="article-date">
-  <time datetime="2021-02-19T09:11:28.000Z" itemprop="datePublished">2021-02-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/19/%E5%8A%9B%E6%89%A346-%E5%85%A8%E6%8E%92%E5%88%97/">力扣46-全排列</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>回溯法的本质是深度优先搜索，解题包括四方面：</p>
-<ol>
-<li>设置全局变量res，保存结果</li>
-<li>设置递归函数的参数</li>
-<li>判断完成条件。搜索过程包括两方面，搜索成功返回结果和搜索失败返回上一步</li>
-<li>递归过程</li>
-</ol>
-<p>回溯法模板：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">let res &#x3D; [];   &#x2F;&#x2F;存储结果</span><br><span class="line"></span><br><span class="line">function backtrack(path,condition,...)&#123;</span><br><span class="line">    if(judge(condition))&#123;  &#x2F;&#x2F;满足条件</span><br><span class="line">        res.push(path);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    for(let select of selectList)&#123;</span><br><span class="line">        if(剪枝条件) break;</span><br><span class="line">        path.push(select);  &#x2F;&#x2F; 走某条路</span><br><span class="line">        backtrack(path,newSelectList);</span><br><span class="line">        path.pop(); &#x2F;&#x2F;返回上一个十字路口</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>本题代码及注释：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @return &#123;number[][]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var permute &#x3D; function(nums) &#123;</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    let len &#x3D; nums.length;</span><br><span class="line">    let back &#x3D; function(path)&#123;</span><br><span class="line">        if(path.length &#x3D;&#x3D; len)&#123;</span><br><span class="line">            res.push(path.slice())</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;不需要限制下一次选择的起点，这样下一次就可以选到本次选择同层左边的数</span><br><span class="line">        &#x2F;&#x2F;即i&#x3D;0,注意不同题的区别</span><br><span class="line">        for(let i &#x3D; 0;i &lt; len;i++)&#123;</span><br><span class="line">            &#x2F;&#x2F;每次重新进入时，要判断里面没有，这句话是精髓</span><br><span class="line">            if(path.indexOf(nums[i]) &#x3D;&#x3D; -1)&#123;</span><br><span class="line">                </span><br><span class="line">                path.push(nums[i]);</span><br><span class="line">                back(path);</span><br><span class="line">                path.pop()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    back([]);</span><br><span class="line">    return res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A346-%E5%85%A8%E6%8E%92%E5%88%97/" data-id="ckm1bo8qg001hcktjg6454kn7" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣-1004-最大连续1的个数3" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/" class="article-date">
-  <time datetime="2021-02-19T08:26:17.000Z" itemprop="datePublished">2021-02-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/">力扣-1004 最大连续1的个数3</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>给定一个由若干 0 和 1 组成的数组 A，我们最多可以将 K 个值从 0 变成 1 。返回仅包含 1 的最长（连续）子数组的长度</p>
-<p>示例1：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">输入：A &#x3D; [1,1,1,0,0,0,1,1,1,1,0], K &#x3D; 2</span><br><span class="line">输出：6</span><br><span class="line">解释： </span><br><span class="line">[1,1,1,0,0,1,1,1,1,1,1]</span><br><span class="line">粗体数字从 0 翻转到 1，最长的子数组长度为 6。</span><br><span class="line"></span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;max-consecutive-ones-iii</span><br><span class="line">著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
-<p>代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; A</span><br><span class="line"> * @param &#123;number&#125; K</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var longestOnes &#x3D; function(A, K) &#123;</span><br><span class="line">    &#x2F;&#x2F;滑动窗口记录0的个数，</span><br><span class="line">    &#x2F;&#x2F;分情况讨论：一旦0的个数大于K</span><br><span class="line">    &#x2F;&#x2F;要是A【left】 &#x3D; 0,则left、right往右走，zero个数减一</span><br><span class="line">    &#x2F;&#x2F;要是A【left】 &#x3D; 1;则left、right往右走</span><br><span class="line">    </span><br><span class="line">    let len &#x3D; A.length;</span><br><span class="line">    let left &#x3D; 0;</span><br><span class="line">    let right &#x3D; 0;</span><br><span class="line">    let zero &#x3D; 0;</span><br><span class="line">    while(right &lt; len)&#123;</span><br><span class="line">        if(A[right] &#x3D;&#x3D; 0)&#123;</span><br><span class="line">            zero ++;</span><br><span class="line">        &#125;</span><br><span class="line">        if(zero &gt; K)&#123;</span><br><span class="line">            if(A[left] &#x3D;&#x3D; 0)&#123;</span><br><span class="line">                zero--;</span><br><span class="line">            &#125;</span><br><span class="line">            left++;</span><br><span class="line">        &#125;</span><br><span class="line">        right++;</span><br><span class="line">    &#125;</span><br><span class="line">    return right - left</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/" data-id="ckm1bo8pu000fcktjaarv7iro" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/" data-id="ckm2sy0gw001y7ctjds272bjv" class="article-share-link">分享</a>
       
       
       
@@ -654,6 +645,14 @@
       <ul>
         
           <li>
+            <a href="/2021/03/10/%E5%8A%9B%E6%89%A3134-%E5%8A%A0%E6%B2%B9%E7%AB%99/">力扣134--加油站</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/09/%E5%89%91%E6%8C%8713-%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/">剑指13-机器人的运动范围</a>
+          </li>
+        
+          <li>
             <a href="/2021/03/09/%E5%8A%9B%E6%89%A31047-%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E7%9B%B8%E9%82%BB%E9%87%8D%E5%A4%8D%E9%A1%B9/">力扣1047--删除字符串中的相邻重复项</a>
           </li>
         
@@ -663,14 +662,6 @@
         
           <li>
             <a href="/2021/03/08/%E5%89%91%E6%8C%87offer34-%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84/">剑指offer34--二叉树中和为某一值的路径</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/07/%E5%8A%9B%E6%89%A3131-%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2/">力扣131-分割回文串</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/06/%E5%89%91%E6%8C%8726-%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/">剑指26-树的子结构</a>
           </li>
         
       </ul>
