@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>力扣134--加油站 | Welcome To My Learning Blog</title>
+  <title>力扣264--丑数 | Welcome To My Learning Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="力扣134–加油站 在一条环路上有 N 个加油站，其中第 i 个加油站有汽油 gas[i] 升。 你有一辆油箱容量无限的的汽车，从第 i 个加油站开往第 i+1 个加油站需要消耗汽油 cost[i] 升。你从其中的一个加油站出发，开始时油箱为空。 如果你可以绕环路行驶一周，则返回出发时加油站的编号，否则返回 -1 示例： 123456789101112131415输入: gas  &#x3D; [">
+  <meta name="description" content="力扣264–丑数 编写一个程序，找出第 n 个丑数。丑数就是质因数只包含 2, 3, 5 的正整数,n不超过1690. 示例： 123输入: n &#x3D; 10输出: 12解释: 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 是前 10 个丑数。 代码及注释如下： 123456789101112131415161718192021222324252627&#x2F;** * @">
 <meta property="og:type" content="article">
-<meta property="og:title" content="力扣134--加油站">
-<meta property="og:url" content="http://example.com/2021/03/10/%E5%8A%9B%E6%89%A3134-%E5%8A%A0%E6%B2%B9%E7%AB%99/index.html">
+<meta property="og:title" content="力扣264--丑数">
+<meta property="og:url" content="http://example.com/2021/03/12/%E5%8A%9B%E6%89%A3264-%E4%B8%91%E6%95%B0/index.html">
 <meta property="og:site_name" content="Welcome To My Learning Blog">
-<meta property="og:description" content="力扣134–加油站 在一条环路上有 N 个加油站，其中第 i 个加油站有汽油 gas[i] 升。 你有一辆油箱容量无限的的汽车，从第 i 个加油站开往第 i+1 个加油站需要消耗汽油 cost[i] 升。你从其中的一个加油站出发，开始时油箱为空。 如果你可以绕环路行驶一周，则返回出发时加油站的编号，否则返回 -1 示例： 123456789101112131415输入: gas  &#x3D; [">
+<meta property="og:description" content="力扣264–丑数 编写一个程序，找出第 n 个丑数。丑数就是质因数只包含 2, 3, 5 的正整数,n不超过1690. 示例： 123输入: n &#x3D; 10输出: 12解释: 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 是前 10 个丑数。 代码及注释如下： 123456789101112131415161718192021222324252627&#x2F;** * @">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-03-10T02:02:52.000Z">
-<meta property="article:modified_time" content="2021-03-10T02:07:00.895Z">
+<meta property="article:published_time" content="2021-03-12T01:34:30.000Z">
+<meta property="article:modified_time" content="2021-03-12T01:38:10.340Z">
 <meta property="article:author" content="jianjian">
 <meta name="twitter:card" content="summary">
   
@@ -68,14 +68,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-力扣134-加油站" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-力扣264-丑数" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/03/10/%E5%8A%9B%E6%89%A3134-%E5%8A%A0%E6%B2%B9%E7%AB%99/" class="article-date">
-  <time datetime="2021-03-10T02:02:52.000Z" itemprop="datePublished">2021-03-10</time>
+    <a href="/2021/03/12/%E5%8A%9B%E6%89%A3264-%E4%B8%91%E6%95%B0/" class="article-date">
+  <time datetime="2021-03-12T01:34:30.000Z" itemprop="datePublished">2021-03-12</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E8%B4%AA%E5%BF%83/">贪心</a>
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
   </div>
 
   </div>
@@ -86,7 +86,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      力扣134--加油站
+      力扣264--丑数
     </h1>
   
 
@@ -96,18 +96,16 @@
       
         <!-- Table of Contents -->
         
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/gas-station/">力扣134–加油站</a></p>
-<p>在一条环路上有 N 个加油站，其中第 i 个加油站有汽油 gas[i] 升。</p>
-<p>你有一辆油箱容量无限的的汽车，从第 i 个加油站开往第 i+1 个加油站需要消耗汽油 cost[i] 升。你从其中的一个加油站出发，开始时油箱为空。</p>
-<p>如果你可以绕环路行驶一周，则返回出发时加油站的编号，否则返回 -1</p>
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/ugly-number-ii/">力扣264–丑数</a></p>
+<p>编写一个程序，找出第 n 个丑数。丑数就是质因数只包含 2, 3, 5 的正整数,<br>n不超过1690.</p>
 <p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">输入: </span><br><span class="line">gas  &#x3D; [1,2,3,4,5]</span><br><span class="line">cost &#x3D; [3,4,5,1,2]</span><br><span class="line"></span><br><span class="line">输出: 3</span><br><span class="line"></span><br><span class="line">解释:</span><br><span class="line">从 3 号加油站(索引为 3 处)出发，可获得 4 升汽油。此时油箱有 &#x3D; 0 + 4 &#x3D; 4 升汽油</span><br><span class="line">开往 4 号加油站，此时油箱有 4 - 1 + 5 &#x3D; 8 升汽油</span><br><span class="line">开往 0 号加油站，此时油箱有 8 - 2 + 1 &#x3D; 7 升汽油</span><br><span class="line">开往 1 号加油站，此时油箱有 7 - 3 + 2 &#x3D; 6 升汽油</span><br><span class="line">开往 2 号加油站，此时油箱有 6 - 4 + 3 &#x3D; 5 升汽油</span><br><span class="line">开往 3 号加油站，你需要消耗 5 升汽油，正好足够你返回到 3 号加油站。</span><br><span class="line">因此，3 可为起始索引。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; gas</span><br><span class="line"> * @param &#123;number[]&#125; cost</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var canCompleteCircuit &#x3D; function(gas, cost) &#123;</span><br><span class="line">    let start &#x3D; 0;</span><br><span class="line">    let curSum &#x3D; 0;</span><br><span class="line">    let total &#x3D; 0;</span><br><span class="line">    for(let i &#x3D; 0;i &lt; gas.length;i++)&#123;</span><br><span class="line">        total +&#x3D; gas[i] - cost[i];</span><br><span class="line">        if(curSum &lt; 0)&#123;</span><br><span class="line">            curSum &#x3D; gas[i] - cost[i];</span><br><span class="line">            start &#x3D; i;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            curSum +&#x3D; gas[i] - cost[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return total &gt;&#x3D; 0 ? start :-1</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: n &#x3D; 10</span><br><span class="line">输出: 12</span><br><span class="line">解释: 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 是前 10 个丑数。</span><br></pre></td></tr></table></figure>
+<p>代码及注释如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number&#125; n</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var nthUglyNumber &#x3D; function(n) &#123;</span><br><span class="line">    &#x2F;&#x2F;从数组中只包含一个丑数数字 1 开始，使用三个指针 i2,i3,i5</span><br><span class="line">    &#x2F;&#x2F;将2*i2,3*i3,5*i5中最小的数字添加到数组中，并且对应的指针加一 </span><br><span class="line">    let dp &#x3D; new Array(1690);</span><br><span class="line">    dp[0] &#x3D; 1;</span><br><span class="line">    let i2 &#x3D; 0;</span><br><span class="line">    let i3 &#x3D; 0;</span><br><span class="line">    let i5 &#x3D; 0;</span><br><span class="line">    for(let i &#x3D; 1;i &lt; 1690;i++)&#123;</span><br><span class="line">        let min &#x3D; Math.min(2*dp[i2],3*dp[i3],5*dp[i5]);</span><br><span class="line">        dp[i] &#x3D; min;</span><br><span class="line">        if(min &#x3D;&#x3D; 2*dp[i2])&#123;</span><br><span class="line">            i2++;</span><br><span class="line">        &#125;;</span><br><span class="line">        if(min &#x3D;&#x3D; 3*dp[i3])&#123;</span><br><span class="line">            i3++;</span><br><span class="line">        &#125;;</span><br><span class="line">        if(min &#x3D;&#x3D; 5*dp[i5])&#123;</span><br><span class="line">            i5++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return dp[n-1]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/10/%E5%8A%9B%E6%89%A3134-%E5%8A%A0%E6%B2%B9%E7%AB%99/" data-id="ckm5mt7xe001c9stj18uva2ox" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/12/%E5%8A%9B%E6%89%A3264-%E4%B8%91%E6%95%B0/" data-id="ckm5mt7xo001t9stjfo93gz0l" class="article-share-link">分享</a>
       
       
       
@@ -161,19 +159,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2021/03/10/%E5%89%91%E6%8C%8753-0-n-1%E4%B8%AD%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          剑指53--0-n-1中缺失的数
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/03/09/%E5%89%91%E6%8C%8713-%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/03/11/%E5%8A%9B%E6%89%A320-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">剑指13-机器人的运动范围</div>
+      <div class="article-nav-title">力扣20--有效的括号</div>
     </a>
   
 </nav>
