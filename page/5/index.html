@@ -66,6 +66,256 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣566-重塑矩阵" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" class="article-date">
+  <time datetime="2021-02-17T02:31:21.000Z" itemprop="datePublished">2021-02-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/">其他</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/">力扣566-重塑矩阵</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>在MATLAB中，有一个非常有用的函数 reshape，它可以将一个矩阵重塑为另一个大小不同的新矩阵，但保留其原始数据。</p>
+<p>给出一个由二维数组表示的矩阵，以及两个正整数r和c，分别表示想要的重构的矩阵的行数和列数。重构后的矩阵需要将原始矩阵的所有元素以相同的行遍历顺序填充。</p>
+<p>如果具有给定参数的reshape操作是可行且合理的，则输出新的重塑矩阵；否则，输出原始矩阵。</p>
+<p>（来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reshape-the-matrix">https://leetcode-cn.com/problems/reshape-the-matrix</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。）<br>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">输入: </span><br><span class="line">nums &#x3D; </span><br><span class="line">[[1,2],</span><br><span class="line"> [3,4]]</span><br><span class="line">r &#x3D; 1, c &#x3D; 4</span><br><span class="line">输出: </span><br><span class="line">[[1,2,3,4]]</span><br><span class="line">解释:</span><br><span class="line">行遍历nums的结果是 [1,2,3,4]。新的矩阵是 1 * 4 矩阵, 用之前的元素值一行一行填充新矩阵。</span><br><span class="line"></span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;reshape-the-matrix</span><br><span class="line">著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
+<p>代码及注释如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[][]&#125; nums</span><br><span class="line"> * @param &#123;number&#125; r</span><br><span class="line"> * @param &#123;number&#125; c</span><br><span class="line"> * @return &#123;number[][]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var matrixReshape &#x3D; function(nums, r, c) &#123;</span><br><span class="line">    &#x2F;&#x2F;二维数组的转化（扁平化处理）</span><br><span class="line">    const m &#x3D; nums.length;</span><br><span class="line">    const n &#x3D; nums[0].length;</span><br><span class="line">    if(m*n !&#x3D; r*c)&#123;</span><br><span class="line">        return nums</span><br><span class="line">    &#125;;</span><br><span class="line">    let array &#x3D; new Array(r).fill(0).map(()&#x3D;&gt;new Array(c).fill(0));</span><br><span class="line">    &#x2F;&#x2F;总共有m*n个数，对于每一个数x在新的数组里的坐标为（x&#x2F;c,x%c）,其在原数组里的数对应着为（x&#x2F;n,x%n）</span><br><span class="line">    for(let i &#x3D; 0;i &lt; m*n;i++)&#123;</span><br><span class="line">        array[Math.floor(i&#x2F;c)][i%c] &#x3D; nums[Math.floor(i&#x2F;n)][i%n]</span><br><span class="line">    &#125;</span><br><span class="line">    return array</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" data-id="ckm5qsngr002cawtjacemgxud" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-力扣78-子集" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/" class="article-date">
+  <time datetime="2021-02-16T16:12:09.000Z" itemprop="datePublished">2021-02-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/">力扣78-子集</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>给你一个整数数组 nums ，数组中的元素 互不相同 。返回该数组所有可能的子集（幂集）。解集 不能 包含重复的子集。你可以按 任意顺序 返回解集。</p>
+<p>例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [1,2,3]</span><br><span class="line">输出：[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]</span><br></pre></td></tr></table></figure>
+<p>回溯法相关资料</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_48726650/article/details/107082257">前端算法渣的救赎之路</a>、<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/subsets/solution/shou-hua-tu-jie-zi-ji-hui-su-fa-xiang-jie-wei-yun-/">手画图解</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @return &#123;number[][]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var subsets &#x3D; function(nums) &#123;</span><br><span class="line">    &#x2F;&#x2F;定义变量保存结果</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    &#x2F;&#x2F;递归函数的参数选择一般里面两个变量</span><br><span class="line">    &#x2F;&#x2F;包括状态变量和条件变量</span><br><span class="line">    &#x2F;&#x2F;状态变量是res结果最后放的值</span><br><span class="line">    &#x2F;&#x2F;条件是判断搜索是否完毕及其是否合法</span><br><span class="line">    const back &#x3D; (path,condition)&#x3D;&gt;&#123;</span><br><span class="line">        if(condition &lt;&#x3D; nums.length)&#123;</span><br><span class="line">            &#x2F;&#x2F; 调用子递归前，加入解集</span><br><span class="line">            res.push(path.slice())</span><br><span class="line">        &#125;;</span><br><span class="line">        for(let i &#x3D; condition;i &lt; nums.length;i++)&#123;</span><br><span class="line">            path.push(nums[i])&#x2F;&#x2F; 枚举出所有可选的数</span><br><span class="line">            &#x2F;&#x2F;选这个数</span><br><span class="line">            back(path,i+1);</span><br><span class="line">            &#x2F;&#x2F;退回上一步</span><br><span class="line">            path.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    back([],0);</span><br><span class="line">    return res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/" data-id="ckm5qsngw002oawtjggaxcnxm" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-maigin重叠问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/" class="article-date">
+  <time datetime="2021-02-16T03:04:23.000Z" itemprop="datePublished">2021-02-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/">maigin重叠问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p> margin 重叠指的是在垂直方向上， 两个相邻元素的 margin 发生重叠的情况。<br>一般来说可以分为四种情形：</p>
+<ol>
+<li>第一种是相邻兄弟元素的 marin-bottom 和 margin-top 的值发生重叠。 这种情况下我们可以通过设置其中一个元素为 BFC来解决。<br>下图所示：</li>
+</ol>
+<p><img src="/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/pic1.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;head&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s1&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s2&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    </span><br><span class="line">    .s1&#123;</span><br><span class="line">        height: 150px;</span><br><span class="line">        width: 150px;</span><br><span class="line">        background-color: yellow;</span><br><span class="line">        margin-bottom: 150px;</span><br><span class="line">        &#x2F;* display: inline-block; *&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line">    .s2&#123;</span><br><span class="line">        height: 150px;</span><br><span class="line">        width: 150px;</span><br><span class="line">        background-color: violet;</span><br><span class="line">        margin-top: 150px;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+<p>之间的间距应该为300px,因为重叠了修改为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s1&#123;</span><br><span class="line">    display:inline-block</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><p>第二种是父元素的 margin-top 和子元素的 margin-top 发生重叠。它们发生重叠是因为它们是相邻的， 所以我们可以通过这一点来解决这个问题。 我们可以为父元素设置 border-top、 padding-top 值来分隔它们， 当然我们也可以将父元素设置为 BFC来解决。<br>例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;head&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s1&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s2&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    .s1&#123;</span><br><span class="line">        height: 100px;</span><br><span class="line">        width: 100px;</span><br><span class="line">        background-color: yellow;</span><br><span class="line">        margin-top: 50px;</span><br><span class="line">    &#125;</span><br><span class="line">    .head&#123;</span><br><span class="line">        height: 300px;</span><br><span class="line">        width: 200px;</span><br><span class="line">        background-color: rgb(77, 188, 216);</span><br><span class="line">        &#x2F;* overflow: hidden; *&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/pic2.png"><br>修改如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.head&#123;</span><br><span class="line">    overflow:hidden</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/pic3.png"></p>
+</li>
+<li><p>第三种是高度为 auto 的父元素的 margin-bottom 和子元素的 margin-bottom 发生重叠。 它们发生重叠一个是因为它们相邻， 一个是因为父元素的高度不固定。 因此我们可以为父元素设置border-bottom、<br>padding-bottom 来分隔它们， 也可以为父元素设置一个高度， max-height 和 min-height 也能解决这个问题。 当然将父元素设置为<br>BFC 是最简单的方法。</p>
+</li>
+</ol>
+<p>下例中父元素高度不固定，子元素margin-bottom没有显示出来，如图：<br><img src="/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/pic4.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;head&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s1&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s2&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    .s1&#123;</span><br><span class="line">        height: 100px;</span><br><span class="line">        width: 100px;</span><br><span class="line">        background-color: yellow;</span><br><span class="line">        margin-bottom: 120px;</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line">    .head&#123;</span><br><span class="line">        height: auto;</span><br><span class="line">        width: 300px;</span><br><span class="line">        background-color: rgb(77, 188, 216);</span><br><span class="line">        &#x2F;* position: absolute; *&#x2F;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+<p>修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.head&#123;</span><br><span class="line">    position:absolute</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>设置其为BFC即可<br><img src="/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/pic5.png"></p>
+<ol start="4">
+<li>第四种情况， 是没有内容的元素， 自身的 margin-top 和 margin-bottom 发生的重叠。 我们可以通过为其设置 border、 pa<br>dding 或者高度来解决这个问题。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/" data-id="ckm5qsnfl0005awtjae1a4du5" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-photo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/16/photo/" class="article-date">
+  <time datetime="2021-02-16T02:12:54.000Z" itemprop="datePublished">2021-02-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/16/photo/">BFC的理解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h3 id="1-BFC是什么？"><a href="#1-BFC是什么？" class="headerlink" title="1.BFC是什么？"></a>1.BFC是什么？</h3><p>BFC(Block Formatting Context)块级格式化上下文，它会创建一个特殊的区域，在这个区域里，内部元素布局不会影响到外部元素，同样，外部元素布局不会影响到BFC内部元素布局。一个 BFC 就像是一个隔离区域， 和其他区域互不影响。</p>
+<h3 id="2-什么样的元素会形成BFC？"><a href="#2-什么样的元素会形成BFC？" class="headerlink" title="2.什么样的元素会形成BFC？"></a>2.什么样的元素会形成BFC？</h3><p>MDN总结如下：</p>
+<ol>
+<li>根元素或其他包含根元素的元素</li>
+<li>浮动元素（元素的float不为none）</li>
+<li>绝对定位元素（元素的position为absolute或fixed）</li>
+<li>display＝inline-block|flex|inline-flex|table-cell 或 table-caption</li>
+<li>overflow＝hidden|auto 或 scroll(≠visible)</li>
+<li>含有样式属性column-span:all的元素</li>
+</ol>
+<h3 id="3-BFC会影响什么？"><a href="#3-BFC会影响什么？" class="headerlink" title="3.BFC会影响什么？"></a>3.BFC会影响什么？</h3><p>具体描述如下：</p>
+<ol>
+<li>内部的box将会独占宽度，且在垂直方向上一个接一个排列</li>
+<li>同一个BFC的两个相邻box的margin会出现边距折叠现象</li>
+<li>每个Box在水平方向上的左边缘会与BFC的左边缘对齐，即使存在浮动也是如此</li>
+<li>BFC区域不会与浮动元素重叠，而是会依次排列</li>
+<li>浮动元素的高度也会参与BFC的高度计算</li>
+</ol>
+<p>要点：</p>
+<ol>
+<li>边距折叠</li>
+<li>清除浮动</li>
+<li>自适应多栏布局</li>
+</ol>
+<p>例1：高度塌陷</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;head&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s s1&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s s2&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    </span><br><span class="line">    .head&#123;</span><br><span class="line">       </span><br><span class="line">        width: 300px;</span><br><span class="line">        padding-top: 20px;</span><br><span class="line">        border: 5px solid violet;</span><br><span class="line">        &#x2F;* overflow: hidden; *&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line">    .s&#123;</span><br><span class="line">        height: 150px;</span><br><span class="line">        width: 100px;</span><br><span class="line">        float: left;</span><br><span class="line">        border: 5px solid yellow;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+<p>由于浮动元素会造成”高度塌陷”,会导致如下图所示.</p>
+<p><img src="/2021/02/16/photo/pic1.png"><br>解决方案:BFC规则,浮动元素的高度也会参与BFC的高度计算.<br>所以在添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.head&#123;</span><br><span class="line">    overflow:hidden</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/02/16/photo/pic2.png"></p>
+<p>例2：多栏布局</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;head&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s s1&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s s2&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    </span><br><span class="line">    .head&#123;</span><br><span class="line">       </span><br><span class="line">        width: 600px;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    .s1&#123;</span><br><span class="line">        height: 150px;</span><br><span class="line">        width: 100px;</span><br><span class="line">        background-color: yellow;</span><br><span class="line">        float: left;</span><br><span class="line">    &#125;</span><br><span class="line">    .s2&#123;</span><br><span class="line">        height: 200px;</span><br><span class="line">        background-color: violet;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+<p>结果如下图:<br><img src="/2021/02/16/photo/pic3.png"><br>原因是”每个Box在水平方向上的左边缘会与BFC的左边缘对齐，即使存在浮动也是如此”</p>
+<p>修改如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.s2&#123;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>效果如下:</p>
+<p><img src="/2021/02/16/photo/pic4.png"><br>原因:BFC区域不会与浮动元素重叠，而是会依次排列</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/16/photo/" data-id="ckm5qsnfm0006awtjaw4bf634" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣55-跳跃游戏" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" class="article-date">
@@ -103,7 +353,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" data-id="ckm5n0cjw0020m4tj3j9jac2z" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" data-id="ckm5qsngp0029awtjfq0mfa8e" class="article-share-link">分享</a>
       
       
       
@@ -152,7 +402,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A3567-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="ckm5n0cjx0025m4tj1db394vw" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A3567-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="ckm5qsngs002eawtjexjvac65" class="article-share-link">分享</a>
       
       
       
@@ -206,7 +456,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/14/%E5%8A%9B%E6%89%A3240/" data-id="ckm5n0cjr001mm4tjcffcan8y" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/14/%E5%8A%9B%E6%89%A3240/" data-id="ckm5qsngj001uawtje48iavdj" class="article-share-link">分享</a>
       
       
       
@@ -260,7 +510,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="ckm5n0ck3002nm4tjbjrx61hg" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="ckm5qsngz002vawtjgxft6svd" class="article-share-link">分享</a>
       
       
       
@@ -294,23 +544,23 @@
       <ul>
         
           <li>
+            <a href="/2021/03/12/%E5%89%91%E6%8C%8722-%E9%93%BE%E8%A1%A8%E4%B8%AD%E5%80%92%E6%95%B0%E7%AC%ACk%E4%B8%AA%E8%8A%82%E7%82%B9/">剑指22--链表中倒数第k个节点</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/12/offer25-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/">offer25--合并两个排序的链表</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/12/%E5%89%91%E6%8C%8718-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/">剑指18--删除链表的节点</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/12/%E5%8A%9B%E6%89%A3206-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">力扣206--反转链表</a>
+          </li>
+        
+          <li>
             <a href="/2021/03/12/%E5%8A%9B%E6%89%A3264-%E4%B8%91%E6%95%B0/">力扣264--丑数</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/11/%E5%8A%9B%E6%89%A320-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/">力扣20--有效的括号</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/11/%E5%8A%9B%E6%89%A3-227-%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8/">力扣-227-基本计算器</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/10/%E5%89%91%E6%8C%8753-0-n-1%E4%B8%AD%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0/">剑指53--0-n-1中缺失的数</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/10/%E5%8A%9B%E6%89%A3134-%E5%8A%A0%E6%B2%B9%E7%AB%99/">力扣134--加油站</a>
           </li>
         
       </ul>
