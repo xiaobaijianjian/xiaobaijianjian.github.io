@@ -66,6 +66,77 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-亲爱的排序算法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/02/%E4%BA%B2%E7%88%B1%E7%9A%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="article-date">
+  <time datetime="2021-03-02T02:24:25.000Z" itemprop="datePublished">2021-03-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>►<a class="article-category-link" href="/categories/JavaScript/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">排序算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/02/%E4%BA%B2%E7%88%B1%E7%9A%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">亲爱的排序算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><ol>
+<li>如果遇到相等的值不进行交换，那这种排序方式是稳定的排序方式</li>
+<li>比较相邻的两个元素，如果前一个比后一个大，则交换位置。</li>
+<li>比较完第一轮的时候，最后一个元素是最大的元素。</li>
+<li>这时候最后一个元素是最大的，所以最后一个元素就不需要参与比较大小。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;冒泡排序</span><br><span class="line">function maoPao(arr)&#123;</span><br><span class="line">    let len &#x3D; arr.length;</span><br><span class="line">    &#x2F;&#x2F;比较相邻的元素，第一轮比到最后的时候，最后一个自然是最大&#x2F;最小，就不用参与比较</span><br><span class="line">    for(let i &#x3D; 0;i &lt; len-1;i++)&#123;</span><br><span class="line">        for(let j &#x3D; 0;j &lt; len-1-i;j++)&#123;</span><br><span class="line">            if(arr[j] &gt; arr[j+1])&#123;</span><br><span class="line">                [arr[j],arr[j+1]] &#x3D; [arr[j+1],arr[j]]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return arr</span><br><span class="line">&#125;;</span><br><span class="line">let arr1 &#x3D; [2,5,1,7,8,6];</span><br><span class="line">console.log(maoPao(arr1))</span><br></pre></td></tr></table></figure>
+冒泡排序时间复杂度，最好是O(n)，最差是O(n^2),稳定性较好</li>
+</ol>
+<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><p>快速排序由于排序效率在同为O(N*logN)的几种排序方法中效率较高，因此经常被采用，其思想是分治。快速排序是一种既不浪费空间又可以快一点的排序算法。</p>
+<p>步骤：</p>
+<ol>
+<li>先从数列中取出一个数作为“基准”。</li>
+<li>分区过程：将比这个“基准”大的数全放到“基准”的右边，小于或等于“基准”的数全放到“基准”的左边。</li>
+<li>再对左右区间重复第二步，直到各区间只有一个数</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;快速排序</span><br><span class="line">&#x2F;&#x2F;借助分冶思想，以一个数位基准，大于这个数的放一边，小于这个数的放一边，直到区间值为1为止</span><br><span class="line">function quickSort(arr)&#123;</span><br><span class="line">    &#x2F;&#x2F;递归条件</span><br><span class="line">    if(arr.length &lt;&#x3D; 1)&#123;</span><br><span class="line">        return arr;</span><br><span class="line">    &#125;;</span><br><span class="line">    let left &#x3D; [];</span><br><span class="line">    let right &#x3D; [];</span><br><span class="line">    &#x2F;&#x2F;基准值</span><br><span class="line">    let start &#x3D; arr.shift();</span><br><span class="line">    for(let value of arr)&#123;</span><br><span class="line">        if(value &gt; start)&#123;</span><br><span class="line">            right.push(value)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            left.push(value)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    &#x2F;&#x2F;基准左边的值</span><br><span class="line">    let l &#x3D; quickSort(left);</span><br><span class="line">    &#x2F;&#x2F;基准右边的值</span><br><span class="line">    let r &#x3D; quickSort(right);</span><br><span class="line">    &#x2F;&#x2F;不要忘了基准自己</span><br><span class="line">    return l.concat(start,r)</span><br><span class="line">&#125;</span><br><span class="line">let arr1 &#x3D; [2,5,1,7,8,6];</span><br><span class="line">console.log(quickSort(arr1))</span><br></pre></td></tr></table></figure>
+<p>快速排序时间复杂度最差是O(n^2),最好是O(nlogn)</p>
+<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。将第一个元素当成有序序列。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;插入排序</span><br><span class="line">function insertSort(arr) &#123;</span><br><span class="line">    let len &#x3D; arr.length;</span><br><span class="line">    &#x2F;&#x2F;以第一个为有序，从i&#x3D;1开始</span><br><span class="line">    for (let i &#x3D; 1; i &lt; len; i++) &#123;</span><br><span class="line">        let j &#x3D; i - 1;</span><br><span class="line">        if (arr[i] &lt; arr[j]) &#123;</span><br><span class="line">            let temp &#x3D; arr[i];</span><br><span class="line">            while (j &gt;&#x3D; 0 &amp;&amp; temp &lt; arr[j]) &#123;</span><br><span class="line">                arr[j + 1] &#x3D; arr[j];</span><br><span class="line">                j--;</span><br><span class="line">            &#125;;</span><br><span class="line">            arr[j + 1] &#x3D; temp</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return arr</span><br><span class="line">&#125;</span><br><span class="line">let arr1 &#x3D; [2, 5, 1, 7, 8, 6];</span><br><span class="line">console.log(insertSort(arr1))</span><br></pre></td></tr></table></figure>
+<p>插入排序时间复杂度最差是O(n^2),最好是O(n)</p>
+<h3 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h3><p>希尔排序是插入排序的一种又称“缩小增量排序”，是直接插入排序算法的一种更高效的改进版本。</p>
+<p>算法先将要排序的一组数按某个增量d（n/2,n为要排序数的个数）分成若干组，每组中记录的下标相差d.对每组中全部元素进行直接插入排序，然后再用一个较小的增量（d/2）对它进行分组，在每组中再进行直接插入排序。当增量减到1时，进行直接插入排序后，排序完成。本质还是插入。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;希尔排序</span><br><span class="line">function shellSort(arr)&#123;</span><br><span class="line">    let len &#x3D; arr.length;</span><br><span class="line">    for(let gap &#x3D; Math.floor(len&#x2F;2);gap &gt;&#x3D; 1;gap &#x3D; Math.floor(gap&#x2F;2))&#123;</span><br><span class="line">        &#x2F;&#x2F; 内层循环与插入排序的写法基本一致，只是每次移动的步长变为 gap</span><br><span class="line">        for(let i &#x3D; gap;i &lt; len;i++)&#123;</span><br><span class="line">            let j &#x3D; i-gap;</span><br><span class="line">            if(arr[i] &lt; arr[j])&#123;</span><br><span class="line">                let temp &#x3D; arr[i]</span><br><span class="line">                while(j&gt;&#x3D;0 &amp;&amp; arr[j] &gt; temp)&#123;</span><br><span class="line">                    arr[j+gap] &#x3D; arr[j];</span><br><span class="line">                    j -&#x3D; gap;</span><br><span class="line">                &#125;;</span><br><span class="line">                arr[j+gap] &#x3D; temp</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return arr</span><br><span class="line">&#125;</span><br><span class="line">let arr1 &#x3D; [2, 5, 1, 7, 8, 6];</span><br><span class="line">console.log(shellSort(arr1))</span><br></pre></td></tr></table></figure>
+<p>插入排序时间复杂度最差是O(n^2),最好是O(n)</p>
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><p>把一个有n个记录的无序文件看成是由n个长度为1的有序子文件组成的文件，然后进行两两归并</p>
+<p>本质是分冶，先分再合</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">function mergeSort(arr)&#123;</span><br><span class="line">        let len &#x3D; arr.length;</span><br><span class="line">        if(arr.length &lt;&#x3D; 1)&#123;</span><br><span class="line">            return arr</span><br><span class="line">        &#125;</span><br><span class="line">        let mid &#x3D; Math.floor(len&#x2F;2);</span><br><span class="line">        let left &#x3D; arr.slice(0,mid);</span><br><span class="line">        let right &#x3D; arr.slice(mid,len);</span><br><span class="line">        let l &#x3D;mergeSort(left);</span><br><span class="line">        let r &#x3D; mergeSort(right);</span><br><span class="line">        return merge(l,r)</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line">    function merge(left,right)&#123;</span><br><span class="line">        let result &#x3D; [];</span><br><span class="line">        while(left.length &amp;&amp; right.length)&#123;</span><br><span class="line">            if(left[0] &lt;&#x3D; right[0])&#123;</span><br><span class="line">                result.push(left.shift())</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                result.push(right.shift())</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        while(left.length)&#123;</span><br><span class="line">            result.push(left.shift())</span><br><span class="line">        &#125;;</span><br><span class="line">        while(right.length)&#123;</span><br><span class="line">            result.push(right.shift())</span><br><span class="line">        &#125;;</span><br><span class="line">        return result</span><br><span class="line">    &#125;;</span><br><span class="line">    let arr1 &#x3D; [2, 5, 1, 7, 8, 6];</span><br><span class="line">    console.log(mergeSort(arr1))</span><br></pre></td></tr></table></figure>
+<p>快速排序时间复杂度最差是O(nlogn),最好是O(nlogn)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/02/%E4%BA%B2%E7%88%B1%E7%9A%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" data-id="ckma91yzv00089wtja3m34anl" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-原型对象和继承" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/03/01/%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%BB%A7%E6%89%BF/" class="article-date">
@@ -127,7 +198,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/01/%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%BB%A7%E6%89%BF/" data-id="ckm9zjcmr002r58tj5v4s22km" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/01/%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%BB%A7%E6%89%BF/" data-id="ckma91z1900309wtjc5c0a2r5" class="article-share-link">分享</a>
       
       
       
@@ -178,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/01/%E5%89%91%E6%8C%87Offer32-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%883%EF%BC%89/" data-id="ckm9zjcls000l58tj9rfh6nqh" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/01/%E5%89%91%E6%8C%87Offer32-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%883%EF%BC%89/" data-id="ckma91z09000l9wtj51o2hpn5" class="article-share-link">分享</a>
       
       
       
@@ -229,7 +300,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/01/%E5%89%91%E6%8C%87Offer33-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97/" data-id="ckm9zjcly000p58tj2jy2dct1" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/01/%E5%89%91%E6%8C%87Offer33-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97/" data-id="ckma91z0c000o9wtj6grrh4xx" class="article-share-link">分享</a>
       
       
       
@@ -281,7 +352,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/28/%E5%8A%9B%E6%89%A3105-%E4%BB%8E%E5%89%8D%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckm9zjcm5001958tj3l6nggih" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/28/%E5%8A%9B%E6%89%A3105-%E4%BB%8E%E5%89%8D%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckma91z0m001c9wtjhgk4foyk" class="article-share-link">分享</a>
       
       
       
@@ -332,7 +403,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/28/%E5%8A%9B%E6%89%A3110-%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckm9zjcm9001d58tj375q2z44" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/28/%E5%8A%9B%E6%89%A3110-%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckma91z0p001h9wtj3ojsgsn2" class="article-share-link">分享</a>
       
       
       
@@ -381,7 +452,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/28/%E5%8A%9B%E6%89%A3896-%E5%8D%95%E8%B0%83%E6%95%B0%E5%88%97/" data-id="ckm9zjcmt002z58tj5gaw4q0h" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/28/%E5%8A%9B%E6%89%A3896-%E5%8D%95%E8%B0%83%E6%95%B0%E5%88%97/" data-id="ckma91z18002x9wtj7i5cbmoi" class="article-share-link">分享</a>
       
       
       
@@ -432,7 +503,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/27/226-%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckm9zjclb000258tjhwrya24q" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/27/226-%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckma91yzl00019wtj614n6y2h" class="article-share-link">分享</a>
       
       
       
@@ -481,7 +552,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/27/%E5%8A%9B%E6%89%A3101-%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckm9zjcm2001158tjcahcfvlp" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/27/%E5%8A%9B%E6%89%A3101-%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckma91z0i00159wtjf7450d04" class="article-share-link">分享</a>
       
       
       
@@ -531,57 +602,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/27/%E5%8A%9B%E6%89%A3395-%E8%87%B3%E5%B0%91%E6%9C%89K%E4%B8%AA%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/" data-id="ckm9zjcmg001x58tjfg024c8p" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣543-二叉树的直径" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/26/%E5%8A%9B%E6%89%A3543-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" class="article-date">
-  <time datetime="2021-02-26T09:02:29.000Z" itemprop="datePublished">2021-02-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/26/%E5%8A%9B%E6%89%A3543-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/">力扣543-二叉树的直径</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/diameter-of-binary-tree/">力扣543-二叉树的直径</a></p>
-<p>给定一棵二叉树，你需要计算它的直径长度。一棵二叉树的直径长度是任意两个结点路径长度中的最大值。这条路径可能穿过也可能不穿过根结点。</p>
-<p>例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    1</span><br><span class="line">   &#x2F; \</span><br><span class="line">  2   3</span><br><span class="line"> &#x2F; \     </span><br><span class="line">4   5      </span><br></pre></td></tr></table></figure>
-<p>返回3, 它的长度是路径 [4,2,1,3] 或者 [5,2,1,3]</p>
-<p>代码及详细注释如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val) &#123;</span><br><span class="line"> *     this.val &#x3D; val;</span><br><span class="line"> *     this.left &#x3D; this.right &#x3D; null;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var diameterOfBinaryTree &#x3D; function(root) &#123;</span><br><span class="line">    &#x2F;&#x2F;求直径（即求路径长度的最大值）等效于求路径经过节点数的最大值减一。</span><br><span class="line">    &#x2F;&#x2F;而任意一条路径均可以被看作由某个节点为起点，从其左儿子和右儿子向下遍历的路径拼接得到(左儿子和右儿子的深度之和)。</span><br><span class="line">    &#x2F;&#x2F;因为可以不经过根节点，用max保存最大值</span><br><span class="line">    let max &#x3D; 0;</span><br><span class="line">    let dfs &#x3D; function(node)&#123;</span><br><span class="line">        if(!node)&#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;获得左子树的深度</span><br><span class="line">        let left &#x3D; dfs(node.left);</span><br><span class="line">        &#x2F;&#x2F;获得右子树的深度</span><br><span class="line">        let right &#x3D; dfs(node.right);</span><br><span class="line">        &#x2F;&#x2F;左子树深度 + 右子树深度便是这株二叉树从最左侧叶子节点到最右侧叶子节点的最长路径</span><br><span class="line">        max &#x3D; Math.max(max,left + right)</span><br><span class="line">        &#x2F;&#x2F;已知根节点的左右子树的深度，则，左右子树深度的最大值 + 1，便是以根节点为数的最大深度</span><br><span class="line">        return Math.max(left,right) + 1;</span><br><span class="line">    &#125;;</span><br><span class="line">    dfs(root);</span><br><span class="line">    return max</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/26/%E5%8A%9B%E6%89%A3543-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" data-id="ckm9zjcmq002p58tj7xwugzin" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/27/%E5%8A%9B%E6%89%A3395-%E8%87%B3%E5%B0%91%E6%9C%89K%E4%B8%AA%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/" data-id="ckma91z1000299wtje2x85tut" class="article-share-link">分享</a>
       
       
       
@@ -596,7 +617,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">下一页&amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">下一页&amp;raquo;</a>
   </nav>
 </section>
            
@@ -615,6 +636,10 @@
       <ul>
         
           <li>
+            <a href="/2021/03/15/%E5%8A%9B%E6%89%A3148-%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8/">力扣148--排序链表</a>
+          </li>
+        
+          <li>
             <a href="/2021/03/15/%E5%8A%9B%E6%89%A354-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/">力扣54-螺旋矩阵</a>
           </li>
         
@@ -628,10 +653,6 @@
         
           <li>
             <a href="/2021/03/12/offer25-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/">offer25--合并两个排序的链表</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/12/%E5%89%91%E6%8C%8718-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/">剑指18--删除链表的节点</a>
           </li>
         
       </ul>
