@@ -66,6 +66,63 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣46-全排列" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/19/%E5%8A%9B%E6%89%A346-%E5%85%A8%E6%8E%92%E5%88%97/" class="article-date">
+  <time datetime="2021-02-19T09:11:28.000Z" itemprop="datePublished">2021-02-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/19/%E5%8A%9B%E6%89%A346-%E5%85%A8%E6%8E%92%E5%88%97/">力扣46-全排列</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>回溯法的本质是深度优先搜索，解题包括四方面：</p>
+<ol>
+<li>设置全局变量res，保存结果</li>
+<li>设置递归函数的参数</li>
+<li>判断完成条件。搜索过程包括两方面，搜索成功返回结果和搜索失败返回上一步</li>
+<li>递归过程</li>
+</ol>
+<p>回溯法模板：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">let res &#x3D; [];   &#x2F;&#x2F;存储结果</span><br><span class="line"></span><br><span class="line">function backtrack(path,condition,...)&#123;</span><br><span class="line">    if(judge(condition))&#123;  &#x2F;&#x2F;满足条件</span><br><span class="line">        res.push(path);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    for(let select of selectList)&#123;</span><br><span class="line">        if(剪枝条件) break;</span><br><span class="line">        path.push(select);  &#x2F;&#x2F; 走某条路</span><br><span class="line">        backtrack(path,newSelectList);</span><br><span class="line">        path.pop(); &#x2F;&#x2F;返回上一个十字路口</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>本题代码及注释：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @return &#123;number[][]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var permute &#x3D; function(nums) &#123;</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    let len &#x3D; nums.length;</span><br><span class="line">    let back &#x3D; function(path)&#123;</span><br><span class="line">        if(path.length &#x3D;&#x3D; len)&#123;</span><br><span class="line">            res.push(path.slice())</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;不需要限制下一次选择的起点，这样下一次就可以选到本次选择同层左边的数</span><br><span class="line">        &#x2F;&#x2F;即i&#x3D;0,注意不同题的区别</span><br><span class="line">        for(let i &#x3D; 0;i &lt; len;i++)&#123;</span><br><span class="line">            &#x2F;&#x2F;每次重新进入时，要判断里面没有，这句话是精髓</span><br><span class="line">            if(path.indexOf(nums[i]) &#x3D;&#x3D; -1)&#123;</span><br><span class="line">                </span><br><span class="line">                path.push(nums[i]);</span><br><span class="line">                back(path);</span><br><span class="line">                path.pop()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    back([]);</span><br><span class="line">    return res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A346-%E5%85%A8%E6%8E%92%E5%88%97/" data-id="ckm9zjcmi002258tj8jvp6l87" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣-1004-最大连续1的个数3" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/" class="article-date">
@@ -102,7 +159,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/" data-id="ckm7582or000tkwtj6hxhf8zp" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/" data-id="ckm9zjclz000t58tj5gu2azz3" class="article-share-link">分享</a>
       
       
       
@@ -152,7 +209,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" data-id="ckm7582pf002ekwtj83uvgxwp" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" data-id="ckm9zjcmn002c58tjfdbqfdse" class="article-share-link">分享</a>
       
       
       
@@ -201,7 +258,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/" data-id="ckm7582pn0030kwtj2meu7id9" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/" data-id="ckm9zjcmq002m58tj16y7elil" class="article-share-link">分享</a>
       
       
       
@@ -271,7 +328,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/" data-id="ckm7582o80004kwtj0k3w6bvg" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/" data-id="ckm9zjcld000458tj712xcatr" class="article-share-link">分享</a>
       
       
       
@@ -352,7 +409,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/16/photo/" data-id="ckm7582o90006kwtj9a9077d6" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/16/photo/" data-id="ckm9zjclf000658tjbvu6cy1r" class="article-share-link">分享</a>
       
       
       
@@ -401,7 +458,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" data-id="ckm7582pe002bkwtj4m4qao5q" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" data-id="ckm9zjcmk002758tjd5i53xjb" class="article-share-link">分享</a>
       
       
       
@@ -450,7 +507,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A3567-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="ckm7582pj002nkwtj60sqced1" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A3567-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="ckm9zjcmp002k58tj6zg7623d" class="article-share-link">分享</a>
       
       
       
@@ -504,7 +561,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/14/%E5%8A%9B%E6%89%A3240/" data-id="ckm7582p8001wkwtj3nsg82my" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/14/%E5%8A%9B%E6%89%A3240/" data-id="ckm9zjcmf001v58tj1hguf6ky" class="article-share-link">分享</a>
       
       
       
@@ -558,7 +615,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="ckm7582pl002skwtjad4b2p8c" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="ckm9zjcms002w58tj474y17hd" class="article-share-link">分享</a>
       
       
       
@@ -592,6 +649,10 @@
       <ul>
         
           <li>
+            <a href="/2021/03/15/%E5%8A%9B%E6%89%A354-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/">力扣54-螺旋矩阵</a>
+          </li>
+        
+          <li>
             <a href="/2021/03/13/%E5%89%91%E6%8C%8736-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/">剑指36--二叉搜索树与双向链表</a>
           </li>
         
@@ -605,10 +666,6 @@
         
           <li>
             <a href="/2021/03/12/%E5%89%91%E6%8C%8718-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/">剑指18--删除链表的节点</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/12/%E5%8A%9B%E6%89%A3206-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">力扣206--反转链表</a>
           </li>
         
       </ul>

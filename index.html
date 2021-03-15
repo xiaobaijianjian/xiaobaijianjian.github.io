@@ -66,6 +66,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣54-螺旋矩阵" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/15/%E5%8A%9B%E6%89%A354-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/" class="article-date">
+  <time datetime="2021-03-15T01:26:43.000Z" itemprop="datePublished">2021-03-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/">其他</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/15/%E5%8A%9B%E6%89%A354-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/">力扣54-螺旋矩阵</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/spiral-matrix/">力扣54-螺旋矩阵</a></p>
+<p>给你一个 m 行 n 列的矩阵 matrix ，请按照 顺时针螺旋顺序 ，返回矩阵中的所有元素。</p>
+<p>示例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：matrix &#x3D; [[1,2,3],[4,5,6],[7,8,9]]</span><br><span class="line">输出：[1,2,3,6,9,8,7,4,5]</span><br></pre></td></tr></table></figure>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[][]&#125; matrix</span><br><span class="line"> * @return &#123;number[]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var spiralOrder &#x3D; function(matrix) &#123;</span><br><span class="line">    &#x2F;&#x2F;层层遍历</span><br><span class="line">   if(!matrix.length || !matrix[0].length)&#123;</span><br><span class="line">       return [];</span><br><span class="line">   &#125;;</span><br><span class="line">   let rows &#x3D; matrix.length;</span><br><span class="line">   let cols &#x3D; matrix[0].length;</span><br><span class="line">   let left &#x3D; 0;right &#x3D; cols-1;</span><br><span class="line">   let top &#x3D; 0;</span><br><span class="line">   let bottom &#x3D; rows-1;</span><br><span class="line">   let order &#x3D; [];</span><br><span class="line">   while(top &lt;&#x3D; bottom &amp;&amp; left &lt;&#x3D; right)&#123;</span><br><span class="line">       for(let i &#x3D; left;i &lt;&#x3D;right;i++)&#123;</span><br><span class="line">           order.push(matrix[top][i])</span><br><span class="line">       &#125;;</span><br><span class="line">       for(let i &#x3D; top+1;i &lt;&#x3D; bottom;i++)&#123;</span><br><span class="line">           order.push(matrix[i][right])</span><br><span class="line">       &#125;;</span><br><span class="line">       if(top &lt; bottom &amp;&amp; left &lt; right)&#123;</span><br><span class="line">           for(let i &#x3D; right-1;i &gt;&#x3D;left;i--)&#123;</span><br><span class="line">               order.push(matrix[bottom][i])</span><br><span class="line">           &#125;;</span><br><span class="line">           for(let i &#x3D; bottom-1;i &gt; top;i--)&#123;</span><br><span class="line">               order.push(matrix[i][left])</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;;</span><br><span class="line">       [left,right,top,bottom] &#x3D; [left+1,right-1,top+1,bottom-1]</span><br><span class="line">   &#125;;</span><br><span class="line">   return order</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/15/%E5%8A%9B%E6%89%A354-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/" data-id="ckm9zjcmi002058tj2w6g05uh" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-剑指36-二叉搜索树与双向链表" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/03/13/%E5%89%91%E6%8C%8736-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/" class="article-date">
@@ -97,11 +146,11 @@
         <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-sou-suo-shu-yu-shuang-xiang-lian-biao-lcof/">剑指36–二叉搜索树与双向链表</a></p>
 <p>输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的循环双向链表。要求不能创建任何新的节点，只能调整树中节点指针的指向。</p>
 <p>代码及注释:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * &#x2F;&#x2F; Definition for a Node.</span><br><span class="line"> * function Node(val,left,right) &#123;</span><br><span class="line"> *    this.val &#x3D; val;</span><br><span class="line"> *    this.left &#x3D; left;</span><br><span class="line"> *    this.right &#x3D; right;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;Node&#125; root</span><br><span class="line"> * @return &#123;Node&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var treeToDoublyList &#x3D; function(root) &#123;</span><br><span class="line">&#x2F;&#x2F;本质是在中序的基础上进行双向链表的处理</span><br><span class="line">    if(!root)&#123;</span><br><span class="line">        return []</span><br><span class="line">    &#125;;</span><br><span class="line">    let pre &#x3D; null;</span><br><span class="line">    let head &#x3D; null;</span><br><span class="line">    let stack &#x3D; [];</span><br><span class="line">    while(root || stack.length)&#123;</span><br><span class="line">        while(root)&#123;</span><br><span class="line">            stack.push(root);</span><br><span class="line">            root &#x3D; root.left;</span><br><span class="line">        &#125;;</span><br><span class="line">        let top &#x3D; stack.pop();</span><br><span class="line">        if(!pre)&#123;</span><br><span class="line">            head &#x3D; top;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            pre.right &#x3D; top</span><br><span class="line">        &#125;;</span><br><span class="line">        top.left &#x3D;pre;</span><br><span class="line">        pre &#x3D; top;</span><br><span class="line"></span><br><span class="line">        root &#x3D; top.right;</span><br><span class="line">    &#125;;</span><br><span class="line">    head.left &#x3D; pre;</span><br><span class="line">    pre.right &#x3D; head;</span><br><span class="line">    return head</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * &#x2F;&#x2F; Definition for a Node.</span><br><span class="line"> * function Node(val,left,right) &#123;</span><br><span class="line"> *    this.val &#x3D; val;</span><br><span class="line"> *    this.left &#x3D; left;</span><br><span class="line"> *    this.right &#x3D; right;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;Node&#125; root</span><br><span class="line"> * @return &#123;Node&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var treeToDoublyList &#x3D; function(root) &#123;</span><br><span class="line">&#x2F;&#x2F;本质是在中序的基础上进行双向链表的处理</span><br><span class="line">    if(!root)&#123;</span><br><span class="line">        return </span><br><span class="line">    &#125;;</span><br><span class="line">    let pre &#x3D; null;</span><br><span class="line">    let head &#x3D; null;</span><br><span class="line">    let stack &#x3D; [];</span><br><span class="line">    while(root || stack.length)&#123;</span><br><span class="line">        while(root)&#123;</span><br><span class="line">            stack.push(root);</span><br><span class="line">            root &#x3D; root.left;</span><br><span class="line">        &#125;;</span><br><span class="line">        let top &#x3D; stack.pop();</span><br><span class="line">        if(!pre)&#123;</span><br><span class="line">            head &#x3D; top;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            pre.right &#x3D; top</span><br><span class="line">        &#125;;</span><br><span class="line">        top.left &#x3D;pre;</span><br><span class="line">        pre &#x3D; top;</span><br><span class="line"></span><br><span class="line">        root &#x3D; top.right;</span><br><span class="line">    &#125;;</span><br><span class="line">    head.left &#x3D; pre;</span><br><span class="line">    pre.right &#x3D; head;</span><br><span class="line">    return head</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/13/%E5%89%91%E6%8C%8736-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/" data-id="ckm7582oh000ikwtjbhpf0ue6" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/13/%E5%89%91%E6%8C%8736-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/" data-id="ckm9zjclq000i58tjgg9i4r68" class="article-share-link">分享</a>
       
       
       
@@ -151,7 +200,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/12/%E5%89%91%E6%8C%8722-%E9%93%BE%E8%A1%A8%E4%B8%AD%E5%80%92%E6%95%B0%E7%AC%ACk%E4%B8%AA%E8%8A%82%E7%82%B9/" data-id="ckm7582oe000ekwtj6ikoheip" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/12/%E5%89%91%E6%8C%8722-%E9%93%BE%E8%A1%A8%E4%B8%AD%E5%80%92%E6%95%B0%E7%AC%ACk%E4%B8%AA%E8%8A%82%E7%82%B9/" data-id="ckm9zjclk000c58tj44hpeoii" class="article-share-link">分享</a>
       
       
       
@@ -200,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/12/offer25-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/" data-id="ckm7582o90005kwtj2o4vh4vp" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/12/offer25-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/" data-id="ckm9zjcle000558tjd0wz8ro4" class="article-share-link">分享</a>
       
       
       
@@ -248,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/12/%E5%89%91%E6%8C%8718-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/" data-id="ckm7582od000ckwtj90lee2b4" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/12/%E5%89%91%E6%8C%8718-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/" data-id="ckm9zjclo000e58tj6euv53cg" class="article-share-link">分享</a>
       
       
       
@@ -296,7 +345,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/12/%E5%8A%9B%E6%89%A3206-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" data-id="ckm7582p6001rkwtj1v85bpbk" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/12/%E5%8A%9B%E6%89%A3206-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" data-id="ckm9zjcme001q58tj5ug47iho" class="article-share-link">分享</a>
       
       
       
@@ -345,7 +394,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/12/%E5%8A%9B%E6%89%A3264-%E4%B8%91%E6%95%B0/" data-id="ckm7582p9001zkwtjg2q82eqf" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/12/%E5%8A%9B%E6%89%A3264-%E4%B8%91%E6%95%B0/" data-id="ckm9zjcmf001s58tjgg0x0oig" class="article-share-link">分享</a>
       
       
       
@@ -395,7 +444,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/11/%E5%8A%9B%E6%89%A320-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" data-id="ckm7582p7001ukwtj6g7234ax" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/11/%E5%8A%9B%E6%89%A320-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" data-id="ckm9zjcmc001l58tjasdp0bnb" class="article-share-link">分享</a>
       
       
       
@@ -445,7 +494,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/11/%E5%8A%9B%E6%89%A3-227-%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8/" data-id="ckm7582or000vkwtj2u5f1lx9" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/11/%E5%8A%9B%E6%89%A3-227-%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8/" data-id="ckm9zjcly000r58tj4discclg" class="article-share-link">分享</a>
       
       
       
@@ -494,58 +543,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/10/%E5%89%91%E6%8C%8753-0-n-1%E4%B8%AD%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0/" data-id="ckm7582oi000jkwtjhr2recpa" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣134-加油站" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/03/10/%E5%8A%9B%E6%89%A3134-%E5%8A%A0%E6%B2%B9%E7%AB%99/" class="article-date">
-  <time datetime="2021-03-10T02:02:52.000Z" itemprop="datePublished">2021-03-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/10/%E5%8A%9B%E6%89%A3134-%E5%8A%A0%E6%B2%B9%E7%AB%99/">力扣134--加油站</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/gas-station/">力扣134–加油站</a></p>
-<p>在一条环路上有 N 个加油站，其中第 i 个加油站有汽油 gas[i] 升。</p>
-<p>你有一辆油箱容量无限的的汽车，从第 i 个加油站开往第 i+1 个加油站需要消耗汽油 cost[i] 升。你从其中的一个加油站出发，开始时油箱为空。</p>
-<p>如果你可以绕环路行驶一周，则返回出发时加油站的编号，否则返回 -1</p>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">输入: </span><br><span class="line">gas  &#x3D; [1,2,3,4,5]</span><br><span class="line">cost &#x3D; [3,4,5,1,2]</span><br><span class="line"></span><br><span class="line">输出: 3</span><br><span class="line"></span><br><span class="line">解释:</span><br><span class="line">从 3 号加油站(索引为 3 处)出发，可获得 4 升汽油。此时油箱有 &#x3D; 0 + 4 &#x3D; 4 升汽油</span><br><span class="line">开往 4 号加油站，此时油箱有 4 - 1 + 5 &#x3D; 8 升汽油</span><br><span class="line">开往 0 号加油站，此时油箱有 8 - 2 + 1 &#x3D; 7 升汽油</span><br><span class="line">开往 1 号加油站，此时油箱有 7 - 3 + 2 &#x3D; 6 升汽油</span><br><span class="line">开往 2 号加油站，此时油箱有 6 - 4 + 3 &#x3D; 5 升汽油</span><br><span class="line">开往 3 号加油站，你需要消耗 5 升汽油，正好足够你返回到 3 号加油站。</span><br><span class="line">因此，3 可为起始索引。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; gas</span><br><span class="line"> * @param &#123;number[]&#125; cost</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var canCompleteCircuit &#x3D; function(gas, cost) &#123;</span><br><span class="line">    let start &#x3D; 0;</span><br><span class="line">    let curSum &#x3D; 0;</span><br><span class="line">    let total &#x3D; 0;</span><br><span class="line">    for(let i &#x3D; 0;i &lt; gas.length;i++)&#123;</span><br><span class="line">        total +&#x3D; gas[i] - cost[i];</span><br><span class="line">        if(curSum &lt; 0)&#123;</span><br><span class="line">            curSum &#x3D; gas[i] - cost[i];</span><br><span class="line">            start &#x3D; i;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            curSum +&#x3D; gas[i] - cost[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return total &gt;&#x3D; 0 ? start :-1</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/10/%E5%8A%9B%E6%89%A3134-%E5%8A%A0%E6%B2%B9%E7%AB%99/" data-id="ckm7582p4001mkwtjepz31btu" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/10/%E5%89%91%E6%8C%8753-0-n-1%E4%B8%AD%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0/" data-id="ckm9zjclr000j58tjcjejgrco" class="article-share-link">分享</a>
       
       
       
@@ -572,7 +570,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title categories">分类</h3>
     <div class="widget" id="categories">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/ES6/">ES6</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%87%BD%E6%95%B0/">函数</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%AF%B9%E8%B1%A1/">对象</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98/">异步问题</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">排序算法</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a><span class="category-list-count">40</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/">其他</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%88%86%E5%86%B6%E9%80%92%E5%BD%92/">分冶递归</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/">栈和队列</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E9%93%BE%E8%A1%A8/">链表</a><span class="category-list-count">5</span></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/ES6/">ES6</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%87%BD%E6%95%B0/">函数</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%AF%B9%E8%B1%A1/">对象</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98/">异步问题</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">排序算法</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a><span class="category-list-count">41</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/">其他</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%88%86%E5%86%B6%E9%80%92%E5%BD%92/">分冶递归</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/">栈和队列</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E9%93%BE%E8%A1%A8/">链表</a><span class="category-list-count">5</span></li></ul></li></ul>
     </div>
   </div>
 
@@ -584,6 +582,10 @@
     <h3 class="widget-title recent-posts">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/03/15/%E5%8A%9B%E6%89%A354-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/">力扣54-螺旋矩阵</a>
+          </li>
         
           <li>
             <a href="/2021/03/13/%E5%89%91%E6%8C%8736-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/">剑指36--二叉搜索树与双向链表</a>
@@ -601,10 +603,6 @@
             <a href="/2021/03/12/%E5%89%91%E6%8C%8718-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/">剑指18--删除链表的节点</a>
           </li>
         
-          <li>
-            <a href="/2021/03/12/%E5%8A%9B%E6%89%A3206-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/">力扣206--反转链表</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -614,7 +612,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title archive">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">27</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">27</span></li></ul>
     </div>
   </div>
 
