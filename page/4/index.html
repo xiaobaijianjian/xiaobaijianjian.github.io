@@ -66,6 +66,106 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣896-单调数列" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/28/%E5%8A%9B%E6%89%A3896-%E5%8D%95%E8%B0%83%E6%95%B0%E5%88%97/" class="article-date">
+  <time datetime="2021-02-28T03:19:46.000Z" itemprop="datePublished">2021-02-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/28/%E5%8A%9B%E6%89%A3896-%E5%8D%95%E8%B0%83%E6%95%B0%E5%88%97/">力扣896-单调数列</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/monotonic-array/">力扣896-单调数列</a></p>
+<p>如果数组是单调递增或单调递减的，那么它是单调的。如果对于所有 i &lt;= j，A[i] &lt;= A[j]，那么数组 A 是单调递增的。 如果对于所有 i &lt;= j，A[i]&gt; = A[j]，那么数组 A 是单调递减的。当给定的数组 A 是单调数组时返回 true，否则返回 false。</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：[6,5,4,4]</span><br><span class="line">输出：true</span><br><span class="line"></span><br><span class="line">输入：[1,3,2]</span><br><span class="line">输出：false</span><br></pre></td></tr></table></figure>
+<p>代码及注释：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; A</span><br><span class="line"> * @return &#123;boolean&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var isMonotonic &#x3D; function(A) &#123;</span><br><span class="line">    let len &#x3D; A.length;</span><br><span class="line">    &#x2F;&#x2F;设立两个标志位</span><br><span class="line">    &#x2F;&#x2F;inc为递增，low为递减</span><br><span class="line">    &#x2F;&#x2F;初始时两个都是true，一旦出现不同就变为相反</span><br><span class="line">    &#x2F;&#x2F;如果是递增或递减至少会有一个true</span><br><span class="line">    let inc &#x3D; true;</span><br><span class="line">    let dec &#x3D; true;</span><br><span class="line">    for(let i &#x3D; 0;i &lt; len-1;i++)&#123;</span><br><span class="line">        if(A[i] &gt; A[i+1])&#123;</span><br><span class="line">            inc &#x3D; false</span><br><span class="line">        &#125;;</span><br><span class="line">        if(A[i] &lt; A[i+1])&#123;</span><br><span class="line">            dec &#x3D; false</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return inc || dec</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/28/%E5%8A%9B%E6%89%A3896-%E5%8D%95%E8%B0%83%E6%95%B0%E5%88%97/" data-id="ckmcvhbo8004w1wtj6azxcf0e" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-226-翻转二叉树" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/27/226-%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/" class="article-date">
+  <time datetime="2021-02-27T09:50:14.000Z" itemprop="datePublished">2021-02-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/27/226-%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/">226-翻转二叉树</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/invert-binary-tree/">226-翻转二叉树</a></p>
+<p>示例：</p>
+<p>输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">     4</span><br><span class="line">   &#x2F;   \</span><br><span class="line">  2     7</span><br><span class="line"> &#x2F; \   &#x2F; \</span><br><span class="line">1   3 6   9</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">     4</span><br><span class="line">   &#x2F;   \</span><br><span class="line">  7     2</span><br><span class="line"> &#x2F; \   &#x2F; \</span><br><span class="line">9   6 3   1</span><br></pre></td></tr></table></figure>
+<p>注释及代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val, left, right) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.left &#x3D; (left&#x3D;&#x3D;&#x3D;undefined ? null : left)</span><br><span class="line"> *     this.right &#x3D; (right&#x3D;&#x3D;&#x3D;undefined ? null : right)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @return &#123;TreeNode&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var invertTree &#x3D; function(root) &#123;</span><br><span class="line">    if(!root)&#123;</span><br><span class="line">        return null</span><br><span class="line">    &#125;;</span><br><span class="line">    &#x2F;&#x2F;自底向上翻转</span><br><span class="line">    &#x2F;&#x2F;每个根节点要翻转的时候，都要先翻转左右子节点</span><br><span class="line">    &#x2F;&#x2F;最后叶节点互换</span><br><span class="line">    invertTree(root.left);</span><br><span class="line">    invertTree(root.right);</span><br><span class="line">    let temp &#x3D; root.left;</span><br><span class="line">    root.left &#x3D; root.right;</span><br><span class="line">    root.right &#x3D; temp;</span><br><span class="line">    return root</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/27/226-%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckmcvhblg00021wtj4r6e5fe2" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣101-对称二叉树" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/02/27/%E5%8A%9B%E6%89%A3101-%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" class="article-date">
@@ -100,10 +200,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    1</span><br><span class="line">   &#x2F; \</span><br><span class="line">  2   2</span><br><span class="line"> &#x2F; \ &#x2F; \</span><br><span class="line">3  4 4  3</span><br></pre></td></tr></table></figure>
 <p>代码及注释如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val, left, right) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.left &#x3D; (left&#x3D;&#x3D;&#x3D;undefined ? null : left)</span><br><span class="line"> *     this.right &#x3D; (right&#x3D;&#x3D;&#x3D;undefined ? null : right)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @return &#123;boolean&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var isSymmetric &#x3D; function(root) &#123;</span><br><span class="line">    &#x2F;&#x2F;镜像对称的条件：</span><br><span class="line">    &#x2F;&#x2F;1 根节点的值相同</span><br><span class="line">    &#x2F;&#x2F;2 一个树的右子树，和另一个树的左子树镜像对称。</span><br><span class="line">    if(root &#x3D;&#x3D; null)&#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;;</span><br><span class="line">    const dfs &#x3D; function(left,right)&#123;</span><br><span class="line">        if(left &#x3D;&#x3D; null &amp;&amp; right &#x3D;&#x3D; null)&#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;;</span><br><span class="line">        if(left &amp;&amp; right)&#123;</span><br><span class="line">            if(left.val &#x3D;&#x3D; right.val &amp;&amp; dfs(left.left,right.right) &amp;&amp; dfs(left.right,right.left))&#123;</span><br><span class="line">                return true</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;如果左右子树只有一个存在，肯定不对称</span><br><span class="line">        return false;</span><br><span class="line">    &#125;;</span><br><span class="line">    return dfs(root.left,root.right)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>非递归解法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val, left, right) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.left &#x3D; (left&#x3D;&#x3D;&#x3D;undefined ? null : left)</span><br><span class="line"> *     this.right &#x3D; (right&#x3D;&#x3D;&#x3D;undefined ? null : right)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @return &#123;boolean&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var isSymmetric &#x3D; function(root) &#123;</span><br><span class="line">    &#x2F;&#x2F;镜像对称的条件：</span><br><span class="line">    &#x2F;&#x2F;1 根节点的值相同</span><br><span class="line">    &#x2F;&#x2F;2 一个树的右子树，和另一个树的左子树镜像对称。</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;非递归</span><br><span class="line">    &#x2F;&#x2F;模拟栈，左、右子树先入栈然后再出栈，比较是否相同</span><br><span class="line">    if(!root)&#123;</span><br><span class="line">        return true</span><br><span class="line">    &#125;;</span><br><span class="line">    let stack &#x3D; [root.left,root.right];</span><br><span class="line">    while(stack.length)&#123;</span><br><span class="line">        let right &#x3D; stack.pop();</span><br><span class="line">        let left &#x3D; stack.pop();</span><br><span class="line">        </span><br><span class="line">        if(left &amp;&amp; right)&#123;</span><br><span class="line">            if(left.val !&#x3D;&#x3D; right.val)&#123;</span><br><span class="line">                return false</span><br><span class="line">            &#125;;</span><br><span class="line">            stack.push(left.left);</span><br><span class="line">            stack.push(right.right);</span><br><span class="line">            stack.push(left.right);</span><br><span class="line">            stack.push(right.left)</span><br><span class="line">        &#125;else if(left || right)&#123;</span><br><span class="line">            return false</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;;</span><br><span class="line">    return true</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/27/%E5%8A%9B%E6%89%A3101-%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckmbgecjd00135ktj07bqfg0h" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/27/%E5%8A%9B%E6%89%A3101-%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckmcvhbmp001e1wtjf7dtc5j2" class="article-share-link">分享</a>
       
       
       
@@ -153,7 +255,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/27/%E5%8A%9B%E6%89%A3395-%E8%87%B3%E5%B0%91%E6%9C%89K%E4%B8%AA%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/" data-id="ckmbgecjx002d5ktj1rk8gvma" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/27/%E5%8A%9B%E6%89%A3395-%E8%87%B3%E5%B0%91%E6%9C%89K%E4%B8%AA%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/" data-id="ckmcvhbnh002k1wtj3ohrfnve" class="article-share-link">分享</a>
       
       
       
@@ -203,7 +305,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/26/%E5%8A%9B%E6%89%A3543-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" data-id="ckmbgeck2002q5ktjdk49d3fh" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/26/%E5%8A%9B%E6%89%A3543-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" data-id="ckmcvhbo6004v1wtj86cv15ys" class="article-share-link">分享</a>
       
       
       
@@ -252,7 +354,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/26/%E5%8A%9B%E6%89%A3-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" data-id="ckmbgecja000y5ktjalw7ba6x" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/26/%E5%8A%9B%E6%89%A3-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" data-id="ckmcvhbmd000t1wtjgtnlgqyk" class="article-share-link">分享</a>
       
       
       
@@ -299,7 +401,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/25/%E5%8A%9B%E6%89%A3230-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/" data-id="ckmbgecjx002b5ktjev0rbgdb" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/25/%E5%8A%9B%E6%89%A3230-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/" data-id="ckmcvhbni002m1wtj83ba18b7" class="article-share-link">分享</a>
       
       
       
@@ -351,7 +453,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/25/%E5%8A%9B%E6%89%A3104-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" data-id="ckmbgecjg001a5ktjc60gbk1e" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/25/%E5%8A%9B%E6%89%A3104-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" data-id="ckmcvhbml001b1wtj30pq1s31" class="article-share-link">分享</a>
       
       
       
@@ -420,7 +522,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/24/%E5%8A%9B%E6%89%A3-%E5%89%8D%E3%80%81%E4%B8%AD%E3%80%81%E5%90%8E%E3%80%81%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/" data-id="ckmbgecja000v5ktjgbf11o5e" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/24/%E5%8A%9B%E6%89%A3-%E5%89%8D%E3%80%81%E4%B8%AD%E3%80%81%E5%90%8E%E3%80%81%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/" data-id="ckmcvhbme000w1wtj09ulf0wk" class="article-share-link">分享</a>
       
       
       
@@ -510,111 +612,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/23/JS%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98%E5%AD%A6%E4%B9%A0/" data-id="ckmbgecim00025ktj6o65e0y6" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣1052-爱生气的书店老板" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/23/%E5%8A%9B%E6%89%A31052-%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/" class="article-date">
-  <time datetime="2021-02-23T03:33:45.000Z" itemprop="datePublished">2021-02-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/23/%E5%8A%9B%E6%89%A31052-%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/">力扣1052-爱生气的书店老板</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/grumpy-bookstore-owner/">力扣1052-爱生气的书店老板</a></p>
-<p>书店老板有一家店打算试营业 customers.length 分钟。每分钟都有一些顾客（customers[i]）会进入书店，所有这些顾客都会在那一分钟结束后离开。</p>
-<p>在某些时候，书店老板会生气。 如果书店老板在第 i 分钟生气，那么 grumpy[i] = 1，否则 grumpy[i] = 0。 当书店老板生气时，那一分钟的顾客就会不满意，不生气则他们是满意的。</p>
-<p>书店老板知道一个秘密技巧，能抑制自己的情绪，可以让自己连续 X 分钟不生气，但却只能使用一次。</p>
-<p>请你返回这一天营业下来，最多有多少客户能够感到满意的数量.</p>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：customers &#x3D; [1,0,1,2,1,1,7,5], grumpy &#x3D; [0,1,0,1,0,1,0,1], X &#x3D; 3</span><br><span class="line">输出：16</span><br><span class="line">解释：</span><br><span class="line">书店老板在最后 3 分钟保持冷静。</span><br><span class="line">感到满意的最大客户数量 &#x3D; 1 + 1 + 1 + 1 + 7 + 5 &#x3D; 16.</span><br></pre></td></tr></table></figure>
-<p>代码及注释如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; customers</span><br><span class="line"> * @param &#123;number[]&#125; grumpy</span><br><span class="line"> * @param &#123;number&#125; X</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var maxSatisfied &#x3D; function(customers, grumpy, X) &#123;</span><br><span class="line">    &#x2F;&#x2F;滑动窗口解决问题</span><br><span class="line">    let len &#x3D; customers.length;</span><br><span class="line">    let left &#x3D; 0;</span><br><span class="line">    let right &#x3D; 0;</span><br><span class="line">    let max &#x3D; 0;</span><br><span class="line">    &#x2F;&#x2F;存放正常营业时的结果</span><br><span class="line">    let result &#x3D; 0;</span><br><span class="line">    &#x2F;&#x2F;存放使用特殊技能时的结果</span><br><span class="line">    let temp &#x3D; 0;</span><br><span class="line">    &#x2F;&#x2F;不使用秘密技巧时，正常的营业额</span><br><span class="line">    &#x2F;&#x2F;注意if取反判断，</span><br><span class="line">    &#x2F;&#x2F;取反的时候如果值为0，null,undefined,&quot;&quot;、false或者 NaN等则进入判断语句</span><br><span class="line">    for(let i &#x3D; 0;i&lt;len;i++)&#123;</span><br><span class="line">        if(!grumpy[i])&#123;</span><br><span class="line">            result +&#x3D; customers[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    while(right &lt; len)&#123;</span><br><span class="line">        if(grumpy[right])&#123;</span><br><span class="line">            temp +&#x3D; customers[right]</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;滑动窗口长度大于指定数X时，左边右移</span><br><span class="line">        &#x2F;&#x2F;右移时需要判断当时的状态，要是生气状态，temp中的值需要减去当时的客人数</span><br><span class="line">        if(right-left+1 &gt; X)&#123;</span><br><span class="line">            if(grumpy[left])&#123;</span><br><span class="line">                temp -&#x3D; customers[left];</span><br><span class="line">            &#125;;</span><br><span class="line">            left++</span><br><span class="line">        &#125;;</span><br><span class="line">        max &#x3D; Math.max(max,temp)</span><br><span class="line">        right++;</span><br><span class="line">    &#125;;</span><br><span class="line">    return max + result</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/23/%E5%8A%9B%E6%89%A31052-%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/" data-id="ckmbgecjj001f5ktjhlbz7wth" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣1438-绝对差不超过限制的最长连续子数组" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/21/%E5%8A%9B%E6%89%A31438-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" class="article-date">
-  <time datetime="2021-02-21T02:48:10.000Z" itemprop="datePublished">2021-02-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/21/%E5%8A%9B%E6%89%A31438-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/">力扣1438-绝对差不超过限制的最长连续子数组</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/">力扣1438-绝对差不超过限制的最长连续子数组</a></p>
-<p>给你一个整数数组 nums ，和一个表示限制的整数 limit，请你返回最长连续子数组的长度，该子数组中的任意两个元素之间的绝对差必须小于或者等于 limit 。</p>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [8,2,4,7], limit &#x3D; 4</span><br><span class="line">输出：2 </span><br><span class="line">解释：所有子数组如下：</span><br><span class="line">[8] 最大绝对差 |8-8| &#x3D; 0 &lt;&#x3D; 4.</span><br><span class="line">[8,2] 最大绝对差 |8-2| &#x3D; 6 &gt; 4. </span><br><span class="line">[8,2,4] 最大绝对差 |8-2| &#x3D; 6 &gt; 4.</span><br><span class="line">[8,2,4,7] 最大绝对差 |8-2| &#x3D; 6 &gt; 4.</span><br><span class="line">[2] 最大绝对差 |2-2| &#x3D; 0 &lt;&#x3D; 4.</span><br><span class="line">[2,4] 最大绝对差 |2-4| &#x3D; 2 &lt;&#x3D; 4.</span><br><span class="line">[2,4,7] 最大绝对差 |2-7| &#x3D; 5 &gt; 4.</span><br><span class="line">[4] 最大绝对差 |4-4| &#x3D; 0 &lt;&#x3D; 4.</span><br><span class="line">[4,7] 最大绝对差 |4-7| &#x3D; 3 &lt;&#x3D; 4.</span><br><span class="line">[7] 最大绝对差 |7-7| &#x3D; 0 &lt;&#x3D; 4. </span><br><span class="line">因此，满足题意的最长子数组的长度为 2 。</span><br></pre></td></tr></table></figure>
-<p>解题思路：利用滑动窗口和单调队列</p>
-<p>代码及注释如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @param &#123;number&#125; limit</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var longestSubarray &#x3D; function(nums, limit) &#123;</span><br><span class="line">    &#x2F;&#x2F;滑动窗口+单调序列</span><br><span class="line">    let len &#x3D; nums.length;</span><br><span class="line">    let left &#x3D; 0;</span><br><span class="line">    let right &#x3D; 0;</span><br><span class="line">    let res &#x3D; 0;</span><br><span class="line">    let maxQueue &#x3D; [];</span><br><span class="line">    let minQueue &#x3D; [];</span><br><span class="line">    while(right &lt; len)&#123;</span><br><span class="line">        &#x2F;&#x2F;定义最大、最小序列，使得第一个值为最大&#x2F;最小值</span><br><span class="line">        while(maxQueue[maxQueue.length-1] &lt; nums[right])&#123;</span><br><span class="line">            maxQueue.pop()</span><br><span class="line">        &#125;;</span><br><span class="line">        while(minQueue[minQueue.length-1] &gt; nums[right])&#123;</span><br><span class="line">            minQueue.pop()</span><br><span class="line">        &#125;;</span><br><span class="line">        maxQueue.push(nums[right]);</span><br><span class="line">        minQueue.push(nums[right]);</span><br><span class="line">        &#x2F;&#x2F;当绝对值大于Limit时进行窗口收缩</span><br><span class="line">        while(maxQueue[0] - minQueue[0] &gt; limit)&#123;</span><br><span class="line">            &#x2F;&#x2F;确保最左边的值不为最大&#x2F;最小值进行收缩</span><br><span class="line">            if(nums[left] &#x3D;&#x3D;&#x3D; maxQueue[0])&#123;</span><br><span class="line">                maxQueue.shift()</span><br><span class="line">            &#125;;</span><br><span class="line">            if(nums[left] &#x3D;&#x3D;&#x3D; minQueue[0])&#123;</span><br><span class="line">                minQueue.shift()</span><br><span class="line">            &#125;</span><br><span class="line">            left++</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;记录每次的最大值</span><br><span class="line">        res &#x3D; Math.max(res,right-left+1)</span><br><span class="line">        right++;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    return res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/21/%E5%8A%9B%E6%89%A31438-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" data-id="ckmbgecjr001w5ktj7xwf67tp" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/23/JS%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98%E5%AD%A6%E4%B9%A0/" data-id="ckmcvhblc00011wtj3279gql2" class="article-share-link">分享</a>
       
       
       
@@ -648,6 +646,14 @@
       <ul>
         
           <li>
+            <a href="/2021/03/17/%E5%8A%9B%E6%89%A334-%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE/">力扣34-在排序数组中查找元素的第一个和最后一个位置</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/17/%E5%8A%9B%E6%89%A324-%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/">力扣24--两两交换链表中的节点</a>
+          </li>
+        
+          <li>
             <a href="/2021/03/16/%E5%8A%9B%E6%89%A319-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/">力扣19--删除链表的倒数第N个节点</a>
           </li>
         
@@ -657,14 +663,6 @@
         
           <li>
             <a href="/2021/03/15/%E5%8A%9B%E6%89%A3148-%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8/">力扣148--排序链表</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/15/%E5%8A%9B%E6%89%A354-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/">力扣54-螺旋矩阵</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/13/%E5%89%91%E6%8C%8736-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/">剑指36--二叉搜索树与双向链表</a>
           </li>
         
       </ul>
