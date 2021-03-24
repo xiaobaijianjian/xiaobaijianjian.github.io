@@ -66,6 +66,79 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-原型对象和继承" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/01/%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%BB%A7%E6%89%BF/" class="article-date">
+  <time datetime="2021-03-01T12:36:48.000Z" itemprop="datePublished">2021-03-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>►<a class="article-category-link" href="/categories/JavaScript/%E5%AF%B9%E8%B1%A1/">对象</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/01/%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%BB%A7%E6%89%BF/">原型对象和继承</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>结合自己的理解以及相关资料，将原型对象和继承的知识点记录如下：</p>
+<h2 id="原型对象"><a href="#原型对象" class="headerlink" title="原型对象"></a>原型对象</h2><ol>
+<li>原型对象、构造函数、实例之间的关系</li>
+</ol>
+<p>在 js 中我们是使用构造函数来新建一个对象的， 每一个构造函数的内部都有一个 prototype属性值， 它指向函数的原型对象，所以这个属性值是一个对象， 这个对象包含了可以由该构造函数的所有实例共享的属性和方法。因此在使用prototype属性之后，就可以将实例共享的属性和函数抽离出构造函数，将他们添加在prototype属性中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age)&#123;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">        this.age &#x3D; age</span><br><span class="line">    &#125;</span><br><span class="line">Person.prototype.weight &#x3D; function()&#123;</span><br><span class="line">        console.log(this.name)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>实例共享的weight()函数就被添加在了Person.prototype属性上。</p>
+<p>构造函数的prototype属性会指向它的原型对象，而通过构造函数可以生成具体的实例。三者之间的关系如何？</p>
+<p>每一个构造函数的内部都有一个 prototype属性，在默认的情况下，所有的原型对象都会增加一个constructor属性，指向prototype所在的函数，即构造函数。</p>
+<p>当我们通过new调用构造函数创建一个实例时，实例会具有一个__proto__属性，指向构造函数的原型对象，因此，__proto__属性可以看成是一个连接实例与构造函数的原型对象的桥梁。</p>
+<p>下面这段代码为构造函数的原型对象添加了3个属性，同时生成两个实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function Person()&#123;&#125;;</span><br><span class="line">Person.prototype.name &#x3D; &quot;xiaobai&quot;;</span><br><span class="line">Person.prototype.age &#x3D; 18;</span><br><span class="line">Person.prototype.sayname &#x3D; function()&#123;</span><br><span class="line">    console.log(this.name)</span><br><span class="line">&#125;;</span><br><span class="line">var person1 &#x3D; new Person();</span><br><span class="line">var person2 &#x3D; new Person();</span><br></pre></td></tr></table></figure>
+<p>以构造函数Person为例来看，构造函数原型对象和实例之间的关系<br><img src="/2021/03/01/%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%BB%A7%E6%89%BF/pic1.png"><br>2. 原型链<br>对象的每个实例都有__proto__属性，指向构造函数的原型对象，而原型对象上同样也是存在着一个__proto__属性指向上一级构造函数的原型对象，就这样层层往上，直到最上层某个原型对象为 Null.</p>
+<p>在JS中几乎所有的对象都有__proto__属性，由__proto__属性连接而成的链路构成了JS的原型链，原型链的顶端是Object.prototype，他的__proto__属性为Null</p>
+<p>原型链的特点:<br>1）由于原型链的存在，属性查找的过程不再是查找自身的原型对象，而是会沿着整个原型链一直向上，直到追溯到Object.prototype，再找不到就返回undefined</p>
+<p>由于上述特点，在生成自定义对象的实例时，也可以调用某些未在自定义构造函数上的函数，如toString()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function Person()&#123;&#125;;</span><br><span class="line">var p &#x3D; new Person();</span><br><span class="line">p.toString()</span><br><span class="line">&#x2F;&#x2F;[object object],实际调用的是Object.prototype.toString()函数</span><br></pre></td></tr></table></figure>
+<p>2)由于属性的查找会经历整个链路，因此查找的链路越长，对性能影响越大。</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>ES5继承方式有多种，包括原型链继承、构造继承、复制继承、组合继承、寄生组合继承等,各有优缺点。下面实现几种继承（ES5）</p>
+<ol>
+<li>原型链继承<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"> &#x2F;&#x2F;定义一个父类Animal</span><br><span class="line">function Animal(name) &#123;</span><br><span class="line">    &#x2F;&#x2F;属性</span><br><span class="line">    this.type &#x3D; &#39;Animal&#39;;</span><br><span class="line">    this.name &#x3D; name || &#39;动物&#39;;</span><br><span class="line">    &#x2F;&#x2F;实例函数</span><br><span class="line">    this.sleep &#x3D; function () &#123;</span><br><span class="line">        console.log(this.name + &#39;正在睡觉&#39;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;原型函数</span><br><span class="line">Animal.prototype.eat &#x3D; function (food) &#123;</span><br><span class="line">    console.log(this.name + &#39;正在吃&#39; + food)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; &#x2F;&#x2F;1 原型链继承</span><br><span class="line">&#x2F;&#x2F; &#x2F;&#x2F;主要思想：重写子类的prototype属性，将其指向父类的实例</span><br><span class="line">&#x2F;&#x2F; &#x2F;&#x2F;定义一个子类Cat,用于继承父类Animal,子类的实现如下；</span><br><span class="line">function Cat(name)&#123;</span><br><span class="line">    this.name &#x3D; name;</span><br><span class="line">&#125;;</span><br><span class="line">&#x2F;&#x2F;原型继承</span><br><span class="line">Cat.prototype &#x3D; new Animal();</span><br><span class="line">&#x2F;&#x2F;关键！将Cat的构造函数指向自身</span><br><span class="line">Cat.prototype.constructor &#x3D; Cat;</span><br><span class="line">var cat &#x3D; new Cat(&#39;小猫咪&#39;);</span><br><span class="line">console.log(cat.name);</span><br><span class="line">console.log(cat.type);</span><br><span class="line">console.log(cat.sleep());</span><br><span class="line">console.log(cat.eat(&#39;鱼干&#39;))</span><br><span class="line">console.log(cat instanceof Animal)</span><br></pre></td></tr></table></figure></li>
+<li>构造继承<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;构造继承</span><br><span class="line">function Cat(name)&#123;</span><br><span class="line">    &#x2F;&#x2F;关键，通过call()函数实现Animal的实例的属性和函数的继承</span><br><span class="line">    Animal.call(this);</span><br><span class="line">    this.name &#x3D; name || &#39;tony&#39;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line">var p1 &#x3D; new Cat(&#39;猫猫&#39;);</span><br><span class="line">console.log(p1.name);</span><br><span class="line">console.log(p1.type);</span><br><span class="line">console.log(p1.sleep());</span><br><span class="line">&#x2F;&#x2F;Uncaught TypeError: p1.eat is not a function</span><br><span class="line">console.log(p1.eat())</span><br><span class="line">&#x2F;&#x2F;可以发现，子类可以正常调用父类的实例函数，而无法调用父类原型对象上的函数</span><br></pre></td></tr></table></figure></li>
+<li>组合继承<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">组合继承</span><br><span class="line">组合继承的主要思想是组合了构造继承和原型继承两种方法，一方面在子类的构造函数中通过call()函数</span><br><span class="line">调用父类的构造函数，将父类的实例的属性和函数绑定到子类的this中；</span><br><span class="line">另一方面通过改变子类的prototype属性，继承父类的原型对象上的属性和函数</span><br><span class="line">function Cat(name) &#123;</span><br><span class="line">    &#x2F;&#x2F;通过构造函数继承实例的属性和函数</span><br><span class="line">    Animal.call(this);</span><br><span class="line">    this.name &#x3D; name || &#39;hania&#39;</span><br><span class="line">&#125;;</span><br><span class="line">&#x2F;&#x2F;通过原型继承原型对象上的属性和函数</span><br><span class="line">Cat.prototype &#x3D; new Animal();</span><br><span class="line">Cat.prototype.constructor &#x3D; Cat;</span><br><span class="line">var cat &#x3D; new Cat(&#39;shishi&#39;);</span><br><span class="line">console.log(cat.name);</span><br><span class="line">console.log(cat.sleep());</span><br><span class="line">console.log(cat.eat(&#39;好吃的&#39;))      </span><br></pre></td></tr></table></figure></li>
+<li>寄生式组合继承<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;组合继承的缺点是父类的实例属性回绑定两次</span><br><span class="line">&#x2F;&#x2F;针对上述缺点，有了寄生组合继承</span><br><span class="line">&#x2F;&#x2F;在进行子类的prototype属性的设置时，可以去掉父类实例的属性和函数</span><br><span class="line">&#x2F;&#x2F;子类</span><br><span class="line">function Cat(name) &#123;</span><br><span class="line">    Animal.call(this);</span><br><span class="line">    this.name &#x3D; name;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;设置任意的函数Super</span><br><span class="line">var Super &#x3D; function () &#123; &#125;;</span><br><span class="line">&#x2F;&#x2F;关键 Super()函数的原型指向父类Animal的原型，去掉父类的实例属性</span><br><span class="line">Super.prototype &#x3D; Animal.prototype;</span><br><span class="line">Cat.prototype &#x3D; new Super();</span><br><span class="line">Cat.prototype.constructor &#x3D; Cat;</span><br><span class="line">var cat &#x3D; new Cat(&#39;shishi&#39;);</span><br><span class="line">console.log(cat.name);</span><br><span class="line">console.log(cat.sleep());</span><br><span class="line">console.log(cat.eat(&#39;好吃的ya&#39;))</span><br></pre></td></tr></table></figure>
+<h2 id="ES6中对象及继承"><a href="#ES6中对象及继承" class="headerlink" title="ES6中对象及继承"></a>ES6中对象及继承</h2></li>
+<li>ES6中引入了Class(类)的概念，通过class关键字定义类的名字，然后在constructor构造函数中定义实例属性，原型属性在class内部直接声明并赋值，原型函数的声明与构造函数处于同一层级，并且省略function关键字<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Cat&#123;</span><br><span class="line">    &#x2F;&#x2F;原型属性</span><br><span class="line">    publicCount &#x3D; 1;</span><br><span class="line">    constructor(name,age)&#123;</span><br><span class="line">        &#x2F;&#x2F;实例属性</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">        this.age &#x3D; age;</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line">    &#x2F;&#x2F;原型函数</span><br><span class="line">    getName()&#123;</span><br><span class="line">        return this.name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let p &#x3D; new Cat(&#39;shishi&#39;,12)</span><br><span class="line">console.log(p.getName())</span><br></pre></td></tr></table></figure></li>
+<li>class继承<br>ES6中新增了extends关键字，可以快速实现类的继承<br>在子类的constructor构造函数中，需要首先调用super()函数执行父类的构造函数，再执行子类的函数修饰this.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;ES6class继承</span><br><span class="line">class Dad&#123;</span><br><span class="line">    constructor(type)&#123;</span><br><span class="line">        this.type &#x3D; type</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">class Son extends Dad&#123;</span><br><span class="line">    constructor(type,name)&#123;</span><br><span class="line">        super(type);</span><br><span class="line">        this.name &#x3D; name</span><br><span class="line">    &#125;;</span><br><span class="line">    getName()&#123;</span><br><span class="line">        return this.name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let son &#x3D; new Son(&#39;mimi&#39;,&#39;Tom&#39;);</span><br><span class="line">console.log(son.type)</span><br></pre></td></tr></table></figure>
+//关于ES6的知识学习阮一峰老师的书</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/01/%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%BB%A7%E6%89%BF/" data-id="ckmmug5wz003m0otj55e9d89l" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-剑指Offer32-从上到下打印二叉树（3）" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/03/01/%E5%89%91%E6%8C%87Offer32-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%883%EF%BC%89/" class="article-date">
@@ -105,7 +178,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/01/%E5%89%91%E6%8C%87Offer32-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%883%EF%BC%89/" data-id="ckmjwjiwy000l1ktjb9vt1ttf" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/01/%E5%89%91%E6%8C%87Offer32-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%883%EF%BC%89/" data-id="ckmmug5vm000l0otj8bx76hsr" class="article-share-link">分享</a>
       
       
       
@@ -156,7 +229,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/01/%E5%89%91%E6%8C%87Offer33-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97/" data-id="ckmjwjix1000o1ktj0g54eygg" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/01/%E5%89%91%E6%8C%87Offer33-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97/" data-id="ckmmug5vo000q0otj1k1o5gbi" class="article-share-link">分享</a>
       
       
       
@@ -208,7 +281,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/28/%E5%8A%9B%E6%89%A3105-%E4%BB%8E%E5%89%8D%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckmjwjixb001f1ktjdsrl3ue8" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/28/%E5%8A%9B%E6%89%A3105-%E4%BB%8E%E5%89%8D%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckmmug5vx001f0otj98a190up" class="article-share-link">分享</a>
       
       
       
@@ -259,7 +332,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/28/%E5%8A%9B%E6%89%A3110-%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckmjwjixf001m1ktj8gen3p2c" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/28/%E5%8A%9B%E6%89%A3110-%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckmmug5w2001m0otj7bjr0h6f" class="article-share-link">分享</a>
       
       
       
@@ -308,7 +381,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/28/%E5%8A%9B%E6%89%A3896-%E5%8D%95%E8%B0%83%E6%95%B0%E5%88%97/" data-id="ckmjwjiy2003h1ktjbm5e9xd4" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/28/%E5%8A%9B%E6%89%A3896-%E5%8D%95%E8%B0%83%E6%95%B0%E5%88%97/" data-id="ckmmug5wy003k0otjcdhb19lx" class="article-share-link">分享</a>
       
       
       
@@ -359,7 +432,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/27/226-%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckmjwjiwe00011ktj7n9c8lfo" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/27/226-%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckmmug5v300010otj7f4g2pa3" class="article-share-link">分享</a>
       
       
       
@@ -410,7 +483,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/27/%E5%8A%9B%E6%89%A3101-%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckmjwjix800181ktj1uex3zik" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/27/%E5%8A%9B%E6%89%A3101-%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckmmug5vw001a0otjgi0e9ues" class="article-share-link">分享</a>
       
       
       
@@ -460,7 +533,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/27/%E5%8A%9B%E6%89%A3395-%E8%87%B3%E5%B0%91%E6%9C%89K%E4%B8%AA%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/" data-id="ckmjwjixs002n1ktja4bxc8f2" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/27/%E5%8A%9B%E6%89%A3395-%E8%87%B3%E5%B0%91%E6%9C%89K%E4%B8%AA%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/" data-id="ckmmug5wj002n0otj2b931wkp" class="article-share-link">分享</a>
       
       
       
@@ -510,56 +583,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/26/%E5%8A%9B%E6%89%A3543-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" data-id="ckmjwjixw002v1ktje2u3cs14" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣-二叉树的最近公共祖先" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/26/%E5%8A%9B%E6%89%A3-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" class="article-date">
-  <time datetime="2021-02-26T03:50:02.000Z" itemprop="datePublished">2021-02-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/26/%E5%8A%9B%E6%89%A3-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/">力扣-二叉树的最近公共祖先</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-shu-de-zui-jin-gong-gong-zu-xian-lcof/">力扣-二叉树的最近公共祖先</a></p>
-<p>给定一个二叉树, 找到该树中两个指定节点的最近公共祖先</p>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：root &#x3D; [3,5,1,6,2,0,8,null,null,7,4], p &#x3D; 5, q &#x3D; 1</span><br><span class="line">输出：3</span><br><span class="line">解释：节点 5 和节点 1 的最近公共祖先是节点 3 。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>代码及详细注释如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val) &#123;</span><br><span class="line"> *     this.val &#x3D; val;</span><br><span class="line"> *     this.left &#x3D; this.right &#x3D; null;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @param &#123;TreeNode&#125; p</span><br><span class="line"> * @param &#123;TreeNode&#125; q</span><br><span class="line"> * @return &#123;TreeNode&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var lowestCommonAncestor &#x3D; function(root, p, q) &#123;</span><br><span class="line">    &#x2F;&#x2F;递归</span><br><span class="line">    &#x2F;&#x2F;lowestCommonAncestor的功能是找出以root为根节点的两个节点p和q的最近公共祖先</span><br><span class="line">    &#x2F;&#x2F;三种情况</span><br><span class="line">    &#x2F;&#x2F;1.如果p和q分别是root的左右节点，那么root就是我们要找的最近公共祖先</span><br><span class="line">    &#x2F;&#x2F;如果root是None，说明我们在这条寻址线路没有找到，我们返回None表示没找到</span><br><span class="line">    &#x2F;&#x2F;2 如果左子树没找到，说明在右子树，我们返回lowestCommonAncestor(root.right, p , q)</span><br><span class="line">    &#x2F;&#x2F;  同样，如果右子树没找到，说明在左子树，我们返回lowestCommonAncestor(root.left, p , q)</span><br><span class="line">    &#x2F;&#x2F;3. 如果左子树和右子树分别找到一个，我们返回root</span><br><span class="line">    if(!root)&#123;</span><br><span class="line">        return false</span><br><span class="line">    &#125;</span><br><span class="line">    if(root &#x3D;&#x3D;&#x3D; p || root &#x3D;&#x3D;&#x3D; q)&#123;</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">    let left &#x3D; lowestCommonAncestor(root.left,p,q);</span><br><span class="line">    let right &#x3D; lowestCommonAncestor(root.right,p,q);</span><br><span class="line">    if(left &amp;&amp; right)&#123;</span><br><span class="line">        return root;</span><br><span class="line">    &#125;;</span><br><span class="line">    if(!left)&#123;</span><br><span class="line">        return right</span><br><span class="line">    &#125;;</span><br><span class="line">    if(!right)&#123;</span><br><span class="line">        return left</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/26/%E5%8A%9B%E6%89%A3-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" data-id="ckmjwjix700151ktj3d3sekz6" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/26/%E5%8A%9B%E6%89%A3543-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" data-id="ckmmug5wn002x0otjgr9p3ofp" class="article-share-link">分享</a>
       
       
       
@@ -593,6 +617,10 @@
       <ul>
         
           <li>
+            <a href="/2021/03/24/%E5%8A%9B%E6%89%A3456-132%E6%A8%A1%E5%BC%8F/">力扣456--132模式</a>
+          </li>
+        
+          <li>
             <a href="/2021/03/21/%E5%8A%9B%E6%89%A373-%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6/">力扣73--矩阵置零</a>
           </li>
         
@@ -606,10 +634,6 @@
         
           <li>
             <a href="/2021/03/19/%E5%8A%9B%E6%89%A3-1603%E8%AE%BE%E8%AE%A1%E5%81%9C%E8%BD%A6%E7%B3%BB%E7%BB%9F/">力扣--1603设计停车系统</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/17/%E5%8A%9B%E6%89%A334-%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE/">力扣34-在排序数组中查找元素的第一个和最后一个位置</a>
           </li>
         
       </ul>
