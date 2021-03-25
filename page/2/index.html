@@ -66,6 +66,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣148-排序链表" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/15/%E5%8A%9B%E6%89%A3148-%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8/" class="article-date">
+  <time datetime="2021-03-15T07:08:36.000Z" itemprop="datePublished">2021-03-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>►<a class="article-category-link" href="/categories/JavaScript/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">排序算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/15/%E5%8A%9B%E6%89%A3148-%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8/">力扣148--排序链表</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/sort-list/">力扣148–排序链表</a></p>
+<p>给你链表的头结点 head ，请将其按 升序 排列并返回 排序后的链表 。</p>
+<p>示例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：head &#x3D; [-1,5,3,4,0]</span><br><span class="line">输出：[-1,0,3,4,5]</span><br></pre></td></tr></table></figure>
+<p>代码及注释如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * function ListNode(val, next) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.next &#x3D; (next&#x3D;&#x3D;&#x3D;undefined ? null : next)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;ListNode&#125; head</span><br><span class="line"> * @return &#123;ListNode&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var sortList &#x3D; function(head) &#123;</span><br><span class="line">    return mergeSort(head,null)</span><br><span class="line">&#125;;  </span><br><span class="line">&#x2F;&#x2F;要求时间复杂度是O（nlogn）使用归并排序，本质是分冶的思想</span><br><span class="line">&#x2F;&#x2F;归并排序</span><br><span class="line">&#x2F;&#x2F;分</span><br><span class="line">function mergeSort(head,tail)&#123;</span><br><span class="line">    &#x2F;&#x2F;先找出链表的中点</span><br><span class="line">    &#x2F;&#x2F;设置快、慢指针，让快指针比慢指针快一倍</span><br><span class="line">    if(head &#x3D;&#x3D; null)&#123;</span><br><span class="line">        return head</span><br><span class="line">    &#125;;</span><br><span class="line">    if(head.next &#x3D;&#x3D; tail)&#123;</span><br><span class="line">        head.next &#x3D; null;</span><br><span class="line">        return head</span><br><span class="line">    &#125;</span><br><span class="line">    let fast &#x3D; head;</span><br><span class="line">    let slow &#x3D; head;</span><br><span class="line">    while(fast !&#x3D; tail)&#123;</span><br><span class="line">        slow &#x3D; slow.next;</span><br><span class="line">        fast &#x3D; fast.next;</span><br><span class="line">        if(fast !&#x3D; tail)&#123;</span><br><span class="line">            fast &#x3D; fast.next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    let mid &#x3D; slow;</span><br><span class="line">    let l &#x3D; mergeSort(head,mid);</span><br><span class="line">    let r &#x3D; mergeSort(mid,tail)</span><br><span class="line">    return merge(l,r)</span><br><span class="line">&#125;;</span><br><span class="line">&#x2F;&#x2F;冶</span><br><span class="line">&#x2F;&#x2F;将两个链表进行合并</span><br><span class="line">function merge(head1,head2)&#123;</span><br><span class="line">    let dump &#x3D; new ListNode(0);</span><br><span class="line">    let cur &#x3D; dump;</span><br><span class="line">    let cur1 &#x3D; head1,cur2 &#x3D; head2;</span><br><span class="line">    while(cur1 !&#x3D;&#x3D; null &amp;&amp; cur2 !&#x3D;&#x3D; null)&#123;</span><br><span class="line">        if(cur1.val &lt;&#x3D; cur2.val)&#123;</span><br><span class="line">            cur.next &#x3D; cur1;</span><br><span class="line">            cur1 &#x3D; cur1.next</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            cur.next &#x3D; cur2;</span><br><span class="line">            cur2 &#x3D; cur2.next</span><br><span class="line">        &#125;;</span><br><span class="line">        cur &#x3D; cur.next</span><br><span class="line">    &#125;;</span><br><span class="line">    if(cur1 !&#x3D;&#x3D; null)&#123;</span><br><span class="line">        cur.next &#x3D; cur1</span><br><span class="line">    &#125;else if(cur2 !&#x3D; null)&#123;</span><br><span class="line">        cur.next &#x3D; cur2</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return dump.next</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/15/%E5%8A%9B%E6%89%A3148-%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8/" data-id="ckmo6al98001spgtj0hin6892" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣54-螺旋矩阵" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/03/15/%E5%8A%9B%E6%89%A354-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/" class="article-date">
@@ -103,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/15/%E5%8A%9B%E6%89%A354-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/" data-id="ckmmug5wm002v0otj97w08zmv" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/15/%E5%8A%9B%E6%89%A354-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/" data-id="ckmo6al9m002tpgtj21dv6w9e" class="article-share-link">分享</a>
       
       
       
@@ -150,7 +199,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/13/%E5%89%91%E6%8C%8736-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/" data-id="ckmmug5vk000i0otj6fyc2ats" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/13/%E5%89%91%E6%8C%8736-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/" data-id="ckmo6al8n000hpgtjd6p53rbz" class="article-share-link">分享</a>
       
       
       
@@ -200,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/12/%E5%89%91%E6%8C%8722-%E9%93%BE%E8%A1%A8%E4%B8%AD%E5%80%92%E6%95%B0%E7%AC%ACk%E4%B8%AA%E8%8A%82%E7%82%B9/" data-id="ckmmug5vi000c0otj4l3j5wm7" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/12/%E5%89%91%E6%8C%8722-%E9%93%BE%E8%A1%A8%E4%B8%AD%E5%80%92%E6%95%B0%E7%AC%ACk%E4%B8%AA%E8%8A%82%E7%82%B9/" data-id="ckmo6al8l000epgtjh7x269b6" class="article-share-link">分享</a>
       
       
       
@@ -249,7 +298,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/12/offer25-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/" data-id="ckmmug5v900050otj78ef3orp" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/12/offer25-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/" data-id="ckmo6al8d0004pgtj7m8lh00v" class="article-share-link">分享</a>
       
       
       
@@ -297,7 +346,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/12/%E5%89%91%E6%8C%8718-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/" data-id="ckmmug5vh000b0otj1yhwavyn" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/12/%E5%89%91%E6%8C%8718-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/" data-id="ckmo6al8h0009pgtj0ivfh90n" class="article-share-link">分享</a>
       
       
       
@@ -345,7 +394,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/12/%E5%8A%9B%E6%89%A3206-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" data-id="ckmmug5wb00240otj9oun0y1q" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/12/%E5%8A%9B%E6%89%A3206-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" data-id="ckmo6al9b001zpgtjck5x53ps" class="article-share-link">分享</a>
       
       
       
@@ -394,7 +443,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/12/%E5%8A%9B%E6%89%A3264-%E4%B8%91%E6%95%B0/" data-id="ckmmug5we002d0otj449h0x86" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/12/%E5%8A%9B%E6%89%A3264-%E4%B8%91%E6%95%B0/" data-id="ckmo6al9f002cpgtjdlrr2jx1" class="article-share-link">分享</a>
       
       
       
@@ -444,7 +493,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/11/%E5%8A%9B%E6%89%A320-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" data-id="ckmmug5w900210otj5ph4hbp6" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/11/%E5%8A%9B%E6%89%A320-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" data-id="ckmo6al9e0029pgtj6x8g575z" class="article-share-link">分享</a>
       
       
       
@@ -494,56 +543,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/11/%E5%8A%9B%E6%89%A3-227-%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8/" data-id="ckmmug5vs00100otjhrffhiyh" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-剑指53-0-n-1中缺失的数" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/03/10/%E5%89%91%E6%8C%8753-0-n-1%E4%B8%AD%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0/" class="article-date">
-  <time datetime="2021-03-10T07:01:28.000Z" itemprop="datePublished">2021-03-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/10/%E5%89%91%E6%8C%8753-0-n-1%E4%B8%AD%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0/">剑指53--0-n-1中缺失的数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/que-shi-de-shu-zi-lcof/">剑指53–0-n-1中缺失的数</a></p>
-<p>一个长度为n-1的递增排序数组中的所有数字都是唯一的，并且每个数字都在范围0～n-1之内。在范围0～n-1内的n个数字中有且只有一个数字不在该数组中，请找出这个数字。</p>
-<p>示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [0,1,2,3,4,5,6,7,9]</span><br><span class="line">输出: 8</span><br></pre></td></tr></table></figure>
-<p>代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var missingNumber &#x3D; function(nums) &#123;</span><br><span class="line">    let len &#x3D; nums.length;</span><br><span class="line">    let left &#x3D; 0;</span><br><span class="line">    let right &#x3D; len-1;</span><br><span class="line">    while(left &lt;&#x3D; right)&#123;</span><br><span class="line">        let mid &#x3D; Math.floor((left+right)&#x2F;2);</span><br><span class="line">        if(mid &#x3D;&#x3D;&#x3D; nums[mid])&#123;</span><br><span class="line">            left &#x3D; mid+1</span><br><span class="line">        &#125;else if(mid &lt; nums[mid])&#123;</span><br><span class="line">            right &#x3D; mid-1</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return left</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/10/%E5%89%91%E6%8C%8753-0-n-1%E4%B8%AD%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0/" data-id="ckmmug5vl000j0otj9ejuf8sp" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/11/%E5%8A%9B%E6%89%A3-227-%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8/" data-id="ckmo6al8t000wpgtjhcgvbbew" class="article-share-link">分享</a>
       
       
       
@@ -558,7 +558,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">下一页&amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">下一页&amp;raquo;</a>
   </nav>
 </section>
            
@@ -577,6 +577,10 @@
       <ul>
         
           <li>
+            <a href="/2021/03/25/%E5%8A%9B%E6%89%A382-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/">力扣82--删除排序链表中的重复元素</a>
+          </li>
+        
+          <li>
             <a href="/2021/03/24/%E5%8A%9B%E6%89%A3456-132%E6%A8%A1%E5%BC%8F/">力扣456--132模式</a>
           </li>
         
@@ -590,10 +594,6 @@
         
           <li>
             <a href="/2021/03/19/%E5%8A%9B%E6%89%A3714-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA%E5%90%AB%E6%89%8B%E7%BB%AD%E8%B4%B9/">力扣714--买卖股票的最佳时机含手续费</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/19/%E5%8A%9B%E6%89%A3-1603%E8%AE%BE%E8%AE%A1%E5%81%9C%E8%BD%A6%E7%B3%BB%E7%BB%9F/">力扣--1603设计停车系统</a>
           </li>
         
       </ul>
