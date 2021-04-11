@@ -66,6 +66,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣540-有序数组中的单一元素" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/29/%E5%8A%9B%E6%89%A3540-%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%8D%95%E4%B8%80%E5%85%83%E7%B4%A0/" class="article-date">
+  <time datetime="2021-03-29T01:39:07.000Z" itemprop="datePublished">2021-03-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/29/%E5%8A%9B%E6%89%A3540-%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%8D%95%E4%B8%80%E5%85%83%E7%B4%A0/">力扣540--有序数组中的单一元素</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/single-element-in-a-sorted-array/">力扣540–有序数组中的单一元素</a></p>
+<p>给定一个只包含整数的有序数组，每个元素都会出现两次，唯有一个数只会出现一次，找出这个数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,1,2,3,3,4,4,8,8]</span><br><span class="line">输出: 2</span><br></pre></td></tr></table></figure>
+<p>代码及注释如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var singleNonDuplicate &#x3D; function(nums) &#123;</span><br><span class="line">    let len &#x3D; nums.length;</span><br><span class="line">    &#x2F;&#x2F;二分法</span><br><span class="line">    let left &#x3D; 0;</span><br><span class="line">    let right &#x3D; len-1;</span><br><span class="line">    &#x2F;&#x2F;定义两个变量来判断左边还是右边剩余的数是奇数</span><br><span class="line">    let L;</span><br><span class="line">    let R;</span><br><span class="line">    while(left &lt;&#x3D; right)&#123;</span><br><span class="line">        let mid &#x3D; Math.floor((left+right)&#x2F;2);</span><br><span class="line">        if(nums[mid] &#x3D;&#x3D;&#x3D; nums[mid+1])&#123;</span><br><span class="line">            L &#x3D; mid;</span><br><span class="line">            R &#x3D; mid+1</span><br><span class="line">        &#125;else if(nums[mid] &#x3D;&#x3D;&#x3D; nums[mid-1])&#123;</span><br><span class="line">            L &#x3D; mid-1;</span><br><span class="line">            R &#x3D; mid</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            return nums[mid]</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;如果L%2&#x3D;&#x3D;1说明L是奇数，那它左边的数量就是偶数，</span><br><span class="line">        &#x2F;&#x2F;那出现一次的数字必然在右边</span><br><span class="line">        if(L%2 &#x3D;&#x3D; 1 &amp;&amp; R%2 &#x3D;&#x3D; 0)&#123;</span><br><span class="line">            right &#x3D; mid-1</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            left &#x3D; mid+1</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/29/%E5%8A%9B%E6%89%A3540-%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%8D%95%E4%B8%80%E5%85%83%E7%B4%A0/" data-id="ckncyh12e003cpctj0rxleqyf" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣61-旋转链表" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/03/28/%E5%8A%9B%E6%89%A361-%E6%97%8B%E8%BD%AC%E9%93%BE%E8%A1%A8/" class="article-date">
@@ -103,7 +151,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/28/%E5%8A%9B%E6%89%A361-%E6%97%8B%E8%BD%AC%E9%93%BE%E8%A1%A8/" data-id="cknb65xy0003r98tj9vdycscv" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/28/%E5%8A%9B%E6%89%A361-%E6%97%8B%E8%BD%AC%E9%93%BE%E8%A1%A8/" data-id="ckncyh12n003rpctj3p2fa0v9" class="article-share-link">分享</a>
       
       
       
@@ -153,7 +201,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/26/%E5%8A%9B%E6%89%A383-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/" data-id="cknb65xy6004798tj7ftpg8hd" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/26/%E5%8A%9B%E6%89%A383-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/" data-id="ckncyh12u0048pctjb1bx3ybk" class="article-share-link">分享</a>
       
       
       
@@ -202,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/25/%E5%8A%9B%E6%89%A382-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/" data-id="cknb65xy6004598tjcjz936re" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/25/%E5%8A%9B%E6%89%A382-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/" data-id="ckncyh12u0046pctj3noe0szr" class="article-share-link">分享</a>
       
       
       
@@ -251,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/24/%E5%8A%9B%E6%89%A3456-132%E6%A8%A1%E5%BC%8F/" data-id="cknb65xxs003498tjak9u01fj" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/24/%E5%8A%9B%E6%89%A3456-132%E6%A8%A1%E5%BC%8F/" data-id="ckncyh12c0035pctjbjfv4xa2" class="article-share-link">分享</a>
       
       
       
@@ -299,7 +347,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/21/%E5%8A%9B%E6%89%A373-%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6/" data-id="cknb65xy2003w98tj0j219lxl" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/21/%E5%8A%9B%E6%89%A373-%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6/" data-id="ckncyh12q003wpctj8ih54mek" class="article-share-link">分享</a>
       
       
       
@@ -350,7 +398,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/19/%E5%8A%9B%E6%89%A3309-%E6%9C%80%E4%BD%B3%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E6%97%B6%E6%9C%BA%E5%90%AB%E5%86%B7%E5%86%BB%E6%9C%9F/" data-id="cknb65xxo002q98tj3xsggi04" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/19/%E5%8A%9B%E6%89%A3309-%E6%9C%80%E4%BD%B3%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E6%97%B6%E6%9C%BA%E5%90%AB%E5%86%B7%E5%86%BB%E6%9C%9F/" data-id="ckncyh127002qpctj74b98goj" class="article-share-link">分享</a>
       
       
       
@@ -404,7 +452,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/19/%E5%8A%9B%E6%89%A3714-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA%E5%90%AB%E6%89%8B%E7%BB%AD%E8%B4%B9/" data-id="cknb65xy1003t98tj57btabbu" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/19/%E5%8A%9B%E6%89%A3714-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA%E5%90%AB%E6%89%8B%E7%BB%AD%E8%B4%B9/" data-id="ckncyh12o003tpctj8ayf0pje" class="article-share-link">分享</a>
       
       
       
@@ -455,7 +503,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/19/%E5%8A%9B%E6%89%A3-1603%E8%AE%BE%E8%AE%A1%E5%81%9C%E8%BD%A6%E7%B3%BB%E7%BB%9F/" data-id="cknb65xx2001398tj87q272hg" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/19/%E5%8A%9B%E6%89%A3-1603%E8%AE%BE%E8%AE%A1%E5%81%9C%E8%BD%A6%E7%B3%BB%E7%BB%9F/" data-id="ckncyh11i0013pctj62if1ltc" class="article-share-link">分享</a>
       
       
       
@@ -503,56 +551,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/17/%E5%8A%9B%E6%89%A334-%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE/" data-id="cknb65xxp002s98tjgl019cfl" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣24-两两交换链表中的节点" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/03/17/%E5%8A%9B%E6%89%A324-%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/" class="article-date">
-  <time datetime="2021-03-17T02:08:29.000Z" itemprop="datePublished">2021-03-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E9%93%BE%E8%A1%A8/">链表</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/17/%E5%8A%9B%E6%89%A324-%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/">力扣24--两两交换链表中的节点</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/swap-nodes-in-pairs/">力扣24–两两交换链表中的节点</a></p>
-<p>给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。<br>你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。<br><img src="/2021/03/17/%E5%8A%9B%E6%89%A324-%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/01.png"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：head &#x3D; [1,2,3,4]</span><br><span class="line">输出：[2,1,4,3]</span><br></pre></td></tr></table></figure>
-<p>代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * function ListNode(val, next) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.next &#x3D; (next&#x3D;&#x3D;&#x3D;undefined ? null : next)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;ListNode&#125; head</span><br><span class="line"> * @return &#123;ListNode&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var swapPairs &#x3D; function(head) &#123;</span><br><span class="line">    &#x2F;&#x2F;定义一个哑节点方便最后返回</span><br><span class="line">    let dump &#x3D; new ListNode(0);</span><br><span class="line">    let cur &#x3D; dump;</span><br><span class="line">    cur.next &#x3D; head</span><br><span class="line">    while(cur.next !&#x3D; null &amp;&amp; cur.next.next !&#x3D; null)&#123;</span><br><span class="line">        let node1 &#x3D; cur.next;</span><br><span class="line">        let node2 &#x3D; cur.next.next;</span><br><span class="line">        &#x2F;&#x2F;相邻节点进行交换</span><br><span class="line">        cur.next &#x3D; node1.next;</span><br><span class="line">        node1.next &#x3D; node2.next;</span><br><span class="line">        node2.next &#x3D; node1;</span><br><span class="line">        cur &#x3D; node1;</span><br><span class="line">    &#125;;</span><br><span class="line">    return dump.next</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/17/%E5%8A%9B%E6%89%A324-%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/" data-id="cknb65xxm002l98tj9pnv99zx" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/17/%E5%8A%9B%E6%89%A334-%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE/" data-id="ckncyh12a002xpctj94kxar2i" class="article-share-link">分享</a>
       
       
       
@@ -586,6 +585,10 @@
       <ul>
         
           <li>
+            <a href="/2021/04/11/%E5%AF%B9%E8%B1%A1%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/">对象深浅拷贝</a>
+          </li>
+        
+          <li>
             <a href="/2021/04/10/%E5%8A%9B%E6%89%A3263-%E4%B8%91%E6%95%B0/">力扣263--丑数</a>
           </li>
         
@@ -599,10 +602,6 @@
         
           <li>
             <a href="/2021/04/07/%E5%8A%9B%E6%89%A388-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/">力扣88--合并两个有序数组</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/01/%E5%89%91%E6%8C%8712-%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/">剑指12--矩阵中的路径</a>
           </li>
         
       </ul>

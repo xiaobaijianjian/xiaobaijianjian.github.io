@@ -66,6 +66,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣1438-绝对差不超过限制的最长连续子数组" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/21/%E5%8A%9B%E6%89%A31438-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" class="article-date">
+  <time datetime="2021-02-21T02:48:10.000Z" itemprop="datePublished">2021-02-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/21/%E5%8A%9B%E6%89%A31438-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/">力扣1438-绝对差不超过限制的最长连续子数组</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/">力扣1438-绝对差不超过限制的最长连续子数组</a></p>
+<p>给你一个整数数组 nums ，和一个表示限制的整数 limit，请你返回最长连续子数组的长度，该子数组中的任意两个元素之间的绝对差必须小于或者等于 limit 。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [8,2,4,7], limit &#x3D; 4</span><br><span class="line">输出：2 </span><br><span class="line">解释：所有子数组如下：</span><br><span class="line">[8] 最大绝对差 |8-8| &#x3D; 0 &lt;&#x3D; 4.</span><br><span class="line">[8,2] 最大绝对差 |8-2| &#x3D; 6 &gt; 4. </span><br><span class="line">[8,2,4] 最大绝对差 |8-2| &#x3D; 6 &gt; 4.</span><br><span class="line">[8,2,4,7] 最大绝对差 |8-2| &#x3D; 6 &gt; 4.</span><br><span class="line">[2] 最大绝对差 |2-2| &#x3D; 0 &lt;&#x3D; 4.</span><br><span class="line">[2,4] 最大绝对差 |2-4| &#x3D; 2 &lt;&#x3D; 4.</span><br><span class="line">[2,4,7] 最大绝对差 |2-7| &#x3D; 5 &gt; 4.</span><br><span class="line">[4] 最大绝对差 |4-4| &#x3D; 0 &lt;&#x3D; 4.</span><br><span class="line">[4,7] 最大绝对差 |4-7| &#x3D; 3 &lt;&#x3D; 4.</span><br><span class="line">[7] 最大绝对差 |7-7| &#x3D; 0 &lt;&#x3D; 4. </span><br><span class="line">因此，满足题意的最长子数组的长度为 2 。</span><br></pre></td></tr></table></figure>
+<p>解题思路：利用滑动窗口和单调队列</p>
+<p>代码及注释如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @param &#123;number&#125; limit</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var longestSubarray &#x3D; function(nums, limit) &#123;</span><br><span class="line">    &#x2F;&#x2F;滑动窗口+单调序列</span><br><span class="line">    let len &#x3D; nums.length;</span><br><span class="line">    let left &#x3D; 0;</span><br><span class="line">    let right &#x3D; 0;</span><br><span class="line">    let res &#x3D; 0;</span><br><span class="line">    let maxQueue &#x3D; [];</span><br><span class="line">    let minQueue &#x3D; [];</span><br><span class="line">    while(right &lt; len)&#123;</span><br><span class="line">        &#x2F;&#x2F;定义最大、最小序列，使得第一个值为最大&#x2F;最小值</span><br><span class="line">        while(maxQueue[maxQueue.length-1] &lt; nums[right])&#123;</span><br><span class="line">            maxQueue.pop()</span><br><span class="line">        &#125;;</span><br><span class="line">        while(minQueue[minQueue.length-1] &gt; nums[right])&#123;</span><br><span class="line">            minQueue.pop()</span><br><span class="line">        &#125;;</span><br><span class="line">        maxQueue.push(nums[right]);</span><br><span class="line">        minQueue.push(nums[right]);</span><br><span class="line">        &#x2F;&#x2F;当绝对值大于Limit时进行窗口收缩</span><br><span class="line">        while(maxQueue[0] - minQueue[0] &gt; limit)&#123;</span><br><span class="line">            &#x2F;&#x2F;确保最左边的值不为最大&#x2F;最小值进行收缩</span><br><span class="line">            if(nums[left] &#x3D;&#x3D;&#x3D; maxQueue[0])&#123;</span><br><span class="line">                maxQueue.shift()</span><br><span class="line">            &#125;;</span><br><span class="line">            if(nums[left] &#x3D;&#x3D;&#x3D; minQueue[0])&#123;</span><br><span class="line">                minQueue.shift()</span><br><span class="line">            &#125;</span><br><span class="line">            left++</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;记录每次的最大值</span><br><span class="line">        res &#x3D; Math.max(res,right-left+1)</span><br><span class="line">        right++;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    return res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/21/%E5%8A%9B%E6%89%A31438-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" data-id="ckncyh11z0024pctj554q765x" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣697-数组的度" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/02/20/%E5%8A%9B%E6%89%A3697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/" class="article-date">
@@ -106,7 +156,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/20/%E5%8A%9B%E6%89%A3697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/" data-id="cknb65xxz003o98tjgrgug90k" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/20/%E5%8A%9B%E6%89%A3697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/" data-id="ckncyh12l003opctjgkdtg83v" class="article-share-link">分享</a>
       
       
       
@@ -155,7 +205,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" data-id="cknb65xxp002v98tjbpbwasrv" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" data-id="ckncyh12a0030pctjf0jzfzyu" class="article-share-link">分享</a>
       
       
       
@@ -201,7 +251,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/" data-id="cknb65xy2003y98tj2ypddqwc" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/" data-id="ckncyh12s0041pctj1ce23ezl" class="article-share-link">分享</a>
       
       
       
@@ -258,7 +308,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A346-%E5%85%A8%E6%8E%92%E5%88%97/" data-id="cknb65xxt003798tj1iy45nbs" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A346-%E5%85%A8%E6%8E%92%E5%88%97/" data-id="ckncyh12d0037pctj9fkh9znw" class="article-share-link">分享</a>
       
       
       
@@ -306,7 +356,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/" data-id="cknb65xx1001098tj0ma79osd" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/" data-id="ckncyh11h0010pctj78pr0e2x" class="article-share-link">分享</a>
       
       
       
@@ -356,7 +406,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" data-id="cknb65xxx003j98tj4sxdcsg1" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" data-id="ckncyh12h003hpctj7k508053" class="article-share-link">分享</a>
       
       
       
@@ -406,7 +456,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/" data-id="cknb65xy3004198tj3k1nbh6s" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/" data-id="ckncyh12r003ypctj692804a5" class="article-share-link">分享</a>
       
       
       
@@ -476,7 +526,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/" data-id="cknb65xwk000498tjfy0j9t6o" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/" data-id="ckncyh10z0004pctjhtdk55cd" class="article-share-link">分享</a>
       
       
       
@@ -557,56 +607,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/16/photo/" data-id="cknb65xwl000698tjc4xc8hfj" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣55-跳跃游戏" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" class="article-date">
-  <time datetime="2021-02-15T09:26:24.000Z" itemprop="datePublished">2021-02-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/">力扣55-跳跃游戏</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>给定一个非负整数数组 nums ，最初位于数组的第一个下标 。数组中的每个元素代表你在该位置可以跳跃的最大长度。<br>判断你是否能够到达最后一个下标。</p>
-<p>例如:<br>输入：nums = [2,3,1,1,4]<br>输出：true<br>解释：可以先跳 1 步，从下标 0 到达下标 1, 然后再从下标 1 跳 3 步到达最后一个下标     </p>
-<p>代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @return &#123;boolean&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var canJump &#x3D; function(nums) &#123;</span><br><span class="line">    &#x2F;&#x2F;使用贪心算法</span><br><span class="line">    &#x2F;&#x2F;对于任意一个位置y，只要存在一个位置x,使得nums[x]+x&gt;&#x3D;y即可满足</span><br><span class="line">    let len &#x3D; nums.length;</span><br><span class="line">    &#x2F;&#x2F;维护一个最远到达的距离</span><br><span class="line">    let k &#x3D; 0;</span><br><span class="line">    for(let i &#x3D; 0;i&lt;len;i++)&#123;</span><br><span class="line">        if(i &gt; k)&#123;</span><br><span class="line">            return false</span><br><span class="line">        &#125;</span><br><span class="line">        k &#x3D; Math.max(k,i+nums[i])</span><br><span class="line">    &#125;</span><br><span class="line">    return true</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" data-id="cknb65xxw003h98tjdq998vit" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/16/photo/" data-id="ckncyh1120008pctj29160tys" class="article-share-link">分享</a>
       
       
       
@@ -640,6 +641,10 @@
       <ul>
         
           <li>
+            <a href="/2021/04/11/%E5%AF%B9%E8%B1%A1%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/">对象深浅拷贝</a>
+          </li>
+        
+          <li>
             <a href="/2021/04/10/%E5%8A%9B%E6%89%A3263-%E4%B8%91%E6%95%B0/">力扣263--丑数</a>
           </li>
         
@@ -653,10 +658,6 @@
         
           <li>
             <a href="/2021/04/07/%E5%8A%9B%E6%89%A388-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/">力扣88--合并两个有序数组</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/01/%E5%89%91%E6%8C%8712-%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/">剑指12--矩阵中的路径</a>
           </li>
         
       </ul>
