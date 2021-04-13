@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>力扣100-相同的树 | Welcome To My Learning Blog</title>
+  <title>力扣783--二叉搜索树节点的最小距离 | Welcome To My Learning Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="力扣100-相同的树 给你两棵二叉树的根节点 p 和 q ，编写一个函数来检验这两棵树是否相同。如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。 12345678910111213141516171819202122232425&#x2F;** * Definition for a binary tree node. * function TreeNode(val, left,">
+  <meta name="description" content="力扣783–二叉搜索树节点的最小距离 给你一个二叉搜索树的根节点 root ，返回 树中任意两不同节点值之间的最小差值 。 示例: 1234输入：root &#x3D; [4,2,6,1,3]输出：1输入：root &#x3D; [1,0,48,null,null,12,49]输出：1 代码及注释如下： 12345678910111213141516171819202122232425262728">
 <meta property="og:type" content="article">
-<meta property="og:title" content="力扣100-相同的树">
-<meta property="og:url" content="http://example.com/2021/03/06/%E5%8A%9B%E6%89%A3100-%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91/index.html">
+<meta property="og:title" content="力扣783--二叉搜索树节点的最小距离">
+<meta property="og:url" content="http://example.com/2021/04/13/%E5%8A%9B%E6%89%A3783-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%9D%E7%A6%BB/index.html">
 <meta property="og:site_name" content="Welcome To My Learning Blog">
-<meta property="og:description" content="力扣100-相同的树 给你两棵二叉树的根节点 p 和 q ，编写一个函数来检验这两棵树是否相同。如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。 12345678910111213141516171819202122232425&#x2F;** * Definition for a binary tree node. * function TreeNode(val, left,">
+<meta property="og:description" content="力扣783–二叉搜索树节点的最小距离 给你一个二叉搜索树的根节点 root ，返回 树中任意两不同节点值之间的最小差值 。 示例: 1234输入：root &#x3D; [4,2,6,1,3]输出：1输入：root &#x3D; [1,0,48,null,null,12,49]输出：1 代码及注释如下： 12345678910111213141516171819202122232425262728">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-03-06T06:36:43.000Z">
-<meta property="article:modified_time" content="2021-03-06T06:40:08.307Z">
+<meta property="article:published_time" content="2021-04-13T09:21:09.000Z">
+<meta property="article:modified_time" content="2021-04-13T09:23:43.092Z">
 <meta property="article:author" content="jianjian">
 <meta name="twitter:card" content="summary">
   
@@ -68,10 +68,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-力扣100-相同的树" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-力扣783-二叉搜索树节点的最小距离" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/03/06/%E5%8A%9B%E6%89%A3100-%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91/" class="article-date">
-  <time datetime="2021-03-06T06:36:43.000Z" itemprop="datePublished">2021-03-06</time>
+    <a href="/2021/04/13/%E5%8A%9B%E6%89%A3783-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%9D%E7%A6%BB/" class="article-date">
+  <time datetime="2021-04-13T09:21:09.000Z" itemprop="datePublished">2021-04-13</time>
 </a>
     
   <div class="article-category">
@@ -86,7 +86,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      力扣100-相同的树
+      力扣783--二叉搜索树节点的最小距离
     </h1>
   
 
@@ -96,13 +96,16 @@
       
         <!-- Table of Contents -->
         
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/same-tree/">力扣100-相同的树</a></p>
-<p>给你两棵二叉树的根节点 p 和 q ，编写一个函数来检验这两棵树是否相同。<br>如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val, left, right) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.left &#x3D; (left&#x3D;&#x3D;&#x3D;undefined ? null : left)</span><br><span class="line"> *     this.right &#x3D; (right&#x3D;&#x3D;&#x3D;undefined ? null : right)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; p</span><br><span class="line"> * @param &#123;TreeNode&#125; q</span><br><span class="line"> * @return &#123;boolean&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var isSameTree &#x3D; function(p, q) &#123;</span><br><span class="line">    if(p &#x3D;&#x3D; null &amp;&amp; q &#x3D;&#x3D; null)&#123;</span><br><span class="line">        return true</span><br><span class="line">    &#125;;</span><br><span class="line">    if(p &#x3D;&#x3D; null || q &#x3D;&#x3D; null)&#123;</span><br><span class="line">        return false</span><br><span class="line">    &#125;</span><br><span class="line">    if(p.val !&#x3D; q.val)&#123;</span><br><span class="line">        return false</span><br><span class="line">    &#125;;</span><br><span class="line">    return isSameTree(p.left,q.left) &amp;&amp; isSameTree(p.right,q.right)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-distance-between-bst-nodes/">力扣783–二叉搜索树节点的最小距离</a></p>
+<p>给你一个二叉搜索树的根节点 root ，返回 树中任意两不同节点值之间的最小差值 。</p>
+<p>示例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：root &#x3D; [4,2,6,1,3]</span><br><span class="line">输出：1</span><br><span class="line">输入：root &#x3D; [1,0,48,null,null,12,49]</span><br><span class="line">输出：1</span><br></pre></td></tr></table></figure>
+<p>代码及注释如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val, left, right) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.left &#x3D; (left&#x3D;&#x3D;&#x3D;undefined ? null : left)</span><br><span class="line"> *     this.right &#x3D; (right&#x3D;&#x3D;&#x3D;undefined ? null : right)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var minDiffInBST &#x3D; function(root) &#123;</span><br><span class="line">    &#x2F;&#x2F;递归</span><br><span class="line">    &#x2F;&#x2F; let ans &#x3D; Number.MAX_SAFE_INTEGER, pre &#x3D; -1;</span><br><span class="line">    &#x2F;&#x2F; let back &#x3D;function(node)&#123;</span><br><span class="line">    &#x2F;&#x2F;     if(!node)&#123;</span><br><span class="line">    &#x2F;&#x2F;         return </span><br><span class="line">    &#x2F;&#x2F;     &#125;;</span><br><span class="line">    &#x2F;&#x2F;     back(node.left);</span><br><span class="line">    &#x2F;&#x2F;     if(pre &#x3D;&#x3D; -1)&#123;</span><br><span class="line">    &#x2F;&#x2F;         pre &#x3D; node.val</span><br><span class="line">    &#x2F;&#x2F;     &#125;else&#123;</span><br><span class="line">    &#x2F;&#x2F;         ans &#x3D; Math.min(ans,node.val-pre);</span><br><span class="line">    &#x2F;&#x2F;         pre &#x3D; node.val</span><br><span class="line">    &#x2F;&#x2F;     &#125;</span><br><span class="line">    &#x2F;&#x2F;     back(node.right)</span><br><span class="line">    &#x2F;&#x2F; &#125;;</span><br><span class="line">    &#x2F;&#x2F; back(root)</span><br><span class="line">    &#x2F;&#x2F; return ans</span><br><span class="line">    &#x2F;&#x2F;非递归</span><br><span class="line">    &#x2F;&#x2F;利用二叉搜索树中序遍历的性质，设置pre记录两个相减的值</span><br><span class="line">    var stack &#x3D; [];</span><br><span class="line">    var ans &#x3D; 1000000;</span><br><span class="line">    var pre &#x3D; -1</span><br><span class="line">    while(stack.length || root)&#123;</span><br><span class="line">        while(root)&#123;</span><br><span class="line">            stack.push(root);</span><br><span class="line">            root&#x3D;  root.left</span><br><span class="line">        &#125;;</span><br><span class="line">        root &#x3D; stack.pop()</span><br><span class="line">        if(pre &#x3D;&#x3D; -1)&#123;</span><br><span class="line">            pre &#x3D; root.val</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            ans &#x3D; Math.min(ans,root.val-pre);</span><br><span class="line">            pre &#x3D; root.val</span><br><span class="line">        &#125;;</span><br><span class="line">        root &#x3D; root.right</span><br><span class="line">    &#125;;</span><br><span class="line">    return ans</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/06/%E5%8A%9B%E6%89%A3100-%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91/" data-id="cknftil4e001704tjcnvj2wus" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/13/%E5%8A%9B%E6%89%A3783-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%9D%E7%A6%BB/" data-id="cknftil5j003y04tj6luoecxu" class="article-share-link">分享</a>
       
       
       
@@ -156,19 +159,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2021/03/06/%E5%89%91%E6%8C%8726-%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          剑指26-树的子结构
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/03/03/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%89%8B%E5%86%99promise/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/04/11/%E5%AF%B9%E8%B1%A1%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">从0开始手写promise</div>
+      <div class="article-nav-title">对象深浅拷贝</div>
     </a>
   
 </nav>

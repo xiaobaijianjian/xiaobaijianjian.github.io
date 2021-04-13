@@ -66,6 +66,60 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣1052-爱生气的书店老板" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/23/%E5%8A%9B%E6%89%A31052-%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/" class="article-date">
+  <time datetime="2021-02-23T03:33:45.000Z" itemprop="datePublished">2021-02-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/23/%E5%8A%9B%E6%89%A31052-%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/">力扣1052-爱生气的书店老板</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/grumpy-bookstore-owner/">力扣1052-爱生气的书店老板</a></p>
+<p>书店老板有一家店打算试营业 customers.length 分钟。每分钟都有一些顾客（customers[i]）会进入书店，所有这些顾客都会在那一分钟结束后离开。</p>
+<p>在某些时候，书店老板会生气。 如果书店老板在第 i 分钟生气，那么 grumpy[i] = 1，否则 grumpy[i] = 0。 当书店老板生气时，那一分钟的顾客就会不满意，不生气则他们是满意的。</p>
+<p>书店老板知道一个秘密技巧，能抑制自己的情绪，可以让自己连续 X 分钟不生气，但却只能使用一次。</p>
+<p>请你返回这一天营业下来，最多有多少客户能够感到满意的数量.</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：customers &#x3D; [1,0,1,2,1,1,7,5], grumpy &#x3D; [0,1,0,1,0,1,0,1], X &#x3D; 3</span><br><span class="line">输出：16</span><br><span class="line">解释：</span><br><span class="line">书店老板在最后 3 分钟保持冷静。</span><br><span class="line">感到满意的最大客户数量 &#x3D; 1 + 1 + 1 + 1 + 7 + 5 &#x3D; 16.</span><br></pre></td></tr></table></figure>
+<p>代码及注释如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; customers</span><br><span class="line"> * @param &#123;number[]&#125; grumpy</span><br><span class="line"> * @param &#123;number&#125; X</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var maxSatisfied &#x3D; function(customers, grumpy, X) &#123;</span><br><span class="line">    &#x2F;&#x2F;滑动窗口解决问题</span><br><span class="line">    let len &#x3D; customers.length;</span><br><span class="line">    let left &#x3D; 0;</span><br><span class="line">    let right &#x3D; 0;</span><br><span class="line">    let max &#x3D; 0;</span><br><span class="line">    &#x2F;&#x2F;存放正常营业时的结果</span><br><span class="line">    let result &#x3D; 0;</span><br><span class="line">    &#x2F;&#x2F;存放使用特殊技能时的结果</span><br><span class="line">    let temp &#x3D; 0;</span><br><span class="line">    &#x2F;&#x2F;不使用秘密技巧时，正常的营业额</span><br><span class="line">    &#x2F;&#x2F;注意if取反判断，</span><br><span class="line">    &#x2F;&#x2F;取反的时候如果值为0，null,undefined,&quot;&quot;、false或者 NaN等则进入判断语句</span><br><span class="line">    for(let i &#x3D; 0;i&lt;len;i++)&#123;</span><br><span class="line">        if(!grumpy[i])&#123;</span><br><span class="line">            result +&#x3D; customers[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    while(right &lt; len)&#123;</span><br><span class="line">        if(grumpy[right])&#123;</span><br><span class="line">            temp +&#x3D; customers[right]</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;滑动窗口长度大于指定数X时，左边右移</span><br><span class="line">        &#x2F;&#x2F;右移时需要判断当时的状态，要是生气状态，temp中的值需要减去当时的客人数</span><br><span class="line">        if(right-left+1 &gt; X)&#123;</span><br><span class="line">            if(grumpy[left])&#123;</span><br><span class="line">                temp -&#x3D; customers[left];</span><br><span class="line">            &#125;;</span><br><span class="line">            left++</span><br><span class="line">        &#125;;</span><br><span class="line">        max &#x3D; Math.max(max,temp)</span><br><span class="line">        right++;</span><br><span class="line">    &#125;;</span><br><span class="line">    return max + result</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/23/%E5%8A%9B%E6%89%A31052-%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/" data-id="cknftil4k001h04tj7fgic38w" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣1438-绝对差不超过限制的最长连续子数组" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/02/21/%E5%8A%9B%E6%89%A31438-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" class="article-date">
@@ -104,7 +158,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/21/%E5%8A%9B%E6%89%A31438-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" data-id="ckncytd690021r0tj0z2ucc3h" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/21/%E5%8A%9B%E6%89%A31438-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" data-id="cknftil4r001y04tjet657cmk" class="article-share-link">分享</a>
       
       
       
@@ -156,7 +210,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/20/%E5%8A%9B%E6%89%A3697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/" data-id="ckncytd6v003rr0tje44ohqbr" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/20/%E5%8A%9B%E6%89%A3697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/" data-id="cknftil5h003r04tjdjg2b3ys" class="article-share-link">分享</a>
       
       
       
@@ -205,7 +259,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" data-id="ckncytd6m0032r0tj62diedn1" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" data-id="cknftil55002x04tj5qhxf137" class="article-share-link">分享</a>
       
       
       
@@ -251,7 +305,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/" data-id="ckncytd6y003yr0tjbz3dgvpd" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/" data-id="cknftil5h003t04tjf7eg04vh" class="article-share-link">分享</a>
       
       
       
@@ -308,7 +362,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A346-%E5%85%A8%E6%8E%92%E5%88%97/" data-id="ckncytd6n0034r0tj5gfce3zn" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A346-%E5%85%A8%E6%8E%92%E5%88%97/" data-id="cknftil57003404tj693d5pl4" class="article-share-link">分享</a>
       
       
       
@@ -356,7 +410,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/" data-id="ckncytd5u0010r0tjhp0v9soq" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/" data-id="cknftil4b000x04tjfue76dro" class="article-share-link">分享</a>
       
       
       
@@ -406,7 +460,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" data-id="ckncytd6s003jr0tj4pf0cv3u" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" data-id="cknftil5c003h04tj259h3bas" class="article-share-link">分享</a>
       
       
       
@@ -456,7 +510,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/" data-id="ckncytd6y0040r0tj95f9hg1j" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/" data-id="cknftil5k004104tj7oex1btm" class="article-share-link">分享</a>
       
       
       
@@ -526,88 +580,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/" data-id="ckncytd5d0004r0tj90cx2231" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-photo" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/16/photo/" class="article-date">
-  <time datetime="2021-02-16T02:12:54.000Z" itemprop="datePublished">2021-02-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/CSS/">CSS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/16/photo/">BFC的理解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h3 id="1-BFC是什么？"><a href="#1-BFC是什么？" class="headerlink" title="1.BFC是什么？"></a>1.BFC是什么？</h3><p>BFC(Block Formatting Context)块级格式化上下文，它会创建一个特殊的区域，在这个区域里，内部元素布局不会影响到外部元素，同样，外部元素布局不会影响到BFC内部元素布局。一个 BFC 就像是一个隔离区域， 和其他区域互不影响。</p>
-<h3 id="2-什么样的元素会形成BFC？"><a href="#2-什么样的元素会形成BFC？" class="headerlink" title="2.什么样的元素会形成BFC？"></a>2.什么样的元素会形成BFC？</h3><p>MDN总结如下：</p>
-<ol>
-<li>根元素或其他包含根元素的元素</li>
-<li>浮动元素（元素的float不为none）</li>
-<li>绝对定位元素（元素的position为absolute或fixed）</li>
-<li>display＝inline-block|flex|inline-flex|table-cell 或 table-caption</li>
-<li>overflow＝hidden|auto 或 scroll(≠visible)</li>
-<li>含有样式属性column-span:all的元素</li>
-</ol>
-<h3 id="3-BFC会影响什么？"><a href="#3-BFC会影响什么？" class="headerlink" title="3.BFC会影响什么？"></a>3.BFC会影响什么？</h3><p>具体描述如下：</p>
-<ol>
-<li>内部的box将会独占宽度，且在垂直方向上一个接一个排列</li>
-<li>同一个BFC的两个相邻box的margin会出现边距折叠现象</li>
-<li>每个Box在水平方向上的左边缘会与BFC的左边缘对齐，即使存在浮动也是如此</li>
-<li>BFC区域不会与浮动元素重叠，而是会依次排列</li>
-<li>浮动元素的高度也会参与BFC的高度计算</li>
-</ol>
-<p>要点：</p>
-<ol>
-<li>边距折叠</li>
-<li>清除浮动</li>
-<li>自适应多栏布局</li>
-</ol>
-<p>例1：高度塌陷</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;head&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s s1&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s s2&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    </span><br><span class="line">    .head&#123;</span><br><span class="line">       </span><br><span class="line">        width: 300px;</span><br><span class="line">        padding-top: 20px;</span><br><span class="line">        border: 5px solid violet;</span><br><span class="line">        &#x2F;* overflow: hidden; *&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line">    .s&#123;</span><br><span class="line">        height: 150px;</span><br><span class="line">        width: 100px;</span><br><span class="line">        float: left;</span><br><span class="line">        border: 5px solid yellow;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
-<p>由于浮动元素会造成”高度塌陷”,会导致如下图所示.</p>
-<p><img src="/2021/02/16/photo/pic1.png"><br>解决方案:BFC规则,浮动元素的高度也会参与BFC的高度计算.<br>所以在添加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.head&#123;</span><br><span class="line">    overflow:hidden</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/02/16/photo/pic2.png"></p>
-<p>例2：多栏布局</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;head&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s s1&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s s2&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    </span><br><span class="line">    .head&#123;</span><br><span class="line">       </span><br><span class="line">        width: 600px;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    .s1&#123;</span><br><span class="line">        height: 150px;</span><br><span class="line">        width: 100px;</span><br><span class="line">        background-color: yellow;</span><br><span class="line">        float: left;</span><br><span class="line">    &#125;</span><br><span class="line">    .s2&#123;</span><br><span class="line">        height: 200px;</span><br><span class="line">        background-color: violet;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
-<p>结果如下图:<br><img src="/2021/02/16/photo/pic3.png"><br>原因是”每个Box在水平方向上的左边缘会与BFC的左边缘对齐，即使存在浮动也是如此”</p>
-<p>修改如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.s2&#123;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>效果如下:</p>
-<p><img src="/2021/02/16/photo/pic4.png"><br>原因:BFC区域不会与浮动元素重叠，而是会依次排列</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/16/photo/" data-id="ckncytd5f0006r0tj43q24n29" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/" data-id="cknftil3v000404tjg47ma3lr" class="article-share-link">分享</a>
       
       
       
@@ -641,6 +614,10 @@
       <ul>
         
           <li>
+            <a href="/2021/04/13/%E5%8A%9B%E6%89%A3783-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%9D%E7%A6%BB/">力扣783--二叉搜索树节点的最小距离</a>
+          </li>
+        
+          <li>
             <a href="/2021/04/11/%E5%AF%B9%E8%B1%A1%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/">对象深浅拷贝</a>
           </li>
         
@@ -654,10 +631,6 @@
         
           <li>
             <a href="/2021/04/07/%E5%8A%9B%E6%89%A333-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/">力扣33--搜索旋转排序数组</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/07/%E5%8A%9B%E6%89%A388-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/">力扣88--合并两个有序数组</a>
           </li>
         
       </ul>

@@ -66,6 +66,87 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-photo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/16/photo/" class="article-date">
+  <time datetime="2021-02-16T02:12:54.000Z" itemprop="datePublished">2021-02-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/16/photo/">BFC的理解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h3 id="1-BFC是什么？"><a href="#1-BFC是什么？" class="headerlink" title="1.BFC是什么？"></a>1.BFC是什么？</h3><p>BFC(Block Formatting Context)块级格式化上下文，它会创建一个特殊的区域，在这个区域里，内部元素布局不会影响到外部元素，同样，外部元素布局不会影响到BFC内部元素布局。一个 BFC 就像是一个隔离区域， 和其他区域互不影响。</p>
+<h3 id="2-什么样的元素会形成BFC？"><a href="#2-什么样的元素会形成BFC？" class="headerlink" title="2.什么样的元素会形成BFC？"></a>2.什么样的元素会形成BFC？</h3><p>MDN总结如下：</p>
+<ol>
+<li>根元素或其他包含根元素的元素</li>
+<li>浮动元素（元素的float不为none）</li>
+<li>绝对定位元素（元素的position为absolute或fixed）</li>
+<li>display＝inline-block|flex|inline-flex|table-cell 或 table-caption</li>
+<li>overflow＝hidden|auto 或 scroll(≠visible)</li>
+<li>含有样式属性column-span:all的元素</li>
+</ol>
+<h3 id="3-BFC会影响什么？"><a href="#3-BFC会影响什么？" class="headerlink" title="3.BFC会影响什么？"></a>3.BFC会影响什么？</h3><p>具体描述如下：</p>
+<ol>
+<li>内部的box将会独占宽度，且在垂直方向上一个接一个排列</li>
+<li>同一个BFC的两个相邻box的margin会出现边距折叠现象</li>
+<li>每个Box在水平方向上的左边缘会与BFC的左边缘对齐，即使存在浮动也是如此</li>
+<li>BFC区域不会与浮动元素重叠，而是会依次排列</li>
+<li>浮动元素的高度也会参与BFC的高度计算</li>
+</ol>
+<p>要点：</p>
+<ol>
+<li>边距折叠</li>
+<li>清除浮动</li>
+<li>自适应多栏布局</li>
+</ol>
+<p>例1：高度塌陷</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;head&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s s1&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s s2&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    </span><br><span class="line">    .head&#123;</span><br><span class="line">       </span><br><span class="line">        width: 300px;</span><br><span class="line">        padding-top: 20px;</span><br><span class="line">        border: 5px solid violet;</span><br><span class="line">        &#x2F;* overflow: hidden; *&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line">    .s&#123;</span><br><span class="line">        height: 150px;</span><br><span class="line">        width: 100px;</span><br><span class="line">        float: left;</span><br><span class="line">        border: 5px solid yellow;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+<p>由于浮动元素会造成”高度塌陷”,会导致如下图所示.</p>
+<p><img src="/2021/02/16/photo/pic1.png"><br>解决方案:BFC规则,浮动元素的高度也会参与BFC的高度计算.<br>所以在添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.head&#123;</span><br><span class="line">    overflow:hidden</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/02/16/photo/pic2.png"></p>
+<p>例2：多栏布局</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;head&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s s1&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;s s2&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    </span><br><span class="line">    .head&#123;</span><br><span class="line">       </span><br><span class="line">        width: 600px;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    .s1&#123;</span><br><span class="line">        height: 150px;</span><br><span class="line">        width: 100px;</span><br><span class="line">        background-color: yellow;</span><br><span class="line">        float: left;</span><br><span class="line">    &#125;</span><br><span class="line">    .s2&#123;</span><br><span class="line">        height: 200px;</span><br><span class="line">        background-color: violet;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+<p>结果如下图:<br><img src="/2021/02/16/photo/pic3.png"><br>原因是”每个Box在水平方向上的左边缘会与BFC的左边缘对齐，即使存在浮动也是如此”</p>
+<p>修改如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.s2&#123;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>效果如下:</p>
+<p><img src="/2021/02/16/photo/pic4.png"><br>原因:BFC区域不会与浮动元素重叠，而是会依次排列</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/16/photo/" data-id="cknftil3y000904tjb600g1nj" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣55-跳跃游戏" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" class="article-date">
@@ -103,7 +184,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" data-id="ckncytd6r003hr0tj1b314pnz" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" data-id="cknftil5a003e04tj298ncmdd" class="article-share-link">分享</a>
       
       
       
@@ -152,7 +233,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A3567-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="ckncytd6t003mr0tj68n9fgs5" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A3567-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="cknftil5d003j04tj2uunfge8" class="article-share-link">分享</a>
       
       
       
@@ -206,7 +287,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/14/%E5%8A%9B%E6%89%A3240/" data-id="ckncytd6g002ir0tjbpigfj46" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/14/%E5%8A%9B%E6%89%A3240/" data-id="cknftil4z002g04tjglmnf93q" class="article-share-link">分享</a>
       
       
       
@@ -260,7 +341,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="ckncytd76004mr0tj4r0hc689" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="cknftil5s004n04tj61s84a4p" class="article-share-link">分享</a>
       
       
       
@@ -294,6 +375,10 @@
       <ul>
         
           <li>
+            <a href="/2021/04/13/%E5%8A%9B%E6%89%A3783-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%9D%E7%A6%BB/">力扣783--二叉搜索树节点的最小距离</a>
+          </li>
+        
+          <li>
             <a href="/2021/04/11/%E5%AF%B9%E8%B1%A1%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/">对象深浅拷贝</a>
           </li>
         
@@ -307,10 +392,6 @@
         
           <li>
             <a href="/2021/04/07/%E5%8A%9B%E6%89%A333-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/">力扣33--搜索旋转排序数组</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/07/%E5%8A%9B%E6%89%A388-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/">力扣88--合并两个有序数组</a>
           </li>
         
       </ul>
