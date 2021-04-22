@@ -66,6 +66,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣39-组合总和" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" class="article-date">
+  <time datetime="2021-02-19T13:38:39.000Z" itemprop="datePublished">2021-02-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/">力扣39-组合总和</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。</p>
+<p>candidates 中的数字可以无限制重复被选取。</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：candidates &#x3D; [2,3,6,7], target &#x3D; 7,</span><br><span class="line">所求解集为：</span><br><span class="line">[</span><br><span class="line">  [7],</span><br><span class="line">  [2,2,3]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>代码及注释如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; candidates</span><br><span class="line"> * @param &#123;number&#125; target</span><br><span class="line"> * @return &#123;number[][]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var combinationSum &#x3D; function(candidates, target) &#123;</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    let len &#x3D; candidates.length;</span><br><span class="line">    let back &#x3D; function(path,condition,sum)&#123;</span><br><span class="line">        &#x2F;&#x2F;限制条件 sum &gt;&#x3D; target退出</span><br><span class="line">        if(sum &gt;&#x3D; target)&#123;</span><br><span class="line">            if(sum &#x3D;&#x3D; target)&#123;</span><br><span class="line">            res.push(path.slice())</span><br><span class="line">            &#125;;</span><br><span class="line">            return </span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;限制产生重复组合，基于上一次的选择</span><br><span class="line">        for(let i &#x3D; condition;i &lt; len;i++)&#123;</span><br><span class="line">            path.push(candidates[i]);</span><br><span class="line">            &#x2F;&#x2F;组合中允许有重复性元素</span><br><span class="line">            back(path,i,sum + candidates[i]);</span><br><span class="line">            path.pop()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    back([],0,0);</span><br><span class="line">    return res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" data-id="cknsxfeze004s0wtjc6t9c2qy" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣77-组合" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/" class="article-date">
@@ -100,7 +149,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/" data-id="cknnx3abl004bcktja8y9e5o4" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/" data-id="cknsxfezq005n0wtj1gi3cugw" class="article-share-link">分享</a>
       
       
       
@@ -157,7 +206,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A346-%E5%85%A8%E6%8E%92%E5%88%97/" data-id="cknnx3aax003hcktj7funb4zz" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A346-%E5%85%A8%E6%8E%92%E5%88%97/" data-id="cknsxfezi00500wtjgjaa3k23" class="article-share-link">分享</a>
       
       
       
@@ -205,7 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/" data-id="cknnx3a9g0015cktjgetw3sl5" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/" data-id="cknsxfexp000y0wtjbp1cbxbw" class="article-share-link">分享</a>
       
       
       
@@ -255,7 +304,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" data-id="cknnx3abe0041cktjf08rczk5" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" data-id="cknsxfezm005b0wtj1u298tmi" class="article-share-link">分享</a>
       
       
       
@@ -305,7 +354,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/" data-id="cknnx3abm004dcktj9krifo9k" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/" data-id="cknsxfezr005p0wtjeudphfom" class="article-share-link">分享</a>
       
       
       
@@ -375,7 +424,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/" data-id="cknnx3a8b0004cktj3ou7hmnk" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/" data-id="cknsxfex700040wtj6nx9afyb" class="article-share-link">分享</a>
       
       
       
@@ -456,7 +505,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/16/photo/" data-id="cknnx3a8d0006cktj1we96xua" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/16/photo/" data-id="cknsxfexa00080wtjcvcjbrpt" class="article-share-link">分享</a>
       
       
       
@@ -505,7 +554,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" data-id="cknnx3ab8003tcktj59sv35wa" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" data-id="cknsxfezm00590wtj61m04j4y" class="article-share-link">分享</a>
       
       
       
@@ -554,61 +603,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A3567-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="cknnx3abg0043cktj9g7h00c7" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣240" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/14/%E5%8A%9B%E6%89%A3240/" class="article-date">
-  <time datetime="2021-02-14T12:13:21.000Z" itemprop="datePublished">2021-02-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/14/%E5%8A%9B%E6%89%A3240/">力扣240-搜索二维矩阵</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h3 id="240-搜索二维矩阵"><a href="#240-搜索二维矩阵" class="headerlink" title="240 搜索二维矩阵"></a>240 搜索二维矩阵</h3><p>编写一个高效的算法来搜索 m x n 矩阵 matrix 中的一个目标值 target 。该矩阵具有以下特性：</p>
-<ol>
-<li>每行的元素从左到右升序排列。</li>
-<li>每列的元素从上到下升序排列。</li>
-</ol>
-<p>思路：二分法求解</p>
-<ol>
-<li>选取左下角的值作为初始值</li>
-<li>将值和目标值对比，如果目标值大就col++,目标值小就row–;<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[][]&#125; matrix</span><br><span class="line"> * @param &#123;number&#125; target</span><br><span class="line"> * @return &#123;boolean&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var searchMatrix &#x3D; function(matrix, target) &#123;</span><br><span class="line">    let row &#x3D; matrix.length;</span><br><span class="line">    let col &#x3D; matrix[0].length;</span><br><span class="line">    if(row &lt;&#x3D; 0 || col &lt;&#x3D; 0 )&#123;</span><br><span class="line">        return false</span><br><span class="line">    &#125;;</span><br><span class="line">    let singleRow &#x3D; row-1;</span><br><span class="line">    let singleCol &#x3D; 0;</span><br><span class="line">    while(singleRow &gt;&#x3D; 0 &amp;&amp; singleCol &lt; col)&#123;</span><br><span class="line">        if(matrix[singleRow][singleCol] &gt; target)&#123;</span><br><span class="line">            singleRow--;</span><br><span class="line">        &#125;else if(matrix[singleRow][singleCol] &lt; target)&#123;</span><br><span class="line">            singleCol++;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return false;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/14/%E5%8A%9B%E6%89%A3240/" data-id="cknnx3aao0030cktjdmtf9vl7" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A3567-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="cknsxfezn005d0wtj1xisg3l0" class="article-share-link">分享</a>
       
       
       
@@ -642,6 +637,10 @@
       <ul>
         
           <li>
+            <a href="/2021/04/22/offer38-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/">offer38--字符串的排列</a>
+          </li>
+        
+          <li>
             <a href="/2021/04/19/%E5%8A%9B%E6%89%A327-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/">力扣27--移除元素</a>
           </li>
         
@@ -655,10 +654,6 @@
         
           <li>
             <a href="/2021/04/17/%E5%8A%9B%E6%89%A3-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A03/">力扣--存在重复元素3</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/15/%E5%8A%9B%E6%89%A3213-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D2/">力扣213--打家劫舍2</a>
           </li>
         
       </ul>
