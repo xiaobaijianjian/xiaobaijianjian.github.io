@@ -66,6 +66,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣20-有效的括号" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/11/%E5%8A%9B%E6%89%A320-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" class="article-date">
+  <time datetime="2021-03-11T02:05:48.000Z" itemprop="datePublished">2021-03-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/">栈和队列</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/11/%E5%8A%9B%E6%89%A320-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/">力扣20--有效的括号</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/valid-parentheses/">力扣20–有效的括号</a></p>
+<p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串 s ，判断字符串是否有效。</p>
+<p>有效字符串需满足:左括号必须用相同类型的右括号闭合。左括号必须以正确的顺序闭合。</p>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：s &#x3D; &quot;()[]&#123;&#125;&quot;</span><br><span class="line">输出：true</span><br></pre></td></tr></table></figure>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;string&#125; s</span><br><span class="line"> * @return &#123;boolean&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var isValid &#x3D; function(s) &#123;</span><br><span class="line">    let map &#x3D; &#123;</span><br><span class="line">        &#39;(&#39;:-1,</span><br><span class="line">        &#39;)&#39;:1,</span><br><span class="line">        &#39;[&#39;:-2,</span><br><span class="line">        &#39;]&#39;:2,</span><br><span class="line">        &#39;&#123;&#39;:-3,</span><br><span class="line">        &#39;&#125;&#39;:3</span><br><span class="line">    &#125;;</span><br><span class="line">    let stack &#x3D; [];</span><br><span class="line">    for(let i &#x3D; 0;i &lt; s.length;i++)&#123;</span><br><span class="line">        if(map[s[i]] &lt; 0)&#123;</span><br><span class="line">            stack.push(s[i])</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            let last &#x3D; stack.pop();</span><br><span class="line">            let sum &#x3D; map[last] + map[s[i]]</span><br><span class="line">            if(sum !&#x3D; 0)&#123;</span><br><span class="line">                return false</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line">    if(stack.length &gt; 0)&#123;</span><br><span class="line">        return false</span><br><span class="line">    &#125;</span><br><span class="line">    return true</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/11/%E5%8A%9B%E6%89%A320-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" data-id="ckntnl53j002a3ktjadwu8dzy" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣-227-基本计算器" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/03/11/%E5%8A%9B%E6%89%A3-227-%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8/" class="article-date">
@@ -104,7 +154,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/11/%E5%8A%9B%E6%89%A3-227-%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8/" data-id="cknsxfext001a0wtj50vy7i89" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/11/%E5%8A%9B%E6%89%A3-227-%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8/" data-id="ckntnl53200113ktj669zgkeh" class="article-share-link">分享</a>
       
       
       
@@ -153,7 +203,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/10/%E5%89%91%E6%8C%8753-0-n-1%E4%B8%AD%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0/" data-id="cknsxfexi000o0wtj13u9gpkk" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/10/%E5%89%91%E6%8C%8753-0-n-1%E4%B8%AD%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0/" data-id="ckntnl52w000m3ktj9pm16nqj" class="article-share-link">分享</a>
       
       
       
@@ -204,7 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/10/%E5%8A%9B%E6%89%A3134-%E5%8A%A0%E6%B2%B9%E7%AB%99/" data-id="cknsxfey700240wtjfu9bcjev" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/10/%E5%8A%9B%E6%89%A3134-%E5%8A%A0%E6%B2%B9%E7%AB%99/" data-id="ckntnl53e001v3ktj63tthtlf" class="article-share-link">分享</a>
       
       
       
@@ -253,7 +303,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/09/%E5%89%91%E6%8C%8713-%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/" data-id="cknsxfexg000i0wtjdg5290ic" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/09/%E5%89%91%E6%8C%8713-%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/" data-id="ckntnl52u000j3ktj5a4kb27k" class="article-share-link">分享</a>
       
       
       
@@ -302,7 +352,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/09/%E5%8A%9B%E6%89%A31047-%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E7%9B%B8%E9%82%BB%E9%87%8D%E5%A4%8D%E9%A1%B9/" data-id="cknsxfey1001r0wtjgv6b1pbs" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/09/%E5%8A%9B%E6%89%A31047-%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E7%9B%B8%E9%82%BB%E9%87%8D%E5%A4%8D%E9%A1%B9/" data-id="ckntnl538001g3ktjdj8z2484" class="article-share-link">分享</a>
       
       
       
@@ -355,7 +405,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/08/%E6%89%93%E9%80%9Acall%E3%80%81apply%E3%80%81bind/" data-id="cknsxfezx00690wtjfawie678" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/08/%E6%89%93%E9%80%9Acall%E3%80%81apply%E3%80%81bind/" data-id="ckntnl54j00513ktj6hzu82jb" class="article-share-link">分享</a>
       
       
       
@@ -406,7 +456,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/08/%E5%89%91%E6%8C%87offer34-%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84/" data-id="cknsxfexp00100wtjhmjx267c" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/08/%E5%89%91%E6%8C%87offer34-%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84/" data-id="ckntnl52z000u3ktj1xk8082f" class="article-share-link">分享</a>
       
       
       
@@ -455,7 +505,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/07/%E5%8A%9B%E6%89%A3131-%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2/" data-id="cknsxfey5001z0wtj5re0f4zl" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/07/%E5%8A%9B%E6%89%A3131-%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2/" data-id="ckntnl53e001x3ktj50ra0n3w" class="article-share-link">分享</a>
       
       
       
@@ -501,53 +551,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/06/%E5%89%91%E6%8C%8726-%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" data-id="cknsxfexj000q0wtje7wj0eig" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣100-相同的树" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/03/06/%E5%8A%9B%E6%89%A3100-%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91/" class="article-date">
-  <time datetime="2021-03-06T06:36:43.000Z" itemprop="datePublished">2021-03-06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/06/%E5%8A%9B%E6%89%A3100-%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91/">力扣100-相同的树</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/same-tree/">力扣100-相同的树</a></p>
-<p>给你两棵二叉树的根节点 p 和 q ，编写一个函数来检验这两棵树是否相同。<br>如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val, left, right) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.left &#x3D; (left&#x3D;&#x3D;&#x3D;undefined ? null : left)</span><br><span class="line"> *     this.right &#x3D; (right&#x3D;&#x3D;&#x3D;undefined ? null : right)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; p</span><br><span class="line"> * @param &#123;TreeNode&#125; q</span><br><span class="line"> * @return &#123;boolean&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var isSameTree &#x3D; function(p, q) &#123;</span><br><span class="line">    if(p &#x3D;&#x3D; null &amp;&amp; q &#x3D;&#x3D; null)&#123;</span><br><span class="line">        return true</span><br><span class="line">    &#125;;</span><br><span class="line">    if(p &#x3D;&#x3D; null || q &#x3D;&#x3D; null)&#123;</span><br><span class="line">        return false</span><br><span class="line">    &#125;</span><br><span class="line">    if(p.val !&#x3D; q.val)&#123;</span><br><span class="line">        return false</span><br><span class="line">    &#125;;</span><br><span class="line">    return isSameTree(p.left,q.left) &amp;&amp; isSameTree(p.right,q.right)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/06/%E5%8A%9B%E6%89%A3100-%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91/" data-id="cknsxfexw001f0wtj866ceint" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/06/%E5%89%91%E6%8C%8726-%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" data-id="ckntnl52z000s3ktjg4ss8qr3" class="article-share-link">分享</a>
       
       
       
@@ -581,6 +585,10 @@
       <ul>
         
           <li>
+            <a href="/2021/04/23/%E5%8A%9B%E6%89%A3368-%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/">力扣368--最大整除子集</a>
+          </li>
+        
+          <li>
             <a href="/2021/04/22/offer38-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/">offer38--字符串的排列</a>
           </li>
         
@@ -594,10 +602,6 @@
         
           <li>
             <a href="/2021/04/17/%E5%8A%9B%E6%89%A3219-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/">力扣219--存在重复元素2</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/17/%E5%8A%9B%E6%89%A3-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A03/">力扣--存在重复元素3</a>
           </li>
         
       </ul>
