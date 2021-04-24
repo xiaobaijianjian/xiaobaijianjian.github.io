@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>力扣100-相同的树 | Welcome To My Learning Blog</title>
+  <title>力扣377--组合总和4 | Welcome To My Learning Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="力扣100-相同的树 给你两棵二叉树的根节点 p 和 q ，编写一个函数来检验这两棵树是否相同。如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。 12345678910111213141516171819202122232425&#x2F;** * Definition for a binary tree node. * function TreeNode(val, left,">
+  <meta name="description" content="力扣377–组合总和4 给你一个由 不同 整数组成的数组 nums ，和一个目标整数 target 。请你从 nums 中找出并返回总和为 target 的元素组合的个数。 题目数据保证答案符合 32 位整数范围。 12345678910111213141516输入：nums &#x3D; [1,2,3], target &#x3D; 4输出：7解释：所有可能的组合为：(1, 1, 1, 1)(1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="力扣100-相同的树">
-<meta property="og:url" content="http://example.com/2021/03/06/%E5%8A%9B%E6%89%A3100-%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91/index.html">
+<meta property="og:title" content="力扣377--组合总和4">
+<meta property="og:url" content="http://example.com/2021/04/24/%E5%8A%9B%E6%89%A3377-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C4/index.html">
 <meta property="og:site_name" content="Welcome To My Learning Blog">
-<meta property="og:description" content="力扣100-相同的树 给你两棵二叉树的根节点 p 和 q ，编写一个函数来检验这两棵树是否相同。如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。 12345678910111213141516171819202122232425&#x2F;** * Definition for a binary tree node. * function TreeNode(val, left,">
+<meta property="og:description" content="力扣377–组合总和4 给你一个由 不同 整数组成的数组 nums ，和一个目标整数 target 。请你从 nums 中找出并返回总和为 target 的元素组合的个数。 题目数据保证答案符合 32 位整数范围。 12345678910111213141516输入：nums &#x3D; [1,2,3], target &#x3D; 4输出：7解释：所有可能的组合为：(1, 1, 1, 1)(1">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-03-06T06:36:43.000Z">
-<meta property="article:modified_time" content="2021-03-06T06:40:08.307Z">
+<meta property="article:published_time" content="2021-04-24T09:18:54.000Z">
+<meta property="article:modified_time" content="2021-04-24T09:22:49.029Z">
 <meta property="article:author" content="jianjian">
 <meta name="twitter:card" content="summary">
   
@@ -68,14 +68,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-力扣100-相同的树" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-力扣377-组合总和4" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/03/06/%E5%8A%9B%E6%89%A3100-%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91/" class="article-date">
-  <time datetime="2021-03-06T06:36:43.000Z" itemprop="datePublished">2021-03-06</time>
+    <a href="/2021/04/24/%E5%8A%9B%E6%89%A3377-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C4/" class="article-date">
+  <time datetime="2021-04-24T09:18:54.000Z" itemprop="datePublished">2021-04-24</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
   </div>
 
   </div>
@@ -86,7 +86,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      力扣100-相同的树
+      力扣377--组合总和4
     </h1>
   
 
@@ -96,13 +96,16 @@
       
         <!-- Table of Contents -->
         
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/same-tree/">力扣100-相同的树</a></p>
-<p>给你两棵二叉树的根节点 p 和 q ，编写一个函数来检验这两棵树是否相同。<br>如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val, left, right) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.left &#x3D; (left&#x3D;&#x3D;&#x3D;undefined ? null : left)</span><br><span class="line"> *     this.right &#x3D; (right&#x3D;&#x3D;&#x3D;undefined ? null : right)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; p</span><br><span class="line"> * @param &#123;TreeNode&#125; q</span><br><span class="line"> * @return &#123;boolean&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var isSameTree &#x3D; function(p, q) &#123;</span><br><span class="line">    if(p &#x3D;&#x3D; null &amp;&amp; q &#x3D;&#x3D; null)&#123;</span><br><span class="line">        return true</span><br><span class="line">    &#125;;</span><br><span class="line">    if(p &#x3D;&#x3D; null || q &#x3D;&#x3D; null)&#123;</span><br><span class="line">        return false</span><br><span class="line">    &#125;</span><br><span class="line">    if(p.val !&#x3D; q.val)&#123;</span><br><span class="line">        return false</span><br><span class="line">    &#125;;</span><br><span class="line">    return isSameTree(p.left,q.left) &amp;&amp; isSameTree(p.right,q.right)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/combination-sum-iv/">力扣377–组合总和4</a></p>
+<p>给你一个由 不同 整数组成的数组 nums ，和一个目标整数 target 。请你从 nums 中找出并返回总和为 target 的元素组合的个数。</p>
+<p>题目数据保证答案符合 32 位整数范围。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [1,2,3], target &#x3D; 4</span><br><span class="line">输出：7</span><br><span class="line">解释：</span><br><span class="line">所有可能的组合为：</span><br><span class="line">(1, 1, 1, 1)</span><br><span class="line">(1, 1, 2)</span><br><span class="line">(1, 2, 1)</span><br><span class="line">(1, 3)</span><br><span class="line">(2, 1, 1)</span><br><span class="line">(2, 2)</span><br><span class="line">(3, 1)</span><br><span class="line">请注意，顺序不同的序列被视作不同的组合。</span><br><span class="line"></span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;combination-sum-iv</span><br><span class="line">著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
+<p>代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @param &#123;number&#125; target</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var combinationSum4 &#x3D; function(nums, target) &#123;</span><br><span class="line">    let dp &#x3D; new Array(target+1).fill(0);</span><br><span class="line">    dp[0] &#x3D; 1;</span><br><span class="line">    for(let i &#x3D; 1;i &lt;&#x3D; target;i++)&#123;</span><br><span class="line">        for(let j of nums)&#123;</span><br><span class="line">            if(j &lt;&#x3D; i)&#123;</span><br><span class="line">                dp[i] +&#x3D; dp[i-j]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[target]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/06/%E5%8A%9B%E6%89%A3100-%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91/" data-id="cknvjbnr4001hsctj0vix7sjz" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/24/%E5%8A%9B%E6%89%A3377-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C4/" data-id="cknvjbns1003hsctjh9rs8je0" class="article-share-link">分享</a>
       
       
       
@@ -156,19 +159,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2021/03/06/%E5%89%91%E6%8C%8726-%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          剑指26-树的子结构
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/03/03/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%89%8B%E5%86%99promise/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/04/24/%E5%8A%9B%E6%89%A3518-%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A22/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">从0开始手写promise</div>
+      <div class="article-nav-title">力扣518--零钱兑换2</div>
     </a>
   
 </nav>
