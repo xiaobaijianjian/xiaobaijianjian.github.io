@@ -66,6 +66,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣-1004-最大连续1的个数3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/" class="article-date">
+  <time datetime="2021-02-19T08:26:17.000Z" itemprop="datePublished">2021-02-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/">力扣-1004 最大连续1的个数3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>给定一个由若干 0 和 1 组成的数组 A，我们最多可以将 K 个值从 0 变成 1 。返回仅包含 1 的最长（连续）子数组的长度</p>
+<p>示例1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">输入：A &#x3D; [1,1,1,0,0,0,1,1,1,1,0], K &#x3D; 2</span><br><span class="line">输出：6</span><br><span class="line">解释： </span><br><span class="line">[1,1,1,0,0,1,1,1,1,1,1]</span><br><span class="line">粗体数字从 0 翻转到 1，最长的子数组长度为 6。</span><br><span class="line"></span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;max-consecutive-ones-iii</span><br><span class="line">著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; A</span><br><span class="line"> * @param &#123;number&#125; K</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var longestOnes &#x3D; function(A, K) &#123;</span><br><span class="line">    &#x2F;&#x2F;滑动窗口记录0的个数，</span><br><span class="line">    &#x2F;&#x2F;分情况讨论：一旦0的个数大于K</span><br><span class="line">    &#x2F;&#x2F;要是A【left】 &#x3D; 0,则left、right往右走，zero个数减一</span><br><span class="line">    &#x2F;&#x2F;要是A【left】 &#x3D; 1;则left、right往右走</span><br><span class="line">    </span><br><span class="line">    let len &#x3D; A.length;</span><br><span class="line">    let left &#x3D; 0;</span><br><span class="line">    let right &#x3D; 0;</span><br><span class="line">    let zero &#x3D; 0;</span><br><span class="line">    while(right &lt; len)&#123;</span><br><span class="line">        if(A[right] &#x3D;&#x3D; 0)&#123;</span><br><span class="line">            zero ++;</span><br><span class="line">        &#125;</span><br><span class="line">        if(zero &gt; K)&#123;</span><br><span class="line">            if(A[left] &#x3D;&#x3D; 0)&#123;</span><br><span class="line">                zero--;</span><br><span class="line">            &#125;</span><br><span class="line">            left++;</span><br><span class="line">        &#125;</span><br><span class="line">        right++;</span><br><span class="line">    &#125;</span><br><span class="line">    return right - left</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A3-1004-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B03/" data-id="ckp1ykvn50013mktj7hze7g0b" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣566-重塑矩阵" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" class="article-date">
@@ -104,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" data-id="ckp1ydwza004744tj6tad083b" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" data-id="ckp1ykvoe0049mktj99n95v91" class="article-share-link">分享</a>
       
       
       
@@ -154,7 +202,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/" data-id="ckp1ydwzj004r44tjbyyh9egt" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/" data-id="ckp1ykvok004tmktjei8q7aog" class="article-share-link">分享</a>
       
       
       
@@ -224,7 +272,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/" data-id="ckp1ydwxi000d44tjc6ba450b" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/" data-id="ckp1ykvmp0005mktjhkol6kth" class="article-share-link">分享</a>
       
       
       
@@ -305,7 +353,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/16/photo/" data-id="ckp1ydwxl000g44tj2xg13n5w" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/16/photo/" data-id="ckp1ykvms0009mktjhpyl8edf" class="article-share-link">分享</a>
       
       
       
@@ -354,7 +402,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" data-id="ckp1ydwzb004944tj3d52grmx" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" data-id="ckp1ykvoe004bmktj9jyebxjt" class="article-share-link">分享</a>
       
       
       
@@ -403,7 +451,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A3567-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="ckp1ydwzc004f44tjhmuzdmf0" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A3567-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="ckp1ykvof004emktje5yzf4u1" class="article-share-link">分享</a>
       
       
       
@@ -457,7 +505,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/14/%E5%8A%9B%E6%89%A3240/" data-id="ckp1ydwyu003a44tj7y8a5k0h" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/14/%E5%8A%9B%E6%89%A3240/" data-id="ckp1ykvnv0030mktj392uhfw5" class="article-share-link">分享</a>
       
       
       
@@ -511,7 +559,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="ckp1ydwzs005d44tja1v444jk" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="ckp1ykvp1008dmktjaqi74j5l" class="article-share-link">分享</a>
       
       
       
@@ -545,6 +593,10 @@
       <ul>
         
           <li>
+            <a href="/2021/05/24/%E7%89%9B%E5%AE%A2-%E5%88%A4%E6%96%AD%E4%BA%8C%E5%8F%89%E6%A0%91%E6%98%AF%E5%90%A6%E6%98%AF%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91/">牛客--判断二叉树是否是完全二叉树</a>
+          </li>
+        
+          <li>
             <a href="/2021/05/24/%E5%8A%9B%E6%89%A398-%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">力扣98--验证二叉搜索树</a>
           </li>
         
@@ -558,10 +610,6 @@
         
           <li>
             <a href="/2021/04/24/%E5%8A%9B%E6%89%A3377-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C4/">力扣377--组合总和4</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/24/%E5%8A%9B%E6%89%A3518-%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A22/">力扣518--零钱兑换2</a>
           </li>
         
       </ul>
