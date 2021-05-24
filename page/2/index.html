@@ -66,6 +66,107 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣-存在重复元素3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/17/%E5%8A%9B%E6%89%A3-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A03/" class="article-date">
+  <time datetime="2021-04-17T03:16:08.000Z" itemprop="datePublished">2021-04-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/17/%E5%8A%9B%E6%89%A3-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A03/">力扣--存在重复元素3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/contains-duplicate-iii/">力扣–存在重复元素3</a></p>
+<p>给你一个整数数组 nums 和两个整数 k 和 t 。请你判断是否存在两个下标 i 和 j，使得 abs(nums[i] - nums[j]) &lt;= t ，同时又满足 abs(i - j) &lt;= k。如果存在则返回 true，不存在返回 false。</p>
+<p>示例 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [1,2,3,1], k &#x3D; 3, t &#x3D; 0</span><br><span class="line">输出：true</span><br></pre></td></tr></table></figure>
+<p>代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @param &#123;number&#125; k</span><br><span class="line"> * @param &#123;number&#125; t</span><br><span class="line"> * @return &#123;boolean&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var containsNearbyAlmostDuplicate &#x3D; function(nums, k, t) &#123;</span><br><span class="line">    let left &#x3D; 0;</span><br><span class="line">    let right &#x3D; 1;</span><br><span class="line">    let len &#x3D; nums.length</span><br><span class="line">    while(right &lt; len)&#123;</span><br><span class="line">        if(Math.abs(right-left) &lt;&#x3D; k &amp;&amp; Math.abs(nums[right]-nums[left]) &lt;&#x3D; t)&#123;</span><br><span class="line">            return true</span><br><span class="line">        &#125;;</span><br><span class="line">        right++;</span><br><span class="line">        if(right - left &gt; k || right &#x3D;&#x3D; len)&#123;</span><br><span class="line">            left&#x3D;left+1;</span><br><span class="line">            right&#x3D;left+1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return false</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/04/17/%E5%8A%9B%E6%89%A3-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A03/" data-id="ckp1ydwy5001n44tj4bn59ppk" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-力扣213-打家劫舍2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/15/%E5%8A%9B%E6%89%A3213-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D2/" class="article-date">
+  <time datetime="2021-04-15T01:40:53.000Z" itemprop="datePublished">2021-04-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/15/%E5%8A%9B%E6%89%A3213-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D2/">力扣213--打家劫舍2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/house-robber-ii/submissions/">力扣213–打家劫舍2</a></p>
+<p>你是一个专业的小偷，计划偷窃沿街的房屋，每间房内都藏有一定的现金。这个地方所有的房屋都 围成一圈 ，这意味着第一个房屋和最后一个房屋是紧挨着的。同时，相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警 。</p>
+<p>给定一个代表每个房屋存放金额的非负整数数组，计算你 在不触动警报装置的情况下 ，能够偷窃到的最高金额。</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [2,3,2]</span><br><span class="line">输出：3</span><br><span class="line">解释：你不能先偷窃 1 号房屋（金额 &#x3D; 2），然后偷窃 3 号房屋（金额 &#x3D; 2）, 因为他们是相邻的。</span><br></pre></td></tr></table></figure>
+<p>代码及注释如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var rob &#x3D; function(nums) &#123;</span><br><span class="line">    &#x2F;&#x2F;关键是首尾相邻的问题</span><br><span class="line">    &#x2F;&#x2F;若是偷了头尾不能偷，相当于从1到倒数第二个</span><br><span class="line">    &#x2F;&#x2F;同理，相当于从第二个到最后一个</span><br><span class="line">    &#x2F;&#x2F; let len &#x3D; nums.length;</span><br><span class="line">    if(nums.length &#x3D;&#x3D; 1)&#123;</span><br><span class="line">        return nums[0]</span><br><span class="line">    &#125;;</span><br><span class="line">    if(nums.length &#x3D;&#x3D; 2)&#123;</span><br><span class="line">        return Math.max(nums[0],nums[1])</span><br><span class="line">    &#125;</span><br><span class="line">    let computeSum &#x3D; function(list)&#123;</span><br><span class="line">        let len &#x3D; list.length;</span><br><span class="line">        let dp &#x3D; new Array(len);</span><br><span class="line">        dp[0] &#x3D; list[0];</span><br><span class="line">        dp[1] &#x3D; Math.max(dp[0],list[1]);</span><br><span class="line">        for(let i &#x3D; 2;i &lt; len;i++)&#123;</span><br><span class="line">            dp[i] &#x3D; Math.max(dp[i-1],dp[i-2]+list[i])</span><br><span class="line">        &#125;;</span><br><span class="line">        return dp[len-1]</span><br><span class="line">    &#125;;</span><br><span class="line">    let fir &#x3D; nums.slice(0,nums.length-1);</span><br><span class="line">    let sec &#x3D; nums.slice(1);</span><br><span class="line">    return Math.max(computeSum(fir),computeSum(sec))</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/04/15/%E5%8A%9B%E6%89%A3213-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D2/" data-id="ckp1ydwyo002w44tj6mvcdre4" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣198-打家劫舍1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/04/15/%E5%8A%9B%E6%89%A3198-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D1/" class="article-date">
@@ -104,7 +205,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/15/%E5%8A%9B%E6%89%A3198-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D1/" data-id="ckny06dqv002elctjfjim94vh" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/15/%E5%8A%9B%E6%89%A3198-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D1/" data-id="ckp1ydwyk002n44tj8xt52yix" class="article-share-link">分享</a>
       
       
       
@@ -153,7 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/13/%E5%8A%9B%E6%89%A3783-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%9D%E7%A6%BB/" data-id="ckny06drr004vlctjhltl1h4a" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/13/%E5%8A%9B%E6%89%A3783-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%9D%E7%A6%BB/" data-id="ckp1ydwzk004v44tjcfp2edvs" class="article-share-link">分享</a>
       
       
       
@@ -208,7 +309,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/11/%E5%AF%B9%E8%B1%A1%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="ckny06dry005hlctj77bvdmrj" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/11/%E5%AF%B9%E8%B1%A1%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="ckp1ydwzt005g44tj3hiya6gl" class="article-share-link">分享</a>
       
       
       
@@ -256,7 +357,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/10/%E5%8A%9B%E6%89%A3263-%E4%B8%91%E6%95%B0/" data-id="ckny06dr1002xlctj9otae6xf" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/10/%E5%8A%9B%E6%89%A3263-%E4%B8%91%E6%95%B0/" data-id="ckp1ydwyt003744tj2prf4gsy" class="article-share-link">分享</a>
       
       
       
@@ -307,7 +408,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/07/%E5%8A%9B%E6%89%A381-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%842/" data-id="ckny06drs0050lctjeo55e78z" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/07/%E5%8A%9B%E6%89%A381-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%842/" data-id="ckp1ydwzk004t44tjbz0742ol" class="article-share-link">分享</a>
       
       
       
@@ -358,7 +459,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/07/%E5%8A%9B%E6%89%A333-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/" data-id="ckny06dr5003alctj7orlbp9v" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/07/%E5%8A%9B%E6%89%A333-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/" data-id="ckp1ydwz3003o44tjdu51853t" class="article-share-link">分享</a>
       
       
       
@@ -408,7 +509,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/07/%E5%8A%9B%E6%89%A388-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/" data-id="ckny06dru0055lctj1lweces1" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/07/%E5%8A%9B%E6%89%A388-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/" data-id="ckp1ydwzo005144tj5h1nbvbv" class="article-share-link">分享</a>
       
       
       
@@ -458,107 +559,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/01/%E5%89%91%E6%8C%8712-%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/" data-id="ckny06dq4000glctj5hqp899x" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-剑指11-旋转数组中最小数字" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/04/01/%E5%89%91%E6%8C%8711-%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97/" class="article-date">
-  <time datetime="2021-04-01T02:04:39.000Z" itemprop="datePublished">2021-04-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/01/%E5%89%91%E6%8C%8711-%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97/">剑指11-旋转数组中最小数字</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/">剑指11-旋转数组中最小数字</a></p>
-<p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。输入一个递增排序的数组的一个旋转，输出旋转数组的最小元素。例如，数组 [3,4,5,1,2] 为 [1,2,3,4,5] 的一个旋转，该数组的最小值为1。  </p>
-<p>示例:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：[3,4,5,1,2]</span><br><span class="line">输出：1</span><br></pre></td></tr></table></figure>
-<p>利用二分法解决。时间复杂度为O（logn）<br>代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; numbers</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var minArray &#x3D; function(numbers) &#123;</span><br><span class="line">    let len &#x3D; numbers.length;</span><br><span class="line">    let left &#x3D; 0;</span><br><span class="line">    let right &#x3D; len-1;</span><br><span class="line">    while(left &lt;&#x3D; right)&#123;</span><br><span class="line">        let mid &#x3D; Math.floor((left+right)&#x2F;2);</span><br><span class="line">        if(numbers[right] &gt; numbers[mid])&#123;</span><br><span class="line">            right &#x3D; mid</span><br><span class="line">        &#125;else if(numbers[right] &lt; numbers[mid])&#123;</span><br><span class="line">            left &#x3D; mid+1</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            &#x2F;&#x2F;这里需要考虑重复性元素的情况</span><br><span class="line">            &#x2F;&#x2F;重复性元素比如[2,2,2,2,2,1,2,2,2,2,]</span><br><span class="line">            &#x2F;&#x2F;不能单纯的right&#x3D;mid会忽略中间的一部分</span><br><span class="line">            right &#x3D; right-1</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return numbers[left]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/01/%E5%89%91%E6%8C%8711-%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97/" data-id="ckny06dq2000blctj5s6e55jb" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣90-子集-2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/03/31/%E5%8A%9B%E6%89%A390-%E5%AD%90%E9%9B%86-2/" class="article-date">
-  <time datetime="2021-03-31T14:25:35.000Z" itemprop="datePublished">2021-03-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/31/%E5%8A%9B%E6%89%A390-%E5%AD%90%E9%9B%86-2/">力扣90--子集(2)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/subsets-ii/">力扣90–子集(2)</a></p>
-<p>给你一个整数数组 nums ，其中可能包含重复元素，请你返回该数组所有可能的子集（幂集）。</p>
-<p>解集 不能 包含重复的子集。返回的解集中，子集可以按 任意顺序 排列。</p>
-<p>示例:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [1,2,2]</span><br><span class="line">输出：[[],[1],[1,2],[1,2,2],[2],[2,2]]</span><br><span class="line">输入：nums &#x3D; [0]</span><br><span class="line">输出：[[],[0]]</span><br></pre></td></tr></table></figure>
-<p>注意和另一题的区别</p>
-<p>代码及注释如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @return &#123;number[][]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var subsetsWithDup &#x3D; function(nums) &#123;</span><br><span class="line">    &#x2F;&#x2F;最后解集中不能包含重复性的元素，所以先将数组进行排序</span><br><span class="line">    &#x2F;&#x2F;跳过重复性的元素进行处理</span><br><span class="line">    let len &#x3D; nums.length;</span><br><span class="line">    nums.sort((a,b)&#x3D;&gt;a-b);</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    let back &#x3D; function(path,condition)&#123;</span><br><span class="line">        if(condition &lt;&#x3D; len)&#123;</span><br><span class="line">            res.push(path.slice())</span><br><span class="line">        &#125;;</span><br><span class="line">        for(let i &#x3D;  condition;i &lt; len;i++)&#123;</span><br><span class="line">            if(i !&#x3D;&#x3D; condition &amp;&amp; nums[i] &#x3D;&#x3D;&#x3D; nums[i-1])&#123;</span><br><span class="line">                continue</span><br><span class="line">            &#125;</span><br><span class="line">            path.push(nums[i]);</span><br><span class="line">            back(path,i+1);</span><br><span class="line">            path.pop()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    back([],0);</span><br><span class="line">    return res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/31/%E5%8A%9B%E6%89%A390-%E5%AD%90%E9%9B%86-2/" data-id="ckny06drv0057lctjeub2dmbs" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/01/%E5%89%91%E6%8C%8712-%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/" data-id="ckp1ydwxq000o44tj95x0eufx" class="article-share-link">分享</a>
       
       
       
@@ -592,6 +593,14 @@
       <ul>
         
           <li>
+            <a href="/2021/05/24/%E5%8A%9B%E6%89%A398-%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">力扣98--验证二叉搜索树</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/09/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%88%A4%E6%96%AD%E6%80%BB%E7%BB%93/">JS数据类型及判断总结</a>
+          </li>
+        
+          <li>
             <a href="/2021/04/26/%E5%8A%9B%E6%89%A3141-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/">力扣141--环形链表</a>
           </li>
         
@@ -601,14 +610,6 @@
         
           <li>
             <a href="/2021/04/24/%E5%8A%9B%E6%89%A3518-%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A22/">力扣518--零钱兑换2</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/23/%E5%8A%9B%E6%89%A3368-%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/">力扣368--最大整除子集</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/22/offer38-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/">offer38--字符串的排列</a>
           </li>
         
       </ul>

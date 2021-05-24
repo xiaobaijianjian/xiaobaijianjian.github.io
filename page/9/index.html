@@ -66,6 +66,106 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣566-重塑矩阵" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" class="article-date">
+  <time datetime="2021-02-17T02:31:21.000Z" itemprop="datePublished">2021-02-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/">其他</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/">力扣566-重塑矩阵</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>在MATLAB中，有一个非常有用的函数 reshape，它可以将一个矩阵重塑为另一个大小不同的新矩阵，但保留其原始数据。</p>
+<p>给出一个由二维数组表示的矩阵，以及两个正整数r和c，分别表示想要的重构的矩阵的行数和列数。重构后的矩阵需要将原始矩阵的所有元素以相同的行遍历顺序填充。</p>
+<p>如果具有给定参数的reshape操作是可行且合理的，则输出新的重塑矩阵；否则，输出原始矩阵。</p>
+<p>（来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reshape-the-matrix">https://leetcode-cn.com/problems/reshape-the-matrix</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。）<br>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">输入: </span><br><span class="line">nums &#x3D; </span><br><span class="line">[[1,2],</span><br><span class="line"> [3,4]]</span><br><span class="line">r &#x3D; 1, c &#x3D; 4</span><br><span class="line">输出: </span><br><span class="line">[[1,2,3,4]]</span><br><span class="line">解释:</span><br><span class="line">行遍历nums的结果是 [1,2,3,4]。新的矩阵是 1 * 4 矩阵, 用之前的元素值一行一行填充新矩阵。</span><br><span class="line"></span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;reshape-the-matrix</span><br><span class="line">著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
+<p>代码及注释如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[][]&#125; nums</span><br><span class="line"> * @param &#123;number&#125; r</span><br><span class="line"> * @param &#123;number&#125; c</span><br><span class="line"> * @return &#123;number[][]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var matrixReshape &#x3D; function(nums, r, c) &#123;</span><br><span class="line">    &#x2F;&#x2F;二维数组的转化（扁平化处理）</span><br><span class="line">    const m &#x3D; nums.length;</span><br><span class="line">    const n &#x3D; nums[0].length;</span><br><span class="line">    if(m*n !&#x3D; r*c)&#123;</span><br><span class="line">        return nums</span><br><span class="line">    &#125;;</span><br><span class="line">    let array &#x3D; new Array(r).fill(0).map(()&#x3D;&gt;new Array(c).fill(0));</span><br><span class="line">    &#x2F;&#x2F;总共有m*n个数，对于每一个数x在新的数组里的坐标为（x&#x2F;c,x%c）,其在原数组里的数对应着为（x&#x2F;n,x%n）</span><br><span class="line">    for(let i &#x3D; 0;i &lt; m*n;i++)&#123;</span><br><span class="line">        array[Math.floor(i&#x2F;c)][i%c] &#x3D; nums[Math.floor(i&#x2F;n)][i%n]</span><br><span class="line">    &#125;</span><br><span class="line">    return array</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A3566-%E9%87%8D%E5%A1%91%E7%9F%A9%E9%98%B5/" data-id="ckp1ydwza004744tj6tad083b" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-力扣78-子集" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/" class="article-date">
+  <time datetime="2021-02-16T16:12:09.000Z" itemprop="datePublished">2021-02-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/">力扣78-子集</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/subsets/">力扣78-子集</a></p>
+<p>给你一个整数数组 nums ，数组中的元素 互不相同 。返回该数组所有可能的子集（幂集）。解集 不能 包含重复的子集。你可以按 任意顺序 返回解集。</p>
+<p>例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [1,2,3]</span><br><span class="line">输出：[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]</span><br></pre></td></tr></table></figure>
+<p>回溯法相关资料</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_48726650/article/details/107082257">前端算法渣的救赎之路</a>、<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/subsets/solution/shou-hua-tu-jie-zi-ji-hui-su-fa-xiang-jie-wei-yun-/">手画图解</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @return &#123;number[][]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var subsets &#x3D; function(nums) &#123;</span><br><span class="line">    &#x2F;&#x2F;定义变量保存结果</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    &#x2F;&#x2F;递归函数的参数选择一般里面两个变量</span><br><span class="line">    &#x2F;&#x2F;包括状态变量和条件变量</span><br><span class="line">    &#x2F;&#x2F;状态变量是res结果最后放的值</span><br><span class="line">    &#x2F;&#x2F;条件是判断搜索是否完毕及其是否合法</span><br><span class="line">    const back &#x3D; (path,condition)&#x3D;&gt;&#123;</span><br><span class="line">        if(condition &lt;&#x3D; nums.length)&#123;</span><br><span class="line">            &#x2F;&#x2F; 调用子递归前，加入解集</span><br><span class="line">            res.push(path.slice())</span><br><span class="line">        &#125;;</span><br><span class="line">        for(let i &#x3D; condition;i &lt; nums.length;i++)&#123;</span><br><span class="line">            path.push(nums[i])&#x2F;&#x2F; 枚举出所有可选的数</span><br><span class="line">            &#x2F;&#x2F;选这个数</span><br><span class="line">            back(path,i+1);</span><br><span class="line">            &#x2F;&#x2F;退回上一步</span><br><span class="line">            path.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    back([],0);</span><br><span class="line">    return res;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/17/%E5%8A%9B%E6%89%A378-%E5%AD%90%E9%9B%86/" data-id="ckp1ydwzj004r44tjbyyh9egt" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-maigin重叠问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/" class="article-date">
@@ -124,7 +224,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/" data-id="ckny06dpv0002lctj63pz83wf" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/16/maigin%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/" data-id="ckp1ydwxi000d44tjc6ba450b" class="article-share-link">分享</a>
       
       
       
@@ -205,7 +305,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/16/photo/" data-id="ckny06dpz0006lctjaz7o0lu9" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/16/photo/" data-id="ckp1ydwxl000g44tj2xg13n5w" class="article-share-link">分享</a>
       
       
       
@@ -254,7 +354,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" data-id="ckny06drh0046lctjbsgs1agf" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A355-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" data-id="ckp1ydwzb004944tj3d52grmx" class="article-share-link">分享</a>
       
       
       
@@ -303,7 +403,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A3567-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="ckny06drn004llctj02o50cra" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/15/%E5%8A%9B%E6%89%A3567-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="ckp1ydwzc004f44tjhmuzdmf0" class="article-share-link">分享</a>
       
       
       
@@ -357,7 +457,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/14/%E5%8A%9B%E6%89%A3240/" data-id="ckny06dr20030lctjfl0wh0m7" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/14/%E5%8A%9B%E6%89%A3240/" data-id="ckp1ydwyu003a44tj7y8a5k0h" class="article-share-link">分享</a>
       
       
       
@@ -411,7 +511,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="ckny06drx005flctj2vmzgp5l" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/13/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="ckp1ydwzs005d44tja1v444jk" class="article-share-link">分享</a>
       
       
       
@@ -445,6 +545,14 @@
       <ul>
         
           <li>
+            <a href="/2021/05/24/%E5%8A%9B%E6%89%A398-%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">力扣98--验证二叉搜索树</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/09/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%88%A4%E6%96%AD%E6%80%BB%E7%BB%93/">JS数据类型及判断总结</a>
+          </li>
+        
+          <li>
             <a href="/2021/04/26/%E5%8A%9B%E6%89%A3141-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/">力扣141--环形链表</a>
           </li>
         
@@ -454,14 +562,6 @@
         
           <li>
             <a href="/2021/04/24/%E5%8A%9B%E6%89%A3518-%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A22/">力扣518--零钱兑换2</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/23/%E5%8A%9B%E6%89%A3368-%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/">力扣368--最大整除子集</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/22/offer38-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/">offer38--字符串的排列</a>
           </li>
         
       </ul>
