@@ -66,6 +66,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣-227-基本计算器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/11/%E5%8A%9B%E6%89%A3-227-%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8/" class="article-date">
+  <time datetime="2021-03-11T01:30:40.000Z" itemprop="datePublished">2021-03-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/">栈和队列</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/11/%E5%8A%9B%E6%89%A3-227-%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8/">力扣-227-基本计算器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/basic-calculator-ii/">力扣-227-基本计算器</a></p>
+<p>给你一个字符串表达式 s ，请你实现一个基本计算器来计算并返回它的值。<br>整数除法仅保留整数部分。</p>
+<p>例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：s &#x3D; &quot;3+2*2&quot;</span><br><span class="line">输出：7</span><br></pre></td></tr></table></figure>
+<p>代码及注释如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;string&#125; s</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var calculate &#x3D; function(s) &#123;</span><br><span class="line">    &#x2F;&#x2F;利用栈的特点，遇到加号将数字直接进去，</span><br><span class="line">    &#x2F;&#x2F;遇到减号将其相反数放进去，遇到乘号将栈顶元素和当前数相乘之后放进去，同样除法</span><br><span class="line">    let stack &#x3D;[];</span><br><span class="line">    &#x2F;&#x2F;预设符号为+</span><br><span class="line">    let sign &#x3D; &#39;+&#39;;</span><br><span class="line">    let n &#x3D; 0;</span><br><span class="line">    &#x2F;&#x2F;注意i的范围</span><br><span class="line">    for(let i &#x3D; 0;i &lt;&#x3D; s.length;i++)&#123;</span><br><span class="line">        if(s[i] &#x3D;&#x3D; &#39; &#39;)&#123;</span><br><span class="line">            continue</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;考虑连续的数进去</span><br><span class="line">        if(s[i]&gt;&#x3D;&#39;0&#39; &amp;&amp;s[i]&lt;&#x3D;&#39;9&#39;)&#123;</span><br><span class="line">            n &#x3D; n*10 + parseInt(s[i]);</span><br><span class="line">            continue;</span><br><span class="line">        &#125;;</span><br><span class="line">        switch(sign)&#123;</span><br><span class="line">            case &#39;+&#39;:</span><br><span class="line">                stack.push(n);</span><br><span class="line">                break;</span><br><span class="line">            case &#39;-&#39;:</span><br><span class="line">                stack.push(-n);</span><br><span class="line">                break;</span><br><span class="line">            case &#39;*&#39;:</span><br><span class="line">                stack.push(stack.pop()*n);</span><br><span class="line">                break;</span><br><span class="line">            case &#39;&#x2F;&#39;:</span><br><span class="line">                stack.push(~~(stack.pop()&#x2F;n));</span><br><span class="line">                break;</span><br><span class="line">        &#125;;</span><br><span class="line">        sign &#x3D; s[i];</span><br><span class="line">        n &#x3D; 0;</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line">   </span><br><span class="line">    return stack.reduce((acc,pre)&#x3D;&gt;acc+pre,0)</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/11/%E5%8A%9B%E6%89%A3-227-%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8/" data-id="ckp3hd90x001778tj7g0f9w9o" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-剑指53-0-n-1中缺失的数" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/03/10/%E5%89%91%E6%8C%8753-0-n-1%E4%B8%AD%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0/" class="article-date">
@@ -103,7 +153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/10/%E5%89%91%E6%8C%8753-0-n-1%E4%B8%AD%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0/" data-id="ckp3d9zi9000sectjgf0e4zpn" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/10/%E5%89%91%E6%8C%8753-0-n-1%E4%B8%AD%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0/" data-id="ckp3hd90s000s78tjgsb9dfa7" class="article-share-link">分享</a>
       
       
       
@@ -154,7 +204,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/10/%E5%8A%9B%E6%89%A3134-%E5%8A%A0%E6%B2%B9%E7%AB%99/" data-id="ckp3d9zir0022ectj90dwbsff" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/10/%E5%8A%9B%E6%89%A3134-%E5%8A%A0%E6%B2%B9%E7%AB%99/" data-id="ckp3hd919002378tjgxgxfnnk" class="article-share-link">分享</a>
       
       
       
@@ -203,7 +253,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/09/%E5%89%91%E6%8C%8713-%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/" data-id="ckp3d9zi4000hectjcfhr83fl" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/09/%E5%89%91%E6%8C%8713-%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/" data-id="ckp3hd90q000l78tj8xrade41" class="article-share-link">分享</a>
       
       
       
@@ -252,7 +302,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/09/%E5%8A%9B%E6%89%A31047-%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E7%9B%B8%E9%82%BB%E9%87%8D%E5%A4%8D%E9%A1%B9/" data-id="ckp3d9zim001nectj0u1idkgw" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/09/%E5%8A%9B%E6%89%A31047-%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E7%9B%B8%E9%82%BB%E9%87%8D%E5%A4%8D%E9%A1%B9/" data-id="ckp3hd913001m78tjeyr25pvq" class="article-share-link">分享</a>
       
       
       
@@ -305,7 +355,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/08/%E6%89%93%E9%80%9Acall%E3%80%81apply%E3%80%81bind/" data-id="ckp3d9zk0005nectjbbwnhsoe" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/08/%E6%89%93%E9%80%9Acall%E3%80%81apply%E3%80%81bind/" data-id="ckp3hd92j005n78tj6fn09bi4" class="article-share-link">分享</a>
       
       
       
@@ -356,7 +406,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/08/%E5%89%91%E6%8C%87offer34-%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84/" data-id="ckp3d9zia000uectj0i8m2iqq" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/08/%E5%89%91%E6%8C%87offer34-%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84/" data-id="ckp3hd90v001078tj834wddvq" class="article-share-link">分享</a>
       
       
       
@@ -405,7 +455,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/07/%E5%8A%9B%E6%89%A3131-%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2/" data-id="ckp3d9ziq0020ectj7f2mff0h" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/07/%E5%8A%9B%E6%89%A3131-%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2/" data-id="ckp3hd918002178tjfxkrd2k3" class="article-share-link">分享</a>
       
       
       
@@ -451,7 +501,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/06/%E5%89%91%E6%8C%8726-%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" data-id="ckp3d9zi8000pectjahnbbhx5" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/06/%E5%89%91%E6%8C%8726-%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" data-id="ckp3hd90r000o78tj1td30o7h" class="article-share-link">分享</a>
       
       
       
@@ -497,77 +547,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/06/%E5%8A%9B%E6%89%A3100-%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91/" data-id="ckp3d9zii001eectj4s33amve" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-从0开始手写promise" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/03/03/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%89%8B%E5%86%99promise/" class="article-date">
-  <time datetime="2021-03-03T09:38:49.000Z" itemprop="datePublished">2021-03-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>►<a class="article-category-link" href="/categories/JavaScript/ES6/">ES6</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/03/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%89%8B%E5%86%99promise/">从0开始手写promise</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>我的妈呀，promise真是个神奇的东西，最近跟着侯策老师的书以及网上一堆的资料一步步理解手敲，现将笔记整理如下，从0开始逐步完善（只要记住最后的就好了，前面及中间一堆都是推理，帮助理解）。</p>
-<p>Promise其实就是一个构造函数，，我们可以使用这个构造函数创建一个构造实例。函数中只有一个参数叫做executor，他是函数类型的参数，具有resolve，reject两个方法。</p>
-<p>Promise构造函数返回一个Promise对象实例，这个返回的Promise对象具有一个then方法。在then方法中调用者可以定义两个参数，分别是onfulfilled和onrejected，都是函数类型的参数。其中onfulfilled通过参数可以获取Promise对象经过resolve处理后的值。</p>
-<h3 id="Promise的初始"><a href="#Promise的初始" class="headerlink" title="Promise的初始"></a>Promise的初始</h3><p>在使用new关键字调用Promise 构造函数时，往往是异步操作结束时调用executor的参数resolve, 并将经过resolve处理后的值作为resolve的函数参数执行，这个值便可以后续then方法的第一个函数参数fulfilled中拿到;同理，在出现错误时，调用executor的参数reject,并将错误信息作为reject 的函数参数执行，这个错误信息可以在后续then方法的第二个函物数( onrejected) 中得到.</p>
-<p>因此，实现Promise 时，应该有两个变量，分别存储经过resolve处理后的值，以及经计reject处理后的值(当然，因为Promise状态的唯一性，不可能同时出现经过resolve处理后的值和经过reject 处理后的值，因此也可以用一个变量来存储) ;同时还需要存在一个状态， 这个状态就是Promise实例的状态( pending、fulfilled、 rejected) ;最后要提供resolve方法及reject方法，这两个方法需要作为executor 的参数提供给开发者使用，代码如下。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function Promise(executor)&#123;</span><br><span class="line">        this.status &#x3D; &#39;pending&#39;;</span><br><span class="line">        this.value &#x3D; null;</span><br><span class="line">        this.reason &#x3D; null;</span><br><span class="line">        const resolve &#x3D; (value) &#x3D;&gt;&#123;</span><br><span class="line">            this.value &#x3D; value;</span><br><span class="line">        &#125;;</span><br><span class="line">        const reject &#x3D; (reason)&#x3D;&gt;&#123;</span><br><span class="line">            this.reason &#x3D; reason;</span><br><span class="line">        &#125;;</span><br><span class="line">        executor(resolve,reject)</span><br><span class="line">    &#125;;</span><br><span class="line">Promise.prototype.then &#x3D; function(onfulfilled &#x3D; Function.prototype.onrejected &#x3D; Function.prototype)&#123;</span><br><span class="line">    onfulfilled(this.value)</span><br><span class="line">    onrejected(this.reason)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Promise实现状态完善"><a href="#Promise实现状态完善" class="headerlink" title="Promise实现状态完善"></a>Promise实现状态完善</h3><p>Promise实例的状态只能从pending变为fulfilled,或者从pending变为rejected，状态一旦变更无法发生变化。上述代码显然不能实现。完善如下，对状态进行判断。同时Promise.prototype.then的参数onfulfilled和onrejected进行判断，当实参不是函数类型时，需要赋予默认函数值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">function Promise(executor)&#123;</span><br><span class="line">        this.status &#x3D; &quot;pending&quot;;</span><br><span class="line">        this.value &#x3D; value;</span><br><span class="line">        this.reason &#x3D; reason;</span><br><span class="line">        const resolve &#x3D; (value)&#x3D;&gt;&#123;</span><br><span class="line">            if(this.status &#x3D;&#x3D; &quot;pending&quot;)&#123;</span><br><span class="line">                this.value &#x3D; value</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        const reject &#x3D; (reason)&#x3D;&gt;&#123;</span><br><span class="line">            if(this.status &#x3D;&#x3D; &quot;pending&quot;)&#123;</span><br><span class="line">                this.reason &#x3D; reason</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        executor(resolve,reject)</span><br><span class="line">    &#125;;</span><br><span class="line">Promise.prototype.then &#x3D; function(onfulfilled,onrejected)&#123;</span><br><span class="line">    onfulfilled &#x3D; typeof onfulfilled &#x3D;&#x3D;&#x3D; &#39;function&#39; ? onfulfilled:data &#x3D;&gt; data</span><br><span class="line">    onrejected &#x3D; typeof onrejected &#x3D;&#x3D;&#x3D; &#39;function&#39; ? onrejected:error &#x3D;&gt;&#123;throw error&#125;</span><br><span class="line">    if(this.status &#x3D;&#x3D;&#x3D; &#39;fulfilled&#39;)&#123;</span><br><span class="line">        onfulfilled(this.value)</span><br><span class="line">    &#125;;</span><br><span class="line">    if(this.status &#x3D;&#x3D;&#x3D; &#39;rejected&#39;)&#123;</span><br><span class="line">        onrejected(this.reason)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Promise异步完善"><a href="#Promise异步完善" class="headerlink" title="Promise异步完善"></a>Promise异步完善</h3><p>Promise自然是为了解决异步问题的，下面示例，应该在两秒后输出信息。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let promise &#x3D; new Promise((resolve,reject)&#x3D;&gt;&#123;</span><br><span class="line">    setTimeout(()&#x3D;&gt;&#123;</span><br><span class="line">        resolve(&#39;data&#39;)</span><br><span class="line">    &#125;,2000)</span><br><span class="line">&#125;);</span><br><span class="line">promise.then((data)&#x3D;&gt;&#123;</span><br><span class="line">    console.log(data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>上述代码在实例化一个 Promise的构造函数时，会在setTimeout逻辑中调用resolve,也就是说，2s后才会调用resolve方法，更改Promise实例状态。但是前面then方法中的onfulfilled 是同步执行的。我们可以先在状态( status )为pending时把开发者传进来的onfulfilled 方法存起来，再在resolve方法中执行即可。</p>
-<p>同时，将resolve和reject方法放入队列中（暂时用setTimeout）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">将resolve和reject的执行放到任务队列中，暂时先用setTimeout实现</span><br><span class="line">function Promise1(executor)&#123;</span><br><span class="line">    this.status &#x3D; &#39;pending&#39;;</span><br><span class="line">    this.value &#x3D; null;</span><br><span class="line">    this.reason &#x3D; null;</span><br><span class="line">    this.onFulfilledFunc &#x3D; Function.prototype;</span><br><span class="line">    this.onrejectedFunc &#x3D; Function.prototype;</span><br><span class="line">    const resolve &#x3D; (value)&#x3D;&gt;&#123;</span><br><span class="line">        &#x2F;&#x2F; 判断传入元素是否为 Promise 值， 如果是， 则状态改变必须等待前一个状态改变后再进行改变</span><br><span class="line">        if(value instanceof Promise1)&#123;</span><br><span class="line">            return value.then(resolve,reject)</span><br><span class="line">        &#125;</span><br><span class="line">        setTimeout(()&#x3D;&gt;&#123;</span><br><span class="line">            if(this.status &#x3D;&#x3D;&#x3D; &#39;pending&#39;)&#123;</span><br><span class="line">                this.value &#x3D; value;</span><br><span class="line">                this.status &#x3D; &#39;fulfilled&#39;;</span><br><span class="line">                this.onFulfilledFunc(this.value)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;;</span><br><span class="line">    const reject &#x3D; (reason) &#x3D;&gt;&#123;</span><br><span class="line">        setTimeout(()&#x3D;&gt;&#123;</span><br><span class="line">            if(this.status &#x3D;&#x3D;&#x3D; &#39;pending&#39;)&#123;</span><br><span class="line">                this.reason &#x3D; reason;</span><br><span class="line">                this.status &#x3D; &#39;rejected&#39;;</span><br><span class="line">                this.onrejectedFunc(this.reason)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;;</span><br><span class="line">    executor(resolve,reject)</span><br><span class="line">&#125;;</span><br><span class="line">Promise1.prototype.then &#x3D; function(onfulfilled,onrejected)&#123;</span><br><span class="line">    onfulfilled &#x3D; typeof onfulfilled &#x3D;&#x3D;&#x3D; &#39;function&#39; ? onfulfilled : data&#x3D;&gt;data</span><br><span class="line">    onrejected &#x3D; typeof onrejected &#x3D;&#x3D;&#x3D; &#39;function&#39; ? onrejected : error&#x3D;&gt;&#123;throw error&#125;</span><br><span class="line">    if(this.status &#x3D;&#x3D;&#x3D; &#39;fulfilled&#39;)&#123;</span><br><span class="line">        onfulfilled(this.value)</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line">    if(this.status &#x3D;&#x3D;&#x3D; &#39;rejected&#39;)&#123;</span><br><span class="line">        rejected(this.reason)</span><br><span class="line">    &#125;;</span><br><span class="line">    if(this.status &#x3D;&#x3D;&#x3D; &#39;pending&#39;)&#123;</span><br><span class="line">        this.onFulfilledFunc&#x3D; onfulfilled;</span><br><span class="line">        this.onrejectedFunc &#x3D; onrejected;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">let promise &#x3D; new Promise1((resolve,reject)&#x3D;&gt;&#123;</span><br><span class="line">    resolve(&#39;data&#39;)</span><br><span class="line">&#125;)</span><br><span class="line">promise.then(data&#x3D;&gt;&#123;</span><br><span class="line">    console.log(data)</span><br><span class="line">&#125;);</span><br><span class="line">console.log(1)</span><br></pre></td></tr></table></figure>
-<h3 id="Promise细节完善"><a href="#Promise细节完善" class="headerlink" title="Promise细节完善"></a>Promise细节完善</h3><p>同样，以实例为例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">继续完善，在Promise实例状态可以添加多个then方法</span><br><span class="line">    let promise &#x3D; new Promise((resolve,reject)&#x3D;&gt;&#123;</span><br><span class="line">        setTimeout(()&#x3D;&gt;&#123;</span><br><span class="line">            resolve(&#39;data&#39;)</span><br><span class="line">        &#125;,2000)</span><br><span class="line">    &#125;);</span><br><span class="line">    promise.then((data)&#x3D;&gt;&#123;</span><br><span class="line">        console.log(&#96;1:$&#123;data&#125;&#96;)</span><br><span class="line">    &#125;);</span><br><span class="line">    promise.then((data)&#x3D;&gt;&#123;</span><br><span class="line">        console.log(&#96;2:$&#123;data&#125;&#96;)</span><br><span class="line">    &#125;)</span><br><span class="line">    应该输出1:data,2:data</span><br></pre></td></tr></table></figure>
-<p>为了实现这个功能，我们可以将then方法中的onFulfilled储存到一个数组中。代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;将所有then中的方法中的onFulfilledFunc储存到一个数组中，在当前Promise中依次执行数组内的方法即可。</span><br><span class="line">    function Promise1(executor) &#123;</span><br><span class="line">        this.status &#x3D; &quot;pending&quot;;</span><br><span class="line">        this.reason &#x3D; null;</span><br><span class="line">        this.value &#x3D; null;</span><br><span class="line">        this.onFulfilledArray &#x3D; [];</span><br><span class="line">        this.onRejectedArray &#x3D; [];</span><br><span class="line">        const resolve &#x3D; (value) &#x3D;&gt; &#123;</span><br><span class="line">            if(value instanceof Promise1)&#123;</span><br><span class="line">                return value.then(resolve,reject)</span><br><span class="line">            &#125;</span><br><span class="line">            if (this.status &#x3D;&#x3D;&#x3D; &#39;pending&#39;) &#123;</span><br><span class="line">                setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">                    this.value &#x3D; value;</span><br><span class="line">                    this.status &#x3D; &#39;fulfilled&#39;;</span><br><span class="line">                    this.onFulfilledArray.forEach((func) &#x3D;&gt; &#123;</span><br><span class="line">                        func(value)</span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;;</span><br><span class="line">        const reject &#x3D; (reason) &#x3D;&gt; &#123;</span><br><span class="line">            if (this.status &#x3D;&#x3D;&#x3D; &#39;pending&#39;) &#123;</span><br><span class="line">                setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">                    this.status &#x3D; &#39;rejected&#39;;</span><br><span class="line">                    this.reason &#x3D; reason;</span><br><span class="line">                    this.onRejectedArray.forEach((func) &#x3D;&gt; &#123;</span><br><span class="line">                        func(reason)</span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;)</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        try&#123;</span><br><span class="line">            executor(resolve,reject)</span><br><span class="line">        &#125;catch(e)&#123;</span><br><span class="line">            reject(e)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    Promise1.prototype.then &#x3D; function(onfulfilled,onrejected)&#123;</span><br><span class="line">        onfulfilled &#x3D; typeof onfulfilled &#x3D;&#x3D;&#x3D; &#39;function&#39;? onfulfilled:data&#x3D;&gt;data</span><br><span class="line">        onrejected &#x3D; typeof onrejected &#x3D;&#x3D;&#x3D; &#39;function&#39; ? onrejected:error &#x3D;&gt;&#123;throw error&#125;</span><br><span class="line">        if(this.status &#x3D;&#x3D;&#x3D; &#39;fulfilled&#39;)&#123;</span><br><span class="line">            onfulfilled(this.value)</span><br><span class="line">        &#125;;</span><br><span class="line">        if(this.status &#x3D;&#x3D;&#x3D; &#39;rejected&#39;)&#123;</span><br><span class="line">            onrejected(this.reason)</span><br><span class="line">        &#125;;</span><br><span class="line">        if(this.status &#x3D;&#x3D;&#x3D; &#39;pending&#39;)&#123;</span><br><span class="line">            this.onFulfilledArray.push(onfulfilled);</span><br><span class="line">            this.onRejectedArray.push(onrejected)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    let promise &#x3D; new Promise1((resolve,reject)&#x3D;&gt;&#123;</span><br><span class="line">        setTimeout(()&#x3D;&gt;&#123;</span><br><span class="line">            resolve(&#39;data&#39;)</span><br><span class="line">        &#125;,2000)</span><br><span class="line">    &#125;);</span><br><span class="line">    promise.then((data)&#x3D;&gt;&#123;</span><br><span class="line">        console.log(&#96;1:$&#123;data&#125;&#96;)</span><br><span class="line">    &#125;);</span><br><span class="line">    promise.then((data)&#x3D;&gt;&#123;</span><br><span class="line">        console.log(&#96;2:$&#123;data&#125;&#96;)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
-<p>到此为止《初步实现了基本的Promsie，同时还有很多功能没有实现，比如Promise then的链式调用效果、Promise.all（）等方法。</p>
-<h3 id="Promise-all实现"><a href="#Promise-all实现" class="headerlink" title="Promise.all实现"></a>Promise.all实现</h3><p>MDN上对于Promise all的解释是这样的: Promise all(iterable)方法返回一个Promise实例，此实例在iterable参数内的所有Promise实例都“完成”( resolved)或数中不包含 Promise实例时完成回调(resolve);如果参数中的Promise实例有一个失败(rejected)，则此实例回调失败( reject),失败原因是第一个Promise实例失败的原因。</p>
-<p>下面仍然先通过一个例子来体会一下 。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">let promise1 &#x3D; new Promise((resolve,reject)&#x3D;&gt;&#123;</span><br><span class="line">    setTimeout(()&#x3D;&gt;&#123;</span><br><span class="line">        resolve(&#39;hello&#39;)</span><br><span class="line">    &#125;,2000)</span><br><span class="line">&#125;);</span><br><span class="line">let promise2 &#x3D; new Promise((resolve,reject)&#x3D;&gt;&#123;</span><br><span class="line">    setTimeout(()&#x3D;&gt;&#123;</span><br><span class="line">        resolve(&#39;hello,too&#39;)</span><br><span class="line">    &#125;,2000)</span><br><span class="line">&#125;);</span><br><span class="line">Promise.all([promise1,promise2]).then((data)&#x3D;&gt;&#123;</span><br><span class="line">    console.log(data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>执行上述代码，打印出([‘hello’,’hello too’])<br>Promise.all代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Promise1.all &#x3D; function (promiseArr) &#123;</span><br><span class="line">    &#x2F;&#x2F;对promiseArr类型进行判断，如果不是数组则抛错</span><br><span class="line">    if (!Array.isArray(promiseArr)) &#123;</span><br><span class="line">        throw new TypeError(&#39;出错了&#39;)</span><br><span class="line">    &#125;;</span><br><span class="line">  </span><br><span class="line">    return new Promise1((resolve,reject)&#x3D;&gt;&#123;</span><br><span class="line">        try&#123;</span><br><span class="line">            let len &#x3D; promiseArr.length;</span><br><span class="line">            let resultArr &#x3D; [];</span><br><span class="line">            for(let i &#x3D; 0;i &lt; len;i++)&#123;</span><br><span class="line">                promiseArr[i].then((data)&#x3D;&gt;&#123;</span><br><span class="line">                    resultArr.push(data);</span><br><span class="line">                    if(resultArr.length &#x3D;&#x3D;&#x3D; len)&#123;</span><br><span class="line">                        resolve(resultArr)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;catch(e)&#123;</span><br><span class="line">            reject(e)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Promise-race-实现"><a href="#Promise-race-实现" class="headerlink" title="Promise.race()实现"></a>Promise.race()实现</h3><p>Promse.race就是赛跑的意思，说白了，Promise.race([p1, p2, p3])里面哪个结果获得的快，就返回那个结果，不管结果本身是成功状态还是失败状态。<br>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">let p1 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;</span><br><span class="line">  setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">    resolve(&#39;success&#39;)</span><br><span class="line">  &#125;,1000)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">let p2 &#x3D; new Promise((resolve, reject) &#x3D;&gt; &#123;</span><br><span class="line">  setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">    reject(&#39;failed&#39;)</span><br><span class="line">  &#125;, 500)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">Promise.race([p1, p2]).then((result) &#x3D;&gt; &#123;</span><br><span class="line">  console.log(result)</span><br><span class="line">&#125;).catch((error) &#x3D;&gt; &#123;</span><br><span class="line">  console.log(error)  &#x2F;&#x2F; 打开的是 &#39;failed&#39;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>实现代码与Promise.all类似。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Promise1.race &#x3D; function(promiseArr)&#123;</span><br><span class="line">    if(!Array.isArray(promiseArr))&#123;</span><br><span class="line">        throw new TypeError(&#39;请输入数组&#39;)</span><br><span class="line">    &#125;;</span><br><span class="line">    return new Promise1((resolve,reject)&#x3D;&gt;&#123;</span><br><span class="line">        try&#123;</span><br><span class="line">            let len &#x3D; promiseArr.length;</span><br><span class="line">            for(let i &#x3D; 0;i &lt; len;i++)&#123;</span><br><span class="line">                promiseArr[i].then(resolve,reject)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;catch(e)&#123;</span><br><span class="line">            reject(e)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/03/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%89%8B%E5%86%99promise/" data-id="ckp3d9zi2000cectj6ysk61i1" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/06/%E5%8A%9B%E6%89%A3100-%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91/" data-id="ckp3hd911001h78tjaajde1mi" class="article-share-link">分享</a>
       
       
       
@@ -601,6 +581,10 @@
       <ul>
         
           <li>
+            <a href="/2021/05/25/%E5%8A%9B%E6%89%A315-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/">力扣15--三数之和</a>
+          </li>
+        
+          <li>
             <a href="/2021/05/25/%E5%AF%BB%E6%89%BE%E7%AC%ACk%E5%A4%A7/">寻找第k大</a>
           </li>
         
@@ -614,10 +598,6 @@
         
           <li>
             <a href="/2021/05/24/%E5%8A%9B%E6%89%A398-%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">力扣98--验证二叉搜索树</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/09/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%88%A4%E6%96%AD%E6%80%BB%E7%BB%93/">JS数据类型及判断总结</a>
           </li>
         
       </ul>

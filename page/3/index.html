@@ -66,6 +66,57 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣81-搜索旋转排序数组2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/07/%E5%8A%9B%E6%89%A381-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%842/" class="article-date">
+  <time datetime="2021-04-07T03:34:06.000Z" itemprop="datePublished">2021-04-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/07/%E5%8A%9B%E6%89%A381-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%842/">力扣81--搜索旋转排序数组2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/search-in-rotated-sorted-array-ii/">力扣81–搜索旋转排序数组2</a></p>
+<p>已知存在一个按非降序排列的整数数组 nums ，数组中的值不必互不相同。</p>
+<p>在传递给函数之前，nums 在预先未知的某个下标 k（0 &lt;= k &lt; nums.length）上进行了 旋转 ，使数组变为 [nums[k], nums[k+1], …, nums[n-1], nums[0], nums[1], …, nums[k-1]]（下标 从 0 开始 计数）。例如， [0,1,2,4,4,4,5,6,6,7] 在下标 5 处经旋转后可能变为 [4,5,6,6,7,0,1,2,4,4] 。</p>
+<p>给你 旋转后 的数组 nums 和一个整数 target ，请你编写一个函数来判断给定的目标值是否存在于数组中。如果 nums 中存在这个目标值 target ，则返回 true ，否则返回 false 。</p>
+<p>示例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [2,5,6,0,0,1,2], target &#x3D; 0</span><br><span class="line">输出：true</span><br></pre></td></tr></table></figure>
+<p>代码及注释如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @param &#123;number&#125; target</span><br><span class="line"> * @return &#123;boolean&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var search &#x3D; function(nums, target) &#123;</span><br><span class="line">    let len &#x3D; nums.length;</span><br><span class="line">    if(!len)&#123;</span><br><span class="line">        return false</span><br><span class="line">    &#125;;</span><br><span class="line">    if(len &#x3D;&#x3D; 1)&#123;</span><br><span class="line">        return nums[0] &#x3D;&#x3D; target</span><br><span class="line">    &#125;;</span><br><span class="line">    let start &#x3D; 0;</span><br><span class="line">    let end &#x3D; len-1;</span><br><span class="line">    while(start &lt;&#x3D; end)&#123;</span><br><span class="line">        let mid &#x3D; Math.floor((start + end)&#x2F;2);</span><br><span class="line">        if(nums[mid] &#x3D;&#x3D; target)&#123;</span><br><span class="line">            return true</span><br><span class="line">        &#125;;</span><br><span class="line">        if(nums[start] &#x3D;&#x3D; target)&#123;</span><br><span class="line">            return true</span><br><span class="line">        &#125;;</span><br><span class="line">        if(nums[end] &#x3D;&#x3D; target)&#123;</span><br><span class="line">            return true</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;需要考虑重复元素</span><br><span class="line">        if(nums[start] &#x3D;&#x3D; nums[mid] &amp;&amp; nums[mid] &#x3D;&#x3D; nums[end])&#123;</span><br><span class="line">            start++;</span><br><span class="line">            end--;</span><br><span class="line">        &#125;else if(nums[start] &lt;&#x3D; nums[mid])&#123;</span><br><span class="line">            if(nums[start] &lt;&#x3D; target &amp;&amp; target &lt; nums[mid])&#123;</span><br><span class="line">                end &#x3D; mid-1</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                start &#x3D; mid+1</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            if(nums[mid] &lt; target &amp;&amp; target &lt;&#x3D; nums[end])&#123;</span><br><span class="line">                start &#x3D; mid+1</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                end &#x3D; mid-1</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;   </span><br><span class="line">    return false</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/04/07/%E5%8A%9B%E6%89%A381-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%842/" data-id="ckp3hd92b004z78tj2aus2otx" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣33-搜索旋转排序数组" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/04/07/%E5%8A%9B%E6%89%A333-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/" class="article-date">
@@ -105,7 +156,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/07/%E5%8A%9B%E6%89%A333-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/" data-id="ckp3d9zj7003dectja4mva0ag" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/07/%E5%8A%9B%E6%89%A333-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/" data-id="ckp3hd91s003h78tjetw56xit" class="article-share-link">分享</a>
       
       
       
@@ -155,7 +206,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/07/%E5%8A%9B%E6%89%A388-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/" data-id="ckp3d9zjt0051ectjbk0dbsq7" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/07/%E5%8A%9B%E6%89%A388-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/" data-id="ckp3hd92e005778tj688t7fdj" class="article-share-link">分享</a>
       
       
       
@@ -205,7 +256,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/01/%E5%89%91%E6%8C%8712-%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/" data-id="ckp3d9zi7000mectj3jhjd5up" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/01/%E5%89%91%E6%8C%8712-%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/" data-id="ckp3hd90o000h78tj59d16hf5" class="article-share-link">分享</a>
       
       
       
@@ -254,7 +305,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/01/%E5%89%91%E6%8C%8711-%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97/" data-id="ckp3d9zi3000fectjc7ho99dx" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/01/%E5%89%91%E6%8C%8711-%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97/" data-id="ckp3hd90n000f78tjhn0mfe6h" class="article-share-link">分享</a>
       
       
       
@@ -305,7 +356,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/31/%E5%8A%9B%E6%89%A390-%E5%AD%90%E9%9B%86-2/" data-id="ckp3d9zjx005bectjb9oq169v" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/31/%E5%8A%9B%E6%89%A390-%E5%AD%90%E9%9B%86-2/" data-id="ckp3hd92f005c78tjhgayajqn" class="article-share-link">分享</a>
       
       
       
@@ -354,7 +405,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/30/%E5%89%91%E6%8C%8706-%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8/" data-id="ckp3d9zi3000eectj8sjjg2i9" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/30/%E5%89%91%E6%8C%8706-%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8/" data-id="ckp3hd90m000e78tj6z4r5yhg" class="article-share-link">分享</a>
       
       
       
@@ -404,7 +455,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/29/%E5%8A%9B%E6%89%A3300-%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" data-id="ckp3d9zj50036ectj46gn8ubn" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/29/%E5%8A%9B%E6%89%A3300-%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" data-id="ckp3hd91q003c78tj6iz5caio" class="article-share-link">分享</a>
       
       
       
@@ -452,7 +503,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/29/%E5%8A%9B%E6%89%A3540-%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%8D%95%E4%B8%80%E5%85%83%E7%B4%A0/" data-id="ckp3d9zje003zectjgdd1f0jp" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/29/%E5%8A%9B%E6%89%A3540-%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%8D%95%E4%B8%80%E5%85%83%E7%B4%A0/" data-id="ckp3hd921004578tj285sgmn2" class="article-share-link">分享</a>
       
       
       
@@ -501,57 +552,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/28/%E5%8A%9B%E6%89%A361-%E6%97%8B%E8%BD%AC%E9%93%BE%E8%A1%A8/" data-id="ckp3d9zjk004eectjdwt0gpkf" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣83-删除排序链表中的重复元素" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/03/26/%E5%8A%9B%E6%89%A383-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/" class="article-date">
-  <time datetime="2021-03-26T01:23:36.000Z" itemprop="datePublished">2021-03-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E9%93%BE%E8%A1%A8/">链表</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/26/%E5%8A%9B%E6%89%A383-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/">力扣83--删除排序链表中的重复元素</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/">力扣83–删除排序链表中的重复元素</a></p>
-<p>存在一个按升序排列的链表，给你这个链表的头节点 head ，请你删除所有重复的元素，使每个元素 只出现一次 。</p>
-<p>返回同样按升序排列的结果链表。</p>
-<p>示例:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：head &#x3D; [1,1,2]</span><br><span class="line">输出：[1,2]</span><br></pre></td></tr></table></figure>
-<p>代码如下（注意和82区别）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * function ListNode(val, next) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.next &#x3D; (next&#x3D;&#x3D;&#x3D;undefined ? null : next)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;ListNode&#125; head</span><br><span class="line"> * @return &#123;ListNode&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var deleteDuplicates &#x3D; function(head) &#123;</span><br><span class="line">    if(!head)&#123;</span><br><span class="line">        return head</span><br><span class="line">    &#125;</span><br><span class="line">    let cur &#x3D; head;</span><br><span class="line">    while(cur &amp;&amp; cur.next)&#123;</span><br><span class="line">        if(cur.val &#x3D;&#x3D;&#x3D; cur.next.val)&#123;</span><br><span class="line">            cur.next &#x3D; cur.next.next</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            cur &#x3D; cur.next</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return head</span><br><span class="line">&#125;;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/26/%E5%8A%9B%E6%89%A383-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/" data-id="ckp3d9zju0053ectj7zkx388a" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/28/%E5%8A%9B%E6%89%A361-%E6%97%8B%E8%BD%AC%E9%93%BE%E8%A1%A8/" data-id="ckp3hd926004i78tj9u52b7kc" class="article-share-link">分享</a>
       
       
       
@@ -585,6 +586,10 @@
       <ul>
         
           <li>
+            <a href="/2021/05/25/%E5%8A%9B%E6%89%A315-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/">力扣15--三数之和</a>
+          </li>
+        
+          <li>
             <a href="/2021/05/25/%E5%AF%BB%E6%89%BE%E7%AC%ACk%E5%A4%A7/">寻找第k大</a>
           </li>
         
@@ -598,10 +603,6 @@
         
           <li>
             <a href="/2021/05/24/%E5%8A%9B%E6%89%A398-%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">力扣98--验证二叉搜索树</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/09/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%88%A4%E6%96%AD%E6%80%BB%E7%BB%93/">JS数据类型及判断总结</a>
           </li>
         
       </ul>
