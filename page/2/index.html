@@ -66,6 +66,152 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣377-组合总和4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/24/%E5%8A%9B%E6%89%A3377-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C4/" class="article-date">
+  <time datetime="2021-04-24T09:18:54.000Z" itemprop="datePublished">2021-04-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/24/%E5%8A%9B%E6%89%A3377-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C4/">力扣377--组合总和4</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/combination-sum-iv/">力扣377–组合总和4</a></p>
+<p>给你一个由 不同 整数组成的数组 nums ，和一个目标整数 target 。请你从 nums 中找出并返回总和为 target 的元素组合的个数。</p>
+<p>题目数据保证答案符合 32 位整数范围。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [1,2,3], target &#x3D; 4</span><br><span class="line">输出：7</span><br><span class="line">解释：</span><br><span class="line">所有可能的组合为：</span><br><span class="line">(1, 1, 1, 1)</span><br><span class="line">(1, 1, 2)</span><br><span class="line">(1, 2, 1)</span><br><span class="line">(1, 3)</span><br><span class="line">(2, 1, 1)</span><br><span class="line">(2, 2)</span><br><span class="line">(3, 1)</span><br><span class="line">请注意，顺序不同的序列被视作不同的组合。</span><br><span class="line"></span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;combination-sum-iv</span><br><span class="line">著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
+<p>代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @param &#123;number&#125; target</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var combinationSum4 &#x3D; function(nums, target) &#123;</span><br><span class="line">    let dp &#x3D; new Array(target+1).fill(0);</span><br><span class="line">    dp[0] &#x3D; 1;</span><br><span class="line">    for(let i &#x3D; 1;i &lt;&#x3D; target;i++)&#123;</span><br><span class="line">        for(let j of nums)&#123;</span><br><span class="line">            if(j &lt;&#x3D; i)&#123;</span><br><span class="line">                dp[i] +&#x3D; dp[i-j]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[target]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/04/24/%E5%8A%9B%E6%89%A3377-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C4/" data-id="ckp4tcthj003mlotj0vko6gie" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-力扣518-零钱兑换2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/24/%E5%8A%9B%E6%89%A3518-%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A22/" class="article-date">
+  <time datetime="2021-04-24T09:16:03.000Z" itemprop="datePublished">2021-04-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/24/%E5%8A%9B%E6%89%A3518-%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A22/">力扣518--零钱兑换2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/coin-change-2/">力扣518–零钱兑换2</a></p>
+<p>给定不同面额的硬币和一个总金额。写出函数来计算可以凑成总金额的硬币组合数。假设每一种面额的硬币有无限个。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入: amount &#x3D; 5, coins &#x3D; [1, 2, 5]</span><br><span class="line">输出: 4</span><br><span class="line">解释: 有四种方式可以凑成总金额:</span><br><span class="line">5&#x3D;5</span><br><span class="line">5&#x3D;2+2+1</span><br><span class="line">5&#x3D;2+1+1+1</span><br><span class="line">5&#x3D;1+1+1+1+1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>代码及注释如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number&#125; amount</span><br><span class="line"> * @param &#123;number[]&#125; coins</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var change &#x3D; function(amount, coins) &#123;</span><br><span class="line">    &#x2F;&#x2F; 不断使用硬币组合，从0元一只组合到amount</span><br><span class="line">    &#x2F;&#x2F; 数组保存的是每个金额可用的硬币组合数量</span><br><span class="line">    &#x2F;&#x2F; 初始状态因为都没有递推，都为0</span><br><span class="line">    let dp &#x3D; new Array(amount+1).fill(0)</span><br><span class="line">    &#x2F;&#x2F; 0位置设置为1，因为第一次递推都是从金额为coin开始</span><br><span class="line">    &#x2F;&#x2F; 状态转移方程为dp[i] &#x3D; dp[i] + dp[i - coin]，这样dp[coin]的初始值就为dp[0]</span><br><span class="line">    &#x2F;&#x2F; 由于第一次要投一个硬币，因此dp[0] &#x3D; 1，能保证正常递推</span><br><span class="line">    dp[1] &#x3D; 1;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 分别计算每个硬币可以组合成amount的方法数量</span><br><span class="line">    for (const coin of coins) &#123;</span><br><span class="line">    &#x2F;&#x2F; 小于coin的金额是无法通过coin组合而成</span><br><span class="line">    &#x2F;&#x2F; 一直递推到amount，就知道当前硬币组合成amount有多少种方法</span><br><span class="line">        for (let i &#x3D; coin; i &lt;&#x3D; amount; i++) &#123;</span><br><span class="line">            dp[i] &#x3D;</span><br><span class="line">        &#x2F;&#x2F; 保留之前硬币可以组合出当前金额的方法数量</span><br><span class="line">            dp[i] +</span><br><span class="line">        &#x2F;&#x2F; 当前金额，必然是从i-coin，添加coin金额硬币之后组合而成</span><br><span class="line">        &#x2F;&#x2F; 也就是当前金额是在i-coin的基础上变化而来，因此需要带上i-coin的组合数量</span><br><span class="line">         dp[i - coin];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 最后组合成amount的方法数，就在amount位置</span><br><span class="line">    return dp[amount];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/04/24/%E5%8A%9B%E6%89%A3518-%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A22/" data-id="ckp4tctho0041lotj38rvgkey" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-力扣368-最大整除子集" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/23/%E5%8A%9B%E6%89%A3368-%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/" class="article-date">
+  <time datetime="2021-04-23T01:43:04.000Z" itemprop="datePublished">2021-04-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/23/%E5%8A%9B%E6%89%A3368-%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/">力扣368--最大整除子集</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/largest-divisible-subset/">力扣368–最大整除子集</a></p>
+<p>给你一个由 无重复 正整数组成的集合 nums ，请你找出并返回其中最大的整除子集 answer ，子集中每一元素对 (answer[i], answer[j]) 都应当满足：<br>answer[i] % answer[j] == 0 ，或answer[j] % answer[i] == 0,如果存在多个有效解子集，返回其中任何一个均可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [1,2,3]</span><br><span class="line">输出：[1,2]</span><br><span class="line">解释：[1,3] 也会被视为正确答案。</span><br></pre></td></tr></table></figure>
+<p>代码及注释如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @return &#123;number[]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var largestDivisibleSubset &#x3D; function(nums) &#123;</span><br><span class="line">    &#x2F;&#x2F;动态规划，先获得最大子集数量然后进行倒推</span><br><span class="line">    let len &#x3D; nums.length;</span><br><span class="line">    nums.sort((a,b)&#x3D;&gt;a-b)</span><br><span class="line">    let dp &#x3D; new Array(len).fill(1);</span><br><span class="line">    let maxSize &#x3D; 1;</span><br><span class="line">    let maxVal &#x3D; dp[0];</span><br><span class="line">    for(let i &#x3D; 1;i &lt; len;i++)&#123;</span><br><span class="line">        for(let j &#x3D; 0;j &lt; i;j++)&#123;</span><br><span class="line">            if(nums[i] % nums[j] &#x3D;&#x3D; 0)&#123;</span><br><span class="line">                dp[i] &#x3D; Math.max(dp[i],dp[j]+1)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        if(maxSize &lt; dp[i])&#123;</span><br><span class="line">            maxSize &#x3D; dp[i];</span><br><span class="line">            maxVal &#x3D; nums[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    &#x2F;&#x2F;倒推获得最大子集</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    if(maxSize &#x3D;&#x3D; 1)&#123;</span><br><span class="line">        res.push(nums[0])</span><br><span class="line">        return res</span><br><span class="line">    &#125;</span><br><span class="line">    for(let i &#x3D; len-1;i&gt;&#x3D;0 &amp;&amp; maxSize &gt; 0;i--)&#123;</span><br><span class="line">        if(maxVal % nums[i] &#x3D;&#x3D;&#x3D; 0 &amp;&amp; dp[i] &#x3D;&#x3D; maxSize)&#123;</span><br><span class="line">            maxSize--;</span><br><span class="line">            res.push(nums[i]);</span><br><span class="line">            maxVal &#x3D; nums[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/04/23/%E5%8A%9B%E6%89%A3368-%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/" data-id="ckp4tcthk003plotj4przgds4" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-offer38-字符串的排列" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/04/22/offer38-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" class="article-date">
@@ -104,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/22/offer38-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="ckp3hd90i000878tjf3mb58cy" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/22/offer38-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="ckp4tctg70008lotjcw4ig4r3" class="article-share-link">分享</a>
       
       
       
@@ -153,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/19/%E5%8A%9B%E6%89%A327-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" data-id="ckp3hd91p003978tjeuxy6qaw" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/19/%E5%8A%9B%E6%89%A327-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" data-id="ckp4tcthe0038lotj53970uuu" class="article-share-link">分享</a>
       
       
       
@@ -202,7 +348,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/17/%E5%8A%9B%E6%89%A3217-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A01/" data-id="ckp3hd91h002u78tj3j91fhri" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/17/%E5%8A%9B%E6%89%A3217-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A01/" data-id="ckp4tcth8002tlotj3y549a56" class="article-share-link">分享</a>
       
       
       
@@ -252,7 +398,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/17/%E5%8A%9B%E6%89%A3219-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/" data-id="ckp3hd91h002s78tjfxa69hd1" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/17/%E5%8A%9B%E6%89%A3219-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/" data-id="ckp4tcth9002vlotj8dym29c4" class="article-share-link">分享</a>
       
       
       
@@ -303,7 +449,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/17/%E5%8A%9B%E6%89%A3-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A03/" data-id="ckp3hd910001e78tjdyfo61dw" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/17/%E5%8A%9B%E6%89%A3-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A03/" data-id="ckp4tctgq001flotjebqte40k" class="article-share-link">分享</a>
       
       
       
@@ -353,7 +499,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/15/%E5%8A%9B%E6%89%A3213-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D2/" data-id="ckp3hd91g002p78tje5w62q3i" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/15/%E5%8A%9B%E6%89%A3213-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D2/" data-id="ckp4tcth7002qlotjfrxc0ecf" class="article-share-link">分享</a>
       
       
       
@@ -403,159 +549,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/15/%E5%8A%9B%E6%89%A3198-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D1/" data-id="ckp3hd91e002g78tjcl4e7krc" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣783-二叉搜索树节点的最小距离" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/04/13/%E5%8A%9B%E6%89%A3783-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%9D%E7%A6%BB/" class="article-date">
-  <time datetime="2021-04-13T09:21:09.000Z" itemprop="datePublished">2021-04-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/13/%E5%8A%9B%E6%89%A3783-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%9D%E7%A6%BB/">力扣783--二叉搜索树节点的最小距离</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-distance-between-bst-nodes/">力扣783–二叉搜索树节点的最小距离</a></p>
-<p>给你一个二叉搜索树的根节点 root ，返回 树中任意两不同节点值之间的最小差值 。</p>
-<p>示例:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：root &#x3D; [4,2,6,1,3]</span><br><span class="line">输出：1</span><br><span class="line">输入：root &#x3D; [1,0,48,null,null,12,49]</span><br><span class="line">输出：1</span><br></pre></td></tr></table></figure>
-<p>代码及注释如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val, left, right) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.left &#x3D; (left&#x3D;&#x3D;&#x3D;undefined ? null : left)</span><br><span class="line"> *     this.right &#x3D; (right&#x3D;&#x3D;&#x3D;undefined ? null : right)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var minDiffInBST &#x3D; function(root) &#123;</span><br><span class="line">    &#x2F;&#x2F;递归</span><br><span class="line">    &#x2F;&#x2F; let ans &#x3D; Number.MAX_SAFE_INTEGER, pre &#x3D; -1;</span><br><span class="line">    &#x2F;&#x2F; let back &#x3D;function(node)&#123;</span><br><span class="line">    &#x2F;&#x2F;     if(!node)&#123;</span><br><span class="line">    &#x2F;&#x2F;         return </span><br><span class="line">    &#x2F;&#x2F;     &#125;;</span><br><span class="line">    &#x2F;&#x2F;     back(node.left);</span><br><span class="line">    &#x2F;&#x2F;     if(pre &#x3D;&#x3D; -1)&#123;</span><br><span class="line">    &#x2F;&#x2F;         pre &#x3D; node.val</span><br><span class="line">    &#x2F;&#x2F;     &#125;else&#123;</span><br><span class="line">    &#x2F;&#x2F;         ans &#x3D; Math.min(ans,node.val-pre);</span><br><span class="line">    &#x2F;&#x2F;         pre &#x3D; node.val</span><br><span class="line">    &#x2F;&#x2F;     &#125;</span><br><span class="line">    &#x2F;&#x2F;     back(node.right)</span><br><span class="line">    &#x2F;&#x2F; &#125;;</span><br><span class="line">    &#x2F;&#x2F; back(root)</span><br><span class="line">    &#x2F;&#x2F; return ans</span><br><span class="line">    &#x2F;&#x2F;非递归</span><br><span class="line">    &#x2F;&#x2F;利用二叉搜索树中序遍历的性质，设置pre记录两个相减的值</span><br><span class="line">    var stack &#x3D; [];</span><br><span class="line">    var ans &#x3D; 1000000;</span><br><span class="line">    var pre &#x3D; -1</span><br><span class="line">    while(stack.length || root)&#123;</span><br><span class="line">        while(root)&#123;</span><br><span class="line">            stack.push(root);</span><br><span class="line">            root&#x3D;  root.left</span><br><span class="line">        &#125;;</span><br><span class="line">        root &#x3D; stack.pop()</span><br><span class="line">        if(pre &#x3D;&#x3D; -1)&#123;</span><br><span class="line">            pre &#x3D; root.val</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            ans &#x3D; Math.min(ans,root.val-pre);</span><br><span class="line">            pre &#x3D; root.val</span><br><span class="line">        &#125;;</span><br><span class="line">        root &#x3D; root.right</span><br><span class="line">    &#125;;</span><br><span class="line">    return ans</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/13/%E5%8A%9B%E6%89%A3783-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%9D%E7%A6%BB/" data-id="ckp3hd92a004x78tjctr3eyep" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-对象深浅拷贝" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/04/11/%E5%AF%B9%E8%B1%A1%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="article-date">
-  <time datetime="2021-04-11T08:54:38.000Z" itemprop="datePublished">2021-04-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>►<a class="article-category-link" href="/categories/JavaScript/%E5%AF%B9%E8%B1%A1/">对象</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/11/%E5%AF%B9%E8%B1%A1%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/">对象深浅拷贝</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>对象拷贝（克隆）是指通过一定的程序将某个变量的值复制至另一个变量的过程，根据复制后的变量与原始变量的影响情况，拷贝分为深拷贝和浅拷贝。</p>
-<p>针对不同的数据类型，浅拷贝和深拷贝会有不同的表现，主要表现于数据类型在内存中存储的值不同。</p>
-<p>对于基本数据类型的值，变量存储的是值本身，存放在栈内存的简单数据段中，可以直接进行访问。对于引用类型的值，变量存储的是值在内存中的地址，地址指向内存中的某个位置。如果有多个变量同时指向同一个内存地址，则其中一个变量对值进行修改时，会影响到其他的变量。</p>
-<h3 id="对象的浅拷贝实现"><a href="#对象的浅拷贝实现" class="headerlink" title="对象的浅拷贝实现"></a>对象的浅拷贝实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">var obj1 &#x3D; &#123;</span><br><span class="line">    a:1,</span><br><span class="line">    b:&#123;</span><br><span class="line">        c:3,</span><br><span class="line">        d:&#123;</span><br><span class="line">            e:5,</span><br><span class="line">            f:[1,2,3]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&#x2F;&#x2F;浅拷贝</span><br><span class="line">&#x2F;&#x2F;ES3的方法</span><br><span class="line">function clone(obj)&#123;</span><br><span class="line">    let cloneobj &#x3D; &#123;&#125;;</span><br><span class="line">    for(let i in obj)&#123;</span><br><span class="line">        cloneobj[i] &#x3D; obj[i]</span><br><span class="line">    &#125;</span><br><span class="line">    return cloneobj</span><br><span class="line">&#125;</span><br><span class="line">var obj2 &#x3D; clone(obj1);</span><br><span class="line">obj1.b.c &#x3D; 10</span><br><span class="line">console.log(obj2);</span><br><span class="line">&#x2F;&#x2F;ES6的方法</span><br><span class="line">var result &#x3D; Object.assign(&#123;&#125;,obj1);</span><br><span class="line">console.log(result)</span><br></pre></td></tr></table></figure>
-<h3 id="深拷贝的实现"><a href="#深拷贝的实现" class="headerlink" title="深拷贝的实现"></a>深拷贝的实现</h3><p>以上面的obj1为例子，实现一个深拷贝，先一个个循环然后改写成递归形式。<br>循环形式:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function deepClone(obj)&#123;</span><br><span class="line">    let cloneObj &#x3D; &#123;&#125;;</span><br><span class="line">    for(let i in obj)&#123;</span><br><span class="line">        &#x2F;&#x2F;判断类型是不是引用类型，同时排除null的干扰</span><br><span class="line">        if(typeof obj[i] &#x3D;&#x3D; &#39;object&#39; &amp;&amp; obj[i] !&#x3D; null)&#123;</span><br><span class="line">            cloneObj[i] &#x3D; &#123;&#125;;</span><br><span class="line">            for(let j in obj[i])&#123;</span><br><span class="line">                if(typeof obj[i][j] &#x3D;&#x3D;&#x3D; &#39;object&#39; &amp;&amp; obj[i][j] !&#x3D; null)&#123;</span><br><span class="line">                    cloneObj[i][j] &#x3D; &#123;&#125;;</span><br><span class="line">                    for(let k  in obj[i][j])&#123;</span><br><span class="line">                        cloneObj[i][j][k] &#x3D; obj[i][j][k]</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    cloneObj[i][j] &#x3D; obj[i][j]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            cloneObj[i] &#x3D; obj[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return cloneObj</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>将上述代码改写成递归模式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;将上述改写为递归</span><br><span class="line">&#x2F;&#x2F;注意递归的出口</span><br><span class="line">&#x2F;&#x2F;每次递归的不同之处</span><br><span class="line">function deepClone(obj,cloneObj)&#123;</span><br><span class="line">    var cloneObj &#x3D; cloneObj || &#123;&#125;;</span><br><span class="line">    for(let i in obj)&#123;</span><br><span class="line">        if(typeof obj[i] &#x3D;&#x3D; &#39;object&#39; &amp;&amp; obj[i] !&#x3D; null)&#123;</span><br><span class="line">            cloneObj[i] &#x3D; &#123;&#125;;</span><br><span class="line">            deepClone(obj[i],cloneObj[i])</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            cloneObj[i] &#x3D; obj[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return cloneObj</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>深拷贝的实现方法有很多，还包括JSON序列化和反序列化操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var res &#x3D; JSON.parse(JSON.stringify(obj1))</span><br></pre></td></tr></table></figure>
-<p>jquery中利用.extend等方法实现</p>
-<h3 id="深拷贝的数组判断"><a href="#深拷贝的数组判断" class="headerlink" title="深拷贝的数组判断"></a>深拷贝的数组判断</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;深拷贝的数组判断</span><br><span class="line">function deepClone(obj,cloneObj)&#123;</span><br><span class="line">    var cloneObj &#x3D; cloneObj || &#123;&#125;;</span><br><span class="line">    for(let i in obj)&#123;</span><br><span class="line">        if(typeof obj[i] &#x3D;&#x3D;&#x3D; &#39;object&#39; &amp;&amp; obj[i] !&#x3D; null)&#123;</span><br><span class="line">            &#x2F;&#x2F;数组判断</span><br><span class="line">            &#x2F;&#x2F;cloneObj[i] &#x3D; Array.isArray(obj[i]) ? []:&#123;&#125;;</span><br><span class="line">            cloneObj[i] &#x3D; obj[i] instanceof Array ? []:&#123;&#125;</span><br><span class="line">            deepClone(obj[i],cloneObj[i])</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            cloneObj[i] &#x3D; obj[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return cloneObj</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/11/%E5%AF%B9%E8%B1%A1%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="ckp3hd92h005i78tj0suq5g11" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣263-丑数" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/04/10/%E5%8A%9B%E6%89%A3263-%E4%B8%91%E6%95%B0/" class="article-date">
-  <time datetime="2021-04-10T03:13:54.000Z" itemprop="datePublished">2021-04-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/">其他</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/10/%E5%8A%9B%E6%89%A3263-%E4%B8%91%E6%95%B0/">力扣263--丑数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/ugly-number/submissions/">力扣263–丑数</a></p>
-<p>给你一个整数 n ，请你判断 n 是否为 丑数 。如果是，返回 true ；否则，返回 false 。</p>
-<p>丑数 就是只包含质因数 2、3 和/或 5 的正整数</p>
-<p>代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number&#125; n</span><br><span class="line"> * @return &#123;boolean&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var isUgly &#x3D; function(n) &#123;</span><br><span class="line">    if(n &lt;&#x3D; 0)&#123;</span><br><span class="line">        return false</span><br><span class="line">    &#125;;</span><br><span class="line">    let values &#x3D; [2,3,5,];</span><br><span class="line">    for(let value of values)&#123;</span><br><span class="line">        while(n % value &#x3D;&#x3D; 0)&#123;</span><br><span class="line">            n &#x3D; n&#x2F;value</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return n &#x3D;&#x3D; 1</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/10/%E5%8A%9B%E6%89%A3263-%E4%B8%91%E6%95%B0/" data-id="ckp3hd91n003478tj8dcycgvz" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/15/%E5%8A%9B%E6%89%A3198-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D1/" data-id="ckp4tcth6002llotjgs596rwh" class="article-share-link">分享</a>
       
       
       
@@ -589,23 +583,23 @@
       <ul>
         
           <li>
+            <a href="/2021/05/26/%E7%89%9B%E5%AE%A2-%E6%9C%80%E9%95%BF%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84/">牛客--最长无重复子数组</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/26/%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E7%B4%AF%E5%8A%A0%E5%92%8C%E9%97%AE%E9%A2%98/">子数组的最大累加和问题</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/26/%E7%89%9B%E5%AE%A2-%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/">牛客--用两个栈实现队列</a>
+          </li>
+        
+          <li>
             <a href="/2021/05/25/%E5%8A%9B%E6%89%A315-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/">力扣15--三数之和</a>
           </li>
         
           <li>
             <a href="/2021/05/25/%E5%AF%BB%E6%89%BE%E7%AC%ACk%E5%A4%A7/">寻找第k大</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/25/%E7%89%9B%E5%AE%A2-%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/">牛客--最小的k个数</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/24/%E7%89%9B%E5%AE%A2-%E5%88%A4%E6%96%AD%E4%BA%8C%E5%8F%89%E6%A0%91%E6%98%AF%E5%90%A6%E6%98%AF%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91/">牛客--判断二叉树是否是完全二叉树</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/24/%E5%8A%9B%E6%89%A398-%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">力扣98--验证二叉搜索树</a>
           </li>
         
       </ul>
