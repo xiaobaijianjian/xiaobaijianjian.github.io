@@ -66,6 +66,116 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JS数据类型及判断总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/05/09/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%88%A4%E6%96%AD%E6%80%BB%E7%BB%93/" class="article-date">
+  <time datetime="2021-05-09T07:39:42.000Z" itemprop="datePublished">2021-05-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>►<a class="article-category-link" href="/categories/JavaScript/%E5%9F%BA%E7%A1%80/">基础</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/09/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%88%A4%E6%96%AD%E6%80%BB%E7%BB%93/">JS数据类型及判断总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>JS中有7种内置数据类型，分别是null、undefined、Boolean、Number、string、object、symbol其中，前五种为基本数据类型。object类型又具体包括了function、date、array、object等。</p>
+<p>对于类型判断，常用的方法有typeof、instanceof、Object.prototype.toString、constructor</p>
+<h4 id="typeof-判断数据类型"><a href="#typeof-判断数据类型" class="headerlink" title="typeof  判断数据类型"></a>typeof  判断数据类型</h4><p>number返回number</p>
+<p>string返回string</p>
+<p>boolean返回boolean</p>
+<p>undefined返回undefined</p>
+<p>null返回object</p>
+<p>function返回function</p>
+<p>object返回object</p>
+<p>array返回object</p>
+<p>NAN返回number</p>
+<p>所以，Typeof可以判断除了null以外的基本数据类型，以及function类型、symbol类型、null 会被判断成object</p>
+<h4 id="instanceof判断数据类型"><a href="#instanceof判断数据类型" class="headerlink" title="instanceof判断数据类型"></a>instanceof判断数据类型</h4><p>检查某对象是否属于某类型,instanceof是通过原型链来检查类型的，所以适用于任何”object”的类型检查</p>
+<p>例如：[] instanceof Object 的结果是什么？true</p>
+<p>因为[] instanceof Array 、Array instanceof Function、Function instanceof Object</p>
+<p>instanceof原理模仿如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const instanceofmock &#x3D; (L,R)&#x3D;&gt;&#123;</span><br><span class="line">    if(typeof L !&#x3D; &quot;object&quot;)&#123;</span><br><span class="line">        return false</span><br><span class="line">    &#125;;</span><br><span class="line">    while(true)&#123;</span><br><span class="line">        if(L &#x3D;&#x3D; null)&#123;</span><br><span class="line">            return false</span><br><span class="line">        &#125;;</span><br><span class="line">        if(R.prototype &#x3D;&#x3D; L.__proto__)&#123;</span><br><span class="line">            return true</span><br><span class="line">        &#125;;</span><br><span class="line">        L&#x3D; L.__proto__</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/09/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%88%A4%E6%96%AD%E6%80%BB%E7%BB%93/" data-id="ckp69gmie0004ectjfd92gb12" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-力扣141-环形链表" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/26/%E5%8A%9B%E6%89%A3141-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/" class="article-date">
+  <time datetime="2021-04-26T02:47:00.000Z" itemprop="datePublished">2021-04-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E9%93%BE%E8%A1%A8/">链表</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/26/%E5%8A%9B%E6%89%A3141-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/">力扣141--环形链表</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/linked-list-cycle/">力扣141–环形链表</a></p>
+<p>给定一个链表，判断链表中是否有环。</p>
+<p>如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。 为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。注意：pos 不作为参数进行传递，仅仅是为了标识链表的实际情况。</p>
+<p>如果链表中存在环，则返回 true 。 否则，返回 false </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：head &#x3D; [3,2,0,-4], pos &#x3D; 1</span><br><span class="line">输出：true</span><br><span class="line">解释：链表中有一个环，其尾部连接到第二个节点。</span><br></pre></td></tr></table></figure>
+<p>代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * function ListNode(val) &#123;</span><br><span class="line"> *     this.val &#x3D; val;</span><br><span class="line"> *     this.next &#x3D; null;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;ListNode&#125; head</span><br><span class="line"> * @return &#123;boolean&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var hasCycle &#x3D; function(head) &#123;</span><br><span class="line">    let map &#x3D; new Map();</span><br><span class="line">    while(head !&#x3D; null)&#123;</span><br><span class="line">        if(map.has(head))&#123;</span><br><span class="line">            return true</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            map.set(head,true)</span><br><span class="line">        &#125;;</span><br><span class="line">        head &#x3D; head.next</span><br><span class="line">    &#125;;</span><br><span class="line">    return false</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/04/26/%E5%8A%9B%E6%89%A3141-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/" data-id="ckp69gmja0027ectj9rq6a3v8" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣377-组合总和4" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/04/24/%E5%8A%9B%E6%89%A3377-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C4/" class="article-date">
@@ -103,7 +213,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/24/%E5%8A%9B%E6%89%A3377-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C4/" data-id="ckp4tcthj003mlotj0vko6gie" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/24/%E5%8A%9B%E6%89%A3377-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C4/" data-id="ckp69gmjs003pectj5sz705f6" class="article-share-link">分享</a>
       
       
       
@@ -151,7 +261,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/24/%E5%8A%9B%E6%89%A3518-%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A22/" data-id="ckp4tctho0041lotj38rvgkey" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/24/%E5%8A%9B%E6%89%A3518-%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A22/" data-id="ckp69gmjv0041ectj5zh6381p" class="article-share-link">分享</a>
       
       
       
@@ -200,7 +310,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/23/%E5%8A%9B%E6%89%A3368-%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/" data-id="ckp4tcthk003plotj4przgds4" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/23/%E5%8A%9B%E6%89%A3368-%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/" data-id="ckp69gmjr003mectjc68w30dk" class="article-share-link">分享</a>
       
       
       
@@ -250,7 +360,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/22/offer38-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="ckp4tctg70008lotjcw4ig4r3" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/22/offer38-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="ckp69gmii0008ectj34je7rf8" class="article-share-link">分享</a>
       
       
       
@@ -299,7 +409,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/19/%E5%8A%9B%E6%89%A327-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" data-id="ckp4tcthe0038lotj53970uuu" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/19/%E5%8A%9B%E6%89%A327-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" data-id="ckp69gmjn003aectjhvnwerin" class="article-share-link">分享</a>
       
       
       
@@ -348,7 +458,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/17/%E5%8A%9B%E6%89%A3217-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A01/" data-id="ckp4tcth8002tlotj3y549a56" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/17/%E5%8A%9B%E6%89%A3217-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A01/" data-id="ckp69gmjh002qectj9c6m67e0" class="article-share-link">分享</a>
       
       
       
@@ -398,7 +508,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/17/%E5%8A%9B%E6%89%A3219-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/" data-id="ckp4tcth9002vlotj8dym29c4" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/17/%E5%8A%9B%E6%89%A3219-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/" data-id="ckp69gmjj002vectj3k55bjcr" class="article-share-link">分享</a>
       
       
       
@@ -449,107 +559,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/17/%E5%8A%9B%E6%89%A3-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A03/" data-id="ckp4tctgq001flotjebqte40k" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣213-打家劫舍2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/04/15/%E5%8A%9B%E6%89%A3213-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D2/" class="article-date">
-  <time datetime="2021-04-15T01:40:53.000Z" itemprop="datePublished">2021-04-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/15/%E5%8A%9B%E6%89%A3213-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D2/">力扣213--打家劫舍2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/house-robber-ii/submissions/">力扣213–打家劫舍2</a></p>
-<p>你是一个专业的小偷，计划偷窃沿街的房屋，每间房内都藏有一定的现金。这个地方所有的房屋都 围成一圈 ，这意味着第一个房屋和最后一个房屋是紧挨着的。同时，相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警 。</p>
-<p>给定一个代表每个房屋存放金额的非负整数数组，计算你 在不触动警报装置的情况下 ，能够偷窃到的最高金额。</p>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [2,3,2]</span><br><span class="line">输出：3</span><br><span class="line">解释：你不能先偷窃 1 号房屋（金额 &#x3D; 2），然后偷窃 3 号房屋（金额 &#x3D; 2）, 因为他们是相邻的。</span><br></pre></td></tr></table></figure>
-<p>代码及注释如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var rob &#x3D; function(nums) &#123;</span><br><span class="line">    &#x2F;&#x2F;关键是首尾相邻的问题</span><br><span class="line">    &#x2F;&#x2F;若是偷了头尾不能偷，相当于从1到倒数第二个</span><br><span class="line">    &#x2F;&#x2F;同理，相当于从第二个到最后一个</span><br><span class="line">    &#x2F;&#x2F; let len &#x3D; nums.length;</span><br><span class="line">    if(nums.length &#x3D;&#x3D; 1)&#123;</span><br><span class="line">        return nums[0]</span><br><span class="line">    &#125;;</span><br><span class="line">    if(nums.length &#x3D;&#x3D; 2)&#123;</span><br><span class="line">        return Math.max(nums[0],nums[1])</span><br><span class="line">    &#125;</span><br><span class="line">    let computeSum &#x3D; function(list)&#123;</span><br><span class="line">        let len &#x3D; list.length;</span><br><span class="line">        let dp &#x3D; new Array(len);</span><br><span class="line">        dp[0] &#x3D; list[0];</span><br><span class="line">        dp[1] &#x3D; Math.max(dp[0],list[1]);</span><br><span class="line">        for(let i &#x3D; 2;i &lt; len;i++)&#123;</span><br><span class="line">            dp[i] &#x3D; Math.max(dp[i-1],dp[i-2]+list[i])</span><br><span class="line">        &#125;;</span><br><span class="line">        return dp[len-1]</span><br><span class="line">    &#125;;</span><br><span class="line">    let fir &#x3D; nums.slice(0,nums.length-1);</span><br><span class="line">    let sec &#x3D; nums.slice(1);</span><br><span class="line">    return Math.max(computeSum(fir),computeSum(sec))</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/15/%E5%8A%9B%E6%89%A3213-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D2/" data-id="ckp4tcth7002qlotjfrxc0ecf" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣198-打家劫舍1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/04/15/%E5%8A%9B%E6%89%A3198-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D1/" class="article-date">
-  <time datetime="2021-04-15T01:40:18.000Z" itemprop="datePublished">2021-04-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/15/%E5%8A%9B%E6%89%A3198-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D1/">力扣198--打家劫舍1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/house-robber/">力扣198–打家劫舍1</a></p>
-<p>你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。</p>
-<p>给定一个代表每个房屋存放金额的非负整数数组，计算你 不触动警报装置的情况下 ，一夜之内能够偷窃到的最高金额。</p>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：[1,2,3,1]</span><br><span class="line">输出：4</span><br><span class="line">解释：偷窃 1 号房屋 (金额 &#x3D; 1) ，然后偷窃 3 号房屋 (金额 &#x3D; 3)。</span><br><span class="line">     偷窃到的最高金额 &#x3D; 1 + 3 &#x3D; 4 。</span><br></pre></td></tr></table></figure>
-<p>代码及注释如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var rob &#x3D; function(nums) &#123;</span><br><span class="line">    let len &#x3D; nums.length;</span><br><span class="line">    let dp &#x3D; new Array(len);</span><br><span class="line">    &#x2F;&#x2F;dp[i]表示前i间房屋最多能偷到多少金额</span><br><span class="line">    &#x2F;&#x2F;只有一间房屋</span><br><span class="line">    dp[0] &#x3D; nums[0];</span><br><span class="line">    &#x2F;&#x2F;两间的时候</span><br><span class="line">    dp[1] &#x3D; Math.max(dp[0],nums[1]);</span><br><span class="line">    for(let i &#x3D; 2;i &lt; len;i++)&#123;</span><br><span class="line">        dp[i] &#x3D; Math.max(dp[i-1],dp[i-2]+nums[i])</span><br><span class="line">    &#125;;</span><br><span class="line">    return dp[len-1]</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/15/%E5%8A%9B%E6%89%A3198-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D1/" data-id="ckp4tcth6002llotjgs596rwh" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/17/%E5%8A%9B%E6%89%A3-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A03/" data-id="ckp69gmj0001fectj0klsf1mm" class="article-share-link">分享</a>
       
       
       
@@ -583,6 +593,14 @@
       <ul>
         
           <li>
+            <a href="/2021/05/27/%E7%89%9B%E5%AE%A2-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2/">牛客--最长公共子串</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/27/%E7%89%9B%E5%AE%A2-%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3%E8%8A%82%E7%82%B9/">牛客--链表中环的入口节点</a>
+          </li>
+        
+          <li>
             <a href="/2021/05/26/%E7%89%9B%E5%AE%A2-%E6%9C%80%E9%95%BF%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84/">牛客--最长无重复子数组</a>
           </li>
         
@@ -592,14 +610,6 @@
         
           <li>
             <a href="/2021/05/26/%E7%89%9B%E5%AE%A2-%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/">牛客--用两个栈实现队列</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/25/%E5%8A%9B%E6%89%A315-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/">力扣15--三数之和</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/25/%E5%AF%BB%E6%89%BE%E7%AC%ACk%E5%A4%A7/">寻找第k大</a>
           </li>
         
       </ul>

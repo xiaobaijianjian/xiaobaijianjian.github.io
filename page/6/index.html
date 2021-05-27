@@ -66,6 +66,103 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-offer25-合并两个排序的链表" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/12/offer25-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/" class="article-date">
+  <time datetime="2021-03-12T02:55:07.000Z" itemprop="datePublished">2021-03-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E9%93%BE%E8%A1%A8/">链表</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/12/offer25-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/">offer25--合并两个排序的链表</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/">offer25–合并两个排序的链表</a></p>
+<p>输入两个递增排序的链表，合并这两个链表并使新链表中的节点仍然是递增排序的。</p>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4</span><br><span class="line">输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</span><br></pre></td></tr></table></figure>
+<p>代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * function ListNode(val) &#123;</span><br><span class="line"> *     this.val &#x3D; val;</span><br><span class="line"> *     this.next &#x3D; null;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;ListNode&#125; l1</span><br><span class="line"> * @param &#123;ListNode&#125; l2</span><br><span class="line"> * @return &#123;ListNode&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var mergeTwoLists &#x3D; function(l1, l2) &#123;</span><br><span class="line">    &#x2F;&#x2F;制造一个哑节点，方便最后返回</span><br><span class="line">    let dump &#x3D; new ListNode(0);</span><br><span class="line">    let cur &#x3D; dump;</span><br><span class="line">    while(l1 &amp;&amp; l2)&#123;</span><br><span class="line">        if(l1.val &lt;&#x3D; l2.val)&#123;</span><br><span class="line">            cur.next &#x3D; l1;</span><br><span class="line">            l1 &#x3D; l1.next</span><br><span class="line">        &#125;else if(l1.val &gt;&#x3D; l2.val)&#123;</span><br><span class="line">            cur.next &#x3D; l2;</span><br><span class="line">            l2 &#x3D; l2.next</span><br><span class="line">        &#125;;</span><br><span class="line">        cur &#x3D; cur.next</span><br><span class="line">    &#125;;</span><br><span class="line">    &#x2F;&#x2F;l1结束了</span><br><span class="line">    if(l1 &#x3D;&#x3D; null)&#123;</span><br><span class="line">        cur.next &#x3D; l2</span><br><span class="line">    &#125;;</span><br><span class="line">    &#x2F;&#x2F;l2结束了</span><br><span class="line">    if(l2 &#x3D;&#x3D; null)&#123;</span><br><span class="line">        cur.next &#x3D; l1</span><br><span class="line">    &#125;     </span><br><span class="line">    return dump.next                                                                        </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/12/offer25-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/" data-id="ckp69gmig0006ectjd9vkhy78" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-剑指18-删除链表的节点" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/12/%E5%89%91%E6%8C%8718-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/" class="article-date">
+  <time datetime="2021-03-12T02:37:41.000Z" itemprop="datePublished">2021-03-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E9%93%BE%E8%A1%A8/">链表</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/12/%E5%89%91%E6%8C%8718-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/">剑指18--删除链表的节点</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shan-chu-lian-biao-de-jie-dian-lcof/">剑指18–删除链表的节点</a></p>
+<p>给定单向链表的头指针和一个要删除的节点的值，定义一个函数删除该节点。<br>返回删除后的链表的头节点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入: head &#x3D; [4,5,1,9], val &#x3D; 5</span><br><span class="line">输出: [4,1,9]</span><br><span class="line">解释: 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 1 -&gt; 9.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * function ListNode(val) &#123;</span><br><span class="line"> *     this.val &#x3D; val;</span><br><span class="line"> *     this.next &#x3D; null;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;ListNode&#125; head</span><br><span class="line"> * @param &#123;number&#125; val</span><br><span class="line"> * @return &#123;ListNode&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var deleteNode &#x3D; function(head, val) &#123;</span><br><span class="line">    let pre &#x3D; null;</span><br><span class="line">    let cur &#x3D; head;</span><br><span class="line">    if(head.val &#x3D;&#x3D;&#x3D; val)&#123;</span><br><span class="line">        return head.next</span><br><span class="line">    &#125;;</span><br><span class="line">    while(cur)&#123;</span><br><span class="line">        &#x2F;&#x2F;遍历，找到删除的结点之后，前一节点指向后一节点</span><br><span class="line"></span><br><span class="line">        if(cur.val &#x3D;&#x3D;&#x3D; val)&#123;</span><br><span class="line">            pre.next &#x3D; cur.next</span><br><span class="line">        &#125;;</span><br><span class="line">        pre &#x3D; cur;</span><br><span class="line">        cur &#x3D; cur.next</span><br><span class="line">    &#125;;</span><br><span class="line">    return head</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/12/%E5%89%91%E6%8C%8718-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/" data-id="ckp69gmip000lectj27l045oa" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣206-反转链表" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/03/12/%E5%8A%9B%E6%89%A3206-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" class="article-date">
@@ -102,7 +199,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/12/%E5%8A%9B%E6%89%A3206-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" data-id="ckp4tcth7002olotjefnw9hn1" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/12/%E5%8A%9B%E6%89%A3206-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" data-id="ckp69gmji002tectj8i4z4lj7" class="article-share-link">分享</a>
       
       
       
@@ -151,7 +248,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/12/%E5%8A%9B%E6%89%A3264-%E4%B8%91%E6%95%B0/" data-id="ckp4tcthe003alotja4bwdbuq" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/12/%E5%8A%9B%E6%89%A3264-%E4%B8%91%E6%95%B0/" data-id="ckp69gmjm0038ectjbctwepm4" class="article-share-link">分享</a>
       
       
       
@@ -201,7 +298,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/11/%E5%8A%9B%E6%89%A320-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" data-id="ckp4tcth5002jlotjf6rfb24t" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/11/%E5%8A%9B%E6%89%A320-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" data-id="ckp69gmjf002lectjc1qv26xn" class="article-share-link">分享</a>
       
       
       
@@ -251,7 +348,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/11/%E5%8A%9B%E6%89%A3-227-%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8/" data-id="ckp4tctgm0018lotjglnd2rba" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/11/%E5%8A%9B%E6%89%A3-227-%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E5%99%A8/" data-id="ckp69gmiv0016ectj0sdzc580" class="article-share-link">分享</a>
       
       
       
@@ -300,7 +397,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/10/%E5%89%91%E6%8C%8753-0-n-1%E4%B8%AD%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0/" data-id="ckp4tctgh000tlotjawe57rx7" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/10/%E5%89%91%E6%8C%8753-0-n-1%E4%B8%AD%E7%BC%BA%E5%A4%B1%E7%9A%84%E6%95%B0/" data-id="ckp69gmis000tectj99g65c5a" class="article-share-link">分享</a>
       
       
       
@@ -351,7 +448,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/10/%E5%8A%9B%E6%89%A3134-%E5%8A%A0%E6%B2%B9%E7%AB%99/" data-id="ckp4tcth00027lotjcr845gp6" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/10/%E5%8A%9B%E6%89%A3134-%E5%8A%A0%E6%B2%B9%E7%AB%99/" data-id="ckp69gmj90024ectje7khf7ef" class="article-share-link">分享</a>
       
       
       
@@ -400,7 +497,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/09/%E5%89%91%E6%8C%8713-%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/" data-id="ckp4tctge000ilotjedsphvuj" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/09/%E5%89%91%E6%8C%8713-%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/" data-id="ckp69gmio000hectjee3c7l86" class="article-share-link">分享</a>
       
       
       
@@ -449,111 +546,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/09/%E5%8A%9B%E6%89%A31047-%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E7%9B%B8%E9%82%BB%E9%87%8D%E5%A4%8D%E9%A1%B9/" data-id="ckp4tctgt001plotj1rdk4niq" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-打通call、apply、bind" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/03/08/%E6%89%93%E9%80%9Acall%E3%80%81apply%E3%80%81bind/" class="article-date">
-  <time datetime="2021-03-08T06:24:31.000Z" itemprop="datePublished">2021-03-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>►<a class="article-category-link" href="/categories/JavaScript/%E5%87%BD%E6%95%B0/">函数</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/08/%E6%89%93%E9%80%9Acall%E3%80%81apply%E3%80%81bind/">call、apply、bind的区别与实现</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>&emsp;&emsp;简单概括apply、bind、call的区别：他们都是用来改变相关函数this指向的，但是apply、call是直接进行相关函数调用的，bind不会执行相关函数，而是返回一个新的函数，这个新的函数已经自动绑定了新的this指向。call与apply之间的区别主要是在参数设定上。<br>&emsp;&emsp;call()与bind()接受的参数相同，第一个参数表示要改变的函数执行主体，即this的指向，从第二个参数到最后一个参数表示的是函数接受的参数，对于apply()函数来讲，第一个参数相同，第二个参数是一个数组，表示的是接受的所有参数。    </p>
-<h3 id="call-方法的实现"><a href="#call-方法的实现" class="headerlink" title="call()方法的实现"></a>call()方法的实现</h3><p>原理：1）将函数设为对象的属性<br>&emsp;&emsp;2)执行和删除这个函数<br>&emsp;&emsp;3)指定 this 到函数并传入给定参数执行函数.如果不传参数，默认指向 window。  </p>
-<p>call()实现代码及注释如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var name &#x3D; &#39;maomao&#39;;</span><br><span class="line">var obj &#x3D; &#123;</span><br><span class="line">    name:&#39;gougou&#39;</span><br><span class="line">&#125;;</span><br><span class="line">function fn(a,b,c)&#123;</span><br><span class="line">    console.log(a+b+c+this.name)</span><br><span class="line">&#125;</span><br><span class="line">Function.prototype.call1 &#x3D; function(obj)&#123;</span><br><span class="line">    &#x2F;&#x2F;判断是否为null或者undefined,同时考虑传递参数不是对象情况</span><br><span class="line">    obj &#x3D; obj ? Object(obj):window;</span><br><span class="line">    obj.fn &#x3D; this;</span><br><span class="line">    &#x2F;&#x2F; 利用拓展运算符直接将arguments转为数组</span><br><span class="line">    let args &#x3D; [...arguments].slice(1);</span><br><span class="line">    let result &#x3D; obj.fn(...args);</span><br><span class="line">    delete obj.fn;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn.call1(obj,&#39;我的&#39;,&#39;宠物&#39;,&#39;是&#39;)</span><br></pre></td></tr></table></figure>
-<p>apply实现及代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> Function.prototype.apply_ &#x3D; function(obj,arr)&#123;</span><br><span class="line">    obj &#x3D;&#x3D; obj? Object(obj) : window;</span><br><span class="line">    obj.fn &#x3D; this;</span><br><span class="line">    let result;</span><br><span class="line">    if(!arr)&#123;</span><br><span class="line">        result &#x3D; obj.fn()</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        result &#x3D; obj.fn(...arr)</span><br><span class="line">    &#125;</span><br><span class="line">    delete obj.fn;</span><br><span class="line">    return result</span><br><span class="line">&#125;</span><br><span class="line">fn.apply_(obj,[&#39;我的&#39;,&#39;宠物&#39;,&#39;是&#39;])</span><br></pre></td></tr></table></figure>
-<p>bind实现及代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.bind1 &#x3D; function()&#123;</span><br><span class="line">    &#x2F;&#x2F; 保存原函数</span><br><span class="line">    var self &#x3D; this;</span><br><span class="line">    &#x2F;&#x2F; 保存需要绑定的this上下文</span><br><span class="line">    context &#x3D; [].shift.call(arguments);</span><br><span class="line">    &#x2F;&#x2F; 剩余的参数转为数组</span><br><span class="line">    args &#x3D; [].slice.call(arguments);</span><br><span class="line">    &#x2F;&#x2F;返回一个函数</span><br><span class="line">    return  function()&#123;</span><br><span class="line">        self.apply(context,[].concat.call(args,[].slice.call(arguments)))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lovefengruoqing/article/details/80186401">js中自己实现bind函数的方式</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/08/%E6%89%93%E9%80%9Acall%E3%80%81apply%E3%80%81bind/" data-id="ckp4tctib005olotjax7lg64x" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-剑指offer34-二叉树中和为某一值的路径" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/03/08/%E5%89%91%E6%8C%87offer34-%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84/" class="article-date">
-  <time datetime="2021-03-08T01:59:48.000Z" itemprop="datePublished">2021-03-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/08/%E5%89%91%E6%8C%87offer34-%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84/">剑指offer34--二叉树中和为某一值的路径</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-shu-zhong-he-wei-mou-yi-zhi-de-lu-jing-lcof/">剑指offer34–二叉树中和为某一值的路径</a></p>
-<p>输入一棵二叉树和一个整数，打印出二叉树中节点值的和为输入整数的所有路径。从树的根节点开始往下一直到叶节点所经过的节点形成一条路径。</p>
-<p>示例,给定sum和为32</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">      5</span><br><span class="line">     &#x2F; \</span><br><span class="line">    4   8</span><br><span class="line">   &#x2F;   &#x2F; \</span><br><span class="line">  11  13  4</span><br><span class="line"> &#x2F;  \    &#x2F; \</span><br><span class="line">7    2  5   1</span><br></pre></td></tr></table></figure>
-<p>返回</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">   [5,4,11,2],</span><br><span class="line">   [5,8,4,5]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>代码及详细注释如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val) &#123;</span><br><span class="line"> *     this.val &#x3D; val;</span><br><span class="line"> *     this.left &#x3D; this.right &#x3D; null;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @param &#123;number&#125; sum</span><br><span class="line"> * @return &#123;number[][]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var pathSum &#x3D; function(root, sum) &#123;</span><br><span class="line">    &#x2F;&#x2F;放置结果</span><br><span class="line">    let result &#x3D; [];</span><br><span class="line">    &#x2F;&#x2F;root--树，path--路径，curSum--当前节点和</span><br><span class="line">    const dfs &#x3D; (root,path,curSum)&#x3D;&gt;&#123;</span><br><span class="line">        &#x2F;&#x2F;递归结束条件</span><br><span class="line">        if(!root)&#123;</span><br><span class="line">            return [];</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;路径添加元素</span><br><span class="line">        path.push(root.val);</span><br><span class="line">        &#x2F;&#x2F;计算当前和</span><br><span class="line">        curSum +&#x3D; root.val;</span><br><span class="line">        &#x2F;&#x2F;如果没有左子树和右子树（到了叶子节点）</span><br><span class="line">        if(!root.left &amp;&amp; !root.right)&#123;</span><br><span class="line">            if(curSum &#x3D;&#x3D;&#x3D; sum)&#123;</span><br><span class="line">                result.push(path.slice())</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            &#x2F;&#x2F;递归左右子树</span><br><span class="line">            dfs(root.left,path,curSum);</span><br><span class="line">            dfs(root.right,path,curSum)</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;返回上一步，回溯</span><br><span class="line">        path.pop();</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    dfs(root,[],0);</span><br><span class="line">    return result</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/08/%E5%89%91%E6%8C%87offer34-%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84/" data-id="ckp4tctgk0011lotjd4tp9noi" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/09/%E5%8A%9B%E6%89%A31047-%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E7%9B%B8%E9%82%BB%E9%87%8D%E5%A4%8D%E9%A1%B9/" data-id="ckp69gmj3001pectj3cla6ohz" class="article-share-link">分享</a>
       
       
       
@@ -587,6 +580,14 @@
       <ul>
         
           <li>
+            <a href="/2021/05/27/%E7%89%9B%E5%AE%A2-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2/">牛客--最长公共子串</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/27/%E7%89%9B%E5%AE%A2-%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3%E8%8A%82%E7%82%B9/">牛客--链表中环的入口节点</a>
+          </li>
+        
+          <li>
             <a href="/2021/05/26/%E7%89%9B%E5%AE%A2-%E6%9C%80%E9%95%BF%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84/">牛客--最长无重复子数组</a>
           </li>
         
@@ -596,14 +597,6 @@
         
           <li>
             <a href="/2021/05/26/%E7%89%9B%E5%AE%A2-%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/">牛客--用两个栈实现队列</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/25/%E5%8A%9B%E6%89%A315-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/">力扣15--三数之和</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/25/%E5%AF%BB%E6%89%BE%E7%AC%ACk%E5%A4%A7/">寻找第k大</a>
           </li>
         
       </ul>
