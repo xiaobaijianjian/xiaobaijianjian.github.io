@@ -66,6 +66,157 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣101-对称二叉树" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/27/%E5%8A%9B%E6%89%A3101-%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" class="article-date">
+  <time datetime="2021-02-27T09:44:46.000Z" itemprop="datePublished">2021-02-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/27/%E5%8A%9B%E6%89%A3101-%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/">力扣101-对称二叉树</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/symmetric-tree/">力扣101-对称二叉树</a></p>
+<p>给定一个二叉树，检查它是否是镜像对称的。</p>
+<p>例如，二叉树 [1,2,2,3,4,4,3] 是对称的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    1</span><br><span class="line">   &#x2F; \</span><br><span class="line">  2   2</span><br><span class="line"> &#x2F; \ &#x2F; \</span><br><span class="line">3  4 4  3</span><br></pre></td></tr></table></figure>
+<p>代码及注释如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val, left, right) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.left &#x3D; (left&#x3D;&#x3D;&#x3D;undefined ? null : left)</span><br><span class="line"> *     this.right &#x3D; (right&#x3D;&#x3D;&#x3D;undefined ? null : right)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @return &#123;boolean&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var isSymmetric &#x3D; function(root) &#123;</span><br><span class="line">    &#x2F;&#x2F;镜像对称的条件：</span><br><span class="line">    &#x2F;&#x2F;1 根节点的值相同</span><br><span class="line">    &#x2F;&#x2F;2 一个树的右子树，和另一个树的左子树镜像对称。</span><br><span class="line">    if(root &#x3D;&#x3D; null)&#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;;</span><br><span class="line">    const dfs &#x3D; function(left,right)&#123;</span><br><span class="line">        if(left &#x3D;&#x3D; null &amp;&amp; right &#x3D;&#x3D; null)&#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;;</span><br><span class="line">        if(left &amp;&amp; right)&#123;</span><br><span class="line">            if(left.val &#x3D;&#x3D; right.val &amp;&amp; dfs(left.left,right.right) &amp;&amp; dfs(left.right,right.left))&#123;</span><br><span class="line">                return true</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;如果左右子树只有一个存在，肯定不对称</span><br><span class="line">        return false;</span><br><span class="line">    &#125;;</span><br><span class="line">    return dfs(root.left,root.right)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>非递归解法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val, left, right) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.left &#x3D; (left&#x3D;&#x3D;&#x3D;undefined ? null : left)</span><br><span class="line"> *     this.right &#x3D; (right&#x3D;&#x3D;&#x3D;undefined ? null : right)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @return &#123;boolean&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var isSymmetric &#x3D; function(root) &#123;</span><br><span class="line">    &#x2F;&#x2F;镜像对称的条件：</span><br><span class="line">    &#x2F;&#x2F;1 根节点的值相同</span><br><span class="line">    &#x2F;&#x2F;2 一个树的右子树，和另一个树的左子树镜像对称。</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;非递归</span><br><span class="line">    &#x2F;&#x2F;模拟栈，左、右子树先入栈然后再出栈，比较是否相同</span><br><span class="line">    if(!root)&#123;</span><br><span class="line">        return true</span><br><span class="line">    &#125;;</span><br><span class="line">    let stack &#x3D; [root.left,root.right];</span><br><span class="line">    while(stack.length)&#123;</span><br><span class="line">        let right &#x3D; stack.pop();</span><br><span class="line">        let left &#x3D; stack.pop();</span><br><span class="line">        </span><br><span class="line">        if(left &amp;&amp; right)&#123;</span><br><span class="line">            if(left.val !&#x3D;&#x3D; right.val)&#123;</span><br><span class="line">                return false</span><br><span class="line">            &#125;;</span><br><span class="line">            stack.push(left.left);</span><br><span class="line">            stack.push(right.right);</span><br><span class="line">            stack.push(left.right);</span><br><span class="line">            stack.push(right.left)</span><br><span class="line">        &#125;else if(left || right)&#123;</span><br><span class="line">            return false</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;;</span><br><span class="line">    return true</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/27/%E5%8A%9B%E6%89%A3101-%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckp92yd9l001eeotjebqoaajz" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-力扣395-至少有K个重复字符的最长子串" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/27/%E5%8A%9B%E6%89%A3395-%E8%87%B3%E5%B0%91%E6%9C%89K%E4%B8%AA%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/" class="article-date">
+  <time datetime="2021-02-27T03:28:20.000Z" itemprop="datePublished">2021-02-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%88%86%E5%86%B6%E9%80%92%E5%BD%92/">分冶递归</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/27/%E5%8A%9B%E6%89%A3395-%E8%87%B3%E5%B0%91%E6%9C%89K%E4%B8%AA%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/">力扣395-至少有K个重复字符的最长子串</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/longest-substring-with-at-least-k-repeating-characters/">力扣395-至少有K个重复字符的最长子串</a></p>
+<p>给你一个字符串 s 和一个整数 k ，请你找出 s 中的最长子串， 要求该子串中的每一字符出现次数都不少于 k 。返回这一子串的长度。</p>
+<p>例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：s &#x3D; &quot;ababbc&quot;, k &#x3D; 2</span><br><span class="line">输出：5</span><br><span class="line">解释：最长子串为 &quot;ababb&quot; ，其中 &#39;a&#39; 重复了 2 次， &#39;b&#39; 重复了 3 次。</span><br></pre></td></tr></table></figure>
+<p>注释及详细代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;string&#125; s</span><br><span class="line"> * @param &#123;number&#125; k</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var longestSubstring &#x3D; function(s, k) &#123;</span><br><span class="line">    &#x2F;&#x2F;思想：分冶递归</span><br><span class="line">    &#x2F;&#x2F;对于字符串 ss，如果存在某个字符ch，它的出现次数大于 0 且小于 k，</span><br><span class="line">    &#x2F;&#x2F;则任何包含ch 的子串都不可能满足要求。也就是说，我们将字符串按照ch 切分成若干段，</span><br><span class="line">    &#x2F;&#x2F;则满足要求的最长子串一定出现在某个被切分的段内，而不能跨越一个或多个段。因此，可以考虑分治的方式求解本题。</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;递归最基本的是记住递归函数的含义（务必牢记函数定义）</span><br><span class="line">    &#x2F;&#x2F;递归结束条件</span><br><span class="line"></span><br><span class="line">    let count &#x3D; (str,start,end,k)&#x3D;&gt;&#123;</span><br><span class="line">        &#x2F;&#x2F;如果总数小于k就直接结束</span><br><span class="line">        if(end-start+1 &lt; k)&#123;</span><br><span class="line">            return 0</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;统计每个字符出现的次数</span><br><span class="line">        let map &#x3D; new Map();</span><br><span class="line">        for(let i &#x3D; start ;i &lt;&#x3D; end;i++)&#123;</span><br><span class="line">            if(map.has(str[i]))&#123;</span><br><span class="line">                map.set(str[i],map.get(str[i])+1)</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                map.set(str[i],1)</span><br><span class="line">        &#125;;</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;剪枝</span><br><span class="line">        &#x2F;&#x2F;如果该字符出现频次小于K，则不可能出现在结果子串中</span><br><span class="line">        while(end-start+1 &gt;&#x3D; k &amp;&amp; map.get(str[start]) &lt; k)&#123;</span><br><span class="line">            start++</span><br><span class="line">        &#125;;</span><br><span class="line">        while(end-start+1 &gt;&#x3D; k &amp;&amp; map.get(str[end]) &lt; k)&#123;</span><br><span class="line">            end--;</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;排除子串中包含符合要求的字符，但是这个长度不会出现对应的频率</span><br><span class="line">        if(end-start + 1 &lt; k)&#123;</span><br><span class="line">            return 0</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;对子字符串处理</span><br><span class="line">        for(let i &#x3D; start;i &lt; end;i++)&#123;</span><br><span class="line">            &#x2F;&#x2F;一旦有不满足的，即使改变</span><br><span class="line">            if(map.get(str[i]) &lt; k)&#123;</span><br><span class="line">                return Math.max(count(str,start,i-1,k),count(str,i+1,end,k))</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        return end-start+1</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    return count(s,0,s.length-1,k)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/27/%E5%8A%9B%E6%89%A3395-%E8%87%B3%E5%B0%91%E6%9C%89K%E4%B8%AA%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/" data-id="ckp92ydam003teotjd3u4adaz" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-力扣543-二叉树的直径" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/26/%E5%8A%9B%E6%89%A3543-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" class="article-date">
+  <time datetime="2021-02-26T09:02:29.000Z" itemprop="datePublished">2021-02-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/26/%E5%8A%9B%E6%89%A3543-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/">力扣543-二叉树的直径</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/diameter-of-binary-tree/">力扣543-二叉树的直径</a></p>
+<p>给定一棵二叉树，你需要计算它的直径长度。一棵二叉树的直径长度是任意两个结点路径长度中的最大值。这条路径可能穿过也可能不穿过根结点。</p>
+<p>例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    1</span><br><span class="line">   &#x2F; \</span><br><span class="line">  2   3</span><br><span class="line"> &#x2F; \     </span><br><span class="line">4   5      </span><br></pre></td></tr></table></figure>
+<p>返回3, 它的长度是路径 [4,2,1,3] 或者 [5,2,1,3]</p>
+<p>代码及详细注释如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val) &#123;</span><br><span class="line"> *     this.val &#x3D; val;</span><br><span class="line"> *     this.left &#x3D; this.right &#x3D; null;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var diameterOfBinaryTree &#x3D; function(root) &#123;</span><br><span class="line">    &#x2F;&#x2F;求直径（即求路径长度的最大值）等效于求路径经过节点数的最大值减一。</span><br><span class="line">    &#x2F;&#x2F;而任意一条路径均可以被看作由某个节点为起点，从其左儿子和右儿子向下遍历的路径拼接得到(左儿子和右儿子的深度之和)。</span><br><span class="line">    &#x2F;&#x2F;因为可以不经过根节点，用max保存最大值</span><br><span class="line">    let max &#x3D; 0;</span><br><span class="line">    let dfs &#x3D; function(node)&#123;</span><br><span class="line">        if(!node)&#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;获得左子树的深度</span><br><span class="line">        let left &#x3D; dfs(node.left);</span><br><span class="line">        &#x2F;&#x2F;获得右子树的深度</span><br><span class="line">        let right &#x3D; dfs(node.right);</span><br><span class="line">        &#x2F;&#x2F;左子树深度 + 右子树深度便是这株二叉树从最左侧叶子节点到最右侧叶子节点的最长路径</span><br><span class="line">        max &#x3D; Math.max(max,left + right)</span><br><span class="line">        &#x2F;&#x2F;已知根节点的左右子树的深度，则，左右子树深度的最大值 + 1，便是以根节点为数的最大深度</span><br><span class="line">        return Math.max(left,right) + 1;</span><br><span class="line">    &#125;;</span><br><span class="line">    dfs(root);</span><br><span class="line">    return max</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/26/%E5%8A%9B%E6%89%A3543-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" data-id="ckp92ydar004aeotj8b9p1rmy" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣-二叉树的最近公共祖先" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/02/26/%E5%8A%9B%E6%89%A3-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" class="article-date">
@@ -103,7 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/26/%E5%8A%9B%E6%89%A3-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" data-id="ckp80k94700180ktjh144g4jt" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/26/%E5%8A%9B%E6%89%A3-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" data-id="ckp92yd9f001aeotj7v0c6yyb" class="article-share-link">分享</a>
       
       
       
@@ -150,7 +301,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/25/%E5%8A%9B%E6%89%A3230-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/" data-id="ckp80k94w002v0ktjdwbl1ghu" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/25/%E5%8A%9B%E6%89%A3230-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/" data-id="ckp92yda9002xeotjfh3k4vrw" class="article-share-link">分享</a>
       
       
       
@@ -202,7 +353,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/25/%E5%8A%9B%E6%89%A3104-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" data-id="ckp80k94i001r0ktjd7w471z1" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/25/%E5%8A%9B%E6%89%A3104-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" data-id="ckp92yd9q001meotjdgk62yph" class="article-share-link">分享</a>
       
       
       
@@ -271,7 +422,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/24/%E5%8A%9B%E6%89%A3-%E5%89%8D%E3%80%81%E4%B8%AD%E3%80%81%E5%90%8E%E3%80%81%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/" data-id="ckp80k948001a0ktj6gtn9rjq" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/24/%E5%8A%9B%E6%89%A3-%E5%89%8D%E3%80%81%E4%B8%AD%E3%80%81%E5%90%8E%E3%80%81%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/" data-id="ckp92yd9o001jeotjad1cefin" class="article-share-link">分享</a>
       
       
       
@@ -361,7 +512,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/23/JS%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98%E5%AD%A6%E4%B9%A0/" data-id="ckp80k93l00010ktj1ng8bwe4" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/23/JS%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98%E5%AD%A6%E4%B9%A0/" data-id="ckp92yd8v0002eotj3nqh9qov" class="article-share-link">分享</a>
       
       
       
@@ -415,7 +566,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/23/%E5%8A%9B%E6%89%A31052-%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/" data-id="ckp80k94h001p0ktj0yezf7cc" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/23/%E5%8A%9B%E6%89%A31052-%E7%88%B1%E7%94%9F%E6%B0%94%E7%9A%84%E4%B9%A6%E5%BA%97%E8%80%81%E6%9D%BF/" data-id="ckp92yd9u001teotj4w5p4wbe" class="article-share-link">分享</a>
       
       
       
@@ -465,154 +616,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/21/%E5%8A%9B%E6%89%A31438-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" data-id="ckp80k94n00260ktjh50e96y1" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣697-数组的度" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/20/%E5%8A%9B%E6%89%A3697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/" class="article-date">
-  <time datetime="2021-02-20T03:02:38.000Z" itemprop="datePublished">2021-02-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/20/%E5%8A%9B%E6%89%A3697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/">力扣697-数组的度</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>给定一个非空且只包含非负数的整数数组 nums，数组的度的定义是指数组里任一元素出现频数的最大值。</p>
-<p>任务是在 nums 中找到与 nums 拥有相同大小的度的最短连续子数组，返回其长度。</p>
-<p>（题目有点难懂，连续子数组指的是某数字的最后出现索引 - 某数字的最初出现索引 + 1）</p>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：[1,2,2,3,1,4,2]</span><br><span class="line">输出：6</span><br><span class="line">度最长为3，值为2，最后一个2出现的与第一个2出现之间的长度</span><br></pre></td></tr></table></figure>
-<p>代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var findShortestSubArray &#x3D; function(nums) &#123;</span><br><span class="line">    &#x2F;&#x2F;分三次循环数组</span><br><span class="line">    &#x2F;&#x2F;第一次找出度最大的度为多少</span><br><span class="line">    &#x2F;&#x2F;第二次找出度最大的对应的数字</span><br><span class="line">    &#x2F;&#x2F;遍历，最短连续子数组的长度 &#x3D; 某数字的最后出现索引 - 某数字的最初出现索引 + 1</span><br><span class="line">    let len &#x3D; nums.length;</span><br><span class="line">    let map &#x3D; new Map();</span><br><span class="line">    let max &#x3D; 1;</span><br><span class="line">    for(let i of nums)&#123;</span><br><span class="line">        if(!map.has(i))&#123;</span><br><span class="line">            map.set(i,1)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            map.set(i,map.get(i)+1)</span><br><span class="line">        &#125;</span><br><span class="line">        max &#x3D; Math.max(max,map.get(i))</span><br><span class="line">    &#125;;</span><br><span class="line">    let arr &#x3D; [];</span><br><span class="line">    for(let [key,value] of map)&#123;</span><br><span class="line">        if(value &#x3D;&#x3D; max)&#123;</span><br><span class="line">            arr.push(key)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    let min &#x3D; len</span><br><span class="line">    for(let i  of arr)&#123;</span><br><span class="line">        min &#x3D; Math.min(min,nums.lastIndexOf(i)-nums.indexOf(i)+1)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    return min</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/20/%E5%8A%9B%E6%89%A3697-%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%A6/" data-id="ckp80k95j004l0ktj7h2a8t3n" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣39-组合总和" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" class="article-date">
-  <time datetime="2021-02-19T13:38:39.000Z" itemprop="datePublished">2021-02-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/">力扣39-组合总和</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。</p>
-<p>candidates 中的数字可以无限制重复被选取。</p>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：candidates &#x3D; [2,3,6,7], target &#x3D; 7,</span><br><span class="line">所求解集为：</span><br><span class="line">[</span><br><span class="line">  [7],</span><br><span class="line">  [2,2,3]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>代码及注释如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; candidates</span><br><span class="line"> * @param &#123;number&#125; target</span><br><span class="line"> * @return &#123;number[][]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var combinationSum &#x3D; function(candidates, target) &#123;</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    let len &#x3D; candidates.length;</span><br><span class="line">    let back &#x3D; function(path,condition,sum)&#123;</span><br><span class="line">        &#x2F;&#x2F;限制条件 sum &gt;&#x3D; target退出</span><br><span class="line">        if(sum &gt;&#x3D; target)&#123;</span><br><span class="line">            if(sum &#x3D;&#x3D; target)&#123;</span><br><span class="line">            res.push(path.slice())</span><br><span class="line">            &#125;;</span><br><span class="line">            return </span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;限制产生重复组合，基于上一次的选择</span><br><span class="line">        for(let i &#x3D; condition;i &lt; len;i++)&#123;</span><br><span class="line">            path.push(candidates[i]);</span><br><span class="line">            &#x2F;&#x2F;组合中允许有重复性元素</span><br><span class="line">            back(path,i,sum + candidates[i]);</span><br><span class="line">            path.pop()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    back([],0,0);</span><br><span class="line">    return res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A339-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" data-id="ckp80k958003p0ktjhipwfcms" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣77-组合" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/" class="article-date">
-  <time datetime="2021-02-19T09:25:47.000Z" itemprop="datePublished">2021-02-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/">力扣77-组合</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/combinations/">力扣77-组合</a></p>
-<p>给定两个整数 n 和 k，返回 1 … n 中所有可能的 k 个数的组合。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number&#125; n</span><br><span class="line"> * @param &#123;number&#125; k</span><br><span class="line"> * @return &#123;number[][]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var combine &#x3D; function(n, k) &#123;</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    let back &#x3D; function(path,condition)&#123;</span><br><span class="line">        if(path.length &#x3D;&#x3D; k)&#123;</span><br><span class="line">            res.push(path.slice())</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;为了不产生重复组合，基于上一次的数进行选择</span><br><span class="line">        for(let i &#x3D; condition;i &lt;&#x3D; n;i++)&#123;</span><br><span class="line">            path.push(i);</span><br><span class="line">            &#x2F;&#x2F;&#x2F;&#x2F;最后元素不可以重复选入集合所以要传入i+1</span><br><span class="line">            back(path,i+1)</span><br><span class="line">            path.pop()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    back([],1)</span><br><span class="line">    return res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/%E5%8A%9B%E6%89%A377-%E7%BB%84%E5%90%88/" data-id="ckp80k95m004v0ktj1h4b3zgs" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/02/21/%E5%8A%9B%E6%89%A31438-%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" data-id="ckp92yd9z0028eotj71f1h84g" class="article-share-link">分享</a>
       
       
       
@@ -627,7 +631,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/8/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/10/">下一页&amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/8/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/10/">下一页&amp;raquo;</a>
   </nav>
 </section>
            
@@ -646,23 +650,23 @@
       <ul>
         
           <li>
+            <a href="/2021/05/29/%E7%89%9B%E5%AE%A2-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F/">牛客--岛屿数量</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/29/%E7%89%9B%E5%AE%A2-%E5%90%88%E5%B9%B6k%E4%B8%AA%E5%B7%B2%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/">牛客--合并k个已排序的链表</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/29/%E7%89%9B%E5%AE%A2-%E8%AE%BE%E8%AE%A1getMin%E5%8A%9F%E8%83%BD%E7%9A%84%E6%A0%88/">牛客--设计getMin功能的栈</a>
+          </li>
+        
+          <li>
             <a href="/2021/05/28/%E7%89%9B%E5%AE%A2-%E6%B1%82%E5%B9%B3%E6%96%B9%E6%A0%B9/">牛客--求平方根</a>
           </li>
         
           <li>
             <a href="/2021/05/28/%E5%8A%9B%E6%89%A35-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/">力扣5--最长回文子串</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/28/%E7%89%9B%E5%AE%A2-%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%94%9F%E6%88%90%E7%9B%B8%E5%8A%A0%E9%93%BE%E8%A1%A8/">牛客--两个链表生成相加链表</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/27/%E7%89%9B%E5%AE%A2-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2/">牛客--最长公共子串</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/27/%E7%89%9B%E5%AE%A2-%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3%E8%8A%82%E7%82%B9/">牛客--链表中环的入口节点</a>
           </li>
         
       </ul>
