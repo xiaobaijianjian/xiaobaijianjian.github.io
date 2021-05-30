@@ -66,6 +66,199 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-牛客14-二叉树根节点到叶子节点的所有路径和" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/05/30/%E7%89%9B%E5%AE%A214-%E4%BA%8C%E5%8F%89%E6%A0%91%E6%A0%B9%E8%8A%82%E7%82%B9%E5%88%B0%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84%E6%89%80%E6%9C%89%E8%B7%AF%E5%BE%84%E5%92%8C/" class="article-date">
+  <time datetime="2021-05-30T03:18:06.000Z" itemprop="datePublished">2021-05-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/30/%E7%89%9B%E5%AE%A214-%E4%BA%8C%E5%8F%89%E6%A0%91%E6%A0%B9%E8%8A%82%E7%82%B9%E5%88%B0%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84%E6%89%80%E6%9C%89%E8%B7%AF%E5%BE%84%E5%92%8C/">牛客14--二叉树根节点到叶子节点的所有路径和</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/185a87cd29eb42049132aed873273e83?tpId=117&&tqId=37715&&companyId=665&rp=1&ru=/company/home/code/665&qru=/ta/job-code-high/question-ranking">牛客14–二叉树根节点到叶子节点的所有路径和</a></p>
+<p>给定一个仅包含数字0−9 的二叉树，每一条从根节点到叶子节点的路径都可以用一个数字表示。</p>
+<p>例如根节点到叶子节点的一条路径是1- 2- 3,那么这条路径就用123 来代替。<br>找出根节点到叶子节点的所有路径表示的数字之和</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：&#123;1,0&#125;</span><br><span class="line">返回值：10</span><br></pre></td></tr></table></figure>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"> * function TreeNode(x) &#123;</span><br><span class="line"> *   this.val &#x3D; x;</span><br><span class="line"> *   this.left &#x3D; null;</span><br><span class="line"> *   this.right &#x3D; null;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line">  * </span><br><span class="line">  * @param root TreeNode类 </span><br><span class="line">  * @return int整型</span><br><span class="line">  *&#x2F;</span><br><span class="line">function sumNumbers( root ) &#123;</span><br><span class="line">    &#x2F;&#x2F; write code here</span><br><span class="line">    &#x2F;&#x2F;分成两步，先用递归求出二叉树的所有路径</span><br><span class="line">    &#x2F;&#x2F;然后求和</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    let dfs &#x3D; function(root,path)&#123;</span><br><span class="line">        if(!root)&#123;</span><br><span class="line">            return null</span><br><span class="line">        &#125;;</span><br><span class="line">        path +&#x3D; root.val;</span><br><span class="line">        if(root.left &#x3D;&#x3D; null &amp;&amp; root.right &#x3D;&#x3D; null)&#123;</span><br><span class="line">            res.push(path)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            dfs(root.left,path);</span><br><span class="line">            dfs(root.right,path)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    dfs(root,&#39;&#39;)</span><br><span class="line">    let sum &#x3D; 0;</span><br><span class="line">    for(let i of res)&#123;</span><br><span class="line">        sum +&#x3D; Number(i)</span><br><span class="line">    &#125;</span><br><span class="line">    return sum</span><br><span class="line">&#125;</span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    sumNumbers : sumNumbers</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/30/%E7%89%9B%E5%AE%A214-%E4%BA%8C%E5%8F%89%E6%A0%91%E6%A0%B9%E8%8A%82%E7%82%B9%E5%88%B0%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84%E6%89%80%E6%9C%89%E8%B7%AF%E5%BE%84%E5%92%8C/" data-id="ckpam9m7r006pc8tj1xkiaea5" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-牛客-判断一个链表是否为回文结构" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/05/30/%E7%89%9B%E5%AE%A2-%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E4%B8%BA%E5%9B%9E%E6%96%87%E7%BB%93%E6%9E%84/" class="article-date">
+  <time datetime="2021-05-30T03:14:30.000Z" itemprop="datePublished">2021-05-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E9%93%BE%E8%A1%A8/">链表</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/30/%E7%89%9B%E5%AE%A2-%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E4%B8%BA%E5%9B%9E%E6%96%87%E7%BB%93%E6%9E%84/">牛客--判断一个链表是否为回文结构</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/3fed228444e740c8be66232ce8b87c2f?tpId=117&&tqId=37813&&companyId=665&rp=1&ru=/company/home/code/665&qru=/ta/job-code-high/question-ranking">牛客–判断一个链表是否为回文结构</a></p>
+<p>给定一个链表，请判断该链表是否为回文结构。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：[1,2,2,1]</span><br><span class="line">返回值：true</span><br></pre></td></tr></table></figure>
+<p>代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"> * function ListNode(x)&#123;</span><br><span class="line"> *   this.val &#x3D; x;</span><br><span class="line"> *   this.next &#x3D; null;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * </span><br><span class="line"> * @param head ListNode类 the head</span><br><span class="line"> * @return bool布尔型</span><br><span class="line"> *&#x2F;</span><br><span class="line">function isPail( head ) &#123;</span><br><span class="line">    &#x2F;&#x2F; write code here</span><br><span class="line">    let res&#x3D;  [];</span><br><span class="line">    let cur &#x3D; head;</span><br><span class="line">    while(cur)&#123;</span><br><span class="line">        res.push(cur.val);</span><br><span class="line">        cur &#x3D; cur.next</span><br><span class="line">    &#125;;</span><br><span class="line">    let start &#x3D; 0;</span><br><span class="line">    let end &#x3D; res.length-1;</span><br><span class="line">    while(start &lt; end)&#123;</span><br><span class="line">        if(res[start] &#x3D;&#x3D; res[end])&#123;</span><br><span class="line">            start++;</span><br><span class="line">            end--</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            return false</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return true</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    isPail : isPail</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/30/%E7%89%9B%E5%AE%A2-%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E4%B8%BA%E5%9B%9E%E6%96%87%E7%BB%93%E6%9E%84/" data-id="ckpam9m7i005uc8tj8kieds73" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-牛客12-矩阵的最小路径和" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/05/30/%E7%89%9B%E5%AE%A212-%E7%9F%A9%E9%98%B5%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/" class="article-date">
+  <time datetime="2021-05-30T02:32:25.000Z" itemprop="datePublished">2021-05-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/30/%E7%89%9B%E5%AE%A212-%E7%9F%A9%E9%98%B5%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/">牛客12--矩阵的最小路径和</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/7d21b6be4c6b429bb92d219341c4f8bb?tpId=117&&tqId=37823&&companyId=665&rp=1&ru=/company/home/code/665&qru=/ta/job-code-high/question-ranking">牛客12–矩阵的最小路径和</a></p>
+<p>给定一个 n * m 的矩阵 a，从左上角开始每次只能向右或者向下走，最后到达右下角的位置，路径上所有的数字累加起来就是路径和，输出所有的路径中最小的路径和。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：[[1,3,5,9],[8,1,3,4],[5,0,6,1],[8,8,4,0]]</span><br><span class="line">返回值：12</span><br></pre></td></tr></table></figure>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * </span><br><span class="line"> * @param matrix int整型二维数组 the matrix</span><br><span class="line"> * @return int整型</span><br><span class="line"> *&#x2F;</span><br><span class="line">function minPathSum( matrix ) &#123;</span><br><span class="line">    &#x2F;&#x2F; write code here</span><br><span class="line">    let row &#x3D; matrix.length;</span><br><span class="line">    let col &#x3D; matrix[0].length;</span><br><span class="line">    let dp &#x3D; new Array(row);</span><br><span class="line">    for(let i &#x3D; 0;i &lt; row;i++)&#123;</span><br><span class="line">        dp[i] &#x3D; new Array(col)</span><br><span class="line">    &#125;;</span><br><span class="line">    dp[0][0] &#x3D; matrix[0][0]</span><br><span class="line">    for(let i &#x3D; 0;i &lt; row;i++)&#123;</span><br><span class="line">        for(let j &#x3D; 0;j &lt; col;j++)&#123;</span><br><span class="line">            if(i &#x3D;&#x3D; 0 &amp;&amp; j&#x3D;&#x3D; 0)&#123;</span><br><span class="line">                continue</span><br><span class="line">            &#125;else if(i &#x3D;&#x3D; 0)&#123;</span><br><span class="line">                dp[i][j] &#x3D; dp[i][j-1] + matrix[0][j]</span><br><span class="line">            &#125;else if(j &#x3D;&#x3D; 0)&#123;</span><br><span class="line">                dp[i][j] &#x3D; dp[i-1][j] + matrix[i][0]</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                dp[i][j] &#x3D; Math.min(dp[i-1][j],dp[i][j-1]) + matrix[i][j]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return dp[row-1][col-1]</span><br><span class="line">&#125;</span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    minPathSum : minPathSum</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/30/%E7%89%9B%E5%AE%A212-%E7%9F%A9%E9%98%B5%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/" data-id="ckpam9m7q006kc8tj0hz45tap" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-牛客-单链表的排序" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/05/30/%E7%89%9B%E5%AE%A2-%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E6%8E%92%E5%BA%8F/" class="article-date">
+  <time datetime="2021-05-30T01:34:53.000Z" itemprop="datePublished">2021-05-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E9%93%BE%E8%A1%A8/">链表</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/30/%E7%89%9B%E5%AE%A2-%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E6%8E%92%E5%BA%8F/">牛客--单链表的排序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/f23604257af94d939848729b1a5cda08?tpId=117&&tqId=37817&&companyId=665&rp=1&ru=/company/home/code/665&qru=/ta/job-code-high/question-ranking">牛客–单链表的排序</a></p>
+<p>给定一个无序单链表，实现单链表的排序(按升序排序)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：[1,3,2,4,5]</span><br><span class="line">返回值：&#123;1,2,3,4,5&#125;</span><br></pre></td></tr></table></figure>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"> * function ListNode(x)&#123;</span><br><span class="line"> *   this.val &#x3D; x;</span><br><span class="line"> *   this.next &#x3D; null;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * </span><br><span class="line"> * @param head ListNode类 the head node</span><br><span class="line"> * @return ListNode类</span><br><span class="line"> *&#x2F;</span><br><span class="line">function sortInList( head ) &#123;</span><br><span class="line">    &#x2F;&#x2F; write code here</span><br><span class="line">    return merge(head,null)</span><br><span class="line">&#125;;</span><br><span class="line">function merge(head,tail)&#123;</span><br><span class="line">    if(head &#x3D;&#x3D; null)&#123;</span><br><span class="line">        return head</span><br><span class="line">    &#125;;</span><br><span class="line">    if(head.next &#x3D;&#x3D; tail)&#123;</span><br><span class="line">        head.next &#x3D; null;</span><br><span class="line">        return head</span><br><span class="line">    &#125;;</span><br><span class="line">    let fast &#x3D; head;</span><br><span class="line">    let slow &#x3D; head;</span><br><span class="line">    while(fast !&#x3D;tail)&#123;</span><br><span class="line">        fast &#x3D; fast.next;</span><br><span class="line">        slow &#x3D; slow.next;</span><br><span class="line">        if(fast !&#x3D; tail)&#123;</span><br><span class="line">            fast &#x3D; fast.next</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    let mid &#x3D; slow;</span><br><span class="line">    let l &#x3D; merge(head,mid);</span><br><span class="line">    let r &#x3D; merge(mid,tail);</span><br><span class="line">    return sor(l,r)</span><br><span class="line">&#125;</span><br><span class="line">function sor(left,right)&#123;</span><br><span class="line">    let dump &#x3D; new ListNode(0);</span><br><span class="line">    let cur &#x3D; dump;</span><br><span class="line">    while(left &amp;&amp; right)&#123;</span><br><span class="line">        if(left.val &lt; right.val)&#123;</span><br><span class="line">            cur.next &#x3D; left;</span><br><span class="line">            left &#x3D; left.next</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            cur.next &#x3D; right;</span><br><span class="line">            right &#x3D; right.next</span><br><span class="line">        &#125;;</span><br><span class="line">        cur &#x3D; cur.next</span><br><span class="line">    &#125;;</span><br><span class="line">    if(left &#x3D;&#x3D; null)&#123;</span><br><span class="line">        cur.next &#x3D; right</span><br><span class="line">    &#125;;</span><br><span class="line">    if(right &#x3D;&#x3D; null)&#123;</span><br><span class="line">        cur.next &#x3D; left</span><br><span class="line">    &#125;;</span><br><span class="line">    return dump.next</span><br><span class="line">&#125;</span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    sortInList : sortInList</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/30/%E7%89%9B%E5%AE%A2-%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E6%8E%92%E5%BA%8F/" data-id="ckpam9m7k0062c8tj1zaxcsbi" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-牛客-岛屿数量" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/05/29/%E7%89%9B%E5%AE%A2-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F/" class="article-date">
@@ -103,7 +296,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/29/%E7%89%9B%E5%AE%A2-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F/" data-id="ckp92ydbd0062eotj15ym6n7f" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/29/%E7%89%9B%E5%AE%A2-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F/" data-id="ckpam9m7l0066c8tjfe5pfvkk" class="article-share-link">分享</a>
       
       
       
@@ -151,7 +344,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/29/%E7%89%9B%E5%AE%A2-%E5%90%88%E5%B9%B6k%E4%B8%AA%E5%B7%B2%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/" data-id="ckp92ydbc005xeotjf319fm0z" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/29/%E7%89%9B%E5%AE%A2-%E5%90%88%E5%B9%B6k%E4%B8%AA%E5%B7%B2%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/" data-id="ckpam9m7k0064c8tj4ga05bd9" class="article-share-link">分享</a>
       
       
       
@@ -199,7 +392,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/29/%E7%89%9B%E5%AE%A2-%E8%AE%BE%E8%AE%A1getMin%E5%8A%9F%E8%83%BD%E7%9A%84%E6%A0%88/" data-id="ckp92ydbi006geotja4gugmd9" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/29/%E7%89%9B%E5%AE%A2-%E8%AE%BE%E8%AE%A1getMin%E5%8A%9F%E8%83%BD%E7%9A%84%E6%A0%88/" data-id="ckpam9m7p006ic8tj2n58b9ct" class="article-share-link">分享</a>
       
       
       
@@ -246,7 +439,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/28/%E7%89%9B%E5%AE%A2-%E6%B1%82%E5%B9%B3%E6%96%B9%E6%A0%B9/" data-id="ckp92ydbg0068eotj6fqp01t9" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/28/%E7%89%9B%E5%AE%A2-%E6%B1%82%E5%B9%B3%E6%96%B9%E6%A0%B9/" data-id="ckpam9m7o006gc8tj3jxico09" class="article-share-link">分享</a>
       
       
       
@@ -294,7 +487,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/28/%E5%8A%9B%E6%89%A35-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" data-id="ckp92ydao0040eotj65wq3n25" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/28/%E5%8A%9B%E6%89%A35-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" data-id="ckpam9m6t0043c8tjgh1a28e7" class="article-share-link">分享</a>
       
       
       
@@ -342,196 +535,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/28/%E7%89%9B%E5%AE%A2-%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%94%9F%E6%88%90%E7%9B%B8%E5%8A%A0%E9%93%BE%E8%A1%A8/" data-id="ckp92ydbb005veotj143r8e14" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-牛客-最长公共子串" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/05/27/%E7%89%9B%E5%AE%A2-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2/" class="article-date">
-  <time datetime="2021-05-27T01:54:53.000Z" itemprop="datePublished">2021-05-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/27/%E7%89%9B%E5%AE%A2-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2/">牛客--最长公共子串</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/f33f5adc55f444baa0e0ca87ad8a6aac?tpId=117&&tqId=37799&&companyId=665&rp=1&ru=/company/home/code/665&qru=/ta/job-code-high/question-ranking">牛客–最长公共子串</a></p>
-<p>给定两个字符串str1和str2,输出两个字符串的最长公共子串<br>题目保证str1和str2的最长公共子串存在且唯一。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;1AB2345CD&quot;,&quot;12345EF&quot;</span><br><span class="line">&quot;2345&quot;</span><br></pre></td></tr></table></figure>
-<p>代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * longest common substring</span><br><span class="line"> * @param str1 string字符串 the string</span><br><span class="line"> * @param str2 string字符串 the string</span><br><span class="line"> * @return string字符串</span><br><span class="line"> *&#x2F;</span><br><span class="line">function LCS( str1 ,  str2 ) &#123;</span><br><span class="line">    &#x2F;&#x2F; write code here</span><br><span class="line">    if(str1.length &gt; str2.length)&#123;</span><br><span class="line">        [str1,str2] &#x3D; [str2,str1]</span><br><span class="line">    &#125;;</span><br><span class="line">    let res&#x3D;  &#39;&#39;;</span><br><span class="line">    let max&#x3D;  0;</span><br><span class="line">    for(let i &#x3D; 0;i &lt; str1.length;i++)&#123;</span><br><span class="line">        let fenge &#x3D; str1.slice(i-max,i+1);</span><br><span class="line">        if(str2.indexOf(fenge) !&#x3D;&#x3D; -1)&#123;</span><br><span class="line">            res&#x3D;  fenge;</span><br><span class="line">            max++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return res</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    LCS : LCS</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/27/%E7%89%9B%E5%AE%A2-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2/" data-id="ckp92ydbe0064eotjfih12s1f" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-牛客-链表中环的入口节点" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/05/27/%E7%89%9B%E5%AE%A2-%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3%E8%8A%82%E7%82%B9/" class="article-date">
-  <time datetime="2021-05-27T01:02:13.000Z" itemprop="datePublished">2021-05-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E9%93%BE%E8%A1%A8/">链表</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/27/%E7%89%9B%E5%AE%A2-%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3%E8%8A%82%E7%82%B9/">牛客--链表中环的入口节点</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/6e630519bf86480296d0f1c868d425ad?tpId=117&&tqId=37713&&companyId=665&rp=1&ru=/company/home/code/665&qru=/ta/job-code-high/question-ranking">牛客–链表中环的入口节点</a></p>
-<p>题目描述：对于一个给定的链表，返回环的入口节点，如果没有环，返回null</p>
-<p>代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"> * function ListNode(x)&#123;</span><br><span class="line"> *   this.val &#x3D; x;</span><br><span class="line"> *   this.next &#x3D; null;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * </span><br><span class="line"> * @param head ListNode类 </span><br><span class="line"> * @return ListNode类</span><br><span class="line"> *&#x2F;</span><br><span class="line">function detectCycle( head ) &#123;</span><br><span class="line">    &#x2F;&#x2F; write code here</span><br><span class="line">    &#x2F;&#x2F;1)先判断有没有环，没有环的话返回null</span><br><span class="line">    &#x2F;&#x2F;2)有环的话再继续寻找相遇节点</span><br><span class="line">    &#x2F;&#x2F;快慢指针方法:将两指针分别放在链表头（X）和相遇位置（Z），</span><br><span class="line">    &#x2F;&#x2F;并改为相同速度推进，则两指针在环开始位置相遇</span><br><span class="line">    let fast &#x3D; head;</span><br><span class="line">    let slow &#x3D; head;</span><br><span class="line">    while(fast &amp;&amp; fast.next)&#123;</span><br><span class="line">        fast &#x3D; fast.next.next;</span><br><span class="line">        slow &#x3D; slow.next;</span><br><span class="line">        if(fast &#x3D;&#x3D; slow)&#123;</span><br><span class="line">            while(head !&#x3D; slow)&#123;</span><br><span class="line">                slow &#x3D; slow.next;</span><br><span class="line">                head &#x3D; head.next</span><br><span class="line">            &#125;;</span><br><span class="line">            return head</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return null</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    detectCycle : detectCycle</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/27/%E7%89%9B%E5%AE%A2-%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3%E8%8A%82%E7%82%B9/" data-id="ckp92ydbh006eeotj4r2z42f2" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-牛客-最长无重复子数组" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/05/26/%E7%89%9B%E5%AE%A2-%E6%9C%80%E9%95%BF%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84/" class="article-date">
-  <time datetime="2021-05-26T01:13:52.000Z" itemprop="datePublished">2021-05-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/26/%E7%89%9B%E5%AE%A2-%E6%9C%80%E9%95%BF%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84/">牛客--最长无重复子数组</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/b56799ebfd684fb394bd315e89324fb4?tpId=117&&tqId=37816&&companyId=665&rp=1&ru=/company/home/code/665&qru=/ta/job-code-high/question-ranking">牛客–最长无重复子数组</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">描述</span><br><span class="line">给定一个数组arr，返回arr的最长无重复元素子数组的长度，无重复指的是所有数字都不相同。</span><br><span class="line">子数组是连续的，比如[1,3,5,7,9]的子数组有[1,3]，[3,5,7]等等，但是[1,3,7]不是子数组.</span><br><span class="line"></span><br><span class="line">输入：[2,3,4,5]</span><br><span class="line">返回值：4</span><br><span class="line">说明：[2,3,4,5]是最长子数组</span><br></pre></td></tr></table></figure>
-<p>代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * </span><br><span class="line"> * @param arr int整型一维数组 the array</span><br><span class="line"> * @return int整型</span><br><span class="line"> *&#x2F;</span><br><span class="line">function maxLength( arr ) &#123;</span><br><span class="line">    &#x2F;&#x2F; write code here</span><br><span class="line">    let len &#x3D; arr.length;</span><br><span class="line">    if(!len)&#123;</span><br><span class="line">        return []</span><br><span class="line">    &#125;;</span><br><span class="line">    let jihe &#x3D; new Set();</span><br><span class="line">    let max&#x3D;  0;</span><br><span class="line">    let j &#x3D; 0;</span><br><span class="line">    for(let i &#x3D; 0;i &lt; len;i++)&#123;</span><br><span class="line">        if(!jihe.has(arr[i]))&#123;</span><br><span class="line">            jihe.add(arr[i]);</span><br><span class="line">            max&#x3D; Math.max(max,jihe.size)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            while(jihe.has(arr[i]))&#123;</span><br><span class="line">                jihe.delete(arr[j]);</span><br><span class="line">                j++;</span><br><span class="line">            &#125;;</span><br><span class="line">            jihe.add(arr[i])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return max</span><br><span class="line">&#125;</span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    maxLength : maxLength</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/26/%E7%89%9B%E5%AE%A2-%E6%9C%80%E9%95%BF%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84/" data-id="ckp92ydbg006aeotj3drj7nw1" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-子数组的最大累加和问题" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/05/26/%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E7%B4%AF%E5%8A%A0%E5%92%8C%E9%97%AE%E9%A2%98/" class="article-date">
-  <time datetime="2021-05-26T00:56:29.000Z" itemprop="datePublished">2021-05-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/26/%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E7%B4%AF%E5%8A%A0%E5%92%8C%E9%97%AE%E9%A2%98/">子数组的最大累加和问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/554aa508dd5d4fefbf0f86e5fe953abd?tpId=117&&tqId=37797&&companyId=665&rp=1&ru=/company/home/code/665&qru=/ta/job-code-high/question-ranking">子数组的最大累加和问题</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">给定一个数组arr，返回子数组的最大累加和</span><br><span class="line">例如，arr &#x3D; [1, -2, 3, 5, -2, 6, -1]，所有子数组中，[3, 5, -2, 6]</span><br><span class="line">可以累加出最大的和12，所以返回12.题目保证没有全为负数的数据.</span><br><span class="line"></span><br><span class="line">输入：</span><br><span class="line">[1, -2, 3, 5, -2, 6, -1]</span><br><span class="line"></span><br><span class="line">返回值：</span><br><span class="line">12</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * max sum of the subarray</span><br><span class="line"> * @param arr int整型一维数组 the array</span><br><span class="line"> * @return int整型</span><br><span class="line"> *&#x2F;</span><br><span class="line">function maxsumofSubarray( arr ) &#123;</span><br><span class="line">    &#x2F;&#x2F; write code here</span><br><span class="line">    let len &#x3D; arr.length;</span><br><span class="line">    let max&#x3D; -100000;</span><br><span class="line">    let cur &#x3D; 0;</span><br><span class="line">    for(let i &#x3D; 0;i &lt; len;i++)&#123;</span><br><span class="line">        cur +&#x3D; arr[i];</span><br><span class="line">        max&#x3D;  Math.max(max,cur);</span><br><span class="line">        cur &#x3D; cur &lt; 0?0:cur</span><br><span class="line">    &#125;;</span><br><span class="line">    return max</span><br><span class="line">&#125;</span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    maxsumofSubarray : maxsumofSubarray</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/26/%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E7%B4%AF%E5%8A%A0%E5%92%8C%E9%97%AE%E9%A2%98/" data-id="ckp92ydb8005leotjc7bz91j3" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/28/%E7%89%9B%E5%AE%A2-%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%94%9F%E6%88%90%E7%9B%B8%E5%8A%A0%E9%93%BE%E8%A1%A8/" data-id="ckpam9m7j005zc8tj1sdy7ixk" class="article-share-link">分享</a>
       
       
       
@@ -558,7 +562,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title categories">分类</h3>
     <div class="widget" id="categories">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/ES6/">ES6</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%87%BD%E6%95%B0/">函数</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%9F%BA%E7%A1%80/">基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%AF%B9%E8%B1%A1/">对象</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98/">异步问题</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">排序算法</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a><span class="category-list-count">93</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/">其他</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%88%86%E5%86%B6%E9%80%92%E5%BD%92/">分冶递归</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%A0%88/">栈</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/">栈和队列</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%B7%B1%E5%BA%A6%E6%90%9C%E7%B4%A2-%E5%9B%9E%E6%BA%AF/">深度搜索/回溯</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E9%93%BE%E8%A1%A8/">链表</a><span class="category-list-count">16</span></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/ES6/">ES6</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%87%BD%E6%95%B0/">函数</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%9F%BA%E7%A1%80/">基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%AF%B9%E8%B1%A1/">对象</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98/">异步问题</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">排序算法</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a><span class="category-list-count">97</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/">其他</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%88%86%E5%86%B6%E9%80%92%E5%BD%92/">分冶递归</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%A0%88/">栈</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/">栈和队列</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%B7%B1%E5%BA%A6%E6%90%9C%E7%B4%A2-%E5%9B%9E%E6%BA%AF/">深度搜索/回溯</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E9%93%BE%E8%A1%A8/">链表</a><span class="category-list-count">18</span></li></ul></li></ul>
     </div>
   </div>
 
@@ -572,23 +576,23 @@
       <ul>
         
           <li>
+            <a href="/2021/05/30/%E7%89%9B%E5%AE%A214-%E4%BA%8C%E5%8F%89%E6%A0%91%E6%A0%B9%E8%8A%82%E7%82%B9%E5%88%B0%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84%E6%89%80%E6%9C%89%E8%B7%AF%E5%BE%84%E5%92%8C/">牛客14--二叉树根节点到叶子节点的所有路径和</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/30/%E7%89%9B%E5%AE%A2-%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E4%B8%BA%E5%9B%9E%E6%96%87%E7%BB%93%E6%9E%84/">牛客--判断一个链表是否为回文结构</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/30/%E7%89%9B%E5%AE%A212-%E7%9F%A9%E9%98%B5%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/">牛客12--矩阵的最小路径和</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/30/%E7%89%9B%E5%AE%A2-%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E6%8E%92%E5%BA%8F/">牛客--单链表的排序</a>
+          </li>
+        
+          <li>
             <a href="/2021/05/29/%E7%89%9B%E5%AE%A2-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F/">牛客--岛屿数量</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/29/%E7%89%9B%E5%AE%A2-%E5%90%88%E5%B9%B6k%E4%B8%AA%E5%B7%B2%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/">牛客--合并k个已排序的链表</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/29/%E7%89%9B%E5%AE%A2-%E8%AE%BE%E8%AE%A1getMin%E5%8A%9F%E8%83%BD%E7%9A%84%E6%A0%88/">牛客--设计getMin功能的栈</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/28/%E7%89%9B%E5%AE%A2-%E6%B1%82%E5%B9%B3%E6%96%B9%E6%A0%B9/">牛客--求平方根</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/28/%E5%8A%9B%E6%89%A35-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/">力扣5--最长回文子串</a>
           </li>
         
       </ul>
@@ -600,7 +604,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title archive">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">40</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">27</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">40</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">27</span></li></ul>
     </div>
   </div>
 
