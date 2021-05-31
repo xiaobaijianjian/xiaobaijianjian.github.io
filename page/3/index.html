@@ -66,6 +66,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-牛客-最小的k个数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/05/25/%E7%89%9B%E5%AE%A2-%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/" class="article-date">
+  <time datetime="2021-05-25T01:10:03.000Z" itemprop="datePublished">2021-05-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%88%86%E5%86%B6%E9%80%92%E5%BD%92/">分冶递归</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/25/%E7%89%9B%E5%AE%A2-%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/">牛客--最小的k个数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/6a296eb82cf844ca8539b57c23e6e9bf?tpId=117&tqId=37765&companyId=665&rp=1&ru=/company/home/code/665&qru=/ta/job-code-high/question-ranking&tab=answerKey">最小的k个数</a></p>
+<p>题目：给定一个数组，找出其中最小的K个数。例如数组元素是4,5,1,6,2,7,3,8这8个数字，则最小的4个数字是1,2,3,4。如果K&gt;数组的长度，那么返回一个空的数组。</p>
+<p>例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：[4,5,1,6,2,7,3,8],4 </span><br><span class="line">输出：[1,2,3,4]</span><br></pre></td></tr></table></figure>
+<p>代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">function GetLeastNumbers_Solution(input, k)</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F; write code here</span><br><span class="line">    let len &#x3D; input.length;</span><br><span class="line">    if(!len || k &gt; len || !k)&#123;</span><br><span class="line">        return []</span><br><span class="line">    &#125;;</span><br><span class="line">    let start &#x3D; 0;</span><br><span class="line">    let end &#x3D; len-1;</span><br><span class="line">    let index &#x3D; quickSort(input,start,end);</span><br><span class="line">    while(index !&#x3D; k-1)&#123;</span><br><span class="line">        if(index &gt; k-1)&#123;</span><br><span class="line">            end &#x3D; index-1;</span><br><span class="line">            index &#x3D; quickSort(input,start,end)</span><br><span class="line">        &#125;else if(index &lt; k-1)&#123;</span><br><span class="line">            start &#x3D; index + 1;</span><br><span class="line">            index &#x3D; quickSort(input,start,end)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return input.slice(0,index+1).sort((a,b)&#x3D;&gt;a-b)</span><br><span class="line">   </span><br><span class="line">&#125;;</span><br><span class="line">function quickSort(arr,left,right)&#123;</span><br><span class="line">    let compare &#x3D; arr[left];</span><br><span class="line">    while(left &lt; right)&#123;</span><br><span class="line">        while(left &lt; right &amp;&amp; arr[right] &gt;&#x3D; compare)&#123;</span><br><span class="line">            right--</span><br><span class="line">        &#125;;</span><br><span class="line">        arr[left] &#x3D; arr[right];</span><br><span class="line">        while(left &lt; right &amp;&amp; arr[left] &lt; compare)&#123;</span><br><span class="line">            left++</span><br><span class="line">        &#125;;</span><br><span class="line">        arr[right] &#x3D; arr[left]</span><br><span class="line">    &#125;;</span><br><span class="line">    arr[left] &#x3D; compare;</span><br><span class="line">    return left</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    GetLeastNumbers_Solution : GetLeastNumbers_Solution</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/25/%E7%89%9B%E5%AE%A2-%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/" data-id="ckpca221c0063s0tjf6ho6o8f" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-牛客-判断二叉树是否是完全二叉树" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/05/24/%E7%89%9B%E5%AE%A2-%E5%88%A4%E6%96%AD%E4%BA%8C%E5%8F%89%E6%A0%91%E6%98%AF%E5%90%A6%E6%98%AF%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91/" class="article-date">
@@ -103,7 +153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/24/%E7%89%9B%E5%AE%A2-%E5%88%A4%E6%96%AD%E4%BA%8C%E5%8F%89%E6%A0%91%E6%98%AF%E5%90%A6%E6%98%AF%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckpbypjsg0060w4tj3m71aqs9" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/24/%E7%89%9B%E5%AE%A2-%E5%88%A4%E6%96%AD%E4%BA%8C%E5%8F%89%E6%A0%91%E6%98%AF%E5%90%A6%E6%98%AF%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckpca220v005us0tj4hricqgo" class="article-share-link">分享</a>
       
       
       
@@ -150,7 +200,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/24/%E5%8A%9B%E6%89%A398-%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" data-id="ckpbypjsa005fw4tj80kagfpo" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/24/%E5%8A%9B%E6%89%A398-%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" data-id="ckpca2203005hs0tj8j970o7l" class="article-share-link">分享</a>
       
       
       
@@ -210,7 +260,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/09/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%88%A4%E6%96%AD%E6%80%BB%E7%BB%93/" data-id="ckpbypjq20004w4tj476427ai" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/09/JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%88%A4%E6%96%AD%E6%80%BB%E7%BB%93/" data-id="ckpca21jy0005s0tjfucxdiyh" class="article-share-link">分享</a>
       
       
       
@@ -260,7 +310,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/26/%E5%8A%9B%E6%89%A3141-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/" data-id="ckpbypjr50027w4tj5gf6bkdh" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/26/%E5%8A%9B%E6%89%A3141-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/" data-id="ckpca21ql0027s0tjegi4dmu1" class="article-share-link">分享</a>
       
       
       
@@ -309,7 +359,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/24/%E5%8A%9B%E6%89%A3377-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C4/" data-id="ckpbypjro003pw4tjfpqa0259" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/24/%E5%8A%9B%E6%89%A3377-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C4/" data-id="ckpca21vp003ps0tjgccj5ay6" class="article-share-link">分享</a>
       
       
       
@@ -357,7 +407,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/24/%E5%8A%9B%E6%89%A3518-%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A22/" data-id="ckpbypjrt0041w4tjfsil6gwg" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/24/%E5%8A%9B%E6%89%A3518-%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A22/" data-id="ckpca21ws0044s0tjgf7f0r01" class="article-share-link">分享</a>
       
       
       
@@ -406,7 +456,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/23/%E5%8A%9B%E6%89%A3368-%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/" data-id="ckpbypjrn003mw4tj76490a2m" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/23/%E5%8A%9B%E6%89%A3368-%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/" data-id="ckpca21va003ms0tjac2qh75z" class="article-share-link">分享</a>
       
       
       
@@ -456,7 +506,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/22/offer38-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="ckpbypjq40008w4tj5g815e3h" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/22/offer38-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="ckpca21kb0008s0tj3qbe63t2" class="article-share-link">分享</a>
       
       
       
@@ -505,56 +555,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/19/%E5%8A%9B%E6%89%A327-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" data-id="ckpbypjrh003aw4tjgz3l41oo" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣217-存在重复元素1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/04/17/%E5%8A%9B%E6%89%A3217-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A01/" class="article-date">
-  <time datetime="2021-04-17T03:23:12.000Z" itemprop="datePublished">2021-04-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/17/%E5%8A%9B%E6%89%A3217-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A01/">力扣217--存在重复元素1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/contains-duplicate/">力扣217–存在重复元素1</a></p>
-<p>给定一个整数数组，判断是否存在重复元素。<br>如果存在一值在数组中出现至少两次，函数返回 true 。如果数组中每个元素都不相同，则返回 false </p>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,2,3,1]</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
-<p>代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @return &#123;boolean&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var containsDuplicate &#x3D; function(nums) &#123;</span><br><span class="line">   let map &#x3D; new Map();</span><br><span class="line">   for(let i of nums)&#123;</span><br><span class="line">       if(map.has(i))&#123;</span><br><span class="line">           return true</span><br><span class="line">       &#125;else&#123;</span><br><span class="line">           map.set(i,1)</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;;</span><br><span class="line">   return false</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/17/%E5%8A%9B%E6%89%A3217-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A01/" data-id="ckpbypjrc002tw4tjgcpf69og" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/19/%E5%8A%9B%E6%89%A327-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" data-id="ckpca21u6003as0tj6hv9dhd7" class="article-share-link">分享</a>
       
       
       
@@ -588,6 +589,10 @@
       <ul>
         
           <li>
+            <a href="/2021/05/31/%E7%89%9B%E5%AE%A217-%E5%88%A4%E6%96%AD%E4%BA%8C%E5%8F%89%E6%A0%91%E6%98%AF%E5%90%A6%E4%B8%BA%E6%90%9C%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91%E5%92%8C%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91/">牛客17--判断二叉树是否为搜索二叉树和完全二叉树</a>
+          </li>
+        
+          <li>
             <a href="/2021/05/31/%E7%89%9B%E5%AE%A215-%E9%93%BE%E8%A1%A8%E5%86%85%E6%8C%87%E5%AE%9A%E5%8C%BA%E9%97%B4%E5%8F%8D%E8%BD%AC/">牛客15-链表内指定区间反转</a>
           </li>
         
@@ -601,10 +606,6 @@
         
           <li>
             <a href="/2021/05/30/%E7%89%9B%E5%AE%A2-%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E4%B8%BA%E5%9B%9E%E6%96%87%E7%BB%93%E6%9E%84/">牛客--判断一个链表是否为回文结构</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/30/%E7%89%9B%E5%AE%A212-%E7%9F%A9%E9%98%B5%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/">牛客12--矩阵的最小路径和</a>
           </li>
         
       </ul>

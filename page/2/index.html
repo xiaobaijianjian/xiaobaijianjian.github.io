@@ -66,6 +66,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-牛客-求平方根" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/05/28/%E7%89%9B%E5%AE%A2-%E6%B1%82%E5%B9%B3%E6%96%B9%E6%A0%B9/" class="article-date">
+  <time datetime="2021-05-28T07:36:59.000Z" itemprop="datePublished">2021-05-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/28/%E7%89%9B%E5%AE%A2-%E6%B1%82%E5%B9%B3%E6%96%B9%E6%A0%B9/">牛客--求平方根</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/09fbfb16140b40499951f55113f2166c?tpId=117&&tqId=37734&&companyId=665&rp=1&ru=/company/home/code/665&qru=/ta/job-code-high/question-ranking">牛客–求平方根</a></p>
+<p>实现函数 int sqrt(int x).<br>计算并返回x的平方根（向下取整）</p>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">  * </span><br><span class="line">  * @param x int整型 </span><br><span class="line">  * @return int整型</span><br><span class="line">  *&#x2F;</span><br><span class="line">function sqrt( x ) &#123;</span><br><span class="line">    &#x2F;&#x2F; write code here</span><br><span class="line">    if(x &lt; 2)&#123;</span><br><span class="line">        return x</span><br><span class="line">    &#125;;</span><br><span class="line">    let left &#x3D; 2;</span><br><span class="line">    let right &#x3D; x;</span><br><span class="line">    while(left &lt;&#x3D; right)&#123;</span><br><span class="line">        let mid &#x3D; Math.floor((left + right)&#x2F;2);</span><br><span class="line">        if(mid * mid &#x3D;&#x3D; x)&#123;</span><br><span class="line">            return mid</span><br><span class="line">        &#125;else if(mid * mid &gt; x)&#123;</span><br><span class="line">            right &#x3D; mid-1</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            left &#x3D; mid+1</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return right</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    sqrt : sqrt</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/28/%E7%89%9B%E5%AE%A2-%E6%B1%82%E5%B9%B3%E6%96%B9%E6%A0%B9/" data-id="ckpca221t006bs0tj3tefb70f" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣5-最长回文子串" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/05/28/%E5%8A%9B%E6%89%A35-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" class="article-date">
@@ -102,7 +149,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/28/%E5%8A%9B%E6%89%A35-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" data-id="ckpbypjrv0046w4tjajn29nx2" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/28/%E5%8A%9B%E6%89%A35-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" data-id="ckpca21wg003zs0tj392ebbgt" class="article-share-link">分享</a>
       
       
       
@@ -150,7 +197,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/28/%E7%89%9B%E5%AE%A2-%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%94%9F%E6%88%90%E7%9B%B8%E5%8A%A0%E9%93%BE%E8%A1%A8/" data-id="ckpbypjse005tw4tj1in8drbl" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/28/%E7%89%9B%E5%AE%A2-%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%94%9F%E6%88%90%E7%9B%B8%E5%8A%A0%E9%93%BE%E8%A1%A8/" data-id="ckpca220q005ss0tjgml5hku3" class="article-share-link">分享</a>
       
       
       
@@ -198,7 +245,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/27/%E7%89%9B%E5%AE%A2-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2/" data-id="ckpbypjsi0068w4tjb1020cl2" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/27/%E7%89%9B%E5%AE%A2-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2/" data-id="ckpca221k0067s0tj48xw8nef" class="article-share-link">分享</a>
       
       
       
@@ -245,7 +292,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/27/%E7%89%9B%E5%AE%A2-%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3%E8%8A%82%E7%82%B9/" data-id="ckpbypjsl006iw4tjgnlvc8wk" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/27/%E7%89%9B%E5%AE%A2-%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3%E8%8A%82%E7%82%B9/" data-id="ckpca2226006hs0tj4jlldj8o" class="article-share-link">分享</a>
       
       
       
@@ -292,7 +339,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/26/%E7%89%9B%E5%AE%A2-%E6%9C%80%E9%95%BF%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84/" data-id="ckpbypjsj006aw4tjdxc235xi" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/26/%E7%89%9B%E5%AE%A2-%E6%9C%80%E9%95%BF%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84/" data-id="ckpca221p0069s0tj87ee37ol" class="article-share-link">分享</a>
       
       
       
@@ -339,7 +386,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/26/%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E7%B4%AF%E5%8A%A0%E5%92%8C%E9%97%AE%E9%A2%98/" data-id="ckpbypjsb005jw4tjfdxu9shb" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/26/%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E7%B4%AF%E5%8A%A0%E5%92%8C%E9%97%AE%E9%A2%98/" data-id="ckpca2208005js0tj8hv33ee1" class="article-share-link">分享</a>
       
       
       
@@ -386,7 +433,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/26/%E7%89%9B%E5%AE%A2-%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/" data-id="ckpbypjsk006ew4tj492l6wkq" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/26/%E7%89%9B%E5%AE%A2-%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/" data-id="ckpca221x006ds0tjab3x7c9g" class="article-share-link">分享</a>
       
       
       
@@ -434,7 +481,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/25/%E5%8A%9B%E6%89%A315-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/" data-id="ckpbypjr8002ew4tj1esj70xn" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/25/%E5%8A%9B%E6%89%A315-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/" data-id="ckpca21rg002gs0tj88d5heoa" class="article-share-link">分享</a>
       
       
       
@@ -483,57 +530,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/25/%E5%AF%BB%E6%89%BE%E7%AC%ACk%E5%A4%A7/" data-id="ckpbypjsd005ow4tj43d5gx2e" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-牛客-最小的k个数" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/05/25/%E7%89%9B%E5%AE%A2-%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/" class="article-date">
-  <time datetime="2021-05-25T01:10:03.000Z" itemprop="datePublished">2021-05-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%88%86%E5%86%B6%E9%80%92%E5%BD%92/">分冶递归</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/25/%E7%89%9B%E5%AE%A2-%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/">牛客--最小的k个数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/6a296eb82cf844ca8539b57c23e6e9bf?tpId=117&tqId=37765&companyId=665&rp=1&ru=/company/home/code/665&qru=/ta/job-code-high/question-ranking&tab=answerKey">最小的k个数</a></p>
-<p>题目：给定一个数组，找出其中最小的K个数。例如数组元素是4,5,1,6,2,7,3,8这8个数字，则最小的4个数字是1,2,3,4。如果K&gt;数组的长度，那么返回一个空的数组。</p>
-<p>例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：[4,5,1,6,2,7,3,8],4 </span><br><span class="line">输出：[1,2,3,4]</span><br></pre></td></tr></table></figure>
-<p>代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">function GetLeastNumbers_Solution(input, k)</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F; write code here</span><br><span class="line">    let len &#x3D; input.length;</span><br><span class="line">    if(!len || k &gt; len || !k)&#123;</span><br><span class="line">        return []</span><br><span class="line">    &#125;;</span><br><span class="line">    let start &#x3D; 0;</span><br><span class="line">    let end &#x3D; len-1;</span><br><span class="line">    let index &#x3D; quickSort(input,start,end);</span><br><span class="line">    while(index !&#x3D; k-1)&#123;</span><br><span class="line">        if(index &gt; k-1)&#123;</span><br><span class="line">            end &#x3D; index-1;</span><br><span class="line">            index &#x3D; quickSort(input,start,end)</span><br><span class="line">        &#125;else if(index &lt; k-1)&#123;</span><br><span class="line">            start &#x3D; index + 1;</span><br><span class="line">            index &#x3D; quickSort(input,start,end)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return input.slice(0,index+1).sort((a,b)&#x3D;&gt;a-b)</span><br><span class="line">   </span><br><span class="line">&#125;;</span><br><span class="line">function quickSort(arr,left,right)&#123;</span><br><span class="line">    let compare &#x3D; arr[left];</span><br><span class="line">    while(left &lt; right)&#123;</span><br><span class="line">        while(left &lt; right &amp;&amp; arr[right] &gt;&#x3D; compare)&#123;</span><br><span class="line">            right--</span><br><span class="line">        &#125;;</span><br><span class="line">        arr[left] &#x3D; arr[right];</span><br><span class="line">        while(left &lt; right &amp;&amp; arr[left] &lt; compare)&#123;</span><br><span class="line">            left++</span><br><span class="line">        &#125;;</span><br><span class="line">        arr[right] &#x3D; arr[left]</span><br><span class="line">    &#125;;</span><br><span class="line">    arr[left] &#x3D; compare;</span><br><span class="line">    return left</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    GetLeastNumbers_Solution : GetLeastNumbers_Solution</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/25/%E7%89%9B%E5%AE%A2-%E6%9C%80%E5%B0%8F%E7%9A%84k%E4%B8%AA%E6%95%B0/" data-id="ckpbypjsh0066w4tj408zciro" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/25/%E5%AF%BB%E6%89%BE%E7%AC%ACk%E5%A4%A7/" data-id="ckpca220g005os0tj57oe26wo" class="article-share-link">分享</a>
       
       
       
@@ -567,6 +564,10 @@
       <ul>
         
           <li>
+            <a href="/2021/05/31/%E7%89%9B%E5%AE%A217-%E5%88%A4%E6%96%AD%E4%BA%8C%E5%8F%89%E6%A0%91%E6%98%AF%E5%90%A6%E4%B8%BA%E6%90%9C%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91%E5%92%8C%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91/">牛客17--判断二叉树是否为搜索二叉树和完全二叉树</a>
+          </li>
+        
+          <li>
             <a href="/2021/05/31/%E7%89%9B%E5%AE%A215-%E9%93%BE%E8%A1%A8%E5%86%85%E6%8C%87%E5%AE%9A%E5%8C%BA%E9%97%B4%E5%8F%8D%E8%BD%AC/">牛客15-链表内指定区间反转</a>
           </li>
         
@@ -580,10 +581,6 @@
         
           <li>
             <a href="/2021/05/30/%E7%89%9B%E5%AE%A2-%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E4%B8%BA%E5%9B%9E%E6%96%87%E7%BB%93%E6%9E%84/">牛客--判断一个链表是否为回文结构</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/30/%E7%89%9B%E5%AE%A212-%E7%9F%A9%E9%98%B5%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/">牛客12--矩阵的最小路径和</a>
           </li>
         
       </ul>
