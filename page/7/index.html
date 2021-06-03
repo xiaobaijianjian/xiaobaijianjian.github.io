@@ -66,6 +66,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣19-删除链表的倒数第N个节点" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/16/%E5%8A%9B%E6%89%A319-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/" class="article-date">
+  <time datetime="2021-03-16T03:21:46.000Z" itemprop="datePublished">2021-03-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E9%93%BE%E8%A1%A8/">链表</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/16/%E5%8A%9B%E6%89%A319-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/">力扣19--删除链表的倒数第N个节点</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/">力扣19–删除链表的倒数第N个节点</a></p>
+<p>给你一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点。</p>
+<p>示例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：head &#x3D; [1,2,3,4,5], n &#x3D; 2</span><br><span class="line">输出：[1,2,3,5]</span><br></pre></td></tr></table></figure>
+<p>代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * function ListNode(val, next) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.next &#x3D; (next&#x3D;&#x3D;&#x3D;undefined ? null : next)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;ListNode&#125; head</span><br><span class="line"> * @param &#123;number&#125; n</span><br><span class="line"> * @return &#123;ListNode&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var removeNthFromEnd &#x3D; function(head, n) &#123;</span><br><span class="line">    &#x2F;&#x2F;先计算出链表的长度l</span><br><span class="line">    &#x2F;&#x2F;减去n算出链表到l-n时，然后再续接删了之后的元素</span><br><span class="line">   let len &#x3D; 0;</span><br><span class="line">   let cur &#x3D; head;</span><br><span class="line">   while(cur)&#123;</span><br><span class="line">       len++;</span><br><span class="line">       cur &#x3D; cur.next</span><br><span class="line">   &#125;;</span><br><span class="line">   let dump &#x3D; new ListNode(0);</span><br><span class="line">   dump.next &#x3D; head;</span><br><span class="line">   let cur1 &#x3D; dump;</span><br><span class="line">   for(let i &#x3D; 0;i &lt; len-n;i++)&#123;</span><br><span class="line">       cur1 &#x3D; cur1.next;</span><br><span class="line">   &#125;;</span><br><span class="line">   cur1.next &#x3D; cur1.next.next;</span><br><span class="line">   return dump.next</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/16/%E5%8A%9B%E6%89%A319-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/" data-id="ckpgckj3s002gxstjaa1rfmlx" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣11-盛最多水的容器" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/03/16/%E5%8A%9B%E6%89%A311-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/" class="article-date">
@@ -103,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/16/%E5%8A%9B%E6%89%A311-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/" data-id="ckpeueqso001xc8tj13u9a04h" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/16/%E5%8A%9B%E6%89%A311-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/" data-id="ckpgckj3j001sxstj9lq0h4y8" class="article-share-link">分享</a>
       
       
       
@@ -152,7 +201,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/15/%E5%8A%9B%E6%89%A3148-%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8/" data-id="ckpeueqsu002cc8tjatp0907l" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/15/%E5%8A%9B%E6%89%A3148-%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8/" data-id="ckpgckj3q002cxstjhzpx1t52" class="article-share-link">分享</a>
       
       
       
@@ -201,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/15/%E5%8A%9B%E6%89%A354-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/" data-id="ckpeueqtf0046c8tj2lpyh1es" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/15/%E5%8A%9B%E6%89%A354-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/" data-id="ckpgckj4c0044xstja0gygc50" class="article-share-link">分享</a>
       
       
       
@@ -248,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/13/%E5%89%91%E6%8C%8736-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/" data-id="ckpeueqs7000rc8tjf8u51m8a" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/13/%E5%89%91%E6%8C%8736-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/" data-id="ckpgckj34000rxstjaih93mdl" class="article-share-link">分享</a>
       
       
       
@@ -298,7 +347,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/12/%E5%89%91%E6%8C%8722-%E9%93%BE%E8%A1%A8%E4%B8%AD%E5%80%92%E6%95%B0%E7%AC%ACk%E4%B8%AA%E8%8A%82%E7%82%B9/" data-id="ckpeueqs5000lc8tjglxz7ijs" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/12/%E5%89%91%E6%8C%8722-%E9%93%BE%E8%A1%A8%E4%B8%AD%E5%80%92%E6%95%B0%E7%AC%ACk%E4%B8%AA%E8%8A%82%E7%82%B9/" data-id="ckpgckj31000lxstjat3jecwk" class="article-share-link">分享</a>
       
       
       
@@ -347,7 +396,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/12/offer25-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/" data-id="ckpeueqrw0006c8tjbrtvdeix" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/12/offer25-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/" data-id="ckpgckj2s0006xstjaruxdnre" class="article-share-link">分享</a>
       
       
       
@@ -395,7 +444,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/12/%E5%89%91%E6%8C%8718-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/" data-id="ckpeueqs4000hc8tj7am9cvsn" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/12/%E5%89%91%E6%8C%8718-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/" data-id="ckpgckj32000mxstja2xz4uoe" class="article-share-link">分享</a>
       
       
       
@@ -443,7 +492,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/12/%E5%8A%9B%E6%89%A3206-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" data-id="ckpeueqsy002oc8tj0g73fq13" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/12/%E5%8A%9B%E6%89%A3206-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" data-id="ckpgckj3u002oxstjetl20394" class="article-share-link">分享</a>
       
       
       
@@ -492,57 +541,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/12/%E5%8A%9B%E6%89%A3264-%E4%B8%91%E6%95%B0/" data-id="ckpeueqt50038c8tj9oq2b50r" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣20-有效的括号" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/03/11/%E5%8A%9B%E6%89%A320-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" class="article-date">
-  <time datetime="2021-03-11T02:05:48.000Z" itemprop="datePublished">2021-03-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/">栈和队列</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/11/%E5%8A%9B%E6%89%A320-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/">力扣20--有效的括号</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/valid-parentheses/">力扣20–有效的括号</a></p>
-<p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串 s ，判断字符串是否有效。</p>
-<p>有效字符串需满足:左括号必须用相同类型的右括号闭合。左括号必须以正确的顺序闭合。</p>
-<p>示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：s &#x3D; &quot;()[]&#123;&#125;&quot;</span><br><span class="line">输出：true</span><br></pre></td></tr></table></figure>
-<p>代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;string&#125; s</span><br><span class="line"> * @return &#123;boolean&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var isValid &#x3D; function(s) &#123;</span><br><span class="line">    let map &#x3D; &#123;</span><br><span class="line">        &#39;(&#39;:-1,</span><br><span class="line">        &#39;)&#39;:1,</span><br><span class="line">        &#39;[&#39;:-2,</span><br><span class="line">        &#39;]&#39;:2,</span><br><span class="line">        &#39;&#123;&#39;:-3,</span><br><span class="line">        &#39;&#125;&#39;:3</span><br><span class="line">    &#125;;</span><br><span class="line">    let stack &#x3D; [];</span><br><span class="line">    for(let i &#x3D; 0;i &lt; s.length;i++)&#123;</span><br><span class="line">        if(map[s[i]] &lt; 0)&#123;</span><br><span class="line">            stack.push(s[i])</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            let last &#x3D; stack.pop();</span><br><span class="line">            let sum &#x3D; map[last] + map[s[i]]</span><br><span class="line">            if(sum !&#x3D; 0)&#123;</span><br><span class="line">                return false</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line">    if(stack.length &gt; 0)&#123;</span><br><span class="line">        return false</span><br><span class="line">    &#125;</span><br><span class="line">    return true</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/11/%E5%8A%9B%E6%89%A320-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" data-id="ckpeueqsy002lc8tjdlcz4ckt" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/12/%E5%8A%9B%E6%89%A3264-%E4%B8%91%E6%95%B0/" data-id="ckpgckj420038xstjepcj851p" class="article-share-link">分享</a>
       
       
       
@@ -576,6 +575,10 @@
       <ul>
         
           <li>
+            <a href="/2021/06/03/%E5%8A%9B%E6%89%A3143-%E9%87%8D%E6%8E%92%E9%93%BE%E8%A1%A8/">力扣143--重排链表</a>
+          </li>
+        
+          <li>
             <a href="/2021/06/02/%E7%89%9B%E5%AE%A2-%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A5%87%E5%81%B6%E9%87%8D%E6%8E%92/">牛客--链表的奇偶重排</a>
           </li>
         
@@ -589,10 +592,6 @@
         
           <li>
             <a href="/2021/05/31/%E7%89%9B%E5%AE%A215-%E9%93%BE%E8%A1%A8%E5%86%85%E6%8C%87%E5%AE%9A%E5%8C%BA%E9%97%B4%E5%8F%8D%E8%BD%AC/">牛客15-链表内指定区间反转</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/31/%E7%89%9B%E5%AE%A216-%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/">牛客16--合并区间</a>
           </li>
         
       </ul>

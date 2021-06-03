@@ -66,6 +66,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-牛客-岛屿数量" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/05/29/%E7%89%9B%E5%AE%A2-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F/" class="article-date">
+  <time datetime="2021-05-29T01:30:18.000Z" itemprop="datePublished">2021-05-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/29/%E7%89%9B%E5%AE%A2-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F/">牛客--岛屿数量</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/0c9664d1554e466aa107d899418e814e?tpId=117&&tqId=37833&&companyId=665&rp=1&ru=/company/home/code/665&qru=/ta/job-code-high/question-ranking">牛客–岛屿数量</a></p>
+<p>给一个01矩阵，1代表是陆地，0代表海洋， 如果两个1相邻，那么这两个1属于同一个岛。我们只考虑上下左右为相邻。</p>
+<p>岛屿: 相邻陆地可以组成一个岛屿（相邻:上下左右） 判断岛屿个数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：[[1,1,0,0,0],[0,1,0,1,1],[0,0,0,1,1],[0,0,0,0,0],[0,0,1,1,1]]</span><br><span class="line">返回值：3</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 判断岛屿数量</span><br><span class="line"> * @param grid char字符型二维数组 </span><br><span class="line"> * @return int整型</span><br><span class="line"> *&#x2F;</span><br><span class="line">function solve( grid ) &#123;</span><br><span class="line">    &#x2F;&#x2F; write code here</span><br><span class="line">    let helper &#x3D; function(grid,i,j,row,col)&#123;</span><br><span class="line">        if(i &gt;&#x3D; row || j &gt;&#x3D; col || i &lt; 0||j &lt; 0 || grid[i][j] &#x3D;&#x3D; &#39;0&#39;)&#123;</span><br><span class="line">            return</span><br><span class="line">        &#125;;</span><br><span class="line">        grid[i][j] &#x3D; 0;</span><br><span class="line">        helper(grid,i-1,j,row,col);</span><br><span class="line">        helper(grid,i+1,j,row,col);</span><br><span class="line">        helper(grid,i,j-1,row,col);</span><br><span class="line">        helper(grid,i,j+1,row,col)</span><br><span class="line">    &#125;;</span><br><span class="line">    let res&#x3D;  0;</span><br><span class="line">    let row &#x3D; grid.length;</span><br><span class="line">    let col  &#x3D;grid[0].length;</span><br><span class="line">    for(let i &#x3D; 0;i &lt; row;i++)&#123;</span><br><span class="line">        for(let j &#x3D; 0;j &lt; col;j++)&#123;</span><br><span class="line">            if(grid[i][j] &#x3D;&#x3D; &#39;1&#39;)&#123;</span><br><span class="line">                helper(grid,i,j,row,col);</span><br><span class="line">                res++</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    solve : solve</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/29/%E7%89%9B%E5%AE%A2-%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F/" data-id="ckpgckj540060xstj9i2820hz" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-牛客-合并k个已排序的链表" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/05/29/%E7%89%9B%E5%AE%A2-%E5%90%88%E5%B9%B6k%E4%B8%AA%E5%B7%B2%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/" class="article-date">
@@ -102,7 +151,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/29/%E7%89%9B%E5%AE%A2-%E5%90%88%E5%B9%B6k%E4%B8%AA%E5%B7%B2%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/" data-id="ckpeuequ30064c8tj6y3ceufq" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/29/%E7%89%9B%E5%AE%A2-%E5%90%88%E5%B9%B6k%E4%B8%AA%E5%B7%B2%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/" data-id="ckpgckj53005yxstj1548drut" class="article-share-link">分享</a>
       
       
       
@@ -150,7 +199,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/29/%E7%89%9B%E5%AE%A2-%E8%AE%BE%E8%AE%A1getMin%E5%8A%9F%E8%83%BD%E7%9A%84%E6%A0%88/" data-id="ckpeuequ9006mc8tj89g37mt4" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/29/%E7%89%9B%E5%AE%A2-%E8%AE%BE%E8%AE%A1getMin%E5%8A%9F%E8%83%BD%E7%9A%84%E6%A0%88/" data-id="ckpgckj58006exstjh1c1h18g" class="article-share-link">分享</a>
       
       
       
@@ -197,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/28/%E7%89%9B%E5%AE%A2-%E6%B1%82%E5%B9%B3%E6%96%B9%E6%A0%B9/" data-id="ckpeuequ6006gc8tj7adi6h2n" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/28/%E7%89%9B%E5%AE%A2-%E6%B1%82%E5%B9%B3%E6%96%B9%E6%A0%B9/" data-id="ckpgckj57006cxstjh0mc4psu" class="article-share-link">分享</a>
       
       
       
@@ -245,7 +294,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/28/%E5%8A%9B%E6%89%A35-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" data-id="ckpeueqte0041c8tjhwt17ic7" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/28/%E5%8A%9B%E6%89%A35-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" data-id="ckpgckj4b0041xstjgkfi2lw6" class="article-share-link">分享</a>
       
       
       
@@ -293,7 +342,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/28/%E7%89%9B%E5%AE%A2-%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%94%9F%E6%88%90%E7%9B%B8%E5%8A%A0%E9%93%BE%E8%A1%A8/" data-id="ckpeuequ0005sc8tjby7j5xyv" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/28/%E7%89%9B%E5%AE%A2-%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%94%9F%E6%88%90%E7%9B%B8%E5%8A%A0%E9%93%BE%E8%A1%A8/" data-id="ckpgckj51005rxstjewj49ynl" class="article-share-link">分享</a>
       
       
       
@@ -341,7 +390,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/27/%E7%89%9B%E5%AE%A2-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2/" data-id="ckpeuequ5006cc8tj6tif9rlr" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/27/%E7%89%9B%E5%AE%A2-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2/" data-id="ckpgckj560066xstj0xqo9y1u" class="article-share-link">分享</a>
       
       
       
@@ -388,7 +437,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/27/%E7%89%9B%E5%AE%A2-%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3%E8%8A%82%E7%82%B9/" data-id="ckpeuequa006qc8tjfnwx8893" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/27/%E7%89%9B%E5%AE%A2-%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%8E%AF%E7%9A%84%E5%85%A5%E5%8F%A3%E8%8A%82%E7%82%B9/" data-id="ckpgckj5c006ixstjdjd2gtiz" class="article-share-link">分享</a>
       
       
       
@@ -435,7 +484,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/26/%E7%89%9B%E5%AE%A2-%E6%9C%80%E9%95%BF%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84/" data-id="ckpeuequ6006ec8tj5ecfdyoa" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/26/%E7%89%9B%E5%AE%A2-%E6%9C%80%E9%95%BF%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84/" data-id="ckpgckj560068xstja1uifex8" class="article-share-link">分享</a>
       
       
       
@@ -482,54 +531,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/26/%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E7%B4%AF%E5%8A%A0%E5%92%8C%E9%97%AE%E9%A2%98/" data-id="ckpeueqtz005lc8tj7lrpd2hg" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-牛客-用两个栈实现队列" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/05/26/%E7%89%9B%E5%AE%A2-%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/" class="article-date">
-  <time datetime="2021-05-26T00:30:46.000Z" itemprop="datePublished">2021-05-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/">栈和队列</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/26/%E7%89%9B%E5%AE%A2-%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/">牛客--用两个栈实现队列</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/54275ddae22f475981afa2244dd448c6?tpId=117&&tqId=37774&&companyId=665&rp=1&ru=/company/home/code/665&qru=/ta/job-code-high/question-ranking">牛客–用两个栈实现队列</a></p>
-<p>用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。</p>
-<p>代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">var  A &#x3D; [];</span><br><span class="line">var  B &#x3D; [];</span><br><span class="line">function push(node)&#123;</span><br><span class="line">    A.push(node)</span><br><span class="line">&#125;;</span><br><span class="line">function pop()&#123;</span><br><span class="line">    if(B.length)&#123;</span><br><span class="line">        return B.pop()</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        while(A.length)&#123;</span><br><span class="line">            B.push(A.pop())</span><br><span class="line">        &#125;;</span><br><span class="line">        if(B.length)&#123;</span><br><span class="line">            return B.pop()</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            return -1</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var stackA &#x3D; [];</span><br><span class="line">var stackB &#x3D; [];</span><br><span class="line"></span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    push : push,</span><br><span class="line">    pop : pop</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/26/%E7%89%9B%E5%AE%A2-%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/" data-id="ckpeuequ7006ic8tj40xf1emv" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/26/%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E7%B4%AF%E5%8A%A0%E5%92%8C%E9%97%AE%E9%A2%98/" data-id="ckpgckj4x005bxstj15mq2bai" class="article-share-link">分享</a>
       
       
       
@@ -563,6 +565,10 @@
       <ul>
         
           <li>
+            <a href="/2021/06/03/%E5%8A%9B%E6%89%A3143-%E9%87%8D%E6%8E%92%E9%93%BE%E8%A1%A8/">力扣143--重排链表</a>
+          </li>
+        
+          <li>
             <a href="/2021/06/02/%E7%89%9B%E5%AE%A2-%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A5%87%E5%81%B6%E9%87%8D%E6%8E%92/">牛客--链表的奇偶重排</a>
           </li>
         
@@ -576,10 +582,6 @@
         
           <li>
             <a href="/2021/05/31/%E7%89%9B%E5%AE%A215-%E9%93%BE%E8%A1%A8%E5%86%85%E6%8C%87%E5%AE%9A%E5%8C%BA%E9%97%B4%E5%8F%8D%E8%BD%AC/">牛客15-链表内指定区间反转</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/31/%E7%89%9B%E5%AE%A216-%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/">牛客16--合并区间</a>
           </li>
         
       </ul>

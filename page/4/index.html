@@ -66,6 +66,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣368-最大整除子集" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/23/%E5%8A%9B%E6%89%A3368-%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/" class="article-date">
+  <time datetime="2021-04-23T01:43:04.000Z" itemprop="datePublished">2021-04-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/23/%E5%8A%9B%E6%89%A3368-%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/">力扣368--最大整除子集</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/largest-divisible-subset/">力扣368–最大整除子集</a></p>
+<p>给你一个由 无重复 正整数组成的集合 nums ，请你找出并返回其中最大的整除子集 answer ，子集中每一元素对 (answer[i], answer[j]) 都应当满足：<br>answer[i] % answer[j] == 0 ，或answer[j] % answer[i] == 0,如果存在多个有效解子集，返回其中任何一个均可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [1,2,3]</span><br><span class="line">输出：[1,2]</span><br><span class="line">解释：[1,3] 也会被视为正确答案。</span><br></pre></td></tr></table></figure>
+<p>代码及注释如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @return &#123;number[]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var largestDivisibleSubset &#x3D; function(nums) &#123;</span><br><span class="line">    &#x2F;&#x2F;动态规划，先获得最大子集数量然后进行倒推</span><br><span class="line">    let len &#x3D; nums.length;</span><br><span class="line">    nums.sort((a,b)&#x3D;&gt;a-b)</span><br><span class="line">    let dp &#x3D; new Array(len).fill(1);</span><br><span class="line">    let maxSize &#x3D; 1;</span><br><span class="line">    let maxVal &#x3D; dp[0];</span><br><span class="line">    for(let i &#x3D; 1;i &lt; len;i++)&#123;</span><br><span class="line">        for(let j &#x3D; 0;j &lt; i;j++)&#123;</span><br><span class="line">            if(nums[i] % nums[j] &#x3D;&#x3D; 0)&#123;</span><br><span class="line">                dp[i] &#x3D; Math.max(dp[i],dp[j]+1)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        if(maxSize &lt; dp[i])&#123;</span><br><span class="line">            maxSize &#x3D; dp[i];</span><br><span class="line">            maxVal &#x3D; nums[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    &#x2F;&#x2F;倒推获得最大子集</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    if(maxSize &#x3D;&#x3D; 1)&#123;</span><br><span class="line">        res.push(nums[0])</span><br><span class="line">        return res</span><br><span class="line">    &#125;</span><br><span class="line">    for(let i &#x3D; len-1;i&gt;&#x3D;0 &amp;&amp; maxSize &gt; 0;i--)&#123;</span><br><span class="line">        if(maxVal % nums[i] &#x3D;&#x3D;&#x3D; 0 &amp;&amp; dp[i] &#x3D;&#x3D; maxSize)&#123;</span><br><span class="line">            maxSize--;</span><br><span class="line">            res.push(nums[i]);</span><br><span class="line">            maxVal &#x3D; nums[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/04/23/%E5%8A%9B%E6%89%A3368-%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/" data-id="ckpgckj48003rxstj1yhic3ia" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-offer38-字符串的排列" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/04/22/offer38-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" class="article-date">
@@ -104,7 +153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/22/offer38-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="ckpeueqrx0008c8tjcz8o522u" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/22/offer38-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/" data-id="ckpgckj2t0008xstjbfree460" class="article-share-link">分享</a>
       
       
       
@@ -153,7 +202,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/19/%E5%8A%9B%E6%89%A327-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" data-id="ckpeueqt5003ac8tjb4lcgi3t" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/19/%E5%8A%9B%E6%89%A327-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" data-id="ckpgckj43003cxstj9ns0f02d" class="article-share-link">分享</a>
       
       
       
@@ -202,7 +251,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/17/%E5%8A%9B%E6%89%A3217-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A01/" data-id="ckpeueqt0002vc8tj1905c1cz" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/17/%E5%8A%9B%E6%89%A3217-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A01/" data-id="ckpgckj3v002txstj20ua8au7" class="article-share-link">分享</a>
       
       
       
@@ -252,7 +301,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/17/%E5%8A%9B%E6%89%A3219-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/" data-id="ckpeueqt20030c8tjcl3x11ie" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/17/%E5%8A%9B%E6%89%A3219-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/" data-id="ckpgckj3w002vxstj79o7hv8q" class="article-share-link">分享</a>
       
       
       
@@ -303,7 +352,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/17/%E5%8A%9B%E6%89%A3-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A03/" data-id="ckpeueqsg001fc8tjabl20pu1" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/17/%E5%8A%9B%E6%89%A3-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A03/" data-id="ckpgckj3c001dxstj6tg6glh9" class="article-share-link">分享</a>
       
       
       
@@ -353,7 +402,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/15/%E5%8A%9B%E6%89%A3213-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D2/" data-id="ckpeueqsz002qc8tjc63ucvrg" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/15/%E5%8A%9B%E6%89%A3213-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D2/" data-id="ckpgckj3v002qxstjc2ckbh8y" class="article-share-link">分享</a>
       
       
       
@@ -403,7 +452,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/15/%E5%8A%9B%E6%89%A3198-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D1/" data-id="ckpeueqsx002jc8tj4423dh5x" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/15/%E5%8A%9B%E6%89%A3198-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D1/" data-id="ckpgckj3t002jxstjgx3u3mix" class="article-share-link">分享</a>
       
       
       
@@ -452,7 +501,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/13/%E5%8A%9B%E6%89%A3783-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%9D%E7%A6%BB/" data-id="ckpeueqts0050c8tj25urdjly" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/13/%E5%8A%9B%E6%89%A3783-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%9D%E7%A6%BB/" data-id="ckpgckj4t004xxstj3hqafztn" class="article-share-link">分享</a>
       
       
       
@@ -507,55 +556,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/11/%E5%AF%B9%E8%B1%A1%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="ckpeueqtz005nc8tjfkohhg36" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣263-丑数" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/04/10/%E5%8A%9B%E6%89%A3263-%E4%B8%91%E6%95%B0/" class="article-date">
-  <time datetime="2021-04-10T03:13:54.000Z" itemprop="datePublished">2021-04-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/">其他</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/10/%E5%8A%9B%E6%89%A3263-%E4%B8%91%E6%95%B0/">力扣263--丑数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/ugly-number/submissions/">力扣263–丑数</a></p>
-<p>给你一个整数 n ，请你判断 n 是否为 丑数 。如果是，返回 true ；否则，返回 false 。</p>
-<p>丑数 就是只包含质因数 2、3 和/或 5 的正整数</p>
-<p>代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number&#125; n</span><br><span class="line"> * @return &#123;boolean&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var isUgly &#x3D; function(n) &#123;</span><br><span class="line">    if(n &lt;&#x3D; 0)&#123;</span><br><span class="line">        return false</span><br><span class="line">    &#125;;</span><br><span class="line">    let values &#x3D; [2,3,5,];</span><br><span class="line">    for(let value of values)&#123;</span><br><span class="line">        while(n % value &#x3D;&#x3D; 0)&#123;</span><br><span class="line">            n &#x3D; n&#x2F;value</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return n &#x3D;&#x3D; 1</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/10/%E5%8A%9B%E6%89%A3263-%E4%B8%91%E6%95%B0/" data-id="ckpeueqt40035c8tj878f46bt" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/11/%E5%AF%B9%E8%B1%A1%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="ckpgckj4z005hxstj2ne83l4o" class="article-share-link">分享</a>
       
       
       
@@ -589,6 +590,10 @@
       <ul>
         
           <li>
+            <a href="/2021/06/03/%E5%8A%9B%E6%89%A3143-%E9%87%8D%E6%8E%92%E9%93%BE%E8%A1%A8/">力扣143--重排链表</a>
+          </li>
+        
+          <li>
             <a href="/2021/06/02/%E7%89%9B%E5%AE%A2-%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A5%87%E5%81%B6%E9%87%8D%E6%8E%92/">牛客--链表的奇偶重排</a>
           </li>
         
@@ -602,10 +607,6 @@
         
           <li>
             <a href="/2021/05/31/%E7%89%9B%E5%AE%A215-%E9%93%BE%E8%A1%A8%E5%86%85%E6%8C%87%E5%AE%9A%E5%8C%BA%E9%97%B4%E5%8F%8D%E8%BD%AC/">牛客15-链表内指定区间反转</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/31/%E7%89%9B%E5%AE%A216-%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/">牛客16--合并区间</a>
           </li>
         
       </ul>
