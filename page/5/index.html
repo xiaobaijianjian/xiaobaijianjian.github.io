@@ -66,6 +66,61 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-对象深浅拷贝" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/11/%E5%AF%B9%E8%B1%A1%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="article-date">
+  <time datetime="2021-04-11T08:54:38.000Z" itemprop="datePublished">2021-04-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>►<a class="article-category-link" href="/categories/JavaScript/%E5%AF%B9%E8%B1%A1/">对象</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/11/%E5%AF%B9%E8%B1%A1%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/">对象深浅拷贝</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>对象拷贝（克隆）是指通过一定的程序将某个变量的值复制至另一个变量的过程，根据复制后的变量与原始变量的影响情况，拷贝分为深拷贝和浅拷贝。</p>
+<p>针对不同的数据类型，浅拷贝和深拷贝会有不同的表现，主要表现于数据类型在内存中存储的值不同。</p>
+<p>对于基本数据类型的值，变量存储的是值本身，存放在栈内存的简单数据段中，可以直接进行访问。对于引用类型的值，变量存储的是值在内存中的地址，地址指向内存中的某个位置。如果有多个变量同时指向同一个内存地址，则其中一个变量对值进行修改时，会影响到其他的变量。</p>
+<h3 id="对象的浅拷贝实现"><a href="#对象的浅拷贝实现" class="headerlink" title="对象的浅拷贝实现"></a>对象的浅拷贝实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">var obj1 &#x3D; &#123;</span><br><span class="line">    a:1,</span><br><span class="line">    b:&#123;</span><br><span class="line">        c:3,</span><br><span class="line">        d:&#123;</span><br><span class="line">            e:5,</span><br><span class="line">            f:[1,2,3]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&#x2F;&#x2F;浅拷贝</span><br><span class="line">&#x2F;&#x2F;ES3的方法</span><br><span class="line">function clone(obj)&#123;</span><br><span class="line">    let cloneobj &#x3D; &#123;&#125;;</span><br><span class="line">    for(let i in obj)&#123;</span><br><span class="line">        cloneobj[i] &#x3D; obj[i]</span><br><span class="line">    &#125;</span><br><span class="line">    return cloneobj</span><br><span class="line">&#125;</span><br><span class="line">var obj2 &#x3D; clone(obj1);</span><br><span class="line">obj1.b.c &#x3D; 10</span><br><span class="line">console.log(obj2);</span><br><span class="line">&#x2F;&#x2F;ES6的方法</span><br><span class="line">var result &#x3D; Object.assign(&#123;&#125;,obj1);</span><br><span class="line">console.log(result)</span><br></pre></td></tr></table></figure>
+<h3 id="深拷贝的实现"><a href="#深拷贝的实现" class="headerlink" title="深拷贝的实现"></a>深拷贝的实现</h3><p>以上面的obj1为例子，实现一个深拷贝，先一个个循环然后改写成递归形式。<br>循环形式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function deepClone(obj)&#123;</span><br><span class="line">    let cloneObj &#x3D; &#123;&#125;;</span><br><span class="line">    for(let i in obj)&#123;</span><br><span class="line">        &#x2F;&#x2F;判断类型是不是引用类型，同时排除null的干扰</span><br><span class="line">        if(typeof obj[i] &#x3D;&#x3D; &#39;object&#39; &amp;&amp; obj[i] !&#x3D; null)&#123;</span><br><span class="line">            cloneObj[i] &#x3D; &#123;&#125;;</span><br><span class="line">            for(let j in obj[i])&#123;</span><br><span class="line">                if(typeof obj[i][j] &#x3D;&#x3D;&#x3D; &#39;object&#39; &amp;&amp; obj[i][j] !&#x3D; null)&#123;</span><br><span class="line">                    cloneObj[i][j] &#x3D; &#123;&#125;;</span><br><span class="line">                    for(let k  in obj[i][j])&#123;</span><br><span class="line">                        cloneObj[i][j][k] &#x3D; obj[i][j][k]</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    cloneObj[i][j] &#x3D; obj[i][j]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            cloneObj[i] &#x3D; obj[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return cloneObj</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将上述代码改写成递归模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;将上述改写为递归</span><br><span class="line">&#x2F;&#x2F;注意递归的出口</span><br><span class="line">&#x2F;&#x2F;每次递归的不同之处</span><br><span class="line">function deepClone(obj,cloneObj)&#123;</span><br><span class="line">    var cloneObj &#x3D; cloneObj || &#123;&#125;;</span><br><span class="line">    for(let i in obj)&#123;</span><br><span class="line">        if(typeof obj[i] &#x3D;&#x3D; &#39;object&#39; &amp;&amp; obj[i] !&#x3D; null)&#123;</span><br><span class="line">            cloneObj[i] &#x3D; &#123;&#125;;</span><br><span class="line">            deepClone(obj[i],cloneObj[i])</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            cloneObj[i] &#x3D; obj[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return cloneObj</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>深拷贝的实现方法有很多，还包括JSON序列化和反序列化操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var res &#x3D; JSON.parse(JSON.stringify(obj1))</span><br></pre></td></tr></table></figure>
+<p>jquery中利用.extend等方法实现</p>
+<h3 id="深拷贝的数组判断"><a href="#深拷贝的数组判断" class="headerlink" title="深拷贝的数组判断"></a>深拷贝的数组判断</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;深拷贝的数组判断</span><br><span class="line">function deepClone(obj,cloneObj)&#123;</span><br><span class="line">    var cloneObj &#x3D; cloneObj || &#123;&#125;;</span><br><span class="line">    for(let i in obj)&#123;</span><br><span class="line">        if(typeof obj[i] &#x3D;&#x3D;&#x3D; &#39;object&#39; &amp;&amp; obj[i] !&#x3D; null)&#123;</span><br><span class="line">            &#x2F;&#x2F;数组判断</span><br><span class="line">            &#x2F;&#x2F;cloneObj[i] &#x3D; Array.isArray(obj[i]) ? []:&#123;&#125;;</span><br><span class="line">            cloneObj[i] &#x3D; obj[i] instanceof Array ? []:&#123;&#125;</span><br><span class="line">            deepClone(obj[i],cloneObj[i])</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            cloneObj[i] &#x3D; obj[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return cloneObj</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/04/11/%E5%AF%B9%E8%B1%A1%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" data-id="ckr9zg505005q9gtjc03thsrm" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣263-丑数" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/04/10/%E5%8A%9B%E6%89%A3263-%E4%B8%91%E6%95%B0/" class="article-date">
@@ -102,7 +157,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/10/%E5%8A%9B%E6%89%A3263-%E4%B8%91%E6%95%B0/" data-id="ckpgckj42003axstj4mo63zsk" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/10/%E5%8A%9B%E6%89%A3263-%E4%B8%91%E6%95%B0/" data-id="ckr9zg4z800369gtjdcxxhfsf" class="article-share-link">分享</a>
       
       
       
@@ -153,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/07/%E5%8A%9B%E6%89%A381-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%842/" data-id="ckpgckj4t004zxstj7cs3avc5" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/07/%E5%8A%9B%E6%89%A381-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%842/" data-id="ckr9zg4zx00519gtje4sqanlx" class="article-share-link">分享</a>
       
       
       
@@ -204,7 +259,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/07/%E5%8A%9B%E6%89%A333-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/" data-id="ckpgckj47003mxstj4we751s2" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/07/%E5%8A%9B%E6%89%A333-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/" data-id="ckr9zg4zc003j9gtje0u4bsl1" class="article-share-link">分享</a>
       
       
       
@@ -254,7 +309,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/07/%E5%8A%9B%E6%89%A388-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/" data-id="ckpgckj4v0053xstj0alc61ov" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/07/%E5%8A%9B%E6%89%A388-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/" data-id="ckr9zg500005b9gtj8gn6f5uq" class="article-share-link">分享</a>
       
       
       
@@ -304,7 +359,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/01/%E5%89%91%E6%8C%8712-%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/" data-id="ckpgckj2y000fxstj7bk32eom" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/01/%E5%89%91%E6%8C%8712-%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/" data-id="ckr9zg4y6000i9gtjbvnm5c8z" class="article-share-link">分享</a>
       
       
       
@@ -353,7 +408,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/04/01/%E5%89%91%E6%8C%8711-%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97/" data-id="ckpgckj2w000cxstjgxyg3wao" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/04/01/%E5%89%91%E6%8C%8711-%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97/" data-id="ckr9zg4y5000f9gtj6j077bu4" class="article-share-link">分享</a>
       
       
       
@@ -404,7 +459,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/31/%E5%8A%9B%E6%89%A390-%E5%AD%90%E9%9B%86-2/" data-id="ckpgckj4y005dxstj36oqbup8" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/31/%E5%8A%9B%E6%89%A390-%E5%AD%90%E9%9B%86-2/" data-id="ckr9zg502005g9gtj0stq336j" class="article-share-link">分享</a>
       
       
       
@@ -453,7 +508,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/30/%E5%89%91%E6%8C%8706-%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8/" data-id="ckpgckj2x000exstjaj603es3" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/30/%E5%89%91%E6%8C%8706-%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8/" data-id="ckr9zg4y3000c9gtj7swcdx17" class="article-share-link">分享</a>
       
       
       
@@ -503,55 +558,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/29/%E5%8A%9B%E6%89%A3300-%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" data-id="ckpgckj45003hxstj6gh2bod0" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣540-有序数组中的单一元素" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/03/29/%E5%8A%9B%E6%89%A3540-%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%8D%95%E4%B8%80%E5%85%83%E7%B4%A0/" class="article-date">
-  <time datetime="2021-03-29T01:39:07.000Z" itemprop="datePublished">2021-03-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/29/%E5%8A%9B%E6%89%A3540-%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%8D%95%E4%B8%80%E5%85%83%E7%B4%A0/">力扣540--有序数组中的单一元素</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/single-element-in-a-sorted-array/">力扣540–有序数组中的单一元素</a></p>
-<p>给定一个只包含整数的有序数组，每个元素都会出现两次，唯有一个数只会出现一次，找出这个数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,1,2,3,3,4,4,8,8]</span><br><span class="line">输出: 2</span><br></pre></td></tr></table></figure>
-<p>代码及注释如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @return &#123;number&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var singleNonDuplicate &#x3D; function(nums) &#123;</span><br><span class="line">    let len &#x3D; nums.length;</span><br><span class="line">    &#x2F;&#x2F;二分法</span><br><span class="line">    let left &#x3D; 0;</span><br><span class="line">    let right &#x3D; len-1;</span><br><span class="line">    &#x2F;&#x2F;定义两个变量来判断左边还是右边剩余的数是奇数</span><br><span class="line">    let L;</span><br><span class="line">    let R;</span><br><span class="line">    while(left &lt;&#x3D; right)&#123;</span><br><span class="line">        let mid &#x3D; Math.floor((left+right)&#x2F;2);</span><br><span class="line">        if(nums[mid] &#x3D;&#x3D;&#x3D; nums[mid+1])&#123;</span><br><span class="line">            L &#x3D; mid;</span><br><span class="line">            R &#x3D; mid+1</span><br><span class="line">        &#125;else if(nums[mid] &#x3D;&#x3D;&#x3D; nums[mid-1])&#123;</span><br><span class="line">            L &#x3D; mid-1;</span><br><span class="line">            R &#x3D; mid</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            return nums[mid]</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;如果L%2&#x3D;&#x3D;1说明L是奇数，那它左边的数量就是偶数，</span><br><span class="line">        &#x2F;&#x2F;那出现一次的数字必然在右边</span><br><span class="line">        if(L%2 &#x3D;&#x3D; 1 &amp;&amp; R%2 &#x3D;&#x3D; 0)&#123;</span><br><span class="line">            right &#x3D; mid-1</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            left &#x3D; mid+1</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/29/%E5%8A%9B%E6%89%A3540-%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%8D%95%E4%B8%80%E5%85%83%E7%B4%A0/" data-id="ckpgckj4g0049xstj8exyafqc" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/29/%E5%8A%9B%E6%89%A3300-%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" data-id="ckr9zg4zb003e9gtj6jel95pl" class="article-share-link">分享</a>
       
       
       
@@ -585,6 +592,10 @@
       <ul>
         
           <li>
+            <a href="/2021/07/19/%E5%8A%9B%E6%89%A31838-%E6%9C%80%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0%E7%9A%84%E9%A2%91%E6%95%B0/">力扣1838--最高频元素的频数</a>
+          </li>
+        
+          <li>
             <a href="/2021/06/03/%E5%8A%9B%E6%89%A3143-%E9%87%8D%E6%8E%92%E9%93%BE%E8%A1%A8/">力扣143--重排链表</a>
           </li>
         
@@ -598,10 +609,6 @@
         
           <li>
             <a href="/2021/05/31/%E7%89%9B%E5%AE%A217-%E5%88%A4%E6%96%AD%E4%BA%8C%E5%8F%89%E6%A0%91%E6%98%AF%E5%90%A6%E4%B8%BA%E6%90%9C%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91%E5%92%8C%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91/">牛客17--判断二叉树是否为搜索二叉树和完全二叉树</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/31/%E7%89%9B%E5%AE%A215-%E9%93%BE%E8%A1%A8%E5%86%85%E6%8C%87%E5%AE%9A%E5%8C%BA%E9%97%B4%E5%8F%8D%E8%BD%AC/">牛客15-链表内指定区间反转</a>
           </li>
         
       </ul>
