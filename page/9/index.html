@@ -66,6 +66,208 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-力扣1047-删除字符串中的相邻重复项" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/09/%E5%8A%9B%E6%89%A31047-%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E7%9B%B8%E9%82%BB%E9%87%8D%E5%A4%8D%E9%A1%B9/" class="article-date">
+  <time datetime="2021-03-09T00:45:53.000Z" itemprop="datePublished">2021-03-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/">栈和队列</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/09/%E5%8A%9B%E6%89%A31047-%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E7%9B%B8%E9%82%BB%E9%87%8D%E5%A4%8D%E9%A1%B9/">力扣1047--删除字符串中的相邻重复项</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string/">力扣1047–删除字符串中的相邻重复项</a></p>
+<p>给出由小写字母组成的字符串 S，重复项删除操作会选择两个相邻且相同的字母，并删除它们。在 S 上反复执行重复项删除操作，直到无法继续删除。<br>在完成所有重复项删除操作后返回最终的字符串。答案保证唯一。</p>
+<p>示例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：&quot;abbaca&quot;</span><br><span class="line">输出：&quot;ca&quot;</span><br><span class="line">解释：</span><br><span class="line">例如，在 &quot;abbaca&quot; 中，我们可以删除 &quot;bb&quot; 由于两字母相邻且相同，这是此时唯一可以执行删除操作的重复项。之后我们得到字符串 &quot;aaca&quot;，其中又只有 &quot;aa&quot; 可以执行重复项删除操作，所以最后的字符串为 &quot;ca&quot;。</span><br></pre></td></tr></table></figure>
+<p>代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;string&#125; S</span><br><span class="line"> * @return &#123;string&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var removeDuplicates &#x3D; function(S) &#123;</span><br><span class="line">    &#x2F;&#x2F;利用栈先进后出的特性</span><br><span class="line">    let stack &#x3D; [];</span><br><span class="line">    for(let ch of S)&#123;</span><br><span class="line">        if(stack.length &amp;&amp; stack[stack.length-1] &#x3D;&#x3D;&#x3D; ch)&#123;</span><br><span class="line">            stack.pop()</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            stack.push(ch)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return stack.join(&#39;&#39;)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/09/%E5%8A%9B%E6%89%A31047-%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E7%9B%B8%E9%82%BB%E9%87%8D%E5%A4%8D%E9%A1%B9/" data-id="ckv62ysp1001slotj2q1805gn" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-打通call、apply、bind" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/08/%E6%89%93%E9%80%9Acall%E3%80%81apply%E3%80%81bind/" class="article-date">
+  <time datetime="2021-03-08T06:24:31.000Z" itemprop="datePublished">2021-03-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>►<a class="article-category-link" href="/categories/JavaScript/%E5%87%BD%E6%95%B0/">函数</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/08/%E6%89%93%E9%80%9Acall%E3%80%81apply%E3%80%81bind/">call、apply、bind的区别与实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>&emsp;&emsp;简单概括apply、bind、call的区别：他们都是用来改变相关函数this指向的，但是apply、call是直接进行相关函数调用的，bind不会执行相关函数，而是返回一个新的函数，这个新的函数已经自动绑定了新的this指向。call与apply之间的区别主要是在参数设定上。<br>&emsp;&emsp;call()与bind()接受的参数相同，第一个参数表示要改变的函数执行主体，即this的指向，从第二个参数到最后一个参数表示的是函数接受的参数，对于apply()函数来讲，第一个参数相同，第二个参数是一个数组，表示的是接受的所有参数。    </p>
+<h3 id="call-方法的实现"><a href="#call-方法的实现" class="headerlink" title="call()方法的实现"></a>call()方法的实现</h3><p>原理：1）将函数设为对象的属性<br>&emsp;&emsp;2)执行和删除这个函数<br>&emsp;&emsp;3)指定 this 到函数并传入给定参数执行函数.如果不传参数，默认指向 window。  </p>
+<p>call()实现代码及注释如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var name &#x3D; &#39;maomao&#39;;</span><br><span class="line">var obj &#x3D; &#123;</span><br><span class="line">    name:&#39;gougou&#39;</span><br><span class="line">&#125;;</span><br><span class="line">function fn(a,b,c)&#123;</span><br><span class="line">    console.log(a+b+c+this.name)</span><br><span class="line">&#125;</span><br><span class="line">Function.prototype.call1 &#x3D; function(obj)&#123;</span><br><span class="line">    &#x2F;&#x2F;判断是否为null或者undefined,同时考虑传递参数不是对象情况</span><br><span class="line">    obj &#x3D; obj ? Object(obj):window;</span><br><span class="line">    obj.fn &#x3D; this;</span><br><span class="line">    &#x2F;&#x2F; 利用拓展运算符直接将arguments转为数组</span><br><span class="line">    let args &#x3D; [...arguments].slice(1);</span><br><span class="line">    let result &#x3D; obj.fn(...args);</span><br><span class="line">    delete obj.fn;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn.call1(obj,&#39;我的&#39;,&#39;宠物&#39;,&#39;是&#39;)</span><br></pre></td></tr></table></figure>
+<p>apply实现及代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> Function.prototype.apply_ &#x3D; function(obj,arr)&#123;</span><br><span class="line">    obj &#x3D;&#x3D; obj? Object(obj) : window;</span><br><span class="line">    obj.fn &#x3D; this;</span><br><span class="line">    let result;</span><br><span class="line">    if(!arr)&#123;</span><br><span class="line">        result &#x3D; obj.fn()</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        result &#x3D; obj.fn(...arr)</span><br><span class="line">    &#125;</span><br><span class="line">    delete obj.fn;</span><br><span class="line">    return result</span><br><span class="line">&#125;</span><br><span class="line">fn.apply_(obj,[&#39;我的&#39;,&#39;宠物&#39;,&#39;是&#39;])</span><br></pre></td></tr></table></figure>
+<p>bind实现及代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.bind1 &#x3D; function()&#123;</span><br><span class="line">    &#x2F;&#x2F; 保存原函数</span><br><span class="line">    var self &#x3D; this;</span><br><span class="line">    &#x2F;&#x2F; 保存需要绑定的this上下文</span><br><span class="line">    context &#x3D; [].shift.call(arguments);</span><br><span class="line">    &#x2F;&#x2F; 剩余的参数转为数组</span><br><span class="line">    args &#x3D; [].slice.call(arguments);</span><br><span class="line">    &#x2F;&#x2F;返回一个函数</span><br><span class="line">    return  function()&#123;</span><br><span class="line">        self.apply(context,[].concat.call(args,[].slice.call(arguments)))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lovefengruoqing/article/details/80186401">js中自己实现bind函数的方式</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/08/%E6%89%93%E9%80%9Acall%E3%80%81apply%E3%80%81bind/" data-id="ckv62ysqr0064lotjd8hf3bha" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-剑指offer34-二叉树中和为某一值的路径" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/08/%E5%89%91%E6%8C%87offer34-%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84/" class="article-date">
+  <time datetime="2021-03-08T01:59:48.000Z" itemprop="datePublished">2021-03-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/08/%E5%89%91%E6%8C%87offer34-%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84/">剑指offer34--二叉树中和为某一值的路径</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-shu-zhong-he-wei-mou-yi-zhi-de-lu-jing-lcof/">剑指offer34–二叉树中和为某一值的路径</a></p>
+<p>输入一棵二叉树和一个整数，打印出二叉树中节点值的和为输入整数的所有路径。从树的根节点开始往下一直到叶节点所经过的节点形成一条路径。</p>
+<p>示例,给定sum和为32</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">      5</span><br><span class="line">     &#x2F; \</span><br><span class="line">    4   8</span><br><span class="line">   &#x2F;   &#x2F; \</span><br><span class="line">  11  13  4</span><br><span class="line"> &#x2F;  \    &#x2F; \</span><br><span class="line">7    2  5   1</span><br></pre></td></tr></table></figure>
+<p>返回</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">   [5,4,11,2],</span><br><span class="line">   [5,8,4,5]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>代码及详细注释如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val) &#123;</span><br><span class="line"> *     this.val &#x3D; val;</span><br><span class="line"> *     this.left &#x3D; this.right &#x3D; null;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @param &#123;number&#125; sum</span><br><span class="line"> * @return &#123;number[][]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var pathSum &#x3D; function(root, sum) &#123;</span><br><span class="line">    &#x2F;&#x2F;放置结果</span><br><span class="line">    let result &#x3D; [];</span><br><span class="line">    &#x2F;&#x2F;root--树，path--路径，curSum--当前节点和</span><br><span class="line">    const dfs &#x3D; (root,path,curSum)&#x3D;&gt;&#123;</span><br><span class="line">        &#x2F;&#x2F;递归结束条件</span><br><span class="line">        if(!root)&#123;</span><br><span class="line">            return [];</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;路径添加元素</span><br><span class="line">        path.push(root.val);</span><br><span class="line">        &#x2F;&#x2F;计算当前和</span><br><span class="line">        curSum +&#x3D; root.val;</span><br><span class="line">        &#x2F;&#x2F;如果没有左子树和右子树（到了叶子节点）</span><br><span class="line">        if(!root.left &amp;&amp; !root.right)&#123;</span><br><span class="line">            if(curSum &#x3D;&#x3D;&#x3D; sum)&#123;</span><br><span class="line">                result.push(path.slice())</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            &#x2F;&#x2F;递归左右子树</span><br><span class="line">            dfs(root.left,path,curSum);</span><br><span class="line">            dfs(root.right,path,curSum)</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;返回上一步，回溯</span><br><span class="line">        path.pop();</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    dfs(root,[],0);</span><br><span class="line">    return result</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/08/%E5%89%91%E6%8C%87offer34-%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%92%8C%E4%B8%BA%E6%9F%90%E4%B8%80%E5%80%BC%E7%9A%84%E8%B7%AF%E5%BE%84/" data-id="ckv62ysoq0013lotjbxmtgejs" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-力扣131-分割回文串" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/07/%E5%8A%9B%E6%89%A3131-%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2/" class="article-date">
+  <time datetime="2021-03-07T02:31:21.000Z" itemprop="datePublished">2021-03-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/07/%E5%8A%9B%E6%89%A3131-%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2/">力扣131-分割回文串</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/palindrome-partitioning/">力扣131-分割回文串</a></p>
+<p>给定一个字符串 s，将 s 分割成一些子串，使每个子串都是回文串。<br>返回 s 所有可能的分割方案.</p>
+<p>例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;aab&quot;</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">  [&quot;aa&quot;,&quot;b&quot;],</span><br><span class="line">  [&quot;a&quot;,&quot;a&quot;,&quot;b&quot;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>采用回溯法和动态规划，具体代码及注释如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;string&#125; s</span><br><span class="line"> * @return &#123;string[][]&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var partition &#x3D; function(s) &#123;</span><br><span class="line">    &#x2F;&#x2F;dfs+动态规划</span><br><span class="line">    let len &#x3D; s.length;</span><br><span class="line">    let dp &#x3D; new Array(len);</span><br><span class="line">    for(let i &#x3D; 0;i &lt; len;i++)&#123;</span><br><span class="line">        dp[i] &#x3D; new Array(len)</span><br><span class="line">    &#125;;</span><br><span class="line">    &#x2F;&#x2F;设dp[i][j]为从i到j的字符串为回文串</span><br><span class="line">    for(let j &#x3D; 0;j &lt; len;j++)&#123;</span><br><span class="line">        for(let i &#x3D; 0;i &lt;&#x3D; j;i++)&#123;</span><br><span class="line">            &#x2F;&#x2F;如果只有一个元素，本身就是回文串</span><br><span class="line">            if(i &#x3D;&#x3D; j)&#123;</span><br><span class="line">                dp[i][j] &#x3D; true</span><br><span class="line">            &#125;else if(j-1 &#x3D;&#x3D; i &amp;&amp; s[i] &#x3D;&#x3D; s[j])&#123;</span><br><span class="line">                &#x2F;&#x2F;要是i和j是相邻元素</span><br><span class="line">                dp[i][j] &#x3D; true;</span><br><span class="line">            &#125;else if(j-i &gt; 1 &amp;&amp; s[i] &#x3D;&#x3D; s[j] &amp;&amp; dp[i+1][j-1])&#123;</span><br><span class="line">                &#x2F;&#x2F;要是i和j不相邻，要保证最外层元素相同，里面是回文串</span><br><span class="line">                dp[i][j] &#x3D; true;</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                dp[i][j] &#x3D; false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    &#x2F;&#x2F;回溯处理</span><br><span class="line">    &#x2F;&#x2F;保存最后结果</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    const dfs &#x3D; (path,startIndex)&#x3D;&gt;&#123;</span><br><span class="line">        &#x2F;&#x2F;结束条件</span><br><span class="line">        if(startIndex &#x3D;&#x3D; len)&#123;</span><br><span class="line">            res.push(path.slice());</span><br><span class="line">            return</span><br><span class="line">        &#125;;</span><br><span class="line">        &#x2F;&#x2F;限制重复性的组合，所以是基于上一次的选择</span><br><span class="line">        for(let i &#x3D; startIndex;i &lt; len;i++)&#123;    </span><br><span class="line">            if(dp[startIndex][i])&#123;</span><br><span class="line">                path.push(s.substring(startIndex,i+1));</span><br><span class="line">                &#x2F;&#x2F;限制重复性元素选择加进去</span><br><span class="line">                dfs(path,i+1);</span><br><span class="line">                path.pop()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    dfs([],0);</span><br><span class="line">    return res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/07/%E5%8A%9B%E6%89%A3131-%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2/" data-id="ckv62ysp50024lotj8a6ygkh5" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-剑指26-树的子结构" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/03/06/%E5%89%91%E6%8C%8726-%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" class="article-date">
@@ -100,7 +302,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/06/%E5%89%91%E6%8C%8726-%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" data-id="ckr9zg4ya000r9gtjad9raaz3" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/06/%E5%89%91%E6%8C%8726-%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" data-id="ckv62ysoj000llotj90ms0427" class="article-share-link">分享</a>
       
       
       
@@ -146,7 +348,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/06/%E5%8A%9B%E6%89%A3100-%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91/" data-id="ckr9zg4yl001e9gtjhj3s7g98" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/06/%E5%8A%9B%E6%89%A3100-%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91/" data-id="ckv62ysoy001klotjgob9a2vw" class="article-share-link">分享</a>
       
       
       
@@ -216,7 +418,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/03/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%89%8B%E5%86%99promise/" data-id="ckr9zg4y4000e9gtj8yzy6jt3" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/03/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%89%8B%E5%86%99promise/" data-id="ckv62ysof000clotj4ujm2ea2" class="article-share-link">分享</a>
       
       
       
@@ -290,7 +492,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/02/%E4%BA%B2%E7%88%B1%E7%9A%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" data-id="ckr9zg4y2000b9gtjbk2q5675" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/02/%E4%BA%B2%E7%88%B1%E7%9A%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" data-id="ckv62ysog000elotja6c51zvz" class="article-share-link">分享</a>
       
       
       
@@ -363,7 +565,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/01/%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%BB%A7%E6%89%BF/" data-id="ckr9zg503005l9gtjayz8ec6y" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/01/%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%BB%A7%E6%89%BF/" data-id="ckv62ysqo005slotj35a2fckc" class="article-share-link">分享</a>
       
       
       
@@ -414,210 +616,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/01/%E5%89%91%E6%8C%87Offer32-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%883%EF%BC%89/" data-id="ckr9zg4yc000u9gtj7kx19ozk" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-剑指Offer33-二叉搜索树的后序遍历序列" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/03/01/%E5%89%91%E6%8C%87Offer33-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97/" class="article-date">
-  <time datetime="2021-03-01T03:37:26.000Z" itemprop="datePublished">2021-03-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/01/%E5%89%91%E6%8C%87Offer33-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97/">剑指Offer33-二叉搜索树的后序遍历序列</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-hou-xu-bian-li-xu-lie-lcof/">剑指Offer33-二叉搜索树的后序遍历序列</a></p>
-<p>输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历结果。如果是则返回 true，否则返回 false。假设输入的数组的任意两个数字都互不相同。</p>
-<p>参考以下这颗二叉搜索树：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    5</span><br><span class="line">   &#x2F; \</span><br><span class="line">  2   6</span><br><span class="line"> &#x2F; \</span><br><span class="line">1   3</span><br></pre></td></tr></table></figure>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,6,3,2,5]</span><br><span class="line">输出: false</span><br><span class="line"></span><br><span class="line">输入: [1,3,2,6,5]</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
-<p>注释及详细代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; postorder</span><br><span class="line"> * @return &#123;boolean&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var verifyPostorder &#x3D; function(postorder) &#123;</span><br><span class="line">    &#x2F;&#x2F;递归</span><br><span class="line">    &#x2F;&#x2F;利用二叉搜索树的特性，右节点值比根节点大</span><br><span class="line">    &#x2F;&#x2F;后序遍历是左--右--根，先找到根节点</span><br><span class="line">    &#x2F;&#x2F;找到第一个大于根节点的进行左右节点划分</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;如果长度小于等于1，直接为true</span><br><span class="line">    if(postorder.length &lt;&#x3D; 1)&#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;;</span><br><span class="line">    let len &#x3D; postorder.length;</span><br><span class="line">    let root &#x3D; postorder[len-1];</span><br><span class="line">    var index;</span><br><span class="line">    for(let i &#x3D; 0;i &lt; len;i++)&#123;</span><br><span class="line">        if(postorder[i] &gt;&#x3D; root)&#123;</span><br><span class="line">            index &#x3D; i;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    let right &#x3D; postorder.slice(index,len-1);</span><br><span class="line">    let left &#x3D; postorder.slice(0,index);</span><br><span class="line">    &#x2F;&#x2F;数组api every的用法</span><br><span class="line">    &#x2F;&#x2F;判断是不是右子树的点都大于根节点同时左子树节点小于根节点</span><br><span class="line">    let res &#x3D;right.every((item) &#x3D;&gt; item &gt; root) &amp;&amp; left.every(item &#x3D;&gt; item &lt; root);</span><br><span class="line">    &#x2F;&#x2F;如果是，继续递归</span><br><span class="line">    if(res)&#123;</span><br><span class="line">        return verifyPostorder(postorder.slice(0,index)) &amp;&amp; verifyPostorder(postorder.slice(index,len-1))</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        return false</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/01/%E5%89%91%E6%8C%87Offer33-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97/" data-id="ckr9zg4yc000w9gtja6x5c247" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣105-从前序与中序遍历序列构造二叉树" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/28/%E5%8A%9B%E6%89%A3105-%E4%BB%8E%E5%89%8D%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91/" class="article-date">
-  <time datetime="2021-02-28T11:51:58.000Z" itemprop="datePublished">2021-02-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/28/%E5%8A%9B%E6%89%A3105-%E4%BB%8E%E5%89%8D%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91/">力扣105-从前序与中序遍历序列构造二叉树</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/">力扣105-从前序与中序遍历序列构造二叉树</a></p>
-<p>根据一棵树的前序遍历与中序遍历构造二叉树。你可以假设树中没有重复的元素。</p>
-<p>例如，给出</p>
-<p>前序遍历 preorder = [3,9,20,15,7]</p>
-<p>中序遍历 inorder = [9,3,15,20,7]</p>
-<p>返回如下的二叉树：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  3</span><br><span class="line"> &#x2F; \</span><br><span class="line">9  20</span><br><span class="line">  &#x2F;  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure>
-<p>代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val, left, right) &#123;</span><br><span class="line"> *     this.val &#x3D; (val&#x3D;&#x3D;&#x3D;undefined ? 0 : val)</span><br><span class="line"> *     this.left &#x3D; (left&#x3D;&#x3D;&#x3D;undefined ? null : left)</span><br><span class="line"> *     this.right &#x3D; (right&#x3D;&#x3D;&#x3D;undefined ? null : right)</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; preorder</span><br><span class="line"> * @param &#123;number[]&#125; inorder</span><br><span class="line"> * @return &#123;TreeNode&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var buildTree &#x3D; function(preorder, inorder) &#123;</span><br><span class="line">    &#x2F;&#x2F;非常非常暴力的解法....没有一点优化...</span><br><span class="line">    &#x2F;&#x2F;前序是根-左-右，中序是左-右-根</span><br><span class="line">    &#x2F;&#x2F;所以先找到根节点，划分出左右子树，然后递归构建左右子树</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;递归出口</span><br><span class="line">    if(preorder.length &#x3D;&#x3D;&#x3D; 0)&#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;;</span><br><span class="line">    &#x2F;&#x2F;前序遍历的第一个值肯定为根节点</span><br><span class="line">    let root &#x3D; new TreeNode(preorder[0]);</span><br><span class="line">    let mid &#x3D; inorder.indexOf(preorder[0]);</span><br><span class="line">    root.left &#x3D; buildTree(preorder.slice(1,mid+1),inorder.slice(0,mid));</span><br><span class="line">    root.right &#x3D; buildTree(preorder.slice(mid+1),inorder.slice(mid+1));</span><br><span class="line">    return root;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/28/%E5%8A%9B%E6%89%A3105-%E4%BB%8E%E5%89%8D%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckr9zg4yo001o9gtjati8cm3t" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣110-平衡二叉树" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/28/%E5%8A%9B%E6%89%A3110-%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/" class="article-date">
-  <time datetime="2021-02-28T03:38:36.000Z" itemprop="datePublished">2021-02-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/28/%E5%8A%9B%E6%89%A3110-%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/">力扣110-平衡二叉树</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/balanced-binary-tree/">力扣110-平衡二叉树</a></p>
-<p>给定一个二叉树，判断它是否是高度平衡的二叉树。</p>
-<p>本题中，一棵高度平衡二叉树定义为：<br>一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过 1 。</p>
-<p>示例:给定二叉树[1,2,2,3,3,null,null,4,4]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">      1</span><br><span class="line">     &#x2F; \</span><br><span class="line">    2   2</span><br><span class="line">   &#x2F; \</span><br><span class="line">  3   3</span><br><span class="line"> &#x2F; \</span><br><span class="line">4   4</span><br></pre></td></tr></table></figure>
-<p> 返回false</p>
-<p> 递归方法：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"> &#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * function TreeNode(val) &#123;</span><br><span class="line"> *     this.val &#x3D; val;</span><br><span class="line"> *     this.left &#x3D; this.right &#x3D; null;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;TreeNode&#125; root</span><br><span class="line"> * @return &#123;boolean&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var isBalanced &#x3D; function(root) &#123;</span><br><span class="line">    if(!root)&#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;;</span><br><span class="line">    let left &#x3D; dfs(root.left);</span><br><span class="line">    let right &#x3D; dfs(root.right);</span><br><span class="line">    &#x2F;&#x2F;深度差大于1返回false</span><br><span class="line">    if(Math.abs(left - right) &gt; 1)&#123;</span><br><span class="line">        return false</span><br><span class="line">    &#125;;</span><br><span class="line">    &#x2F;&#x2F;递归判断</span><br><span class="line">    return isBalanced(root.left) &amp;&amp; isBalanced(root.right)</span><br><span class="line">&#125;;</span><br><span class="line">&#x2F;&#x2F;计算树的深度</span><br><span class="line">var dfs &#x3D; function(root)&#123;</span><br><span class="line">    if(!root)&#123;</span><br><span class="line">        return 0</span><br><span class="line">    &#125;;</span><br><span class="line">    return Math.max(dfs(root.left),dfs(root.right)) + 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/28/%E5%8A%9B%E6%89%A3110-%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckr9zg4yt001y9gtjgwgz4e20" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-力扣896-单调数列" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/28/%E5%8A%9B%E6%89%A3896-%E5%8D%95%E8%B0%83%E6%95%B0%E5%88%97/" class="article-date">
-  <time datetime="2021-02-28T03:19:46.000Z" itemprop="datePublished">2021-02-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/">其他</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/28/%E5%8A%9B%E6%89%A3896-%E5%8D%95%E8%B0%83%E6%95%B0%E5%88%97/">力扣896-单调数列</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/monotonic-array/">力扣896-单调数列</a></p>
-<p>如果数组是单调递增或单调递减的，那么它是单调的。如果对于所有 i &lt;= j，A[i] &lt;= A[j]，那么数组 A 是单调递增的。 如果对于所有 i &lt;= j，A[i]&gt; = A[j]，那么数组 A 是单调递减的。当给定的数组 A 是单调数组时返回 true，否则返回 false。</p>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：[6,5,4,4]</span><br><span class="line">输出：true</span><br><span class="line"></span><br><span class="line">输入：[1,3,2]</span><br><span class="line">输出：false</span><br></pre></td></tr></table></figure>
-<p>代码及注释：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;number[]&#125; A</span><br><span class="line"> * @return &#123;boolean&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var isMonotonic &#x3D; function(A) &#123;</span><br><span class="line">    let len &#x3D; A.length;</span><br><span class="line">    &#x2F;&#x2F;设立两个标志位</span><br><span class="line">    &#x2F;&#x2F;inc为递增，low为递减</span><br><span class="line">    &#x2F;&#x2F;初始时两个都是true，一旦出现不同就变为相反</span><br><span class="line">    &#x2F;&#x2F;如果是递增或递减至少会有一个true</span><br><span class="line">    let inc &#x3D; true;</span><br><span class="line">    let dec &#x3D; true;</span><br><span class="line">    for(let i &#x3D; 0;i &lt; len-1;i++)&#123;</span><br><span class="line">        if(A[i] &gt; A[i+1])&#123;</span><br><span class="line">            inc &#x3D; false</span><br><span class="line">        &#125;;</span><br><span class="line">        if(A[i] &lt; A[i+1])&#123;</span><br><span class="line">            dec &#x3D; false</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return inc || dec</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/28/%E5%8A%9B%E6%89%A3896-%E5%8D%95%E8%B0%83%E6%95%B0%E5%88%97/" data-id="ckr9zg501005e9gtj26guad2d" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/01/%E5%89%91%E6%8C%87Offer32-%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%E6%89%93%E5%8D%B0%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%883%EF%BC%89/" data-id="ckv62ysoo000wlotjcynbgh19" class="article-share-link">分享</a>
       
       
       
@@ -651,23 +650,23 @@
       <ul>
         
           <li>
+            <a href="/2021/10/25/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/">JS设计模式学习</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E6%96%B9%E6%B3%95/">计算机网络--自顶向下方法</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/27/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%861/">常见资料整理1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/26/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/">常见资料整理</a>
+          </li>
+        
+          <li>
             <a href="/2021/07/19/%E5%8A%9B%E6%89%A31838-%E6%9C%80%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0%E7%9A%84%E9%A2%91%E6%95%B0/">力扣1838--最高频元素的频数</a>
-          </li>
-        
-          <li>
-            <a href="/2021/06/03/%E5%8A%9B%E6%89%A3143-%E9%87%8D%E6%8E%92%E9%93%BE%E8%A1%A8/">力扣143--重排链表</a>
-          </li>
-        
-          <li>
-            <a href="/2021/06/02/%E7%89%9B%E5%AE%A2-%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A5%87%E5%81%B6%E9%87%8D%E6%8E%92/">牛客--链表的奇偶重排</a>
-          </li>
-        
-          <li>
-            <a href="/2021/06/02/%E7%89%9B%E5%AE%A2-%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/">牛客--括号生成</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/31/%E7%89%9B%E5%AE%A217-%E5%88%A4%E6%96%AD%E4%BA%8C%E5%8F%89%E6%A0%91%E6%98%AF%E5%90%A6%E4%B8%BA%E6%90%9C%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91%E5%92%8C%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91/">牛客17--判断二叉树是否为搜索二叉树和完全二叉树</a>
           </li>
         
       </ul>

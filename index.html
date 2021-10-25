@@ -66,6 +66,285 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JS设计模式学习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/10/25/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/" class="article-date">
+  <time datetime="2021-10-25T03:08:12.000Z" itemprop="datePublished">2021-10-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/25/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/">JS设计模式学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/25/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/" data-id="ckv62yso90006lotja7fm5puh" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-计算机网络-自顶向下方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/10/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E6%96%B9%E6%B3%95/" class="article-date">
+  <time datetime="2021-10-23T02:47:38.000Z" itemprop="datePublished">2021-10-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/">常见资料整理</a>►<a class="article-category-link" href="/categories/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E6%96%B9%E6%B3%95/">计算机网络--自顶向下方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h3 id="第一章-计算机网络概述"><a href="#第一章-计算机网络概述" class="headerlink" title="第一章 计算机网络概述"></a>第一章 计算机网络概述</h3><h4 id="1-1-什么是Internet"><a href="#1-1-什么是Internet" class="headerlink" title="1.1 什么是Internet?"></a>1.1 什么是Internet?</h4><h5 id="1-什么是Internet"><a href="#1-什么是Internet" class="headerlink" title="1.什么是Internet?"></a>1.什么是Internet?</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从具体构成角度： 计算机网络是由节点和边构成的，其中节点包括：1）主机及其上运行的程序；2）路由器、交换机等网络交换设备。边指的是通信链路，包括1）接入网链路：主机连接到互联网的链路；2）主干链路路由器间的链路<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从服务角度：Internet是使用通信设施进行通信的分布式应用</p>
+<h5 id="2-主机（端系统）"><a href="#2-主机（端系统）" class="headerlink" title="2. 主机（端系统）"></a>2. 主机（端系统）</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接入到因特网的设备被称作主机（端系统）；端系统包括设备本身，支持这个设备通讯的网络操作系统以及在操作系统上驻留的网络应用程序</p>
+<h5 id="3-分组交换机"><a href="#3-分组交换机" class="headerlink" title="3.分组交换机"></a>3.分组交换机</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自身连接两段小型通信链路，用于连接外部真正的通信链路。主要包括两种类型路由器和链路层交换机。特点：既不是数据的源，也不是数据的目标，是数据的中转节点，作用是将特定的分组转发到特定的链路</p>
+<h5 id="4-通信链路"><a href="#4-通信链路" class="headerlink" title="4 通信链路"></a>4 通信链路</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）由不同类型的物理媒体组成，物理媒体包括同轴电缆、光纤等<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）不同的链路以不同的速率传输数据<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）传输速度以比特/s(bit/s或bps)为单位</p>
+<h5 id="5-协议"><a href="#5-协议" class="headerlink" title="5 协议"></a>5 协议</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;协议定义了在两个或多个通信实体之间交换的报文的格式和顺序，以及报文发送和/或接受一条报文或其他事件所采取的动作。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;协议是支撑互联网工作的标准，因特网的主要协议统称为TCP/IP</p>
+<h4 id="1-2-网络边缘-：采用网络设施的面向连接服务"><a href="#1-2-网络边缘-：采用网络设施的面向连接服务" class="headerlink" title="1.2 网络边缘 ：采用网络设施的面向连接服务"></a>1.2 网络边缘 ：采用网络设施的面向连接服务</h4><h5 id="1-相关概念"><a href="#1-相关概念" class="headerlink" title="1.相关概念"></a>1.相关概念</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;互联网从大的构成角度来看包括：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1)网络边缘：（1）主机；（2）应用程序<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）网络核心：（1）互连着的路由器；（2）网络的网络  作用：数据交换<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）接入网、物理媒体：（1）有线或无线通信链路。  作用：把边缘接入到网络核心<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;边缘通过接入网接入到核心，核心把所有的边缘节点结合一起，从而让任意两个端系统间能相互通信。</p>
+<h4 id="1-3-网络核心"><a href="#1-3-网络核心" class="headerlink" title="1.3 网络核心"></a>1.3 网络核心</h4><h5 id="1-基本问题：数据怎样通过网络进行传输？"><a href="#1-基本问题：数据怎样通过网络进行传输？" class="headerlink" title="1 基本问题：数据怎样通过网络进行传输？"></a>1 基本问题：数据怎样通过网络进行传输？</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）电路交换；2）分组交换  </p>
+<h5 id="2-电路交换"><a href="#2-电路交换" class="headerlink" title="2 电路交换"></a>2 电路交换</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在电路交换网络中，在端系统通信期间，预留了端系统间沿路径通信所需要的资源（缓存或链路传输速率），而在分组交换网络中，传输速率是先来先使用的，如果已经被全部占用就只能排队。二者的区别类似于餐馆预定座位和直接去餐馆就餐。</p>
+<h5 id="3-电路交换网络中的复用"><a href="#3-电路交换网络中的复用" class="headerlink" title="3 电路交换网络中的复用"></a>3 电路交换网络中的复用</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时分复用（Time-Division Multiplexing TDM）：是指将时间划分为固定区间的帧，每个帧则又被划分为固定数量的时间空隙；当网络需要建立一条连接时，网络将在每个帧中为该连接指定一个时隙；在该时隙内，链路用来传输该链接的数据；</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;频分复用(Frequency-Division Multiplexing)：将频率域划分为频段，然后将频段分配给连接；此频段被用来专门传输链接的数据。该频段的宽度成为带宽。</p>
+<h5 id="4-电路交换不适合计算机之间的通信-？"><a href="#4-电路交换不适合计算机之间的通信-？" class="headerlink" title="4 电路交换不适合计算机之间的通信  ？"></a>4 电路交换不适合计算机之间的通信  ？</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）连接建立时间长<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）计算机之间通信有突发性，如果使用线路（电路）交换，浪费较多<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）可靠性不高？</p>
+<h5 id="5-分组交换基本"><a href="#5-分组交换基本" class="headerlink" title="5 分组交换基本"></a>5 分组交换基本</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以分组为单位存储-转发方式<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）网络带宽资源不再分为一个个片，传输时使用全部带宽<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）主机之间传输的数据被分为一个个分组  </p>
+<h5 id="6-存储转发"><a href="#6-存储转发" class="headerlink" title="6 存储转发"></a>6 存储转发</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大多数分组交换机采用存储转发机制来转发分组，存储转发是指交换机在收到一个完成的分组才会向链路输出转发分组，否则就将收到的部分分组缓存起来；因为缓存等待一个分组的全部数据而导致的时间开销被称为存储转发时延  </p>
+<h5 id="7-排队时延和分组丢失"><a href="#7-排队时延和分组丢失" class="headerlink" title="7 排队时延和分组丢失"></a>7 排队时延和分组丢失</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;因为需要缓存分组，所以此时分组交换机需要一个缓冲队列；缓冲队列的空间有限性就有可能导致分组交换机无法继续缓存分组，而使到达分组交换机的数据包被迫丢弃；这就导致了分组不但承担了传输时延，还承担了队列时延。  </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;相当于多个电路交换，延迟更大（排队延迟，存储/转发延迟），而来换取了共享性  </p>
+<h5 id="8-分组交换与电路交换的对比"><a href="#8-分组交换与电路交换的对比" class="headerlink" title="8 分组交换与电路交换的对比"></a>8 分组交换与电路交换的对比</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）分组交换的优点：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）提供了比电路交换更好的宽带共享<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）比电路交换更简单、有效、实现成本低<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分组交换的缺点<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）分组交换不适合实时服务，因为端到端的时延是可变的、不可预测的，和网络情况有关<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）电路交换的优点<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提供了端到端传输数据的速率保证<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缺点：电路交换存在静默期，这是指专用电路空闲时，其占用的资源并没有得到充分的利用；建立连接的过程比较复杂<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总体上来说，分组交换的性能要好于电路交换的性能，但是不同类型的分组交换方式有不同的应用场景；比如一些对最低速率有着严格要求的应用，比如实时服务等，为了获得速率保证，牺牲网络的效率也是可以接受的。趋势向着分组交换发展</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E6%96%B9%E6%B3%95/" data-id="ckv62ysr9007ilotjgfaw7ea3" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-常见资料整理1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/08/27/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%861/" class="article-date">
+  <time datetime="2021-08-27T07:40:03.000Z" itemprop="datePublished">2021-08-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/">常见资料整理</a>►<a class="article-category-link" href="/categories/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/js/">js</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/08/27/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%861/">常见资料整理1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h5 id="1-js数组扁平化"><a href="#1-js数组扁平化" class="headerlink" title="1 js数组扁平化"></a>1 js数组扁平化</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1 递归实现</span><br><span class="line">function flat1(arr)&#123;</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    for(let i &#x3D; 0;i &lt; arr.length;i++&gt;)&#123;</span><br><span class="line">        if(Array.isArray(arr[i]))&#123;</span><br><span class="line">            res&#x3D;  res.concat(flat1(arr[i]))</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            res.push(arr[i])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return res</span><br><span class="line">&#125;</span><br><span class="line">2 利用拓展运算符</span><br><span class="line">function flat1(array)&#123;</span><br><span class="line">    while(array.some((item)&#x3D;&gt;Array.isArray(item)))&#123;</span><br><span class="line">        array &#x3D; [].concat(...array)</span><br><span class="line">    &#125;;</span><br><span class="line">    return array</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2-快速排序"><a href="#2-快速排序" class="headerlink" title="2 快速排序"></a>2 快速排序</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">function quickSort(arr,left,right)&#123;</span><br><span class="line">     let start &#x3D; left;</span><br><span class="line">     let end &#x3D; right;</span><br><span class="line">     let base &#x3D; arr[start];</span><br><span class="line">     while(start &lt; end)&#123;</span><br><span class="line">          while(start &lt; end &amp;&amp; arr[end] &gt; base)&#123;</span><br><span class="line">               end--</span><br><span class="line">          &#125;</span><br><span class="line">          arr[start] &#x3D; arr[end]</span><br><span class="line">          while(start &lt; end &amp;&amp; arr[start] &lt; base)&#123;</span><br><span class="line">               start++</span><br><span class="line">          &#125;</span><br><span class="line">          arr[end] &#x3D; arr[start]</span><br><span class="line">     &#125;;</span><br><span class="line">     arr[start] &#x3D; base</span><br><span class="line">     if(start &gt; left)&#123;</span><br><span class="line">          quickSort(arr,left,start-1)</span><br><span class="line">     &#125;</span><br><span class="line">     if(end &lt; right)&#123;</span><br><span class="line">          quickSort(arr,end+1,right)</span><br><span class="line">     &#125;</span><br><span class="line">     return arr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let arr &#x3D; [3,2,4,5,1,6]</span><br><span class="line">let left &#x3D; 0;</span><br><span class="line">let right &#x3D; arr.length-1;</span><br><span class="line">console.log(quickSort(arr,left,right))</span><br></pre></td></tr></table></figure>
+<h5 id="3-深拷贝的实现"><a href="#3-深拷贝的实现" class="headerlink" title="3 深拷贝的实现"></a>3 深拷贝的实现</h5><p>循环引用:对象的属性间接或直接的引用了自身的情况</p>
+<p>解决方法：我们可以额外开辟一个存储空间，来存储当前对象和拷贝对象的对应关系，当需要拷贝当前对象时，先去存储空间中找，有没有拷贝过这个对象，如果有的话直接返回，如果没有的话继续拷贝，这样就巧妙化解的循环引用的问题。<br>1）不考虑循环引用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function deepObj(obj)&#123;</span><br><span class="line">     if(typeof obj &#x3D;&#x3D; &#39;object&#39; )&#123;</span><br><span class="line">          let targetObj &#x3D; Array.isArray(obj) ? []:&#123;&#125;;</span><br><span class="line">          for(let key in obj)&#123;</span><br><span class="line">               targetObj[key] &#x3D; deepObj(obj[key])</span><br><span class="line">          &#125;</span><br><span class="line">          return targetObj</span><br><span class="line">     &#125;else&#123;</span><br><span class="line">          return obj</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2）考虑循环引用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function deepObj(obj,map &#x3D; new Map())&#123;</span><br><span class="line">     if(typeof obj &#x3D;&#x3D; &#39;object&#39;)&#123;</span><br><span class="line">          let targetObj &#x3D; Array.isArray(obj) ? []:&#123;&#125;</span><br><span class="line">          if(map.has(obj))&#123;</span><br><span class="line">               return map.get(obj)</span><br><span class="line">          &#125;</span><br><span class="line">          map.set(obj,targetObj)</span><br><span class="line">          for(let key in obj)&#123;</span><br><span class="line">               targetObj[key] &#x3D; deepObj(obj[key],map)</span><br><span class="line">          &#125;</span><br><span class="line">          return targetObj</span><br><span class="line">     &#125;else&#123;</span><br><span class="line">          return obj</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="4-js递归数组并更改新的数值"><a href="#4-js递归数组并更改新的数值" class="headerlink" title="4 js递归数组并更改新的数值"></a>4 js递归数组并更改新的数值</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">var treeData &#x3D; [&#123;</span><br><span class="line">        &quot;name&quot;: &quot;剑侠世界&quot;,</span><br><span class="line">        &quot;columns&quot;: [&#123;</span><br><span class="line">                &quot;name&quot;: &quot;新闻中心&quot;,</span><br><span class="line">                &quot;columns&quot;: [&#123;</span><br><span class="line">                        &quot;name&quot;: &quot;新闻&quot;,</span><br><span class="line">                        &quot;parentId&quot;: 2</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        &quot;name&quot;: &quot;公告&quot;,</span><br><span class="line">                        &quot;parentId&quot;: 2</span><br><span class="line">                    &#125;</span><br><span class="line">                ],</span><br><span class="line">                &quot;parentId&quot;: 1</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;name&quot;: &quot;玩家文选&quot;,</span><br><span class="line">                &quot;columns&quot;: [&#123;</span><br><span class="line">                        &quot;name&quot;: &quot;门派攻略&quot;,</span><br><span class="line">                        &quot;parentId&quot;: 2</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        &quot;name&quot;: &quot;玩家心情&quot;,</span><br><span class="line">                        &quot;parentId&quot;: 2</span><br><span class="line">                    &#125;</span><br><span class="line">                ],</span><br><span class="line">                &quot;parentId&quot;: 1</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;name&quot;: &quot;游戏资料&quot;,</span><br><span class="line">                &quot;columns&quot;: [&#123;</span><br><span class="line">                        &quot;name&quot;: &quot;游戏资料0&quot;,</span><br><span class="line">                        &quot;parentId&quot;: 2</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        &quot;name&quot;: &quot;游戏资料1&quot;,</span><br><span class="line">                        &quot;parentId&quot;: 2</span><br><span class="line">                    &#125;</span><br><span class="line">                ],</span><br><span class="line">                &quot;parentId&quot;: 1</span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        &quot;parentId&quot;: 0</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;name&quot;: &quot;剑侠世界1&quot;,</span><br><span class="line">        &quot;columns&quot;: [&#123;</span><br><span class="line">                &quot;name&quot;: &quot;新闻中心1&quot;,</span><br><span class="line">                &quot;columns&quot;: [&#123;</span><br><span class="line">                        &quot;name&quot;: &quot;新闻1&quot;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        &quot;name&quot;: &quot;公告1&quot;</span><br><span class="line">                    &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;name&quot;: &quot;玩家文选1&quot;,</span><br><span class="line">                &quot;columns&quot;: [&#123;</span><br><span class="line">                        &quot;name&quot;: &quot;门派攻略1&quot;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        &quot;name&quot;: &quot;玩家心情1&quot;</span><br><span class="line">                    &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;name&quot;: &quot;游戏资料1&quot;,</span><br><span class="line">                &quot;columns&quot;: [&#123;</span><br><span class="line">                        &quot;name&quot;: &quot;游戏资料01&quot;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        &quot;name&quot;: &quot;游戏资料01&quot;</span><br><span class="line">                    &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        &quot;parentId&quot;: 0</span><br><span class="line">    &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>数据结构如上<br>形成新的数组,name改成title, parentId改成key<br>代码：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function t(arr)&#123;</span><br><span class="line">     for(let i &#x3D; 0;i &lt; arr.length;i++)&#123;</span><br><span class="line">          if(arr[i].columns)&#123;</span><br><span class="line">               arr[i].columns &#x3D; t(arr[i].columns)</span><br><span class="line">          &#125;</span><br><span class="line">          arr[i].name &amp;&amp; (arr[i].title &#x3D; arr[i].name);</span><br><span class="line">          delete arr[i].name</span><br><span class="line">     &#125;;</span><br><span class="line">     return arr</span><br><span class="line">&#125;</span><br><span class="line">console.log(t(treeData))</span><br></pre></td></tr></table></figure>
+<h5 id="5-instanceof原理"><a href="#5-instanceof原理" class="headerlink" title="5 instanceof原理"></a>5 instanceof原理</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function _instance(L,R)&#123;</span><br><span class="line">     let left &#x3D; L.__proto__</span><br><span class="line">     let right &#x3D; R.prototype;</span><br><span class="line">     while(true)&#123;</span><br><span class="line">          if(left &#x3D;&#x3D; null || left &#x3D;&#x3D; undefined)&#123;</span><br><span class="line">               return false</span><br><span class="line">          &#125;</span><br><span class="line">          if(left &#x3D;&#x3D; right)&#123;</span><br><span class="line">               return true</span><br><span class="line">          &#125;</span><br><span class="line">          left &#x3D; left.__proto__</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="6-判断函数类型的函数"><a href="#6-判断函数类型的函数" class="headerlink" title="6 判断函数类型的函数"></a>6 判断函数类型的函数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function getType(data) &#123;</span><br><span class="line">     let type &#x3D; typeof data;</span><br><span class="line">     if (type !&#x3D; &#39;object&#39;) &#123;</span><br><span class="line">          return type</span><br><span class="line">     &#125;</span><br><span class="line">     let a &#x3D; Object.prototype.toString.call(data);</span><br><span class="line">     let b &#x3D; a.split(&#39; &#39;)[1]</span><br><span class="line">     let c &#x3D; b.slice(0, b.length - 1)</span><br><span class="line">     return c</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="7-防抖节流"><a href="#7-防抖节流" class="headerlink" title="7 防抖节流"></a>7 防抖节流</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;防抖</span><br><span class="line">function debounce(func,wait &#x3D; 5000)&#123;</span><br><span class="line">     let task</span><br><span class="line">     return function(e)&#123;</span><br><span class="line">          clearTimeout(task)</span><br><span class="line">          task &#x3D;  setTimeout(()&#x3D;&gt;&#123;</span><br><span class="line">               func.call(this,e)</span><br><span class="line">          &#125;,wait)</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;节流</span><br><span class="line">function throttle(func,wait &#x3D; 5000)&#123;</span><br><span class="line">     let task;</span><br><span class="line">     return function(e)&#123;</span><br><span class="line">          if(!task)&#123;</span><br><span class="line">               task &#x3D; setTimeout(()&#x3D;&gt;&#123;</span><br><span class="line">                    task &#x3D; null</span><br><span class="line">                    func.call(this,e)</span><br><span class="line">               &#125;)</span><br><span class="line">          &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="8-call、apply、bind的实现"><a href="#8-call、apply、bind的实现" class="headerlink" title="8 call、apply、bind的实现"></a>8 call、apply、bind的实现</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;call</span><br><span class="line">function call1(obj)&#123;</span><br><span class="line">     obj &#x3D; obj ? Object(obj):window</span><br><span class="line">     obj.fn &#x3D; this;</span><br><span class="line">     let args &#x3D; [...arguments].slice(1)</span><br><span class="line">     let res &#x3D; obj.fn(...args)</span><br><span class="line">     delete obj.fn;</span><br><span class="line">     return res</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;apply</span><br><span class="line">function apply1(obj,arr)&#123;</span><br><span class="line">     obj &#x3D; obj ? Object(obj) : window</span><br><span class="line">     obj.fn &#x3D; this;</span><br><span class="line">     let res;</span><br><span class="line">     if(!arr)&#123;</span><br><span class="line">          res &#x3D; obj.fn()</span><br><span class="line">     &#125;else&#123;</span><br><span class="line">          res &#x3D; obj.fn(...arr)</span><br><span class="line">     &#125;</span><br><span class="line">     delete obj.fn</span><br><span class="line">     return res</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;bind</span><br><span class="line">function bind1(context)&#123;</span><br><span class="line">     let self &#x3D; this;</span><br><span class="line">     let f &#x3D; function()&#123;&#125;;</span><br><span class="line">     let args &#x3D; Array.prototype.slice.call(arguments,1);</span><br><span class="line">     let bound &#x3D; function()&#123;</span><br><span class="line">          let final &#x3D; Array.prototype.slice.call(arguments);</span><br><span class="line">          let last &#x3D; args.concat(final);</span><br><span class="line">          return self.apply(this instanceof f ? this : context,last)</span><br><span class="line">     &#125;;</span><br><span class="line">     f.prototype &#x3D; self.prototype;</span><br><span class="line">     bound.prototype &#x3D; new f()</span><br><span class="line">     return bound</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="9-sleep函数的实现"><a href="#9-sleep函数的实现" class="headerlink" title="9 sleep函数的实现"></a>9 sleep函数的实现</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;setTimeout方式</span><br><span class="line">function sleep1(time,callback)&#123;</span><br><span class="line">     setTimeout(callback,time)</span><br><span class="line">&#125;</span><br><span class="line">sleep1(2000,()&#x3D;&gt;&#123;</span><br><span class="line">     console.log(123)</span><br><span class="line">&#125;)</span><br><span class="line">&#x2F;&#x2F;promise方式</span><br><span class="line">function sleep(ms)&#123;</span><br><span class="line">     return new Promise(function(resolve,reject)&#123;</span><br><span class="line">          setTimeout(resolve,ms)</span><br><span class="line">     &#125;)</span><br><span class="line">&#125;</span><br><span class="line">sleep.then(()&#x3D;&gt;&#123;</span><br><span class="line">     console.log(123)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="10-实现indexOf"><a href="#10-实现indexOf" class="headerlink" title="10 实现indexOf"></a>10 实现indexOf</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function indexOfget(total, goal) &#123;</span><br><span class="line">  let len &#x3D; total.length</span><br><span class="line">  let golen &#x3D; goal.length</span><br><span class="line">  for (let i &#x3D; 0; i &lt; len; i++) &#123;</span><br><span class="line">    let match &#x3D; i + golen</span><br><span class="line">    let str &#x3D; total.slice(i, match)</span><br><span class="line">    if (match &gt; len) &#123;</span><br><span class="line">      return false</span><br><span class="line">    &#125;</span><br><span class="line">    if(str &#x3D;&#x3D; goal)&#123;</span><br><span class="line">      return i </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return -1</span><br><span class="line">&#125;</span><br><span class="line">let a &#x3D; indexOfget(&#39;abcdefg&#39;,&#39;bc&#39;)</span><br><span class="line">console.log(a)</span><br></pre></td></tr></table></figure>
+<h5 id="11-实现Promise-all"><a href="#11-实现Promise-all" class="headerlink" title="11 实现Promise.all"></a>11 实现Promise.all</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Promise1.prototype.all &#x3D; function(promiseArray)&#123;</span><br><span class="line">           if(Array.isArray(promiseArray))&#123;</span><br><span class="line">               throw new TypeError(&#39;error&#39;)</span><br><span class="line">           &#125;</span><br><span class="line">           return new  Promise((resolve,reject)&#x3D;&gt;&#123;</span><br><span class="line">               try&#123;</span><br><span class="line">                   let res &#x3D; [];</span><br><span class="line">                   for(let i &#x3D; 0;i &lt; promiseArray.length;i++)&#123;</span><br><span class="line">                       promiseArray[i].then((data)&#x3D;&gt;&#123;</span><br><span class="line">                           res.push(data)</span><br><span class="line">                           if(res.length &#x3D;&#x3D; promiseArray.length)&#123;</span><br><span class="line">                               resolve(res)</span><br><span class="line">                           &#125;</span><br><span class="line">                       &#125;,reject)</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;catch(e)&#123;</span><br><span class="line">                   reject(e)</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/27/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%861/" data-id="ckv62ysqq0062lotj4owyd944" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-常见资料整理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/08/26/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/" class="article-date">
+  <time datetime="2021-08-26T15:07:25.000Z" itemprop="datePublished">2021-08-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/">常见资料整理</a>►<a class="article-category-link" href="/categories/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/%E5%85%B6%E4%BB%96/">其他</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/08/26/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/">常见资料整理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <!-- 换行： 先编辑一行文字 编辑好一行文字后敲两个空行，再按回车键编辑另一行文字-->
+<h3 id="1-箭头函数与普通函数的区别？"><a href="#1-箭头函数与普通函数的区别？" class="headerlink" title="1 箭头函数与普通函数的区别？"></a>1 箭头函数与普通函数的区别？</h3><p>1）函数体内的this对象，绑定定义时所在的对象，而不是使用时所在的对象<br>2）不可以当作构造函数。所以不能使用new命令，否则会抛错<br>3）没有arguments对象<br>参考链接：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/biubiuxixiya/p/8610594.html">参考链接</a></p>
+<h3 id="2-OSI七层模型"><a href="#2-OSI七层模型" class="headerlink" title="2 OSI七层模型"></a>2 OSI七层模型</h3><p>1）物理层<br>作用：机械、电子、定时接口通道上的原始比特流传输<br>对应协议：IEEE 802.2,Internetwork<br>对应设备：网卡<br>2）数据链路层<br>作用：物理寻址，同时将比特流转变为逻辑传输路线<br>对应协议：PPTP、ARP、RARP<br>对应设备：交换机<br>3）网络层<br>作用：为网络设备提供逻辑地址，进行路由选择、分组转发<br>对应协议：IEEE 802.2,Internetwork<br>对应设备：网卡<br>4）传输层<br>作用：服务点编址、分段重组、流量控制、连接控制、差错控制<br>对应协议：TCP、UDP<br>对应设备：防火墙<br>5）会话层<br>作用：建立、维护、管理应用程序之间的会话<br>对应协议：SSL、TLS<br>6）表示层<br>作用：信息的语法语义以及之间的关系，如加密解密、转换翻译、压缩解压等<br>对应协议：IPX、LPP、XDP<br>7）应用层<br>作用：它是计算机用户以及各种应用程序与网络之间的接口<br>对应协议：HTTP、DNS、SMTP<br>对应设备：计算机设备</p>
+<h3 id="3-常见的网络攻击方式"><a href="#3-常见的网络攻击方式" class="headerlink" title="3 常见的网络攻击方式"></a>3 常见的网络攻击方式</h3><p>1）XSS（跨站脚本攻击）<br>攻击方式：在URL或者页面输入框中插入JavaScript代码<br>防范：1）设置httpOnly,禁止document.cookie操作<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）输入检查：在用户输入的时候进行格式检查；<br>2）CSRF（跨站伪造请求攻击）<br>攻击方式：攻击者通过一些技术手段欺骗用户的浏览器去访问一个自己曾经认证过的网站并执行一些操作（如发邮件，发消息，甚至财产操作如转账和购买商品）。主要是拿到了用户的登录态。<br>防范：1）检查 Referer 字段：这个字段用以标明请求来源于哪个地址。在处理敏感数据请求时，通常来说，Referer 字段应和请求的地址位于同一域名下<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）设置cookie属性的时候设置samesite用来限制第三方cookie减少风险，属性可以为stricit、lax、none<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）添加校验token。这种通常是表单中的一个数据项，服务器生成token并附加在表单上，其内容是一个伪乱数。当客户端通过表单提交请求时，这个伪乱数也一并提交上去以供校验。<br>3）SQL注入<br>攻击方式：服务器上的数据库运行非法的SQL语句，主要通过拼接的字符串形式<br>防范：1）使用参数化查询：使用预编译语句，预先编译的SQL语句，并且传入适当参数多次执行，由于没有拼接的过程，因此可以防止SQL注入的发生<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）设置cookie属性的时候设置samesite用来限制第三方cookie减少风险，属性可以为stricit、lax、none<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）添加校验token。这种通常是表单中的一个数据项，服务器生成token并附加在表单上，其内容是一个伪乱数。当客户端通过表单提交请求时，这个伪乱数也一并提交上去以供校验。</p>
+<h3 id="4-vue中diff算法的理解？"><a href="#4-vue中diff算法的理解？" class="headerlink" title="4 vue中diff算法的理解？"></a>4 vue中diff算法的理解？</h3><p>1）diff算法是虚拟DOM技术的必然产物，通过新旧虚拟DOM的对比，将变化的地方更新在真实的DOM上，另外，也需要diff高效的执行对比过程，从而降低时间复杂度<br>2）vue2中为了降低watcher的粒度，每一个组件只有一个watcher与之对应，只有引入diff才能高效的找到变化的地方<br>3）vue中diff执行的时刻是组件实例执行更新函数时，他会对比上一次渲染结果和新的渲染结果，这一过程叫补丁（patch）<br>4）diff过程整体遵循深度优先，同层比较的策略；两个节点之间会根据是否拥有子节点或者文本节点做出相应的操作。（思路为：如果他们都有文本节点并且不相等，那么将真实DOM的文本节点设置为新的虚拟节点的文本节点；如果oldVnode有子节点，而vnode没有，则删除真实节点的子节点；如果vnode有子节点而oldVnode没有，则将vnode的子节点真实变化之后添加到真实DOM上）；比较两组子节点是算法的重点。首先假设头尾相同做四次比对尝试，如果没有找到才按通用方式遍历查找，查找结束再按情况处理剩下的节点；借助key可以非常精准的找到相同的节点，因此整个patch过程会非常高效。</p>
+<h3 id="5-输入url发生什么？"><a href="#5-输入url发生什么？" class="headerlink" title="5 输入url发生什么？"></a>5 输入url发生什么？</h3><p>1）解析url，补全域名，然后进行DNS域名解析  </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;域名解析包括：先在浏览器dns缓存查看是否有对应域名的IP，没有的话查看操作系统dns缓存（比如window下的hosts文件），<br>没有的话，操作系统将域名发送本地dns域名服务器查询，如果没有的话本地域名服务器向根域名服务器发起请求，<br>根域名服务器返回com域的顶级域名服务器的地址，本地域名服务器向顶级域名服务器发起请求，返回权限域名服务器的地址，<br>本地域名服务器向权限域名服务器发起请求得到IP地址。本地域名服务器将得到的IP地址缓存起来同时发给操作系统，操作系统将ip地址缓存起来同时发给浏览器。至此浏览器拿到了IP地址。  </p>
+<p>2）客户端根据IP地址去寻找相应的服务器，主要是要知道主机的MAC地址；  </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;应用层下发数据给传输层，TCP协议会指定源端口号和目的端口号下发给网络层，网络层会将本机地址作为源地址，获取的IP地址作为目的地址，下发给数据链路层。<br>数据链路层的通信需要加入双方的MAC地址，目的地址需要分情况讨论，通过将IP地址与本机的子网掩码相比判断是否在同一个子网内，如果是的话就用ARP协议获得MAC地址，不是的话将请求转发给<br>网关，由它代为转发，此时同样可以通过ARP协议获取网关的MAC地址  </p>
+<p>3）与服务器进行TCP的三次握手；  </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第一次握手时，客户端向服务器发送一个SYN连接请求报文段，报文段的首部中SYN标志位置是1，序号字段是一个任选的随机数，此时客户端进程进入了SYN-SENT同步已发送状态；  </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第二次握手时，服务器端接收到客户端发送的SYN请求报文段后，服务器首相先为该连接分配TCP缓存和变量，然后向客户端发送SYN  ACK报文段，<br>报文段的首部中ACK和SYN的标志位都是1，确认号字段为客户端发送的序号加1，序号字段是服务器端产生的一个任选的随机数。此时服务器进入SYN-RCVD同步收到状态  </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第三次握手时，客户端接收到服务器的肯定应答后， 它也会为这次 TCP 连接分配缓存和变量，同时向服务器端发送一个确认，客户端进入ESTABLISHED已建立连接状态这时报文段中可以携带数据，如果不携带则不消耗序列号  </p>
+<p>三次握手原因：  为了防止已失效的连接请求报文段突然又传送到了服务端，因而产生错误.<br>具体例子：“已失效的连接请求报文段”的产生在这样一种情况下：client发出的第一个连接请求报文段并没有丢失，而是在某个网络结点长时间的滞留了，以致延误到连接释放以后的某个时间才到达server。本来这是一个早已失效的报文段。但server收到此失效的连接请求报文段后，就误认为是client再次发出的一个新的连接请求。<br>于是就向client发出确认报文段，同意建立连接。假设不采用“三次握手”，那么只要server发出确认，新的连接就建立了。由于现在client并没有发出建立连接的请求，因此不会理睬server的确认，也不会向server发送数据。但server却以为新的运输连接已经建立，并一直等待client发来数据。这样，server的很多资源就白白浪费掉了。采用“三次握手”的办法可以防止上述现象发生。例如刚才那种情况，client不会向server的确认发出确认。server由于收不到确认，就知道client并没有要求建立连接。”</p>
+<p>4）浏览器向服务器发送HTTP请求，服务器取出相应的资源并返回给浏览器  </p>
+<p>5）浏览器处理相应，渲染页面    </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）构建DOM树<br>        当浏览器接收到来自服务器响应的html文档后，会遍历文档节点，生成DOM树。注意：DOM树在构建的时候有可能被CSS和JS的加载而执行阻塞  </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）构建CSSOM树<br>        浏览器解析CSS文件并生成CSSOM树，css的解析与dom的解析同时进行；<br>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）构建渲染树<br>        通过DOM树和CSSOM规则树，浏览器就可以构建渲染树了，浏览器先从DOM树的根节点开始遍历每个可见节点，然后对每个可见节点找到适配的CSS样式并应用<br>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（4）渲染树布局<br>        确定节点对象在页面的确切大小和位置  </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（5）渲染树绘制  </p>
+<p>6）关闭TCP连接或继续保持连接  </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1)客户端进程停止发送数据，释放数据报文首部FIN=1,序列号为seq = u，此时客户端进入FIN-WAIT-1终止等待1状态。TCP规定，FIN报文段即使不携带数据，也要消耗一个序号。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）服务器收到连接释放报文，发出确认报文ACK=1，ack=u+1，并且带上自己的序列号seq=v，此时服务器端进入CLOSE-WAIT关闭等待状态。<br>    这时候处于半关闭状态，即客户端已经没有数据要发送了，但是服务器若发送数据，客户端依然要接受。这个状态还要持续一段时间，也就是整个CLOSE-WAIT状态持续的时间。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）客户端收到服务器的确认请求后，此时客户端就进入FIN-WAIT-2终止等待状态2，等待服务器发送连接释放报文（在这之前还需要接受服务器发送的最后的数据）。  </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（4）服务器将最后的数据发送完毕后，就向客户端发送连接释放报文，FIN=1，ack=u+1，序列号为seq=w，此时进入最后确认状态，等待客户端的确认<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（5）客户端收到服务器的连接释放报文后，必须发出确认，ACK=1，ack=w+1，而自己的序列号是seq=u+1，此时，客户端就进入了TIME-WAIT（时间等待）状态  </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（6）服务器只要收到了客户端发出的确认，立即进入CLOSED状态  </p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qzcsu/article/details/72861891?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522162834795916780262521269%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=162834795916780262521269&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-72861891.pc_search_download_positive&utm_term=TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B&spm=1018.2226.3001.4187">参考链接</a></p>
+<h3 id="6-简述promise"><a href="#6-简述promise" class="headerlink" title="6 简述promise"></a>6 简述promise</h3><p>Promise 对象用于表示一个异步操作的最终完成 (或失败)及其结果值<br>Promise构造函数接受一个函数作为参数，  该函数的两个参数分别是resolve和reject。<br>它们是两个函数，由 JavaScript 引擎提供，不用自己部署。<br>resolve函数的作用是，将Promise对象的状态从“未完成”变为“成功”（即从 pending 变为 resolved），在异步操作成功时调用，并将异步操作的结果，作为参数传递出去；<br>reject函数的作用是，将Promise对象的状态从“未完成”变为“失败”（即从 pending 变为 rejected），在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。<br>then方法可以接受两个回调函数作为参数。<br>第一个回调函数是Promise对象的状态变为resolved时调用，<br>第二个回调函数是Promise对象的状态变为rejected时调用。<br>其中，第二个函数是可选的，不一定要提供。这两个函数都接受Promise对象传出的值作为参数。</p>
+<h3 id="7-let、const、var的区别"><a href="#7-let、const、var的区别" class="headerlink" title="7 let、const、var的区别"></a>7 let、const、var的区别</h3><p>首先是let、const和var的区别：<br>1）不存在变量提升。即变量在声明之前不能被访问<br>2）同一个作用域内不能使用let重复声明相同的变量<br>3）存在暂时性死区<br>4）不再是全局对象的属性。使用var声明的变量、函数表达式等都是window对象的属性<br>let 和const的区别<br>const声明的值是一个常量，一旦声明不会改变（准确的说，const保证的不是变量的值不变，而是变量指向的那个指针不得改动）</p>
+<h3 id="8-this指向问题"><a href="#8-this指向问题" class="headerlink" title="8 this指向问题"></a>8 this指向问题</h3><p>1）在函数体中，非显式或隐式地简单调用时，在严格模式下，函数体内的this会绑定到Undefined上，非严格模式下则会被绑定到全局对象window上<br>2）用new方法调用构造函数时，构造函数内的this会绑定到新创建的对象上<br>3）一般通过call、bind、apply方法显式调用函数时，函数体内的this会绑定到指定参数的对象上<br>4）在箭头函数中，this指向是由外层（函数或全局）作用域决定的</p>
+<h3 id="9-es6模块和commonJs的区别"><a href="#9-es6模块和commonJs的区别" class="headerlink" title="9 es6模块和commonJs的区别"></a>9 es6模块和commonJs的区别</h3><p>1）加载原理：<br>commonJs第一次加载模块就会执行整个模块，再次用到是不会执行该模块而是从缓存中取；<br>es6是动态的去被加载模块中取值，不会缓存值<br>2）输出结果：<br>commonJS是值的拷贝，模块中的值不会影响已经加载的值<br>es6是值的引用，原来模块的改变会影响已经加载的值<br>3）this指向<br>commonjs指向当前模块，es6指向undefined</p>
+<h3 id="10-vuex的简单理解"><a href="#10-vuex的简单理解" class="headerlink" title="10 vuex的简单理解"></a>10 vuex的简单理解</h3><p>vuex是一种组件管理机制，将全局组件的共享状态抽离出来为一个store，以一个单例模式存在，应用任何一个组件都可以使用，vuex更改state中值的唯一途径是通过mutation，mutation需要commit触发，action实际触发的是mutation，其中mutation处理的是同步任务，action处理的是异步任务。</p>
+<h3 id="11-vue-router的实现原理"><a href="#11-vue-router的实现原理" class="headerlink" title="11 vue-router的实现原理"></a>11 vue-router的实现原理</h3><p>原理核心：更新视图但不重新请求页面<br>vue-router实现单页面路由跳转，提供了三种方式：hash、history、abstract模式。<br>1）hash模式原理：hash即浏览器url中#后面的内容，包含#,只改变#后面的部分，浏览器只会加载相应位置的内容，不会重新加载页面。<br>原理是：hash变化会触发window.onhashchange事件，假设我们在onhashchange事件中获得当前hash的值并根据hash值修改页面，达到前端路由的目的  </p>
+<p>2）history模式原理：hash模式看起来是比较丑的都带个#号，采取history模式就是我们平时看到的正常的连接形式，history模式是基于window.history的方法。  </p>
+<p>history的原理可以这么理解：首先要改变超链接，给每个超链接增加onclick方法，阻止默认的超链接跳转，改用history.pushState来修改浏览器中的url，并修改页面内容，<br>由于是通过history的api调整，所以并不会向后端发起请求也就达到了前端路由的目的。</p>
+<h3 id="12-谈谈http2-0的新特性"><a href="#12-谈谈http2-0的新特性" class="headerlink" title="12 谈谈http2.0的新特性"></a>12 谈谈http2.0的新特性</h3><p>1）二进制协议<br>在 HTTP/1.1 版中，报文的头信息必须是文本（ASCII编码），数据体可以是文本，也可以是二进制。HTTP/2 则是一个彻底的二进制协议，头信息和数据体都是二进制，并且统称为”帧”，可以分为头信息帧和数据帧。 帧的概念是它实现多路复用的基础<br>2）多路复用<br>HTTP/2 实现了多路复用，HTTP/2 仍然复用 TCP 连接，但是在一个连接里，客户端和服务器都可以同时发送多个请求或回 应，而且不用按照顺序一一发送，  这样就避免了”队头堵塞”的问题。<br>3）数据流<br>http2使用了数据流的概念，因为http/2的数据包不是按顺序发送到的，同一个连接里面连续的数据包可能属于不同的请求，因此必须要对数据包做标记，指出它属于哪个请求。http2将每个请求或回应得所有数据包称为一个数据流，每个数据流都有一个独一无二的编号。数据包发送的时候都必须标记数据流ID，用来区分是哪个数据流<br>4）头信息压缩<br>HTTP/2 实现了头信息压缩，由于 HTTP 1.1 协议不带有状态，每次请求都必须附上所有信息。所以，请求的很多字段都是 重复的，比如 Cookie 和 UserAgent ，一模一样的内容，每次请求都必须附带，这会浪费很多带宽，也影响速度。<br>HTTP/2 对这一点做了优化，引入了头信息压缩机制。一方面，头信息使用 gzip或 compress 压缩后再发送；另一方面， 客户端和服务器同时维护一张头信息表，所有字段都会存入这个表，生成一个索引号，以后就不发送同样字段了，只发送索引号，这样就能提高速度了。<br>5）服务器推送<br>http2允许服务器未经请求，主动向客户端发送资源，这叫服务器推送。使用服务器推送，提前给客户端推送必要的资源，这样就可以相对减少一些延迟时间。这里需要注意的是 http2 下服务器主动推送的是静态资源，和WebSocket 以及使用 SSE 等方式向客户端发送即时数据的推送是不同的。  </p>
+<h3 id="13-长轮询、短轮询"><a href="#13-长轮询、短轮询" class="headerlink" title="13 长轮询、短轮询"></a>13 长轮询、短轮询</h3><p>长短轮询的目的都是用于实现客户端与服务器端得一个即时通讯。  </p>
+<p>短轮询的基本思路是浏览器每隔一段时间就会向服务器发送http请求，服务器收到请求后不管是否有数据更新，都直接进行响应。这种方式实现的即时通信，本质上还是浏览器发送请求，服务器接受请求的一个过程，通<br>过让客户端不断的进行请求，使得客户端能够模拟实时地收到服务器端的数据的变化。  </p>
+<p>长轮询的基本思路时：首先由客户端向服务器发送请求，当服务器收到客户端发来的请求后，服务器端不会直接响应，而是先将这个请求挂起，然后判断服务器数据是否有更新，如果有更新则进行响应，如果一直没有数据，则到达一定的时间限制才返回。  </p>
+<p>优点是明显减少了很多不必要的 http 请求次数，相比之下节约了资源。长轮询的缺点在于，<br>连接挂起也会导致资源的浪费  </p>
+<h3 id="14-进程和线程区别"><a href="#14-进程和线程区别" class="headerlink" title="14 进程和线程区别"></a>14 进程和线程区别</h3><p>根本区别： 进程是操作系统资源分配的基本单位，而线程是任务调度和执行的基本单位。<br>在开销方面:每个进程都有独立的代码和数据空间，程序之间的切换有较大的开销；线程可以看作是轻量级的进程，同一类线程共享代码和数据空间，线程之间切换的开销小<br>所处环境：在操作作系统中能同时运行多个进程（程序）；而在同一个进程（程序）中有多个线程同时执行（通过CPU调度，在每个时间片中只有一个线程执行）<br>对于我们前端关注的就是浏览器的进程，包括：1）Browser进程，浏览器的主进程（负责协调、主控），只有一个，相当于浏览器的大脑<br>2）第三方插件进程<br>3）GPU进程<br>4）浏览器渲染进程<br>渲染进程中的主要常驻线程：<br>（1）GUI渲染线程<br>负责渲染浏览器界面，解析HTML，CSS，构建DOM树和RenderObject树，布局和绘制等。当界面需要重绘（Repaint）或由于某种操作引发回流(reflow)时，该线程就会执行。<br>（2）JS引擎线程<br>也称为JS内核，负责处理Javascript脚本程序。（例如V8引擎）JS引擎线程负责解析Javascript脚本，运行代码。</p>
+<p>JS引擎一直等待着任务队列中任务的到来，然后加以处理，浏览器无论什么时候都只有一个JS线程在运行JS程序，JS是单线程的。</p>
+<p>PS：GUI渲染线程与JS引擎线程是互斥的，当JS引擎执行时GUI线程会被挂起，GUI更新会被保存在一个队列中等到JS引擎空闲时立即被执行;如果JS执行的时间过长，会导致页面渲染被阻塞。  </p>
+<p>（3）事件触发线程<br>接受浏览器里面的操作事件响应。如在监听到鼠标、键盘等事件的时候， 如果有事件处理函数，就将对应的任务压入任务队列（添加到待处理队列的队尾），等待JS引擎的处理。事件触发线程管理着一个任务队列。</p>
+<p>（4）定时触发器线程<br>setInternal与setTimeout所在线程<br>浏览器定时计数器并不是由JavaScript引擎计数的,（因为JavaScript引擎是单线程的, 如果处于阻塞线程状态就会影响记计时的准确）<br>因此通过单独线程来计时并触发定时（计时完毕后，添加到事件队列中，等待JS引擎空闲后执行）<br>注意，W3C在HTML标准中规定，规定要求setTimeout中低于4ms的时间间隔算为4ms。</p>
+<p>（5）异步http请求线程<br>在XMLHttpRequest在连接后是通过浏览器新开一个线程请求<br>将检测到状态变更时，如果设置有回调函数，异步线程就产生状态变更事件，将这个回调再放入事件队列中。再由JavaScript引擎执行。</p>
+<h3 id="15-get和post的区别"><a href="#15-get和post的区别" class="headerlink" title="15 get和post的区别"></a>15 get和post的区别</h3><p>W3C标准解释：<br>1）GET请求在URL中传送的参数是有长度限制的，而POST么有<br>2）对参数的数据类型，GET只接受ASCII字符，而POST没有限<br>3）GET比POST更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感信息<br>4）GET参数通过URL传递，POST放在Request body中。</p>
+<p>其实，HTTP的底层是TCP/IP。所以GET和POST的底层也是TCP/IP，也就是说，GET/POST都是TCP链接。GET和POST能做的事情是一样一样的。你要给GET加上request body，给POST带上url参数，技术上是完全行的通的。<br>GET和POST本质上就是TCP链接，并无差别。但是由于HTTP的规定和浏览器/服务器的限制，导致他们在应用过程中体现出一些不同。 </p>
+<p>还有一个区别：GET产生一个TCP数据包；POST产生两个TCP数据包<br>对于GET方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据）；<br>而对于POST，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）  </p>
+<h3 id="16-vue-router的钩子函数"><a href="#16-vue-router的钩子函数" class="headerlink" title="16 vue-router的钩子函数"></a>16 vue-router的钩子函数</h3><p>vue-router一共提供了三类钩子函数来实现路由守卫<br>1 全局钩子函数（beforeEach、afterEach）<br>2 路由共享的钩子函数（beforeEnter）<br>3 组件内钩子函数（beforeRouterEnter、beforeRouterUpdate、beforeRouterLeave）</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/dengyao-blogs/p/11576614.html">参考博客</a>  </p>
+<h3 id="17-设计模式"><a href="#17-设计模式" class="headerlink" title="17 设计模式"></a>17 设计模式</h3><p>1）单例模式<br>保证一个类仅有一个实例，并提供一个访问它的全局访问点     </p>
+<p>实现方法：先判断实例存在与否，如果存在则直接返回，如果不存在就创建了再返回，这就确保了一个类只有一个实例对象。<br>适用场景：一个单一对象。比如：弹窗，无论点击多少次，弹窗只应该被创建一次。  </p>
+<p>（2）发布/订阅模式<br>定义：又叫观察者模式,它定义对象间的一种一对多的依赖关系,当一个对象的状态发生改变时,所有依赖于它的对象都将得到通知。</p>
+<p>场景：订阅感兴趣的专栏和公众号。</p>
+<p>（3）策略模式<br>定义：将一个个算法（解决方案）封装在一个个策略类中。</p>
+<p>优点：</p>
+<p>策略模式可以避免代码中的多重判断条件。<br>策略模式很好的体现了开放-封闭原则，将一个个算法（解决方案）封装在一个个策略类中。便于切换，理解，扩展。<br>策略中的各种算法可以重复利用在系统的各个地方，避免复制粘贴。<br>策略模式在程序中或多或少的增加了策略类。但比堆砌在业务逻辑中要清晰明了。<br>违反最少知识原则，必须要了解各种策略类，才能更好的在业务中应用。<br>应用场景：根据不同的员工绩效计算不同的奖金；表单验证中的多种校验规则。</p>
+<p>（4）代理模式</p>
+<p>定义：为一个对象提供一个代用品或占位符，以便控制对它的访问。</p>
+<p>应用场景：图片懒加载（先通过一张loading图占位，然后通过异步的方式加载图片，等图片加载好了再把完成的图片加载到img标签里面。）</p>
+<p>（5）中介者模式</p>
+<p>定义：通过一个中介者对象，其他所有相关对象都通过该中介者对象来通信，而不是互相引用，当其中的一个对象发生改变时，只要通知中介者对象就可以。可以解除对象与对象之间的紧耦合关系。</p>
+<p>应用场景： 例如购物车需求，存在商品选择表单、颜色选择表单、购买数量表单等等，都会触发change事件，那么可以通过中介者来转发处理这些事件，实现各个事件间的解耦，仅仅维护中介者对象即可。</p>
+<p>（6）装饰者模式</p>
+<p>定义：在不改变对象自身的基础上，在程序运行期间给对象动态的添加方法。</p>
+<p>应用场景： 有方法维持不变，在原有方法上再挂载其他方法来满足现有需求；函数的解耦，将函数拆分成多个可复用的函数，再将拆分出来的函数挂载到某个函数上，实现相同的效果但增强了复用性。</p>
+<h3 id="18-watch和computer的区别？"><a href="#18-watch和computer的区别？" class="headerlink" title="18 watch和computer的区别？"></a>18 watch和computer的区别？</h3><p>计算属性computed:<br>1)支持缓存，只有依赖数据发生变化，才会重新进行计算；<br>2）在computed中，属性都有一个get和set方法，当数据变化时，调用set方法；如果computed属性属性值是函数，默认走get方法；函数的返回值就是属性的属性值；<br>3）computed不支持异步操作，当computed内有异步操作时无效，无法监听数据的变化；<br>监听属性watch:<br>1)不支持缓存，支持异步操作；<br>2）监听函数接受两个参数，第一个参数值是最新的值，第二个是输入之前的值；<br>3）监听数据必须是data中声明过或者父组件传递过来的props中的数据</p>
+<h3 id="19-vue中key的作用"><a href="#19-vue中key的作用" class="headerlink" title="19 vue中key的作用"></a>19 vue中key的作用</h3><p>vue的作用是为了更高效的更新虚拟DOM，相当于给数组中每个元素都绑定唯一的key，如果某个key对应的元素发生变化，直接更新对应的dom，不用全部更新一遍<br>优点：1）准确。key的特性是唯一性，如果不加key的话，那么vue会选择复用相同类型的节点，导致之前的节点状态被保留下来，会产生一系列bug<br>2）快速。在元素list一直变化的情况下，key值设置唯一时，能很精确找到/找不到变更元素，若使用index标记，要遍历vnode，时间长。</p>
+<h3 id="20-说一说垃圾回收机制"><a href="#20-说一说垃圾回收机制" class="headerlink" title="20 说一说垃圾回收机制"></a>20 说一说垃圾回收机制</h3><p>垃圾回收是一种自动的内存管理机制，当计算机上的动态内存不再需要时，自动释放，让出内存。程序是运行在内存里，当声明一个变量，定义一个函数时都是需要内存的，内存是有限的，所以需要垃圾回收。<br>垃圾回收的方式：引用计数和标记清除。<br>引用计数的策略是对象有没有其他对象引用，但是有个问题就是循环引用。<br>标记清除：js中有个全局对象，在浏览器中就是window,定期的垃圾回收就是从这个全局对象开始，找所有从这个全局对象开始引用的对象，再找这个对象引用的对象，对这些活着的对象进行标记，这就是标记阶段。清除阶段就是清除那些没有被标记的对象。</p>
+<h3 id="21-浏览器解析html全过程"><a href="#21-浏览器解析html全过程" class="headerlink" title="21 浏览器解析html全过程"></a>21 浏览器解析html全过程</h3><p>DOM文档通常加载的步骤：<br>1.解析HTML结构<br>2.加载外部脚本和样式表文件<br>3.解析并执行脚本代码<br>4.DOM树构建完成<br>5.加载图片等外部资源<br>6.页面加载完毕  </p>
+<p>注意：1）css不会阻塞html文件的解析，但是会阻塞dom的渲染<br>2）  css加载会阻塞后面js语句的执行。因为js可能会去获取或改变元素的样式，所以为了浏览器不重复渲染，等所有的css加载完成后再执行js</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u014168594/article/details/52196460">参考资料</a></p>
+<h3 id="22-浏览器缓存"><a href="#22-浏览器缓存" class="headerlink" title="22 浏览器缓存"></a>22 浏览器缓存</h3><p>1）浏览器首次加载资源成功时，服务器返回200状态码，此时浏览器不仅将资源下载下来，而且把响应请求的header一并保存，里面有个date属性非常重要；<br>2）下一次加载资源时，首先是经过强缓存的处理，cache-control的优先级高，比如cache-control：no-cache 那就直接到协商缓存的步骤，如果是cache-control：max-age=xxx ，就先比较当前时间和上一次200时的<br>时间差，如果没有超过那就命中强缓存，不发请求直接从本地缓存读取该文件。如果没有cache-control会读取expires的值来对比是否过期。过期的话就会进入下一个阶段 协商缓存<br>3）当资源过期时，发现资源具有Etag声明，则再次向服务器请求时带上头if-none-match，web服务器收到请求后发现有头if-none-match则与请求资源的相应的字符串对比，决定返回200还是304；<br>4）当资源过期时，发现资源具有Last-modified声明，再次请求时带上if-modified-since，web服务器收到请求后发现有if-modified-since，则与请求资源的最后修改时间进行比对确定返回200还是304  </p>
+<h3 id="23-https加密过程"><a href="#23-https加密过程" class="headerlink" title="23 https加密过程"></a>23 https加密过程</h3><p>1）服务器生成一个公钥和私钥，公钥发给第三方机构（CA）<br>2）CA把公钥进行MD5加密，生成数字签名，再把数字签名用CA的私钥进行加密，生成数字证书，CA会把数字证书给服务器，服务器拿到之后会给浏览器<br>3）浏览器对数字证书进行验证，首先，浏览器本身会内置CA公钥，会用这个公钥对数字证书解密，验证是否是信任的CA生成的数字证书<br>4）验证成功之后，客户端会随机生成对称加密的密钥，用服务器公钥进行加密传给服务器<br>5）服务器用私钥解密，后续都是通过对称密钥进行加密解密，完成整个HTTPS流程。</p>
+<h3 id="24-token"><a href="#24-token" class="headerlink" title="24 token?"></a>24 token?</h3><p>Token其实就是访问资源的凭证。<br>一般是用户通过用户名和密码登陆成功后，服务器将登陆凭证做数字签名，加密之后得到的字符串作为token。<br>他在用户登录成功之后会返回给客户端，客户端主要有这么几种存储方式：<br>1.存储在localStorage中，每次调用接口时都把它当成一个字段传给后台<br>2.存储在cookie中，让他自动发送，不过缺点就是不能跨域<br>3.拿到之后存储在localStorage中，每次调用接口的时候放在HTTP请求头的Authorization字段里，<br>所以token在客户端一般存放于localStorage,cookie,sessionStorage中 </p>
+<p>将token存放在webStorage中，可以通过同域的js访问，这会导致很容易受到xss攻击<br>将token存储在cookie中可以指定httponly，来防止被js读取，缺点是不符合Restful最佳实践，容易受到CSRF攻击  </p>
+<h3 id="25-http状态码"><a href="#25-http状态码" class="headerlink" title="25 http状态码"></a>25 http状态码</h3><p>大概分类：1**&nbsp;&nbsp;&nbsp;&nbsp;信息，服务器收到请求，需要请求者继续执行<br>2**&nbsp;&nbsp;&nbsp;&nbsp;成功<br>3** &nbsp;&nbsp;&nbsp;&nbsp;重定向<br>4** &nbsp;&nbsp;&nbsp;&nbsp;客户端错误<br>5** &nbsp;&nbsp;&nbsp;&nbsp;服务器错误<br>100 Continue 继续。<br>101 切换协议<br>200 Ok 请求成功<br>201 created 已创建<br>202 Accepted已接受<br>203 Non-Authoritative Information 非授权信息。请求成功。但返回的meta信息不在原始的服务器，而是一个副本<br>204 No Content 无内容<br>205 Reset Content 重置内容<br>206 partial Content 部分内容<br>300 Multiple Choices 多种选择，请求的资源包括多个位置<br>301 永久重定向<br>302 临时重定向<br>304 未修改<br>305 Use Proxy 使用代理<br>306 Unused 已经被废弃的HTTP状态码<br>307 临时重定向。与302类似。使用GET请求重定向<br>400 bad request 客户端语法错误<br>401 unauthorized 请求要求用户的身份认证<br>402 保留，将来使用<br>403 Forbidden 服务器理解但是拒绝执行<br>404 资源无法找到<br>500 服务器内部错误，无法完成请求<br>501 服务器不支持请求的功能，无法完成请求<br>503 由于超载或系统维护，服务器暂时的无法处理客户端的请求。延时的长度可包含在服务器的Retry-After头信息中<br>504 Gateway Time-out 充当网关或代理的服务器，未及时从远端服务器获取请求<br>505 HTTP Version not supported  服务器不支持请求的HTTP协议的版本，无法完成处理</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/26/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/" data-id="ckv62ysru00b1lotj4wm41gz3" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-力扣1838-最高频元素的频数" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/07/19/%E5%8A%9B%E6%89%A31838-%E6%9C%80%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0%E7%9A%84%E9%A2%91%E6%95%B0/" class="article-date">
@@ -103,7 +382,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/19/%E5%8A%9B%E6%89%A31838-%E6%9C%80%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0%E7%9A%84%E9%A2%91%E6%95%B0/" data-id="ckr9zg4yz002f9gtj9gvw4syo" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/07/19/%E5%8A%9B%E6%89%A31838-%E6%9C%80%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0%E7%9A%84%E9%A2%91%E6%95%B0/" data-id="ckv62yspb002mlotj34pu9aht" class="article-share-link">分享</a>
       
       
       
@@ -148,7 +427,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/03/%E5%8A%9B%E6%89%A3143-%E9%87%8D%E6%8E%92%E9%93%BE%E8%A1%A8/" data-id="ckr9zg4yw00259gtj6d770d09" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/06/03/%E5%8A%9B%E6%89%A3143-%E9%87%8D%E6%8E%92%E9%93%BE%E8%A1%A8/" data-id="ckv62ysp80029lotj99hi5qkw" class="article-share-link">分享</a>
       
       
       
@@ -196,7 +475,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/02/%E7%89%9B%E5%AE%A2-%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A5%87%E5%81%B6%E9%87%8D%E6%8E%92/" data-id="ckr9zg50j006w9gtj7jm99rzu" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/06/02/%E7%89%9B%E5%AE%A2-%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A5%87%E5%81%B6%E9%87%8D%E6%8E%92/" data-id="ckv62ysr40072lotjazyu6zii" class="article-share-link">分享</a>
       
       
       
@@ -244,7 +523,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/02/%E7%89%9B%E5%AE%A2-%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/" data-id="ckr9zg50d006d9gtjdqn06mzp" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/06/02/%E7%89%9B%E5%AE%A2-%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/" data-id="ckv62ysqy006llotj7k8m5b4w" class="article-share-link">分享</a>
       
       
       
@@ -291,7 +570,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/31/%E7%89%9B%E5%AE%A217-%E5%88%A4%E6%96%AD%E4%BA%8C%E5%8F%89%E6%A0%91%E6%98%AF%E5%90%A6%E4%B8%BA%E6%90%9C%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91%E5%92%8C%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckr9zg50n00789gtjfay09yia" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/31/%E7%89%9B%E5%AE%A217-%E5%88%A4%E6%96%AD%E4%BA%8C%E5%8F%89%E6%A0%91%E6%98%AF%E5%90%A6%E4%B8%BA%E6%90%9C%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91%E5%92%8C%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckv62ysr8007dlotj9sqm2bao" class="article-share-link">分享</a>
       
       
       
@@ -339,200 +618,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/31/%E7%89%9B%E5%AE%A215-%E9%93%BE%E8%A1%A8%E5%86%85%E6%8C%87%E5%AE%9A%E5%8C%BA%E9%97%B4%E5%8F%8D%E8%BD%AC/" data-id="ckr9zg50m00749gtj7bz0ano5" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-牛客16-合并区间" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/05/31/%E7%89%9B%E5%AE%A216-%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/" class="article-date">
-  <time datetime="2021-05-31T01:51:55.000Z" itemprop="datePublished">2021-05-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%8E%92%E5%BA%8F/">排序</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/31/%E7%89%9B%E5%AE%A216-%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/">牛客16--合并区间</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/69f4e5b7ad284a478777cb2a17fb5e6a?tpId=117&&tqId=37737&&companyId=665&rp=1&ru=/company/home/code/665&qru=/ta/job-code-high/question-ranking">牛客16–合并区间</a></p>
-<p>给出一组区间，请合并所有重叠的区间。<br>请保证合并后的区间按区间起点升序排列。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：[[10,30],[20,60],[80,100],[150,180]]</span><br><span class="line">返回值：[[10,60],[80,100],[150,180]]</span><br></pre></td></tr></table></figure>
-<p>代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"> * function Interval(a, b)&#123;</span><br><span class="line"> *   this.start &#x3D; a || 0;</span><br><span class="line"> *   this.end &#x3D; b || 0;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * </span><br><span class="line"> * @param intervals Interval类一维数组 </span><br><span class="line"> * @return Interval类一维数组</span><br><span class="line"> *&#x2F;</span><br><span class="line">function merge( intervals ) &#123;</span><br><span class="line">    &#x2F;&#x2F; write code here</span><br><span class="line">    &#x2F;&#x2F;这种肯定是对的</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    if(!intervals.length)&#123;</span><br><span class="line">        return []</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F; let len &#x3D; intervals.length;</span><br><span class="line">    intervals.sort((a,b)&#x3D;&gt;a.start-b.start)</span><br><span class="line">    let prev &#x3D; intervals[0];</span><br><span class="line">    for(let i &#x3D; 1;i  &lt;intervals.length;i++)&#123;</span><br><span class="line">        let cur &#x3D; intervals[i];</span><br><span class="line">        if(prev.end &gt;&#x3D; cur.start)&#123;</span><br><span class="line">            prev.end &#x3D; Math.max(prev.end,cur.end)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            res.push(prev);</span><br><span class="line">            prev &#x3D; cur</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    res.push(prev)</span><br><span class="line">    return res;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;第二种</span><br><span class="line">&#x2F;&#x2F;     if (intervals.length &lt;&#x3D; 0) &#123;return intervals&#125;</span><br><span class="line">&#x2F;&#x2F;     intervals.sort(function(a,b)&#123;return a.start-b.start&#125;);</span><br><span class="line">&#x2F;&#x2F;     let res &#x3D; [];</span><br><span class="line">&#x2F;&#x2F;     res.push(intervals.shift());</span><br><span class="line">&#x2F;&#x2F;     while(intervals.length)&#123;</span><br><span class="line">&#x2F;&#x2F;         if(res[res.length-1].end &gt;&#x3D; intervals[0].start)&#123;</span><br><span class="line">&#x2F;&#x2F;             if (res[res.length-1].end &lt; intervals[0].end)&#123;</span><br><span class="line">&#x2F;&#x2F;                 res[res.length-1].end &#x3D; intervals[0].end;</span><br><span class="line">&#x2F;&#x2F;             &#125;</span><br><span class="line">&#x2F;&#x2F;             intervals.shift();</span><br><span class="line">&#x2F;&#x2F;         &#125;else&#123;</span><br><span class="line">&#x2F;&#x2F;             res.push(intervals.shift());</span><br><span class="line">&#x2F;&#x2F;         &#125;</span><br><span class="line">         </span><br><span class="line">&#x2F;&#x2F;     &#125;</span><br><span class="line">&#x2F;&#x2F;     return res;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    merge : merge</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/31/%E7%89%9B%E5%AE%A216-%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/" data-id="ckr9zg50m00769gtj8jwxan9y" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-牛客14-二叉树根节点到叶子节点的所有路径和" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/05/30/%E7%89%9B%E5%AE%A214-%E4%BA%8C%E5%8F%89%E6%A0%91%E6%A0%B9%E8%8A%82%E7%82%B9%E5%88%B0%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84%E6%89%80%E6%9C%89%E8%B7%AF%E5%BE%84%E5%92%8C/" class="article-date">
-  <time datetime="2021-05-30T03:18:06.000Z" itemprop="datePublished">2021-05-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/30/%E7%89%9B%E5%AE%A214-%E4%BA%8C%E5%8F%89%E6%A0%91%E6%A0%B9%E8%8A%82%E7%82%B9%E5%88%B0%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84%E6%89%80%E6%9C%89%E8%B7%AF%E5%BE%84%E5%92%8C/">牛客14--二叉树根节点到叶子节点的所有路径和</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/185a87cd29eb42049132aed873273e83?tpId=117&&tqId=37715&&companyId=665&rp=1&ru=/company/home/code/665&qru=/ta/job-code-high/question-ranking">牛客14–二叉树根节点到叶子节点的所有路径和</a></p>
-<p>给定一个仅包含数字0−9 的二叉树，每一条从根节点到叶子节点的路径都可以用一个数字表示。</p>
-<p>例如根节点到叶子节点的一条路径是1- 2- 3,那么这条路径就用123 来代替。<br>找出根节点到叶子节点的所有路径表示的数字之和</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：&#123;1,0&#125;</span><br><span class="line">返回值：10</span><br></pre></td></tr></table></figure>
-<p>代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"> * function TreeNode(x) &#123;</span><br><span class="line"> *   this.val &#x3D; x;</span><br><span class="line"> *   this.left &#x3D; null;</span><br><span class="line"> *   this.right &#x3D; null;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line">  * </span><br><span class="line">  * @param root TreeNode类 </span><br><span class="line">  * @return int整型</span><br><span class="line">  *&#x2F;</span><br><span class="line">function sumNumbers( root ) &#123;</span><br><span class="line">    &#x2F;&#x2F; write code here</span><br><span class="line">    &#x2F;&#x2F;分成两步，先用递归求出二叉树的所有路径</span><br><span class="line">    &#x2F;&#x2F;然后求和</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    let dfs &#x3D; function(root,path)&#123;</span><br><span class="line">        if(!root)&#123;</span><br><span class="line">            return null</span><br><span class="line">        &#125;;</span><br><span class="line">        path +&#x3D; root.val;</span><br><span class="line">        if(root.left &#x3D;&#x3D; null &amp;&amp; root.right &#x3D;&#x3D; null)&#123;</span><br><span class="line">            res.push(path)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            dfs(root.left,path);</span><br><span class="line">            dfs(root.right,path)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    dfs(root,&#39;&#39;)</span><br><span class="line">    let sum &#x3D; 0;</span><br><span class="line">    for(let i of res)&#123;</span><br><span class="line">        sum +&#x3D; Number(i)</span><br><span class="line">    &#125;</span><br><span class="line">    return sum</span><br><span class="line">&#125;</span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    sumNumbers : sumNumbers</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/30/%E7%89%9B%E5%AE%A214-%E4%BA%8C%E5%8F%89%E6%A0%91%E6%A0%B9%E8%8A%82%E7%82%B9%E5%88%B0%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84%E6%89%80%E6%9C%89%E8%B7%AF%E5%BE%84%E5%92%8C/" data-id="ckr9zg50l00719gtj737octnj" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-牛客-判断一个链表是否为回文结构" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/05/30/%E7%89%9B%E5%AE%A2-%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E4%B8%BA%E5%9B%9E%E6%96%87%E7%BB%93%E6%9E%84/" class="article-date">
-  <time datetime="2021-05-30T03:14:30.000Z" itemprop="datePublished">2021-05-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E9%93%BE%E8%A1%A8/">链表</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/30/%E7%89%9B%E5%AE%A2-%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E4%B8%BA%E5%9B%9E%E6%96%87%E7%BB%93%E6%9E%84/">牛客--判断一个链表是否为回文结构</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/3fed228444e740c8be66232ce8b87c2f?tpId=117&&tqId=37813&&companyId=665&rp=1&ru=/company/home/code/665&qru=/ta/job-code-high/question-ranking">牛客–判断一个链表是否为回文结构</a></p>
-<p>给定一个链表，请判断该链表是否为回文结构。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：[1,2,2,1]</span><br><span class="line">返回值：true</span><br></pre></td></tr></table></figure>
-<p>代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"> * function ListNode(x)&#123;</span><br><span class="line"> *   this.val &#x3D; x;</span><br><span class="line"> *   this.next &#x3D; null;</span><br><span class="line"> * &#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * </span><br><span class="line"> * @param head ListNode类 the head</span><br><span class="line"> * @return bool布尔型</span><br><span class="line"> *&#x2F;</span><br><span class="line">function isPail( head ) &#123;</span><br><span class="line">    &#x2F;&#x2F; write code here</span><br><span class="line">    let res&#x3D;  [];</span><br><span class="line">    let cur &#x3D; head;</span><br><span class="line">    while(cur)&#123;</span><br><span class="line">        res.push(cur.val);</span><br><span class="line">        cur &#x3D; cur.next</span><br><span class="line">    &#125;;</span><br><span class="line">    let start &#x3D; 0;</span><br><span class="line">    let end &#x3D; res.length-1;</span><br><span class="line">    while(start &lt; end)&#123;</span><br><span class="line">        if(res[start] &#x3D;&#x3D; res[end])&#123;</span><br><span class="line">            start++;</span><br><span class="line">            end--</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            return false</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return true</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    isPail : isPail</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/30/%E7%89%9B%E5%AE%A2-%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E4%B8%BA%E5%9B%9E%E6%96%87%E7%BB%93%E6%9E%84/" data-id="ckr9zg50700609gtjh9lg21e2" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-牛客12-矩阵的最小路径和" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/05/30/%E7%89%9B%E5%AE%A212-%E7%9F%A9%E9%98%B5%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/" class="article-date">
-  <time datetime="2021-05-30T02:32:25.000Z" itemprop="datePublished">2021-05-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/30/%E7%89%9B%E5%AE%A212-%E7%9F%A9%E9%98%B5%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/">牛客12--矩阵的最小路径和</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/7d21b6be4c6b429bb92d219341c4f8bb?tpId=117&&tqId=37823&&companyId=665&rp=1&ru=/company/home/code/665&qru=/ta/job-code-high/question-ranking">牛客12–矩阵的最小路径和</a></p>
-<p>给定一个 n * m 的矩阵 a，从左上角开始每次只能向右或者向下走，最后到达右下角的位置，路径上所有的数字累加起来就是路径和，输出所有的路径中最小的路径和。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：[[1,3,5,9],[8,1,3,4],[5,0,6,1],[8,8,4,0]]</span><br><span class="line">返回值：12</span><br></pre></td></tr></table></figure>
-<p>代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * </span><br><span class="line"> * @param matrix int整型二维数组 the matrix</span><br><span class="line"> * @return int整型</span><br><span class="line"> *&#x2F;</span><br><span class="line">function minPathSum( matrix ) &#123;</span><br><span class="line">    &#x2F;&#x2F; write code here</span><br><span class="line">    let row &#x3D; matrix.length;</span><br><span class="line">    let col &#x3D; matrix[0].length;</span><br><span class="line">    let dp &#x3D; new Array(row);</span><br><span class="line">    for(let i &#x3D; 0;i &lt; row;i++)&#123;</span><br><span class="line">        dp[i] &#x3D; new Array(col)</span><br><span class="line">    &#125;;</span><br><span class="line">    dp[0][0] &#x3D; matrix[0][0]</span><br><span class="line">    for(let i &#x3D; 0;i &lt; row;i++)&#123;</span><br><span class="line">        for(let j &#x3D; 0;j &lt; col;j++)&#123;</span><br><span class="line">            if(i &#x3D;&#x3D; 0 &amp;&amp; j&#x3D;&#x3D; 0)&#123;</span><br><span class="line">                continue</span><br><span class="line">            &#125;else if(i &#x3D;&#x3D; 0)&#123;</span><br><span class="line">                dp[i][j] &#x3D; dp[i][j-1] + matrix[0][j]</span><br><span class="line">            &#125;else if(j &#x3D;&#x3D; 0)&#123;</span><br><span class="line">                dp[i][j] &#x3D; dp[i-1][j] + matrix[i][0]</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                dp[i][j] &#x3D; Math.min(dp[i-1][j],dp[i][j-1]) + matrix[i][j]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    return dp[row-1][col-1]</span><br><span class="line">&#125;</span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    minPathSum : minPathSum</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/30/%E7%89%9B%E5%AE%A212-%E7%9F%A9%E9%98%B5%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/" data-id="ckr9zg50k006z9gtj3gbkhp8z" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/05/31/%E7%89%9B%E5%AE%A215-%E9%93%BE%E8%A1%A8%E5%86%85%E6%8C%87%E5%AE%9A%E5%8C%BA%E9%97%B4%E5%8F%8D%E8%BD%AC/" data-id="ckv62ysr60079lotj1189hkcl" class="article-share-link">分享</a>
       
       
       
@@ -559,7 +645,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title categories">分类</h3>
     <div class="widget" id="categories">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/ES6/">ES6</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%87%BD%E6%95%B0/">函数</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%9F%BA%E7%A1%80/">基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%AF%B9%E8%B1%A1/">对象</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98/">异步问题</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">排序算法</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a><span class="category-list-count">103</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/">其他</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%88%86%E5%86%B6%E9%80%92%E5%BD%92/">分冶递归</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%8E%92%E5%BA%8F/">排序</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%A0%88/">栈</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/">栈和队列</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%B7%B1%E5%BA%A6%E6%90%9C%E7%B4%A2-%E5%9B%9E%E6%BA%AF/">深度搜索/回溯</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E9%93%BE%E8%A1%A8/">链表</a><span class="category-list-count">20</span></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/ES6/">ES6</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%87%BD%E6%95%B0/">函数</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%9F%BA%E7%A1%80/">基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%AF%B9%E8%B1%A1/">对象</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98/">异步问题</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">排序算法</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a><span class="category-list-count">103</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%88%86%E6%B3%95/">二分法</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%85%B6%E4%BB%96/">其他</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%88%86%E5%86%B6%E9%80%92%E5%BD%92/">分冶递归</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%9B%9E%E6%BA%AF%E6%B3%95/">回溯法</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%8E%92%E5%BA%8F/">排序</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%A0%88/">栈</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/">栈和队列</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%B7%B1%E5%BA%A6%E6%90%9C%E7%B4%A2-%E5%9B%9E%E6%BA%AF/">深度搜索/回溯</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E9%93%BE%E8%A1%A8/">链表</a><span class="category-list-count">20</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/">常见资料整理</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/js/">js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/%E5%85%B6%E4%BB%96/">其他</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a><span class="category-list-count">1</span></li></ul></li></ul>
     </div>
   </div>
 
@@ -573,23 +659,23 @@
       <ul>
         
           <li>
+            <a href="/2021/10/25/JS%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/">JS设计模式学习</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E6%96%B9%E6%B3%95/">计算机网络--自顶向下方法</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/27/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%861/">常见资料整理1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/26/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/">常见资料整理</a>
+          </li>
+        
+          <li>
             <a href="/2021/07/19/%E5%8A%9B%E6%89%A31838-%E6%9C%80%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0%E7%9A%84%E9%A2%91%E6%95%B0/">力扣1838--最高频元素的频数</a>
-          </li>
-        
-          <li>
-            <a href="/2021/06/03/%E5%8A%9B%E6%89%A3143-%E9%87%8D%E6%8E%92%E9%93%BE%E8%A1%A8/">力扣143--重排链表</a>
-          </li>
-        
-          <li>
-            <a href="/2021/06/02/%E7%89%9B%E5%AE%A2-%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A5%87%E5%81%B6%E9%87%8D%E6%8E%92/">牛客--链表的奇偶重排</a>
-          </li>
-        
-          <li>
-            <a href="/2021/06/02/%E7%89%9B%E5%AE%A2-%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/">牛客--括号生成</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/31/%E7%89%9B%E5%AE%A217-%E5%88%A4%E6%96%AD%E4%BA%8C%E5%8F%89%E6%A0%91%E6%98%AF%E5%90%A6%E4%B8%BA%E6%90%9C%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91%E5%92%8C%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91/">牛客17--判断二叉树是否为搜索二叉树和完全二叉树</a>
           </li>
         
       </ul>
@@ -601,7 +687,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title archive">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">40</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">27</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">40</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">27</span></li></ul>
     </div>
   </div>
 

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>常见资料整理1 | Welcome To My Learning Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1 js数组扁平化123456789101112131415161718191 递归实现function flat1(arr)&amp;#123;    let res &#x3D; [];    for(let i &#x3D; 0;i &lt; arr.length;i++&gt;)&amp;#123;        if(Array.isArray(arr[i]))&amp;#123;            res">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常见资料整理1">
+<meta property="og:url" content="http://example.com/2021/08/27/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%861/index.html">
+<meta property="og:site_name" content="Welcome To My Learning Blog">
+<meta property="og:description" content="1 js数组扁平化123456789101112131415161718191 递归实现function flat1(arr)&amp;#123;    let res &#x3D; [];    for(let i &#x3D; 0;i &lt; arr.length;i++&gt;)&amp;#123;        if(Array.isArray(arr[i]))&amp;#123;            res">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-27T07:40:03.000Z">
+<meta property="article:modified_time" content="2021-09-26T02:38:45.741Z">
+<meta property="article:author" content="jianjian">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/categories">分类</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Welcome To My Learning Blog</a>
+      </h1>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-常见资料整理1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/08/27/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%861/" class="article-date">
+  <time datetime="2021-08-27T07:40:03.000Z" itemprop="datePublished">2021-08-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/">常见资料整理</a>►<a class="article-category-link" href="/categories/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/js/">js</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      常见资料整理1
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h5 id="1-js数组扁平化"><a href="#1-js数组扁平化" class="headerlink" title="1 js数组扁平化"></a>1 js数组扁平化</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1 递归实现</span><br><span class="line">function flat1(arr)&#123;</span><br><span class="line">    let res &#x3D; [];</span><br><span class="line">    for(let i &#x3D; 0;i &lt; arr.length;i++&gt;)&#123;</span><br><span class="line">        if(Array.isArray(arr[i]))&#123;</span><br><span class="line">            res&#x3D;  res.concat(flat1(arr[i]))</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            res.push(arr[i])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return res</span><br><span class="line">&#125;</span><br><span class="line">2 利用拓展运算符</span><br><span class="line">function flat1(array)&#123;</span><br><span class="line">    while(array.some((item)&#x3D;&gt;Array.isArray(item)))&#123;</span><br><span class="line">        array &#x3D; [].concat(...array)</span><br><span class="line">    &#125;;</span><br><span class="line">    return array</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2-快速排序"><a href="#2-快速排序" class="headerlink" title="2 快速排序"></a>2 快速排序</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">function quickSort(arr,left,right)&#123;</span><br><span class="line">     let start &#x3D; left;</span><br><span class="line">     let end &#x3D; right;</span><br><span class="line">     let base &#x3D; arr[start];</span><br><span class="line">     while(start &lt; end)&#123;</span><br><span class="line">          while(start &lt; end &amp;&amp; arr[end] &gt; base)&#123;</span><br><span class="line">               end--</span><br><span class="line">          &#125;</span><br><span class="line">          arr[start] &#x3D; arr[end]</span><br><span class="line">          while(start &lt; end &amp;&amp; arr[start] &lt; base)&#123;</span><br><span class="line">               start++</span><br><span class="line">          &#125;</span><br><span class="line">          arr[end] &#x3D; arr[start]</span><br><span class="line">     &#125;;</span><br><span class="line">     arr[start] &#x3D; base</span><br><span class="line">     if(start &gt; left)&#123;</span><br><span class="line">          quickSort(arr,left,start-1)</span><br><span class="line">     &#125;</span><br><span class="line">     if(end &lt; right)&#123;</span><br><span class="line">          quickSort(arr,end+1,right)</span><br><span class="line">     &#125;</span><br><span class="line">     return arr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let arr &#x3D; [3,2,4,5,1,6]</span><br><span class="line">let left &#x3D; 0;</span><br><span class="line">let right &#x3D; arr.length-1;</span><br><span class="line">console.log(quickSort(arr,left,right))</span><br></pre></td></tr></table></figure>
+<h5 id="3-深拷贝的实现"><a href="#3-深拷贝的实现" class="headerlink" title="3 深拷贝的实现"></a>3 深拷贝的实现</h5><p>循环引用:对象的属性间接或直接的引用了自身的情况</p>
+<p>解决方法：我们可以额外开辟一个存储空间，来存储当前对象和拷贝对象的对应关系，当需要拷贝当前对象时，先去存储空间中找，有没有拷贝过这个对象，如果有的话直接返回，如果没有的话继续拷贝，这样就巧妙化解的循环引用的问题。<br>1）不考虑循环引用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function deepObj(obj)&#123;</span><br><span class="line">     if(typeof obj &#x3D;&#x3D; &#39;object&#39; )&#123;</span><br><span class="line">          let targetObj &#x3D; Array.isArray(obj) ? []:&#123;&#125;;</span><br><span class="line">          for(let key in obj)&#123;</span><br><span class="line">               targetObj[key] &#x3D; deepObj(obj[key])</span><br><span class="line">          &#125;</span><br><span class="line">          return targetObj</span><br><span class="line">     &#125;else&#123;</span><br><span class="line">          return obj</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2）考虑循环引用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function deepObj(obj,map &#x3D; new Map())&#123;</span><br><span class="line">     if(typeof obj &#x3D;&#x3D; &#39;object&#39;)&#123;</span><br><span class="line">          let targetObj &#x3D; Array.isArray(obj) ? []:&#123;&#125;</span><br><span class="line">          if(map.has(obj))&#123;</span><br><span class="line">               return map.get(obj)</span><br><span class="line">          &#125;</span><br><span class="line">          map.set(obj,targetObj)</span><br><span class="line">          for(let key in obj)&#123;</span><br><span class="line">               targetObj[key] &#x3D; deepObj(obj[key],map)</span><br><span class="line">          &#125;</span><br><span class="line">          return targetObj</span><br><span class="line">     &#125;else&#123;</span><br><span class="line">          return obj</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="4-js递归数组并更改新的数值"><a href="#4-js递归数组并更改新的数值" class="headerlink" title="4 js递归数组并更改新的数值"></a>4 js递归数组并更改新的数值</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">var treeData &#x3D; [&#123;</span><br><span class="line">        &quot;name&quot;: &quot;剑侠世界&quot;,</span><br><span class="line">        &quot;columns&quot;: [&#123;</span><br><span class="line">                &quot;name&quot;: &quot;新闻中心&quot;,</span><br><span class="line">                &quot;columns&quot;: [&#123;</span><br><span class="line">                        &quot;name&quot;: &quot;新闻&quot;,</span><br><span class="line">                        &quot;parentId&quot;: 2</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        &quot;name&quot;: &quot;公告&quot;,</span><br><span class="line">                        &quot;parentId&quot;: 2</span><br><span class="line">                    &#125;</span><br><span class="line">                ],</span><br><span class="line">                &quot;parentId&quot;: 1</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;name&quot;: &quot;玩家文选&quot;,</span><br><span class="line">                &quot;columns&quot;: [&#123;</span><br><span class="line">                        &quot;name&quot;: &quot;门派攻略&quot;,</span><br><span class="line">                        &quot;parentId&quot;: 2</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        &quot;name&quot;: &quot;玩家心情&quot;,</span><br><span class="line">                        &quot;parentId&quot;: 2</span><br><span class="line">                    &#125;</span><br><span class="line">                ],</span><br><span class="line">                &quot;parentId&quot;: 1</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;name&quot;: &quot;游戏资料&quot;,</span><br><span class="line">                &quot;columns&quot;: [&#123;</span><br><span class="line">                        &quot;name&quot;: &quot;游戏资料0&quot;,</span><br><span class="line">                        &quot;parentId&quot;: 2</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        &quot;name&quot;: &quot;游戏资料1&quot;,</span><br><span class="line">                        &quot;parentId&quot;: 2</span><br><span class="line">                    &#125;</span><br><span class="line">                ],</span><br><span class="line">                &quot;parentId&quot;: 1</span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        &quot;parentId&quot;: 0</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;name&quot;: &quot;剑侠世界1&quot;,</span><br><span class="line">        &quot;columns&quot;: [&#123;</span><br><span class="line">                &quot;name&quot;: &quot;新闻中心1&quot;,</span><br><span class="line">                &quot;columns&quot;: [&#123;</span><br><span class="line">                        &quot;name&quot;: &quot;新闻1&quot;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        &quot;name&quot;: &quot;公告1&quot;</span><br><span class="line">                    &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;name&quot;: &quot;玩家文选1&quot;,</span><br><span class="line">                &quot;columns&quot;: [&#123;</span><br><span class="line">                        &quot;name&quot;: &quot;门派攻略1&quot;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        &quot;name&quot;: &quot;玩家心情1&quot;</span><br><span class="line">                    &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;name&quot;: &quot;游戏资料1&quot;,</span><br><span class="line">                &quot;columns&quot;: [&#123;</span><br><span class="line">                        &quot;name&quot;: &quot;游戏资料01&quot;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        &quot;name&quot;: &quot;游戏资料01&quot;</span><br><span class="line">                    &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        &quot;parentId&quot;: 0</span><br><span class="line">    &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>数据结构如上<br>形成新的数组,name改成title, parentId改成key<br>代码：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function t(arr)&#123;</span><br><span class="line">     for(let i &#x3D; 0;i &lt; arr.length;i++)&#123;</span><br><span class="line">          if(arr[i].columns)&#123;</span><br><span class="line">               arr[i].columns &#x3D; t(arr[i].columns)</span><br><span class="line">          &#125;</span><br><span class="line">          arr[i].name &amp;&amp; (arr[i].title &#x3D; arr[i].name);</span><br><span class="line">          delete arr[i].name</span><br><span class="line">     &#125;;</span><br><span class="line">     return arr</span><br><span class="line">&#125;</span><br><span class="line">console.log(t(treeData))</span><br></pre></td></tr></table></figure>
+<h5 id="5-instanceof原理"><a href="#5-instanceof原理" class="headerlink" title="5 instanceof原理"></a>5 instanceof原理</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function _instance(L,R)&#123;</span><br><span class="line">     let left &#x3D; L.__proto__</span><br><span class="line">     let right &#x3D; R.prototype;</span><br><span class="line">     while(true)&#123;</span><br><span class="line">          if(left &#x3D;&#x3D; null || left &#x3D;&#x3D; undefined)&#123;</span><br><span class="line">               return false</span><br><span class="line">          &#125;</span><br><span class="line">          if(left &#x3D;&#x3D; right)&#123;</span><br><span class="line">               return true</span><br><span class="line">          &#125;</span><br><span class="line">          left &#x3D; left.__proto__</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="6-判断函数类型的函数"><a href="#6-判断函数类型的函数" class="headerlink" title="6 判断函数类型的函数"></a>6 判断函数类型的函数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function getType(data) &#123;</span><br><span class="line">     let type &#x3D; typeof data;</span><br><span class="line">     if (type !&#x3D; &#39;object&#39;) &#123;</span><br><span class="line">          return type</span><br><span class="line">     &#125;</span><br><span class="line">     let a &#x3D; Object.prototype.toString.call(data);</span><br><span class="line">     let b &#x3D; a.split(&#39; &#39;)[1]</span><br><span class="line">     let c &#x3D; b.slice(0, b.length - 1)</span><br><span class="line">     return c</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="7-防抖节流"><a href="#7-防抖节流" class="headerlink" title="7 防抖节流"></a>7 防抖节流</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;防抖</span><br><span class="line">function debounce(func,wait &#x3D; 5000)&#123;</span><br><span class="line">     let task</span><br><span class="line">     return function(e)&#123;</span><br><span class="line">          clearTimeout(task)</span><br><span class="line">          task &#x3D;  setTimeout(()&#x3D;&gt;&#123;</span><br><span class="line">               func.call(this,e)</span><br><span class="line">          &#125;,wait)</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;节流</span><br><span class="line">function throttle(func,wait &#x3D; 5000)&#123;</span><br><span class="line">     let task;</span><br><span class="line">     return function(e)&#123;</span><br><span class="line">          if(!task)&#123;</span><br><span class="line">               task &#x3D; setTimeout(()&#x3D;&gt;&#123;</span><br><span class="line">                    task &#x3D; null</span><br><span class="line">                    func.call(this,e)</span><br><span class="line">               &#125;)</span><br><span class="line">          &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="8-call、apply、bind的实现"><a href="#8-call、apply、bind的实现" class="headerlink" title="8 call、apply、bind的实现"></a>8 call、apply、bind的实现</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;call</span><br><span class="line">function call1(obj)&#123;</span><br><span class="line">     obj &#x3D; obj ? Object(obj):window</span><br><span class="line">     obj.fn &#x3D; this;</span><br><span class="line">     let args &#x3D; [...arguments].slice(1)</span><br><span class="line">     let res &#x3D; obj.fn(...args)</span><br><span class="line">     delete obj.fn;</span><br><span class="line">     return res</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;apply</span><br><span class="line">function apply1(obj,arr)&#123;</span><br><span class="line">     obj &#x3D; obj ? Object(obj) : window</span><br><span class="line">     obj.fn &#x3D; this;</span><br><span class="line">     let res;</span><br><span class="line">     if(!arr)&#123;</span><br><span class="line">          res &#x3D; obj.fn()</span><br><span class="line">     &#125;else&#123;</span><br><span class="line">          res &#x3D; obj.fn(...arr)</span><br><span class="line">     &#125;</span><br><span class="line">     delete obj.fn</span><br><span class="line">     return res</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;bind</span><br><span class="line">function bind1(context)&#123;</span><br><span class="line">     let self &#x3D; this;</span><br><span class="line">     let f &#x3D; function()&#123;&#125;;</span><br><span class="line">     let args &#x3D; Array.prototype.slice.call(arguments,1);</span><br><span class="line">     let bound &#x3D; function()&#123;</span><br><span class="line">          let final &#x3D; Array.prototype.slice.call(arguments);</span><br><span class="line">          let last &#x3D; args.concat(final);</span><br><span class="line">          return self.apply(this instanceof f ? this : context,last)</span><br><span class="line">     &#125;;</span><br><span class="line">     f.prototype &#x3D; self.prototype;</span><br><span class="line">     bound.prototype &#x3D; new f()</span><br><span class="line">     return bound</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="9-sleep函数的实现"><a href="#9-sleep函数的实现" class="headerlink" title="9 sleep函数的实现"></a>9 sleep函数的实现</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;setTimeout方式</span><br><span class="line">function sleep1(time,callback)&#123;</span><br><span class="line">     setTimeout(callback,time)</span><br><span class="line">&#125;</span><br><span class="line">sleep1(2000,()&#x3D;&gt;&#123;</span><br><span class="line">     console.log(123)</span><br><span class="line">&#125;)</span><br><span class="line">&#x2F;&#x2F;promise方式</span><br><span class="line">function sleep(ms)&#123;</span><br><span class="line">     return new Promise(function(resolve,reject)&#123;</span><br><span class="line">          setTimeout(resolve,ms)</span><br><span class="line">     &#125;)</span><br><span class="line">&#125;</span><br><span class="line">sleep.then(()&#x3D;&gt;&#123;</span><br><span class="line">     console.log(123)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="10-实现indexOf"><a href="#10-实现indexOf" class="headerlink" title="10 实现indexOf"></a>10 实现indexOf</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function indexOfget(total, goal) &#123;</span><br><span class="line">  let len &#x3D; total.length</span><br><span class="line">  let golen &#x3D; goal.length</span><br><span class="line">  for (let i &#x3D; 0; i &lt; len; i++) &#123;</span><br><span class="line">    let match &#x3D; i + golen</span><br><span class="line">    let str &#x3D; total.slice(i, match)</span><br><span class="line">    if (match &gt; len) &#123;</span><br><span class="line">      return false</span><br><span class="line">    &#125;</span><br><span class="line">    if(str &#x3D;&#x3D; goal)&#123;</span><br><span class="line">      return i </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return -1</span><br><span class="line">&#125;</span><br><span class="line">let a &#x3D; indexOfget(&#39;abcdefg&#39;,&#39;bc&#39;)</span><br><span class="line">console.log(a)</span><br></pre></td></tr></table></figure>
+<h5 id="11-实现Promise-all"><a href="#11-实现Promise-all" class="headerlink" title="11 实现Promise.all"></a>11 实现Promise.all</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Promise1.prototype.all &#x3D; function(promiseArray)&#123;</span><br><span class="line">           if(Array.isArray(promiseArray))&#123;</span><br><span class="line">               throw new TypeError(&#39;error&#39;)</span><br><span class="line">           &#125;</span><br><span class="line">           return new  Promise((resolve,reject)&#x3D;&gt;&#123;</span><br><span class="line">               try&#123;</span><br><span class="line">                   let res &#x3D; [];</span><br><span class="line">                   for(let i &#x3D; 0;i &lt; promiseArray.length;i++)&#123;</span><br><span class="line">                       promiseArray[i].then((data)&#x3D;&gt;&#123;</span><br><span class="line">                           res.push(data)</span><br><span class="line">                           if(res.length &#x3D;&#x3D; promiseArray.length)&#123;</span><br><span class="line">                               resolve(res)</span><br><span class="line">                           &#125;</span><br><span class="line">                       &#125;,reject)</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;catch(e)&#123;</span><br><span class="line">                   reject(e)</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/27/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%861/" data-id="ckv62ysqq0062lotj4owyd944" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+ 
+<script src="/jquery/jquery.min.js"></script>
+
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/2021/10/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E6%96%B9%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          计算机网络--自顶向下方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/08/26/%E5%B8%B8%E8%A7%81%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">常见资料整理</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-js%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96"><span class="toc-number">1.</span> <span class="toc-text">1 js数组扁平化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-number">2.</span> <span class="toc-text">2 快速排序</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text">3 深拷贝的实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-js%E9%80%92%E5%BD%92%E6%95%B0%E7%BB%84%E5%B9%B6%E6%9B%B4%E6%94%B9%E6%96%B0%E7%9A%84%E6%95%B0%E5%80%BC"><span class="toc-number">4.</span> <span class="toc-text">4 js递归数组并更改新的数值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-instanceof%E5%8E%9F%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">5 instanceof原理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-%E5%88%A4%E6%96%AD%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-number">6.</span> <span class="toc-text">6 判断函数类型的函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-%E9%98%B2%E6%8A%96%E8%8A%82%E6%B5%81"><span class="toc-number">7.</span> <span class="toc-text">7 防抖节流</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-call%E3%80%81apply%E3%80%81bind%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">8.</span> <span class="toc-text">8 call、apply、bind的实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#9-sleep%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">9.</span> <span class="toc-text">9 sleep函数的实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-%E5%AE%9E%E7%8E%B0indexOf"><span class="toc-number">10.</span> <span class="toc-text">10 实现indexOf</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11-%E5%AE%9E%E7%8E%B0Promise-all"><span class="toc-number">11.</span> <span class="toc-text">11 实现Promise.all</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2021 jianjian&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;2040787513@qq.com
+    </div>
+  </div>
+</footer>
+ 
+<script src="/jquery/jquery.min.js"></script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+    <a href="/categories" class="mobile-nav-link">分类</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "e2fb4051c49842688ce669e634bc983f",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ 
+<script src="/js/is.js"></script>
+
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/elevator.js"></script>
+
+  </div>
+</body>
+</html>
